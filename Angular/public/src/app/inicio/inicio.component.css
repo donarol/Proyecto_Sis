@@ -1,0 +1,21 @@
+.contenedor{
+    padding: 0;
+    display: flex;
+    max-width: 90%;
+	width: 90%;
+	background: #fff; 
+	margin: 30px auto;
+}
+.izq{
+    width: 50%;
+    background: #4ED8D1;
+}
+.der{
+    width: 50%;
+    background: #0B496C;
+}
+.superior > button{
+    position: relative;
+    left:80%;
+    margin: 3% 0;
+}

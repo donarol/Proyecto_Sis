@@ -1,0 +1,31 @@
+.contenido,form{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1%;
+}
+.largo{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+.corto{
+    display: flex;
+    flex-wrap: wrap;
+    width: 50%;
+}
+p{
+    width: 98%;
+    margin: 1%;
+    color: aliceblue;
+}
+input{
+    width: 98%;
+    margin: 1%;
+    color: aliceblue;
+    border: none;
+    background: #0B496C;
+    border-bottom: 3px solid #fff;
+}
+button{
+    margin-top: 3%;
+}
