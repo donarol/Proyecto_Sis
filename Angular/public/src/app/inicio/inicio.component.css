@@ -2,20 +2,40 @@
     padding: 0;
     display: flex;
     max-width: 90%;
-	width: 90%;
+    width: 90%;
 	background: #fff; 
-	margin: 30px auto;
+    margin: 30px auto; 
+    height:100vh;
 }
 .izq{
     width: 50%;
     background: #4ED8D1;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
 }
 .der{
     width: 50%;
     background: #0B496C;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
 }
-.superior > button{
-    position: relative;
-    left:80%;
-    margin: 3% 0;
+button{
+    margin-top: 2%;
+    opacity: 0.7;
+    background: #0B496C;
+    color: aliceblue;
+    padding: 5px;
+}
+.btn-der{
+    margin-right: 3%;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+.btn-izq{
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
+}
+.active{
+    background: #4ED8D1;
+    opacity: 1;
 }

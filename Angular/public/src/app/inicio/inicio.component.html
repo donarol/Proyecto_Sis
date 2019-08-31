@@ -3,9 +3,9 @@
     <p>imagen</p>
   </div>
   <div class="der">
-    <div class="superior">
-      <button (click)="cambio(true)">Registro</button>
-      <button (click)="cambio(false)">Login</button>
+    <div class="d-flex flex-row-reverse bd-highlight">
+      <button class="btn-der" [ngClass]="{'active':estado}" (click)="cambio(true)">Registro</button>
+      <button class="btn-izq" [ngClass]="{'active':!estado}" (click)="cambio(false)">Login</button>
     </div>
     <div class="contenido">
       <app-registro *ngIf="estado;else login"></app-registro>
