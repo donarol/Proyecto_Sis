@@ -1,28 +1,28 @@
 <div class="contenido">
-  <form action="" method="post">
+  <form (ngSubmit)="registro()">
     <div class="largo">
       <p>Nombre:</p>
-      <input type="text">
+      <input type="text" name="nombre" [(ngModel)]="familiar.nombre">
     </div>
     <div class="largo">
       <p>Apellido:</p>
-      <input type="text">
+      <input type="text" name="apellido" [(ngModel)]="familiar.apellido">
     </div>
     <div class="corto">
       <p>Carnet:</p>
-      <input type="text">
+      <input type="text" name="carnet" [(ngModel)]="familiar.carnet">
     </div>
     <div class="corto">
       <p>Telefono:</p>
-      <input type="text">
+      <input type="text" name="telefono" [(ngModel)]="familiar.telefono">
     </div>
     <div class="largo">
       <p>Correo Electronico:</p>
-      <input type="email">
+      <input type="email" name="correo" [(ngModel)]="familiar.correo">
     </div>
     <div class="corto">
       <p>Contraseña:</p>
-      <input type="password">
+      <input type="password" name="contrasena" [(ngModel)]="familiar.contrasena">
     </div>
     <div class="corto">
       <p>Repita la Contraseña</p>

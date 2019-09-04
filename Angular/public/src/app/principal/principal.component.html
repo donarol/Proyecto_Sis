@@ -1,0 +1,21 @@
+<div class="contenedor">
+  <div class="superior d-flex flex-row-reverse bd-highlight">
+      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Menu
+      </button>
+      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          <div *ngFor="let componenteMenu of componentesMenu">
+            <a class="dropdown-item" routerLink="{{componenteMenu.ruta}}">{{componenteMenu.etiqueta}}</a>
+          </div>
+      </div>  
+  </div>
+  <div class="izq">
+      <select size="11" class="form-control">
+        <option class="list-group-item list-group-item-action" routerLink="/listaAlumnos">Curso 1</option>
+        <option class="list-group-item list-group-item-action">Curso 2</option>
+      </select>
+  </div>
+  <div class="der">
+    <router-outlet></router-outlet>
+  </div>
+</div>
