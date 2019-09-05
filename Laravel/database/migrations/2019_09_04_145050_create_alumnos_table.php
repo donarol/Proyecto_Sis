@@ -18,10 +18,10 @@ class CreateAlumnosTable extends Migration
             $table->date('fecha_nacimiento');
             $table->string('sanguineo',45);
             $table->string('domicilio',45);
-            $table->string('celular');
+            $table->string('celular',45);
             $table->binary('foto');          //¡?como poner la foto
             $table->boolean('certificado_vacuna');
-            $table->string('certificado_nacimiento');
+            $table->string('certificado_nacimiento',45);
             $table->date('fecha');
             $table->date('fecha_nacimiento');
             $table->binary('croquis');       //¡?como poner croquis

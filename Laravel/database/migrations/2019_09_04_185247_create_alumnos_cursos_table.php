@@ -15,7 +15,7 @@ class CreateAlumnosCursosTable extends Migration
     {
         Schema::create('alumnos_cursos', function (Blueprint $table) {
             $table->bigIncrements('alumno_curso_id');
-            $table->string('estado');      //para ver si esta inscrito o no
+            $table->string('estado',45);      //para ver si esta inscrito o no
             $table->date('fecha');
 
             $table->bigInteger('alumno_id')->unsigned();

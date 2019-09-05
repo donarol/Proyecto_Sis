@@ -15,9 +15,9 @@ class CreateFamiliaresTable extends Migration
     {
         Schema::create('familiares', function (Blueprint $table) {
             $table->bigIncrements('familiar_id');
-            $table->string('carnet');
+            $table->string('carnet',45);
             $table->string('correo',45);
-            $table->string('telefono');
+            $table->string('telefono',45);
             $table->string('contrasena',45);
             $table->binary('foto');         //como poner foto
             $table->date('fecha');
