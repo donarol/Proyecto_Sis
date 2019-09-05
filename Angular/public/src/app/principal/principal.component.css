@@ -1,0 +1,27 @@
+.contenedor{
+    width: 90% auto;
+    height: 100vh;
+    display: flex;
+    flex-wrap: wrap;
+}
+.superior{
+    width: 98%;
+    margin: 1%;
+  /*  position: fixed;
+    background: red;*/
+}
+.superior > button{
+    border-radius: 15px;
+}
+.izq{
+    width: 30%;
+    margin: 1%;
+}
+.izq option{
+    cursor: pointer;
+}
+.der{
+    width: 66%;
+    margin: 1%;
+}
+

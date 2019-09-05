@@ -1,13 +1,13 @@
 <div class="contenido">
     
-    <form action="" method="post">
+    <form (ngSubmit)="login()">
         <div>
             <p>Correo Electronico:</p>
-            <input type="email">
+            <input type="email" name="correo" [(ngModel)]="correo">
         </div>
         <div>
             <p>Contraseña</p>
-            <input type="password">
+            <input type="password" name="password" [(ngModel)]="password">
         </div>
         <button class="btn btn-info" type="submit">Ingresar</button>
     </form>

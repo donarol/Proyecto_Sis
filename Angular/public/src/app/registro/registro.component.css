@@ -42,3 +42,9 @@ button{
 input:focus{
     border: 3px solid aliceblue;
 }
+/*PARTE RESPOSIVA*/
+@media screen and (max-width: 700px){
+    .corto{
+        width: 100%;
+    }
+}
