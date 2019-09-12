@@ -25,7 +25,7 @@ const router: Routes=[
   {path:'',component:PrincipalComponent,children:[
     {path:'miCuenta/:id',component:CuentaTutorComponent},
     {path:'listaAlumnos/:id',component:ListaAlumnosComponent},
-    {path:'lista',component:MenuComponent}/*,
+    {path:'lista/:id',component:MenuComponent}/*,
     {path:'',component:MenuComponent,children:[
       {path:'listaAlumnos',component:ListaAlumnosComponent}
     ]}*/

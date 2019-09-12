@@ -2,16 +2,16 @@
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    max-width: 90%;
-    width: 90%;
-	background: #fff; 
-    margin: 30px auto; 
+    max-width: 100%;
+    width: 100%;
+	background: #fff;  
+    background: -webkit-linear-gradient(left,  #1143a6, #00c6ff);
+    height: 100vh;
 }
 .superior{
     width: 50%;
-    display: inline-block;
+    position: absolute;
     margin-right: 1%; 
-    background: #4ED8D1;
     border-top-right-radius: 20px; 
 }
 .inferior{
@@ -20,14 +20,12 @@
 }
 .izq{
     width: 50%;
-    background: #4ED8D1;
    /* border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;*/
     
 }
 .der{
     width: 50%;
-    background: #0B496C;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
   
@@ -55,6 +53,10 @@ img{
     max-width: 100%;
     display:block;
 margin:auto;
+}
+input{
+  text-anchor: 20px;
+  text-decoration: brown;
 }
 
 
