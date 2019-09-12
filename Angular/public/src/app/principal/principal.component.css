@@ -1,18 +1,16 @@
 .contenedor{
     width: 90% auto;
-    height: 100vh;
     display: flex;
     flex-wrap: wrap;
 }
 .superior{
     width: 98%;
     margin: 1%;
+    margin-top: 0;
   /*  position: fixed;
     background: red;*/
 }
-.superior > button{
-    border-radius: 15px;
-}
+
 .izq{
     width: 30%;
     margin: 1%;
@@ -21,7 +19,9 @@
     cursor: pointer;
 }
 .der{
-    width: 66%;
+    width: 100%;
     margin: 1%;
 }
-
+a{
+    cursor: pointer;
+}

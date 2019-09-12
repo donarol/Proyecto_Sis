@@ -1,17 +1,37 @@
 <div class="contenedor">
-  <div class="izq">
-    <p>imagen</p>
+  <div class="superior">
+      <label class="switch">
+        <input type="checkbox" [(ngModel)]='variable' (change)='onChangeVariable()'>
+        <span class="slider round"></span>
+      </label>
+      
+      <label class="etiqueta">{{vista}}</label>
   </div>
-  <div class="der">
-    <div class="d-flex flex-row-reverse bd-highlight">
-      <button class="btn-der" [ngClass]="{'active':estado}" (click)="cambio(true)">Registro</button>
-      <button class="btn-izq" [ngClass]="{'active':!estado}" (click)="cambio(false)">Login</button>
+    <div class="izq">
+      <div>
+        <p>IMAGEN</p>
+      </div>
     </div>
-    <div class="contenido">
-      <app-registro *ngIf="estado;else login"></app-registro>
-      <ng-template #login>
-        <app-login></app-login>
-      </ng-template>
-    </div>
-  </div>
+    <div class="der">
+      <div class="d-flex flex-row-reverse bd-highlight">
+        <button class="btn-der" [ngClass]="{'active':estado}" (click)="cambio(true)">Registro</button>
+        <button class="btn-izq" [ngClass]="{'active':!estado}" (click)="cambio(false)">Login</button>
+      </div>
+      <div class="contenido">
+        <div *ngIf='variable;then muestra_v else muestra_f'></div>
+        <ng-template #muestra_v>
+          <app-registro-administrador *ngIf="estado;else login"></app-registro-administrador>
+          <ng-template #login>
+            <app-login-administrador></app-login-administrador>
+          </ng-template>
+        </ng-template>
+        <ng-template #muestra_f>
+          <app-registro *ngIf="estado;else login"></app-registro>
+          <ng-template #login>
+            <app-login></app-login>
+          </ng-template>
+        </ng-template>
+      </div>
+    </div>    
+  
 </div>

@@ -14,14 +14,23 @@ import { RegistroComponent } from './registro/registro.component';
 import { PrincipalComponent } from './principal/principal.component';
 import { MenuComponent } from './menu/menu.component';
 import { ListaAlumnosComponent } from './lista-alumnos/lista-alumnos.component';
+import { CuentaTutorComponent } from './cuenta-tutor/cuenta-tutor.component';
+import { ListaDocentesComponent } from './lista-docentes/lista-docentes.component';
+import { ListaCamarasComponent } from './lista-camaras/lista-camaras.component';
+import { LoginAdministradorComponent } from './login-administrador/login-administrador.component';
+import { RegistroAdministradorComponent } from './registro-administrador/registro-administrador.component';
 
 const router: Routes=[
   {path:'',component:InicioComponent},
-  {path:'principal',component:PrincipalComponent},
   {path:'',component:PrincipalComponent,children:[
-    {path:'miCuenta',component:MenuComponent},
-    {path:'listaAlumnos',component:ListaAlumnosComponent}
+    {path:'miCuenta/:id',component:CuentaTutorComponent},
+    {path:'listaAlumnos/:id',component:ListaAlumnosComponent},
+    {path:'lista',component:MenuComponent}/*,
+    {path:'',component:MenuComponent,children:[
+      {path:'listaAlumnos',component:ListaAlumnosComponent}
+    ]}*/
   ]}
+  
 ];
 @NgModule({
   declarations: [
@@ -31,7 +40,12 @@ const router: Routes=[
     RegistroComponent,
     PrincipalComponent,
     MenuComponent,
-    ListaAlumnosComponent
+    ListaAlumnosComponent,
+    CuentaTutorComponent,
+    ListaDocentesComponent,
+    ListaCamarasComponent,
+    LoginAdministradorComponent,
+    RegistroAdministradorComponent
   ],
   imports: [
     BrowserModule,

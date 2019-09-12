@@ -1,19 +1,34 @@
 <div class="contenedor">
-  <div class="superior d-flex flex-row-reverse bd-highlight">
-      <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <div class="superior navbar navbar-expand-lg navbar-dark bg-dark">
+      <!--<button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Menu
       </button>
       <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           <div *ngFor="let componenteMenu of componentesMenu">
             <a class="dropdown-item" routerLink="{{componenteMenu.ruta}}">{{componenteMenu.etiqueta}}</a>
           </div>
-      </div>  
+      </div>-->  
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <p>hola</p>
+          <ul class="navbar-nav mr-auto" >
+            <li class="nav-item" *ngFor="let componenteMenu of componentesMenu">
+                <a class="nav-link" routerLink="{{componenteMenu.ruta}}">{{componenteMenu.etiqueta}}</a>
+            </li>
+          </ul>
+          <div class="form-inline my-2 my-lg-0">
+              <ul class="navbar-nav mr-auto" >
+                  <li class="nav-item" *ngFor="let componente_0 of componentes_0">
+                      <a class="nav-link" data-toggle="modal" id="{{componente_0.id}}"(click)="cerrar()" attr.data-target="#{{componente_0.tar}}">{{componente_0.etiqueta}}</a>
+                  </li>
+                </ul>
+          </div>
+        </div>
   </div>
   <div class="izq">
-      <select size="11" class="form-control">
-        <option class="list-group-item list-group-item-action" routerLink="/listaAlumnos">Curso 1</option>
-        <option class="list-group-item list-group-item-action">Curso 2</option>
-      </select>
+
   </div>
   <div class="der">
     <router-outlet></router-outlet>
