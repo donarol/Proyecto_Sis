@@ -46,10 +46,14 @@ button{
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
 }
-.active{
-    background: #4ED8D1;
-    opacity: 1;
+img{
+    background-size: 100% 100%;
+    max-height: 100%;
+    max-width: 100%;
+    display:block;
+margin:auto;
 }
+
 
 
 

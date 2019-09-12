@@ -1,3 +1,14 @@
-<p>
-  login-administrador works!
-</p>
+<div class="contenido">
+    
+    <form (ngSubmit)="login()">
+        <div>
+            <p>Correo Electronico:</p>
+            <input type="email" name="correo" [(ngModel)]="correo">
+        </div>
+        <div>
+            <p>Contraseña</p>
+            <input type="password" name="password" [(ngModel)]="password">
+        </div>
+        <button class="btn btn-info" type="submit">Ingresar</button>
+    </form>
+</div>
