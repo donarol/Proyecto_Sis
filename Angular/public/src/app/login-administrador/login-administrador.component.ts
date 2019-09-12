@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginTutorService } from '../servicios/login-tutor.service';
+import { LoginService } from '../servicios/login.service';
+import { Administrador } from '../modelos/Administrador';
 
 @Component({
   selector: 'app-login-administrador',
@@ -7,20 +8,21 @@ import { LoginTutorService } from '../servicios/login-tutor.service';
   styleUrls: ['./login-administrador.component.css']
 })
 export class LoginAdministradorComponent implements OnInit {
-  private correo:string;
-  private password:string;
+  private model:Administrador;
   constructor(
-    private _loginServices:LoginTutorService
+    private _loginServices:LoginService
   ) { }
   login(){
     console.log("entro login");
-    console.log("correo: "+this.correo);
-    console.log("password: "+this.password);
-    this._loginServices.login(this.correo,this.password);
+    console.log("correo: "+this.model.correo);
+    console.log("password: "+this.model.contrasena);
+    /*
+    this._loginServices.loginAdministrador(this.model).subscribe(res=>{
+
+    });*/
   }
   ngOnInit() {
-    this.correo='';
-    this.password='';
+    this.model=new Administrador();
   }
 
 }

@@ -3,11 +3,11 @@
     <form (ngSubmit)="login()">
         <div>
             <p>Correo Electronico:</p>
-            <input type="email" name="correo" [(ngModel)]="correo">
+            <input type="email" name="correo" [(ngModel)]="model.correo">
         </div>
         <div>
             <p>Contraseña</p>
-            <input type="password" name="password" [(ngModel)]="password">
+            <input type="password" name="password" [(ngModel)]="model.password">
         </div>
         <button class="btn btn-info" type="submit">Ingresar</button>
     </form>

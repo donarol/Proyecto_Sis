@@ -1,3 +1,37 @@
-<p>
-  registro-administrador works!
-</p>
+<div class="contenido">
+  <form (ngSubmit)="registro()">
+    <div class="largo">
+      <p>Nombre:</p>
+      <input type="text" name="nombre" [(ngModel)]="administrador.nombre">
+    </div>
+    <div class="largo">
+      <p>Apellido:</p>
+      <input type="text" name="apellido" [(ngModel)]="administrador.apellido">
+    </div>
+    <div class="corto">
+      <p>Carnet:</p>
+      <input type="text" name="carnet" [(ngModel)]="administrador.carnet">
+    </div>
+    <div class="corto">
+      <p>Telefono:</p>
+      <input type="text" name="telefono" [(ngModel)]="administrador.telefono">
+    </div>
+    <div class="largo">
+      <p>Correo Electronico:</p>
+      <input type="email" name="correo" [(ngModel)]="administrador.correo">
+    </div>
+    <div class="largo">
+      <p>Cargo:</p>
+      <input type="text" name="cargo" [(ngModel)]="administrador.cargo">
+    </div>
+    <div class="corto">
+      <p>Contraseña:</p>
+      <input type="password" name="contrasena" [(ngModel)]="administrador.contrasena">
+    </div>
+    <div class="corto">
+      <p>Repita la Contraseña</p>
+      <input type="password">
+    </div>
+    <button class="btn btn-info" type="submit">Enviar</button>
+  </form>
+</div>

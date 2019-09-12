@@ -4,7 +4,7 @@ import { RouterModule,Routes} from '@angular/router';
 import { FormsModule }   from '@angular/forms';
 
 //Servicios
-import {LoginTutorService} from './servicios/login-tutor.service';
+import {LoginService} from './servicios/login.service';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -54,7 +54,7 @@ const router: Routes=[
     FormsModule
   ],
   providers: [
-    LoginTutorService
+    LoginService
   ],
   bootstrap: [AppComponent]
 })

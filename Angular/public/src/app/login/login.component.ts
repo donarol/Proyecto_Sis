@@ -1,27 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import {LoginTutorService} from './../servicios/login-tutor.service';
+import {LoginService} from './../servicios/login.service';
 import { from } from 'rxjs';
+import { Familiar } from '../modelos/Familiar';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-  private correo:string;
-  private password:string;
+  private model:Familiar;
   constructor(
-    private _loginServices:LoginTutorService
+    private _loginServices:LoginService,
+    private _router:Router
   ){}
   login(){
     console.log("entro login");
-    console.log("correo: "+this.correo);
-    console.log("password: "+this.password);
-    this._loginServices.login(this.correo,this.password);
+    console.log("correo: "+this.model.correo);
+    console.log("password: "+this.model.contrasena);
+    /*
+    this._loginServices.loginTutor(this.model).subscribe(res=>{
+      this._router.navigate([`/lista/${res.id}`]);
+    });*/
   }
 
   ngOnInit() {
-    this.correo='';
-    this.password='';
+    this.model=new Familiar();
   }
 
 }

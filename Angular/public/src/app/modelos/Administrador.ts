@@ -4,6 +4,7 @@ import { Rol } from './Rol';
 
 export class Administrador extends Persona{
     administrador_id:string;
+    contrasena:string;
     carnet:string;
     telefono:string;
     cargo:string;
@@ -13,6 +14,7 @@ export class Administrador extends Persona{
     constructor(){
         super();
         this.administrador_id='';
+        this.contrasena='';
         this.cargo='';
         this.carnet='';
         this.telefono='';

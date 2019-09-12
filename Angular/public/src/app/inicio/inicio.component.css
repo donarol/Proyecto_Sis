@@ -8,8 +8,11 @@
     margin: 30px auto; 
 }
 .superior{
-    width: 100%;
+    width: 50%;
     display: inline-block;
+    margin-right: 1%; 
+    background: #4ED8D1;
+    border-top-right-radius: 20px; 
 }
 .inferior{
     width: 100%;
@@ -20,14 +23,14 @@
     background: #4ED8D1;
    /* border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;*/
-    height:100vh;
+    
 }
 .der{
     width: 50%;
     background: #0B496C;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
-    height:100vh;
+  
 }
 
 button{
