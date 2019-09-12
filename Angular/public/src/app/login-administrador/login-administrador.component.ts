@@ -10,7 +10,7 @@ import { Administrador } from '../modelos/Administrador';
 export class LoginAdministradorComponent implements OnInit {
   private model:Administrador;
   constructor(
-    private _loginServices:LoginService
+    //private _loginServices:LoginService
   ) { }
   login(){
     console.log("entro login");

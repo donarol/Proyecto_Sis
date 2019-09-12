@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
 export class LoginComponent implements OnInit {
   private model:Familiar;
   constructor(
-    private _loginServices:LoginService,
-    private _router:Router
+   // private _loginServices:LoginService,
+   // private _router:Router
   ){}
   login(){
     console.log("entro login");
