@@ -1,0 +1,9 @@
+.contenido{
+    display: flex;
+    flex-wrap: wrap;
+}
+.card{
+    margin: 1% 0 1% 1%;
+    width: 32%;
+    /*width:18rem*/
+}

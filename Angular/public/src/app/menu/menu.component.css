@@ -1,0 +1,31 @@
+.contenido{
+    display: flex;
+}
+.superior{
+    display: flex;
+}
+.inferior{
+    background: yellow;
+}
+a{
+    background: green;
+    width: 100%;
+    padding: 2% 5%;
+    cursor: pointer;
+}
+.izq{
+    width: 30%;
+    margin: 1%;
+    margin-top: 0;
+}
+.izq option{
+    cursor: pointer;
+}
+.der{
+    width: 66%;
+    margin: 1%;
+    margin-top: 0;
+}
+.active{
+    background: red;
+}
