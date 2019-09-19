@@ -1,0 +1,31 @@
+.superior{
+    width: 98%;
+    margin: 1%;
+  /*  height: 10%;
+    
+    max-height: 10%;*/
+    margin-top: 0;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+    background: -webkit-linear-gradient(top,  #274042, #376EC9);
+    
+}
+p{
+    cursor: pointer;
+    color: #FDFFFF;
+    transition: 0.5s;
+}
+
+p:hover{
+    color: #B3B8BB;
+   
+   /* 
+    font-size: 18px;
+    border-block-end: dashed #FDFFFF; 
+    writing-mode: horizontal-tb;*/
+    transition: 0.5s;
+
+}
+.active:before{
+    content: '▶';
+}

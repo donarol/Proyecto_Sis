@@ -1,6 +1,6 @@
 <div class="contenido">
     <div class="izq">
-        <select size="11" class="form-control" >
+        <select size="10" class="form-control contenedor" >
             <option class="list-group-item list-group-item-action" *ngFor="let lista of listas" (click)="cursos(lista)" >{{lista.nombre}}</option>
         </select>
     </div>
@@ -23,7 +23,8 @@
                     <app-lista-camaras [curso_id]='curso_id'></app-lista-camaras>
                 </ng-template> 
             </div>
-        </div>   
+        </div> 
+          
     </div>
 
 

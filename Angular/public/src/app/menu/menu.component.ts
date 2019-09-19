@@ -1,12 +1,13 @@
 import { Component, OnInit ,OnDestroy } from '@angular/core';
-import { ActivatedRoute} from '@angular/router';
+import { ActivatedRoute,Router} from '@angular/router';
 import { from, Subject } from 'rxjs';
+import { FamiliarService } from '../servicios/familiar.service';
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
   styleUrls: ['./menu.component.css']
 })
-export class MenuComponent implements OnInit,OnDestroy {
+export class MenuComponent implements OnInit {
  // private pruebas:string[5];
   private curso_id:number;
   private sub: any;
@@ -24,21 +25,29 @@ export class MenuComponent implements OnInit,OnDestroy {
     {nombre:'Curso 8',id:'8'},
     {nombre:'Curso 9',id:'9'},
     {nombre:'Curso 10',id:'10'},
-    {nombre:'Curso 11',id:'11'}
+    {nombre:'Curso 11',id:'11'},
+    {nombre:'Curso 12',id:'12'},
+    {nombre:'Curso 13',id:'13'},
+    {nombre:'Curso 14',id:'14'}
   ];
   constructor(
-    private rutaActiva:ActivatedRoute
+    private rutaActiva:ActivatedRoute,
+    private _familiar:FamiliarService
   ){
     this.valor_menu=0;
   }
 
   ngOnInit() {
-    this.sub = this.rutaActiva.params.subscribe(params => {
+    this._familiar.getFamiliar(5).subscribe(res=>{
+      console.log("res");
+      console.log(res);
+    })
+   /* this.sub = this.rutaActiva.params.subscribe(params => {
       this.curso_id = +params['id'];
       console.log("se carga el usuario con id:"+ this.curso_id);
       this.cursos(this.listas[0]);
      // var a=`as${this.valor_menu}`;
-   });
+   });*/
    
   }
  /* onChange(deviceValue){
@@ -58,8 +67,8 @@ export class MenuComponent implements OnInit,OnDestroy {
         console.log(this.valor_menu);
   }
 
-  ngOnDestroy() {
+ /* ngOnDestroy() {
     this.sub.unsubscribe();
-  }
+  }*/
 }
 

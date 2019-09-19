@@ -16,7 +16,7 @@ class CreateTurnosTable extends Migration
         Schema::create('turnos', function (Blueprint $table) {
             $table->bigIncrements('turno_id');
             $table->string('nombre',45);
-            $table->int('monto');       //monto a cobrar diferenciando turnos
+            $table->integer('monto');       //monto a cobrar diferenciando turnos
             $table->string('gestion',45);
             $table->datetime('hora_inicio');
             $table->datetime('hora_fin');

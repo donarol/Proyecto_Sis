@@ -7,7 +7,6 @@ export class Familiar extends Persona{
     telefono:string;
     contrasena:string;
     //FALTA FOTO CREACION  
-    fecha:Date;
     constructor(){
         super();
         this.familiar_id='';

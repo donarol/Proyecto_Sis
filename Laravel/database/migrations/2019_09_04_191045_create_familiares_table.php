@@ -20,7 +20,7 @@ class CreateFamiliaresTable extends Migration
             $table->string('telefono',45);
             $table->string('contrasena',45);
             $table->binary('foto');         //como poner foto
-            $table->date('fecha');
+            
 
             
             $table->bigInteger('persona_id')->unsigned();
