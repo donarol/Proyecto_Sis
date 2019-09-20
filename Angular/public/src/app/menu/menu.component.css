@@ -1,0 +1,78 @@
+.contenido{
+    display: flex;
+}
+.superior{
+    display: flex;
+}
+.inferior{
+    background: yellow;
+}
+a{
+    background: green;
+    width: 100%;
+    padding: 2% 5%;
+    cursor: pointer;
+}
+.izq{
+    width: 30%;
+    margin: 1%;
+    margin-top: 0;
+}
+
+.izq option{
+    cursor: pointer;
+}
+.der{
+    width: 66%;
+    margin: 1%;
+    margin-top: 0;
+}
+.active{
+    background: red;
+}
+/*.f{
+    font-size: 30px;
+    background: green
+     <p class="f">&#x25BC;</p>
+}*/
+.form-control{
+    background: none;
+    border: none;
+}
+.list-group-item{
+    
+   /* background: -webkit-linear-gradient(top,  #0D47A1, #64B5F6);
+    color: azure*/
+  color: #212121;
+}
+
+/*BARRA*/
+.contenedor{
+    margin:0;
+    padding:0;
+}
+.contenedor::-webkit-scrollbar {
+    -webkit-appearance: none;
+}
+
+.contenedor::-webkit-scrollbar:vertical {
+    width:10px;
+}
+
+.contenedor::-webkit-scrollbar-button:increment,.contenedor::-webkit-scrollbar-button {
+    display: none;
+} 
+
+.contenedor::-webkit-scrollbar:horizontal {
+    height: 10px;
+}
+
+.contenedor::-webkit-scrollbar-thumb {
+    background-color: #797979;
+    border-radius: 20px;
+    border: 2px solid #f1f2f3;
+}
+
+.contenedor::-webkit-scrollbar-track {
+    border-radius: 10px;  
+}

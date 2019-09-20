@@ -18,15 +18,15 @@ export class LoginService {
 
   constructor(private http: HttpClient) {}
   loginAdministrador(admin:Administrador):Observable<any>{
-    return this.http.post<Administrador>('url de la api de login',admin,httpOptions);
+    return this.http.post<Administrador>(`http://homestead.test/loginAdministrador`,admin,httpOptions);
   }
   loginTutor(tutor:Familiar):Observable<any>{
-    return this.http.post<Familiar>('url de la api login',tutor,httpOptions);
+    return this.http.post<Familiar>(`http://homestead.test/loginFamiliar`,tutor,httpOptions);
   }
   registroAdministrador(admin:Administrador):Observable<any>{
-    return this.http.post<Administrador>('url de la api de registro',admin,httpOptions);
+    return this.http.post<Administrador>(`http://homestead.test/registroAdministrador`,admin,httpOptions);
   }  
   registroTutor(tutor:Familiar):Observable<any>{
-    return this.http.post<Familiar>('url de la api de registro',tutor,httpOptions);
+    return this.http.post<Familiar>(`http://homestead.test/registroFamiliar`,tutor,httpOptions);
   }
 }

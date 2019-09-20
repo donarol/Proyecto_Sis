@@ -15,11 +15,8 @@ class CreateAlumnosAlergiasTable extends Migration
     {
         Schema::create('alumnos_alergias', function (Blueprint $table) {
             $table->bigIncrements('alumno_alergia_id');
-
-
             $table->bigInteger('alumno_id')->unsigned();
             $table->foreign('alumno_id')->references("alumno_id")->on("alumnos");
-
             $table->bigInteger('alergia_id')->unsigned();
             $table->foreign('alergia_id')->references("alergia_id")->on("alergias");
             $table->timestamps();

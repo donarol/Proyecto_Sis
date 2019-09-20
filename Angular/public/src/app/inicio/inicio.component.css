@@ -2,32 +2,29 @@
     padding: 0;
     display: flex;
     flex-wrap: wrap;
-    max-width: 90%;
-    width: 90%;
-	background: #fff; 
-    margin: 30px auto; 
+    max-width: 100%;
+    width: 100%;
+  
+    background: -webkit-linear-gradient(left,  #1143a6, #00c6ff);
+    height: 100vh;
 }
-.superior{
-    width: 50%;
-    display: inline-block;
-    margin-right: 1%; 
-    background: #4ED8D1;
-    border-top-right-radius: 20px; 
-}
+
 .inferior{
     width: 100%;
     border: 1px solid;
 }
 .izq{
     width: 50%;
-    background: #4ED8D1;
    /* border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;*/
     
 }
+.e{
+  text-align: center;
+  margin-top: 2%;
+}
 .der{
     width: 50%;
-    background: #0B496C;
     border-top-right-radius: 20px;
     border-bottom-right-radius: 20px;
   
@@ -35,8 +32,7 @@
 
 button{
     margin-top: 2%;
-    opacity: 0.7;
-    background: #0B496C;
+    opacity: 1;
     color: aliceblue;
     padding: 5px;
 }
@@ -54,9 +50,17 @@ img{
     max-height: 100%;
     max-width: 100%;
     display:block;
-margin:auto;
+    margin:auto;
+    margin-top: 2%;
 }
-
+input{
+  text-anchor: 20px;
+  text-decoration: brown;
+}
+p{
+  
+  color: aliceblue;
+}
 
 
 

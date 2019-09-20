@@ -1,10 +1,10 @@
 <div class="contenido">
   <form (ngSubmit)="registro()">
-    <div class="largo">
+    <div class="corto">
       <p>Nombre:</p>
       <input type="text" name="nombre" [(ngModel)]="familiar.nombre">
     </div>
-    <div class="largo">
+    <div class="corto">
       <p>Apellido:</p>
       <input type="text" name="apellido" [(ngModel)]="familiar.apellido">
     </div>
@@ -26,7 +26,7 @@
     </div>
     <div class="corto">
       <p>Repita la Contraseña</p>
-      <input type="password">
+      <input type="password" name="contrasena2" [(ngModel)]="contrasena2">
     </div>
     <button class="btn btn-info" type="submit">Enviar</button>
   </form>

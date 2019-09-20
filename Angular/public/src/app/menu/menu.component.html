@@ -1,0 +1,31 @@
+<div class="contenido">
+    <div class="izq">
+        <select size="10" class="form-control contenedor" >
+            <option class="list-group-item list-group-item-action" *ngFor="let lista of listas" (click)="cursos(lista)" >{{lista.nombre}}</option>
+        </select>
+    </div>
+    <div class="der">
+        <div class="superior">
+            <a *ngFor="let componente of componentes;index as i" (click)="muestra(i)">{{componente}}</a>
+        </div>
+        <div class="inferior" *ngIf='valor_menu!=-1'>
+            <div>
+                <div *ngIf='valor_menu===0; then valor_0'></div> 
+                <ng-template #valor_0>
+                    <app-lista-alumnos [curso_id]='curso_id'></app-lista-alumnos>
+                </ng-template>  
+                <div *ngIf='valor_menu===1; then valor_1'></div> 
+                <ng-template #valor_1>
+                    <app-lista-docentes [curso_id]='curso_id'></app-lista-docentes>
+                </ng-template> 
+                <div *ngIf='valor_menu===2; then valor_2'></div> 
+                <ng-template #valor_2>
+                    <app-lista-camaras [curso_id]='curso_id'></app-lista-camaras>
+                </ng-template> 
+            </div>
+        </div> 
+          
+    </div>
+
+
+</div>

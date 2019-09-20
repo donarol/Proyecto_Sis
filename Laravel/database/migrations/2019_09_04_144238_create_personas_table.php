@@ -19,6 +19,7 @@ class CreatePersonasTable extends Migration
             $table->string('apellido',45);
 
             $table->timestamps();
+            
         });
     }
 
