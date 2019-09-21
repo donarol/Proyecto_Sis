@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AdministradorService } from '../servicios/administrador.service';
 import { Administrador } from '../modelos/Administrador';
-
+import { from } from 'rxjs';
 @Component({
   selector: 'app-cuenta-administrador',
   templateUrl: './cuenta-administrador.component.html',
@@ -22,6 +22,9 @@ export class CuentaAdministradorComponent implements OnInit {
       console.log("model");
       console.log(this.model);
     })
+  }
+  actualizar(){
+    console.log("actualizar");
   }
 
 }

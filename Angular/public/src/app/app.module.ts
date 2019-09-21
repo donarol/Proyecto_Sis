@@ -28,6 +28,7 @@ import { CuentaAdministradorComponent } from './cuenta-administrador/cuenta-admi
 import { ConfiguracionesAdministradorComponent } from './configuraciones-administrador/configuraciones-administrador.component';
 import { TurnoInicioComponent } from './turno-inicio/turno-inicio.component';
 import { TurnoNuevoComponent } from './turno-nuevo/turno-nuevo.component';
+import { ListaAdministradorComponent } from './lista-administrador/lista-administrador.component';
 
 const router: Routes=[
   {path:'',component:InicioComponent},
@@ -73,7 +74,8 @@ const router: Routes=[
     CuentaAdministradorComponent,
     ConfiguracionesAdministradorComponent,
     TurnoInicioComponent,
-    TurnoNuevoComponent
+    TurnoNuevoComponent,
+    ListaAdministradorComponent
   ],
   imports: [
     BrowserModule,

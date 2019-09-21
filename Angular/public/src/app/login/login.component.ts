@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-//import {LoginService} from '../servicios/login.service';
 import { from } from 'rxjs';
 import { Familiar } from '../modelos/Familiar';
 import { Router } from '@angular/router';
