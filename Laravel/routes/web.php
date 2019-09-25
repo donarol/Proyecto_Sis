@@ -35,9 +35,13 @@ Route::post('/loginAdministrador','AdministradorController@login');
 Route::get('/loginAdministrador','AdministradorController@loginMal');
 Route::get('/administrador/{id}','AdministradorController@obtener');
 Route::put('/administrador/{id}','AdministradorController@modificar');
+Route::get('/administradores','AdministradorController@lista');
 
 Route::post('/registroTurno','TurnoController@crear');
 Route::get('/registroTurno','TurnoController@crearMal');
 Route::get('/turnos','TurnoController@lista');
 Route::get('/turno/{id}','TurnoController@obtener');
 Route::put('/turno/{id}','TurnoController@modificar');
+
+Route::get('/roles','RolController@lista');
+Route::get('/rol/{id}','RolController@obtener');

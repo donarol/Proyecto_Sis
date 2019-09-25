@@ -45,4 +45,8 @@ class AdministradorBL{
         $administrador = new AdministradorDAO;
         return $administrador->modificar($id,$datos);
     }
+    public function lista(){
+        $administrador = new AdministradorDAO;
+        return $administrador->lista();
+    }
 }

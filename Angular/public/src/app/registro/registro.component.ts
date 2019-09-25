@@ -26,6 +26,7 @@ export class RegistroComponent implements OnInit {
     if(this.familiar.contrasena===this.contrasena2){
       this._familiar.addFamiliar(this.familiar).subscribe(res=>{
         console.log(res);
+        alert("Registro Exitoso");
       });
     }else{
       console.log("las contrasenas no son identicas");

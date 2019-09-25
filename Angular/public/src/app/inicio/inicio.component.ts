@@ -16,7 +16,7 @@ export class InicioComponent implements OnInit {
     this.estado=false;
     this.variable=true;
     this.vista='Administrador';
-    this.imagenName='admin.png'
+    this.imagenName='admin.png';
 
   }
   cambio(estado:boolean){

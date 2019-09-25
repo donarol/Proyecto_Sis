@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-menu-administrador',
   templateUrl: './menu-administrador.component.html',
@@ -13,9 +14,14 @@ export class MenuAdministradorComponent implements OnInit {
     {etiqueta:'Configuraciones',ruta:'/turnos'},
     {etiqueta:'Inscribir Alumno',ruta:'/inscribir_alumno'}];
     componentes_0:Array<any>=[{etiqueta:"Cerrar Sesion"}];
-  constructor() { }
+  constructor(
+    private _router:Router
+  ) { }
 
   ngOnInit() {
+  }
+  cerrar(){
+    this._router.navigate([``]);
   }
 
 }

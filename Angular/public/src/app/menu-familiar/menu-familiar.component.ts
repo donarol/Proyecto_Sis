@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-menu-familiar',
   templateUrl: './menu-familiar.component.html',
@@ -12,9 +13,14 @@ export class MenuFamiliarComponent implements OnInit {
     {etiqueta:'Mis Mensajes',ruta:'/mensajes'/*falta el id del user*/ },
     {etiqueta:'Mis Pagos',ruta:'/pagos'}];
     componentes_0:Array<any>=[{logo:"url",etiqueta:"Cerrar Sesion",id:'pp'}];
-  constructor() { }
+  constructor(
+    private _router:Router
+  ) { }
 
   ngOnInit() {
+  }
+  cerrar(){
+    this._router.navigate([``]);
   }
 
 }

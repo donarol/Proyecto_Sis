@@ -38,4 +38,8 @@ class AdministradorController extends Controller
         $administrador = new AdministradorBL;
         return $administrador->modificar($id,$datos);
     }
+    public function lista(){
+        $administrador = new AdministradorBL;
+        return $administrador->lista();
+    }
 }

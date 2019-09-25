@@ -22,5 +22,7 @@ export class FamiliarService {
   getFamiliar(id):Observable<Familiar>{
     return this.http.get<Familiar>(`http://homestead.test/familiar/${id}`,httpOptions);
   }
-
+  updateFamiliar(id,familiar:Familiar):Observable<Familiar>{
+    return this.http.put<Familiar>(`http://homestead.test/familiar/${id}`,familiar,httpOptions);
+  }
 }

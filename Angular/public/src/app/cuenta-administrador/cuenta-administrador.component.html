@@ -2,7 +2,7 @@
   <div class="imagen">
     <figure >
       <div>
-        <img src="...">
+        <img [src]="'/assets/img/' + imagenName">
       </div>
       <figcaption >
         <div class="custom-file">
@@ -34,13 +34,14 @@
       <p>Correo:</p>
       <input type="text" class="form-control form-control-sm" [(ngModel)]="model.correo">  
     </div>
+    <!--
     <div class="contenido-datos">
       <p>Cargo:</p>
       <input type="text" class="form-control form-control-sm" [(ngModel)]="model.cargo">  
-    </div>
+    </div>-->
      
     <div>
-      <button class="btn btn-primary">Guardar</button>
+      <button class="btn btn-info" (click)="guardar()">Guardar</button>
     </div>
   </div>
 </div>

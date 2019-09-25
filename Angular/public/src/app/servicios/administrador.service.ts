@@ -21,6 +21,12 @@ export class AdministradorService {
   getAdministrador(id):Observable<Administrador>{
     return this.http.get<Administrador>(`http://homestead.test/administrador/${id}`,httpOptions);
   }
+  updateAdministrador(id,administrador:Administrador):Observable<Administrador>{
+    return this.http.put<Administrador>(`http://homestead.test/administrador/${id}`,administrador,httpOptions);
+  }
+  getAdministradores():Observable<Administrador[]>{
+    return this.http.get<Administrador[]>('http://homestead.test/administradores',httpOptions);
+  }
 
   
 }

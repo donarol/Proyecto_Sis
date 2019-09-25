@@ -24,6 +24,7 @@ export class TurnoNuevoComponent implements OnInit {
     this._turnoService.addTurno(this.turno).subscribe(res=>{
       console.log("res");
       console.log(res);
+      alert("Turno Creado Exitosamente");
     })
 
   }

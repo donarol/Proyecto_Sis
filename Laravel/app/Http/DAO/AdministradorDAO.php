@@ -40,4 +40,8 @@ class AdministradorDAO{
         $admPer = new Administrador_Persona;
         return $admPer->administradorPersona($administrador,$persona);
     }
+    //modificar los datos persona
+    public function lista(){
+        return Administrador::all();
+    }
 }

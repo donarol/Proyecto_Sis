@@ -18,13 +18,13 @@ p{
     margin: 1%;
     color: aliceblue;
 }
-input{
+input,option,select{
     width: 98%;
     margin: 1%;
     color: aliceblue;
     border: none;
     background: #0B496C;
-    border-bottom: 3px solid #fff;
+    /*border-bottom: 3px solid #fff;*/
     font-family: 'Nunito', sans-serif;
     border-radius: 5px;
     padding-top: 15px;

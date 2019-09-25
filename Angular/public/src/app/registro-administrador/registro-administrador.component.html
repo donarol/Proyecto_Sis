@@ -22,7 +22,18 @@
     </div>
     <div class="largo">
       <p>Cargo:</p>
-      <input type="text" name="cargo" [(ngModel)]="administrador.cargo">
+      <!--<input type="text" name="cargo" [(ngModel)]="administrador.cargo">
+      <form [formGroup]="rolForm">
+        <select id="rolSelect"class="form-control">
+          <option *ngFor="let rol of roles" [ngValue]="rol">{{rol.nombre}}</option>
+        </select>  
+      </form>-->
+      <select class="form-control"  [(ngModel)]="rol" [ngModelOptions]="{standalone: true}">
+        <option *ngFor="let r of roles" value="{{r.rol_id}}">{{r.nombre}}</option>
+      </select>
+        
+        
+      
     </div>
     <div class="corto">
       <p>Contraseña:</p>
@@ -30,7 +41,7 @@
     </div>
     <div class="corto">
       <p>Repita la Contraseña</p>
-      <input type="password">
+      <input type="password" name="contrasena2" [(ngModel)]="contrasena2">
     </div>
     <button class="btn btn-info" type="submit">Enviar</button>
   </form>
