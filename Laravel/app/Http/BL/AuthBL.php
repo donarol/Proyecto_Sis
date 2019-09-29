@@ -4,7 +4,6 @@ namespace App\Http\BL;
 
 use App\User;
 use App\Http\DAO\AuthDAO;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 class AuthBL{
     public function crear($datos){

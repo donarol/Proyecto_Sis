@@ -17,7 +17,8 @@ use Illuminate\Http\Request;
     return $request->user();
 });*/
 Route::group(['prefix' => 'auth'], function () {
-    Route::post('login', 'AuthController@login');
+    Route::post('login', 'AuthController@login');//->middleware('verified');
+    Route::get('login','AuthController@loginMal');
     Route::post('signup', 'AuthController@crear');
     Route::get('signup','AuthController@crearMal');
 
@@ -27,8 +28,16 @@ Route::group(['prefix' => 'auth'], function () {
         
     });
     Route::group(['middleware' => 'auth:api'],function(){
-        Route::get('/turno/{id}','TurnoController@obtener');
+        Route::get('administrador/{id}','AdministradorController@obtener')->middleware('verified');
+        Route::put('administrador/{id}','AdministradorController@modificar')->middleware('verified');
+        Route::get('administradores','AdministradorController@lista')->middleware('verified');
     });
+    Route::group(['middleware' => 'auth:api'],function(){
+        Route::get('familiar/{id}','FamiliarController@obtener')->middleware('verified');
+        Route::put('familiar/{id}','FamiliarController@modificar')->middleware('verified');
+        Route::get('familiares','FamiliarController@lista')->middleware('verified');
+    });
+
 });
 
 
