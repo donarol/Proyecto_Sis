@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginService } from '../servicios/login.service';
-import { Administrador } from '../modelos/Administrador';
+import { User } from '../modelos/User';
 import { Router } from '@angular/router';
 @Component({
   selector: 'app-login-administrador',
@@ -8,25 +8,32 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-administrador.component.css']
 })
 export class LoginAdministradorComponent implements OnInit {
-  private model:Administrador;
+  private model:any;
+  private recordar:boolean;
   constructor(
     private _loginServices:LoginService,
     private _router:Router
   ) { }
   login(){
     console.log("entro login");
-    console.log("correo: "+this.model.correo);
-    console.log("password: "+this.model.contrasena);
+    console.log("correo: "+this.model.email);
+    console.log("password: "+this.model.password);
+    console.log("recordar: "+this.model.recordar);
     
-    this._loginServices.loginAdministrador(this.model).subscribe(res=>{
-      var modelo:Administrador=res;
-      console.log("mi modelo");
-      console.log(modelo);
-      this._router.navigate([`/adminCuenta/${modelo.administrador_id}`]);
+    this._loginServices.login(this.model).subscribe(res=>{
+     // var modelo:User=res;
+      console.log("mi res");
+      console.log(res);
+      //console.log(modelo);
+      localStorage.setItem('accto',res.access_token);
+     // res.access_token;
+     // this._router.navigate([`/adminCuenta/${modelo.id}`]);
+      this._router.navigate(['/homeAdministrador']);
     });
   }
   ngOnInit() {
-    this.model=new Administrador();
+    this.recordar=false;
+    this.model=new User();
   }
 
 }

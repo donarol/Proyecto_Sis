@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Familiar } from '../modelos/Familiar';
-import { FamiliarService } from '../servicios/familiar.service';
+import { User } from '../modelos/User';
+import { LoginService } from '../servicios/login.service';
 
 @Component({
   selector: 'app-registro',
@@ -8,29 +8,23 @@ import { FamiliarService } from '../servicios/familiar.service';
   styleUrls: ['./registro.component.css']
 })
 export class RegistroComponent implements OnInit {
-  private familiar:Familiar;
-  private contrasena2:String;
+  private familiar:User;
+  private error:boolean[]=[false,false,false,false,false,false,false];
   constructor(
-    private _familiar:FamiliarService
+    private _familiar:LoginService
   ) { }
 
   ngOnInit() {
-    this.familiar=new Familiar();
-    this.contrasena2="";
+    this.familiar=new User();
   }
   registro(){
     console.log("---REGISTRO---");
     console.log(this.familiar);
-    console.log(this.contrasena2);
     console.log("------");
-    if(this.familiar.contrasena===this.contrasena2){
-      this._familiar.addFamiliar(this.familiar).subscribe(res=>{
+      this._familiar.create(this.familiar).subscribe(res=>{
         console.log(res);
         alert("Registro Exitoso");
       });
-    }else{
-      console.log("las contrasenas no son identicas");
-    }
   }
 
 }

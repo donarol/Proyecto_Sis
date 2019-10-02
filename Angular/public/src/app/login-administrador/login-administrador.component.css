@@ -34,3 +34,6 @@ input:focus{
     border: 3px solid aliceblue;
 }
 
+.error{
+    border-color: red;
+}

@@ -37,6 +37,14 @@ Route::group(['prefix' => 'auth'], function () {
         Route::put('familiar/{id}','FamiliarController@modificar')->middleware('verified');
         Route::get('familiares','FamiliarController@lista')->middleware('verified');
     });
+    Route::group(['middleware' => 'auth:api'],function(){
+        Route::post('registroTurno','TurnoController@crear')->middleware('verified');
+        Route::get('registroTurno','TurnoController@crearMal')->middleware('verified');
+        Route::get('turnos','TurnoController@lista')->middleware('verified');
+        Route::get('turno/{id}','TurnoController@obtener')->middleware('verified');
+        Route::put('turno/{id}','TurnoController@modificar')->middleware('verified');
+    });
+
 
 });
 

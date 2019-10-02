@@ -1,47 +1,47 @@
 <div class="contenido">
   <form (ngSubmit)="registro()">
     <div class="corto">
-      <p>Nombre:</p>
-      <input type="text" name="nombre" [(ngModel)]="administrador.nombre">
+      <input type="text" id="nombre" name="nombre" [ngClass]="{'error':error[0]}" [(ngModel)]="administrador.nombre" required autocomplete="off">
+      <label class="etiqueta" for="nombre">Nombre</label>
+     <!-- <p [ngClass]="{'visible':!error[0]}">Introduce un nombre</p>-->
     </div>
     <div class="corto">
-      <p>Apellido:</p>
-      <input type="text" name="apellido" [(ngModel)]="administrador.apellido">
+      <input type="text" id="apellido" name="apellido" [ngClass]="{'error':error[1]}" [(ngModel)]="administrador.apellido" required autocomplete="off">
+      <label class="etiqueta" for="apellido">Apellido</label>
+     <!--  <p [ngClass]="{'visible':!error[1]}">Introduce su apellido</p>-->
     </div>
     <div class="corto">
-      <p>Carnet:</p>
-      <input type="text" name="carnet" [(ngModel)]="administrador.carnet">
+      <input type="text" id="carnet" name="carnet" [ngClass]="{'error':error[2]}" [(ngModel)]="administrador.carnet" required autocomplete="off">
+      <label class="etiqueta" for="carnet">Carnet</label>
+     <!--  <p [ngClass]="{'visible':!error[2]}">Introduce su Carnet</p>-->
     </div>
     <div class="corto">
-      <p>Telefono:</p>
-      <input type="text" name="telefono" [(ngModel)]="administrador.telefono">
+        <input type="text" id="telefono" name="telefono" [ngClass]="{'error':error[3]}" [(ngModel)]="administrador.telefono" required autocomplete="off">
+        <label class="etiqueta" for="telefono">Telefono</label>
+      <!--   <p [ngClass]="{'visible':!error[3]}">Introduce su telefono</p>-->
     </div>
     <div class="largo">
-      <p>Correo Electronico:</p>
-      <input type="email" name="correo" [(ngModel)]="administrador.correo">
+        <input type="text" id="email" name="email" [ngClass]="{'error':error[4]}" [(ngModel)]="administrador.email" required autocomplete="off">
+        <label class="etiqueta" for="email">Correo Electronico</label>
+      <!--   <p [ngClass]="{'visible':!error[4]}">Introduce un Correo Valido</p>-->
     </div>
-    <div class="largo">
+    <div class="corto">
+      <input type="password" id="password" name="password" [ngClass]="{'error':error[5]}" [(ngModel)]="administrador.password" required autocomplete="off">
+      <label class="etiqueta" for="password">Contraseña</label>
+      <!-- <p [ngClass]="{'visible':!error[5]}">Introduce una Contraseña</p>-->
+    </div>
+    <div class="corto">
+      <input type="password" id="password_confirmation" name="password_confirmation" [ngClass]="{'error':error[6]}" [(ngModel)]="administrador.password_confirmation" required autocomplete="off">
+      <label class="etiqueta" for="password_confirmation">Repita La Contraseña</label>
+     <!--  <p [ngClass]="{'visible':!error[6]}">Introduce una Contraseña</p>-->
+    </div>
+    <div class="largo cambio">
       <p>Cargo:</p>
-      <!--<input type="text" name="cargo" [(ngModel)]="administrador.cargo">
-      <form [formGroup]="rolForm">
-        <select id="rolSelect"class="form-control">
-          <option *ngFor="let rol of roles" [ngValue]="rol">{{rol.nombre}}</option>
-        </select>  
-      </form>-->
-      <select class="form-control"  [(ngModel)]="rol" [ngModelOptions]="{standalone: true}">
-        <option *ngFor="let r of roles" value="{{r.rol_id}}">{{r.nombre}}</option>
-      </select>
-        
-        
-      
-    </div>
-    <div class="corto">
-      <p>Contraseña:</p>
-      <input type="password" name="contrasena" [(ngModel)]="administrador.contrasena">
-    </div>
-    <div class="corto">
-      <p>Repita la Contraseña</p>
-      <input type="password" name="contrasena2" [(ngModel)]="contrasena2">
+        <label class="switch">
+          <input type="checkbox" class="check" id="variable" name="variable" (change)='onChangeVariable()' [(ngModel)]="variable">
+          <span class="slider round"></span>
+        </label>
+        <span>{{administrador.tipo}}</span>
     </div>
     <button class="btn btn-info" type="submit">Enviar</button>
   </form>

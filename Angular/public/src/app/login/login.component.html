@@ -3,11 +3,11 @@
     <form (ngSubmit)="login()">
         <div>
             <p>Correo Electronico:</p>
-            <input type="email" name="correo" [(ngModel)]="model.correo">
+            <input type="email" name="email" [(ngModel)]="model.email" required autocomplete="off">
         </div>
         <div>
             <p>Contraseña</p>
-            <input type="password" name="password" [(ngModel)]="model.contrasena">
+            <input type="password" name="password" [(ngModel)]="model.password" required autocomplete="off">
         </div>
         <button class="btn btn-info" type="submit">Ingresar</button>
     </form>

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Administrador } from '../modelos/Administrador';
-import { AdministradorService } from '../servicios/administrador.service';
-import { RolService } from '../servicios/rol.service';
-import { Rol } from '../modelos/Rol';
+import { User } from '../modelos/User';
+import { LoginService } from '../servicios/login.service';
 
 @Component({
   selector: 'app-registro-administrador',
@@ -10,44 +8,39 @@ import { Rol } from '../modelos/Rol';
   styleUrls: ['./registro-administrador.component.css']
 })
 export class RegistroAdministradorComponent implements OnInit {
-  private administrador:Administrador;
-  private contrasena2:string;
-  private roles:Rol[];
-  private rol:string;
+  private administrador:User;
+  private variable:boolean;
+  private vista:string;
+  private res;
+  private error:boolean[]=[false,false,false,false,false,false,false];
   constructor(
-    private _administrador:AdministradorService,
-    private _rol:RolService
+    private _administrador:LoginService
   ) { }
 
   ngOnInit() {
-    this.administrador=new Administrador();
-    this.contrasena2='';
-    this.cargaRol();
+    this.administrador=new User();
+    this.variable=true;
+    this.administrador.tipo='Administrador';
+  }
+  onChangeVariable(){
+    console.log("se cambio: "+this.variable)
+    if(this.variable)
+      this.administrador.tipo='Administrador';
+    else
+      this.administrador.tipo='Docente';
+    
   }
 
-  cargaRol(){
-    this._rol.getRoles().subscribe(res=>{
-      console.log("res");
-      console.log(res);
-      this.roles=res;
-    });
-  }
   registro(){
     console.log("---REGISTRO---");
     console.log(this.administrador);
-    this.administrador.cargo=this.rol;
-    console.log(this.contrasena2);
-    console.log(this.rol);
     console.log("------");
-
-    if(this.administrador.contrasena===this.contrasena2){
-      this._administrador.addAdministrador(this.administrador).subscribe(res=>{
+      this._administrador.create(this.administrador).subscribe(res=>{
         console.log(res);
+        this.res=res;
         alert("Registro Exitoso");
       });
-    }else{
-      console.log("las contrasenas no son identicas");
-    }
   }
+  
 
 }

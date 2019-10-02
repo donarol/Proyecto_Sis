@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Router } from '@angular/router';
+import { LoginService } from '../servicios/login.service';
 @Component({
   selector: 'app-menu-familiar',
   templateUrl: './menu-familiar.component.html',
@@ -8,19 +9,23 @@ import { Router } from '@angular/router';
 })
 export class MenuFamiliarComponent implements OnInit {
   private componentesMenu:Array<any>=[
-    {etiqueta:'Inicio',ruta:'/userInicio/1'},
-    {etiqueta:'Mi Cuenta',ruta:'/userCuenta/1'},
+    {etiqueta:'Inicio',ruta:'/homeFamiliar'},
+    {etiqueta:'Mi Cuenta',ruta:'/CuentaFamiliar'},
     {etiqueta:'Mis Mensajes',ruta:'/mensajes'/*falta el id del user*/ },
     {etiqueta:'Mis Pagos',ruta:'/pagos'}];
-    componentes_0:Array<any>=[{logo:"url",etiqueta:"Cerrar Sesion",id:'pp'}];
+    componentes_0:Array<any>=[{logo:"url",etiqueta:"Cerrar Sesion"}];
   constructor(
-    private _router:Router
+    private _router:Router,
+    private _login:LoginService
   ) { }
 
   ngOnInit() {
   }
   cerrar(){
-    this._router.navigate([``]);
+    this._login.logout().subscribe(res=>{
+      localStorage.removeItem('accto');
+      this._router.navigate([``]);
+    });
   }
 
 }

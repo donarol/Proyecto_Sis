@@ -31,7 +31,7 @@ class AuthCreateRequest extends FormRequest
             'carnet'=>'required|string',
             'email'=>'required|string|email|unique:users',
             'telefono'=>'required|string',
-            'password'=>'required|string',
+            'password'=>'required|string|min:8',
             'tipo'=>'required|string' 
         ];
     }

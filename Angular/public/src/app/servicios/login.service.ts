@@ -1,15 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Observable, throwError, from } from 'rxjs';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
-import {Administrador} from '../modelos/Administrador';
-import {Familiar} from '../modelos/Familiar';
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/json',
-    'Authorization': 'my-auth-token'
-  })
-};
+import { User } from '../modelos/User';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -17,16 +11,28 @@ const httpOptions = {
 export class LoginService {
 
   constructor(private http: HttpClient) {}
-  loginAdministrador(admin:Administrador):Observable<any>{
-    return this.http.post<Administrador>(`http://homestead.test/loginAdministrador`,admin,httpOptions);
+ /*ceritificados del pni,pmbok*/
+  login(user:User):Observable<any>{
+    return this.http.post<any>('http://homestead.test/api/auth/login',user,this.token());
   }
-  loginTutor(tutor:Familiar):Observable<any>{
-    return this.http.post<Familiar>(`http://homestead.test/loginFamiliar`,tutor,httpOptions);
+  create(user:User):Observable<User>{
+    return this.http.post<User>('http://homestead.test/api/auth/signup',user,this.token());
   }
-  registroAdministrador(admin:Administrador):Observable<any>{
-    return this.http.post<Administrador>(`http://homestead.test/registroAdministrador`,admin,httpOptions);
-  }  
-  registroTutor(tutor:Familiar):Observable<any>{
-    return this.http.post<Familiar>(`http://homestead.test/registroFamiliar`,tutor,httpOptions);
+  logout(){
+    return this.http.get('http://homestead.test/api/auth/logout',this.token(true));
+  }
+  token(con?:boolean){
+    let cat:string='';
+    if(con)
+      cat='Bearer '+localStorage.getItem('accto');
+    else
+      cat='my-auth-token'
+    console.log(cat);
+    return {
+      headers: new HttpHeaders({
+        'Content-Type':  'application/json',
+        'Authorization': cat
+      })
+    };
   }
 }

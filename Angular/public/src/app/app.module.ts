@@ -5,6 +5,7 @@ import { FormsModule }   from '@angular/forms';
 
 //Servicios
 import {LoginService} from './servicios/login.service';
+import {UserService} from './servicios/user.service';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -29,18 +30,22 @@ import { ConfiguracionesAdministradorComponent } from './configuraciones-adminis
 import { TurnoInicioComponent } from './turno-inicio/turno-inicio.component';
 import { TurnoNuevoComponent } from './turno-nuevo/turno-nuevo.component';
 import { AdministradorInicioComponent } from './administrador-inicio/administrador-inicio.component';
+import { HomeAdministradorComponent } from './home-administrador/home-administrador.component';
+import { HomeFamiliarComponent } from './home-familiar/home-familiar.component';
+import { PantallaCargaComponent } from './pantalla-carga/pantalla-carga.component';
 
 const router: Routes=[
   {path:'',component:InicioComponent},
   {path:'',component:PrincipalComponent,children:[
    /* {path:'user/:id',component:InicioFamiliarComponent},*/
     {path:'',component:InicioFamiliarComponent,children:[
-      {path:'userInicio/:id',component:MenuComponent},
-      {path:'userCuenta/:id',component:CuentaFamiliarComponent}
+      {path:'homeFamiliar',component:HomeFamiliarComponent},
+      {path:'cuentaFamiliar',component:CuentaFamiliarComponent}
     ]}
      ,
     {path:'',component:InicioAdministradorComponent,children:[
-      {path:'adminCuenta/:id',component:CuentaAdministradorComponent},
+      {path:'homeAdministrador',component:HomeAdministradorComponent},
+      {path:'cuentaAdministrador',component:CuentaAdministradorComponent},
       {path:'',component:ConfiguracionesAdministradorComponent,children:[
         {path:'turnos',component:TurnoInicioComponent},
         {path:'turnoNuevo',component:TurnoNuevoComponent},
@@ -76,7 +81,10 @@ const router: Routes=[
     ConfiguracionesAdministradorComponent,
     TurnoInicioComponent,
     TurnoNuevoComponent,
-    AdministradorInicioComponent
+    AdministradorInicioComponent,
+    HomeAdministradorComponent,
+    HomeFamiliarComponent,
+    PantallaCargaComponent
   ],
   imports: [
     BrowserModule,
@@ -86,7 +94,8 @@ const router: Routes=[
     HttpClientModule
   ],
   providers: [
-    LoginService
+    LoginService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

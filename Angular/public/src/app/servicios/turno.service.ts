@@ -3,12 +3,7 @@ import { Observable, throwError, from } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
 import {Turno} from '../modelos/Turno';
-const httpOptions = {
-  headers: new HttpHeaders({
-    'Content-Type':  'application/json',
-    'Authorization': 'my-auth-token'
-  })
-};
+import { headersToString } from 'selenium-webdriver/http';
 
 @Injectable({
   providedIn: 'root'
@@ -18,10 +13,26 @@ export class TurnoService {
   constructor(private http:HttpClient) {}
 
   addTurno( turno:Turno):Observable<Turno>{
-    return this.http.post<Turno>('http://homestead.test/registroTurno',turno,httpOptions);
+    return this.http.post<Turno>('http://homestead.test/api/auth/registroTurno',turno,this.getoken());
   }
-  getTurnos(){
-    return this.http.get<Turno[]>('http://homestead.test/turnos',httpOptions);
+  getTurnos():Observable<Turno[]>{
+    return this.http.get<Turno[]>('http://homestead.test/api/auth/turnos',this.getoken());
+  }
+  getTurno(id:string):Observable<Turno>{
+    return this.http.get<Turno>(`http://homestead.test/api/auth/turno${id}`,this.getoken());
+  }
+  updateTurno(id:string):Observable<Turno>{
+    return this.http.put<Turno>(`http://homestead.test/api/auth/turno${id}`,this.getoken());
+  }
+  getoken(){
+
+    var httpOptions = {
+    headers: new HttpHeaders({
+      'Content-Type':  'application/json',
+      'Authorization': 'Bearer '+localStorage.getItem('accto')
+      })
+    };
+    return httpOptions;
   }
 
 }
