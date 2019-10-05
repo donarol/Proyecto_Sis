@@ -131,7 +131,9 @@ input:valid + label{
 .check{
   width: 30%;
 }
-
+.error{
+  border: 1px solid red;
+}
 
 /*PARTE RESPOSIVA*/
 @media screen and (max-width: 700px){

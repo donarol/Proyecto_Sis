@@ -18,7 +18,7 @@ export class TurnoNuevoComponent implements OnInit {
 
   ngOnInit() {
     this.turno=new Turno();
-    this._user.getUserActual().subscribe(res=>{
+   /* this._user.getUserActual().subscribe(res=>{
       console.log("Mi res");
       console.log(res);
       if(res.tipo==='Administrador'){
@@ -26,7 +26,7 @@ export class TurnoNuevoComponent implements OnInit {
       }else{
         alert('Usted no es Administrador');
       }
-    });
+    });*/
   }
   onChangeGestion(deviceValue){
     console.log(deviceValue.target.value);
@@ -35,9 +35,8 @@ export class TurnoNuevoComponent implements OnInit {
     this._turnoService.addTurno(this.turno).subscribe(res=>{
       console.log("res");
       console.log(res);
-      alert("Turno Creado Exitosamente");
-    })
-
+      console.log("Turno Creado Exitosamente");
+    });
   }
 
 }

@@ -21,5 +21,4 @@ export class TurnoInicioComponent implements OnInit {
       this.turnos=res;
     });
   }
-
 }

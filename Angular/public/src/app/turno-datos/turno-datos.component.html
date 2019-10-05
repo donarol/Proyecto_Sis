@@ -1,0 +1,26 @@
+<div class="contenido">
+  <button  type="button" class="btn btn-secondary" routerLink="/turnos">Atras</button>
+  <div>
+    <p>Nombre:</p>
+    <input class="form-control form-control-sm" type="text" [(ngModel)]="turno.nombre"  [ngModelOptions]="{standalone: true}">
+  </div>
+  <div>
+    <p>Monto:</p>
+    <input class="form-control form-control-sm" type="text" [(ngModel)]="turno.monto"  [ngModelOptions]="{standalone: true}">  
+  </div>
+  <div>
+    <p>Hora Inicio:</p>
+    <input class="form-control form-control-sm" type="time" [(ngModel)]="turno.hora_inicio"  [ngModelOptions]="{standalone: true}">
+  </div>
+  <div>
+    <p>Hora Fin:</p>
+    <input class="form-control form-control-sm" type="time" [(ngModel)]="turno.hora_fin"  [ngModelOptions]="{standalone: true}">
+  </div>
+  <div>
+    <p>Gestion:</p>
+    <input class="form-control form-control-sm" type="text" [(ngModel)]="turno.gestion"  [ngModelOptions]="{standalone: true}">
+  </div>
+  <div>
+    <button class="btn btn-secondary">Guardar Cambios</button>
+  </div>
+</div>

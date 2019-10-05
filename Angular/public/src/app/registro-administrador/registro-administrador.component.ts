@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../modelos/User';
 import { LoginService } from '../servicios/login.service';
+import { ValidacionService } from '../servicios/validacion.service';
 
 @Component({
   selector: 'app-registro-administrador',
@@ -14,7 +15,8 @@ export class RegistroAdministradorComponent implements OnInit {
   private res;
   private error:boolean[]=[false,false,false,false,false,false,false];
   constructor(
-    private _administrador:LoginService
+    private _administrador:LoginService,
+    private _validacion:ValidacionService
   ) { }
 
   ngOnInit() {
@@ -28,18 +30,20 @@ export class RegistroAdministradorComponent implements OnInit {
       this.administrador.tipo='Administrador';
     else
       this.administrador.tipo='Docente';
-    
   }
 
   registro(){
     console.log("---REGISTRO---");
     console.log(this.administrador);
     console.log("------");
-      this._administrador.create(this.administrador).subscribe(res=>{
+    this.error=this._validacion.validarUser(this.administrador);
+    console.log("mi error ");
+    console.log(this.error);
+     /* this._administrador.create(this.administrador).subscribe(res=>{
         console.log(res);
         this.res=res;
         alert("Registro Exitoso");
-      });
+      });*/
   }
   
 

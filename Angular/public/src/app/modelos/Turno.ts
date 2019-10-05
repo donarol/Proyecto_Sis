@@ -11,5 +11,6 @@ export class Turno {
         this.monto=0;
         this.hora_inicio='';
         this.hora_fin='';
+        this.gestion='';
     }
 }

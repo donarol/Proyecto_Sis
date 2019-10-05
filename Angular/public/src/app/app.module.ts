@@ -33,6 +33,8 @@ import { AdministradorInicioComponent } from './administrador-inicio/administrad
 import { HomeAdministradorComponent } from './home-administrador/home-administrador.component';
 import { HomeFamiliarComponent } from './home-familiar/home-familiar.component';
 import { PantallaCargaComponent } from './pantalla-carga/pantalla-carga.component';
+import { TurnoDatosComponent } from './turno-datos/turno-datos.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 const router: Routes=[
   {path:'',component:InicioComponent},
@@ -49,6 +51,7 @@ const router: Routes=[
       {path:'',component:ConfiguracionesAdministradorComponent,children:[
         {path:'turnos',component:TurnoInicioComponent},
         {path:'turnoNuevo',component:TurnoNuevoComponent},
+        {path:'turno/:id',component:TurnoDatosComponent},
         {path:'administrador_inicio',component:AdministradorInicioComponent}
       ]}
     ]}
@@ -84,14 +87,17 @@ const router: Routes=[
     AdministradorInicioComponent,
     HomeAdministradorComponent,
     HomeFamiliarComponent,
-    PantallaCargaComponent
+    PantallaCargaComponent,
+    TurnoDatosComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(router),
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
+    
   ],
   providers: [
     LoginService,
