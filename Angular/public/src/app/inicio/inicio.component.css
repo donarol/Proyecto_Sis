@@ -4,9 +4,6 @@
     flex-wrap: wrap;
     max-width: 100%;
     width: 100%;
-  
-    background: -webkit-linear-gradient(left,  #1143a6, #00c6ff);
-    height: 100vh;
 }
 
 .inferior{

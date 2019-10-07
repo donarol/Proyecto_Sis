@@ -37,6 +37,7 @@ input,option,select{
 }
 input{
   margin-bottom: 10%;
+  height: 45px;
 }
 button{
     margin-top: 3%;

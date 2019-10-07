@@ -1,14 +1,16 @@
 export class Errores {
-    isError:boolean;
-    message:string;
+    private isError:boolean;
+    private message:string;
+    private time:number;
     constructor(message){
         this.isError=false;
         this.message=message;
+        this.time=5000;
     }
     getError(){
         this.isError=true;
         setTimeout(()=>{
           this.isError=false;
-        },3000);
+        },this.time);
     }
 }

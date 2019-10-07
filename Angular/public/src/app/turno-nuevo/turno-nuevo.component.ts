@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Turno } from '../modelos/Turno';
 import { TurnoService } from '../servicios/turno.service';
 import { UserService } from '../servicios/user.service';
+import { Errores } from '../modelos/Errores';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-turno-nuevo',
@@ -9,8 +11,8 @@ import { UserService } from '../servicios/user.service';
   styleUrls: ['./turno-nuevo.component.css']
 })
 export class TurnoNuevoComponent implements OnInit {
-  private gestion:string[]=['2019','2020','2021'];
   private turno:Turno;
+  private errors:Errores[]=[];
   constructor(
     private _turnoService:TurnoService,
     private _user:UserService
@@ -18,6 +20,7 @@ export class TurnoNuevoComponent implements OnInit {
 
   ngOnInit() {
     this.turno=new Turno();
+    this.setErrors();
    /* this._user.getUserActual().subscribe(res=>{
       console.log("Mi res");
       console.log(res);
@@ -31,12 +34,35 @@ export class TurnoNuevoComponent implements OnInit {
   onChangeGestion(deviceValue){
     console.log(deviceValue.target.value);
   }
-  crearTurno(){
-    this._turnoService.addTurno(this.turno).subscribe(res=>{
-      console.log("res");
-      console.log(res);
-      console.log("Turno Creado Exitosamente");
-    });
+  crearTurno(form:NgForm){
+    console.log(form);
+    if(form.valid){      
+      this._turnoService.addTurno(this.turno).subscribe(res=>{
+        console.log("res");
+        console.log(res);
+        console.log("Turno Creado Exitosamente");
+      });
+    }else{
+      console.log("no es valido");
+      if(form.controls.nombre.status==='INVALID')
+        this.errors[1].getError();
+      if(form.controls.monto.status==='INVALID')
+        this.errors[2].getError();
+      if(form.controls.hora_inicio.status==='INVALID')
+        this.errors[3].getError();
+      if(form.controls.hora_fin.status==='INVALID')
+        this.errors[4].getError();
+      if(form.controls.gestion.status==='INVALID')
+        this.errors[5].getError();
+    }
+  }
+  setErrors():void{
+    this.errors.push(new Errores('Error al crear el Turno'));
+    this.errors.push(new Errores('Error al ingresar el nombre'));
+    this.errors.push(new Errores('Error al ingresar el monto'));
+    this.errors.push(new Errores('Error al ingresar la hora de Inicio'));
+    this.errors.push(new Errores('Error al ingresar la hora de Finalizacion'));
+    this.errors.push(new Errores('Error al ingresar la Gestion'));
   }
 
 }

@@ -11,10 +11,10 @@ import { Errores } from '../modelos/Errores';
 })
 export class RegistroComponent implements OnInit {
   private familiar:User;
-  private errors=[];
+  private errors:Errores[]=[];
   constructor(
     private _familiar:LoginService
-  ) { }
+  ){}
 
   ngOnInit() {
     this.familiar=new User();
@@ -29,10 +29,11 @@ export class RegistroComponent implements OnInit {
       console.log("---REGISTRO---");
       console.log(this.familiar);
       console.log("------");
-        /*this._familiar.create(this.familiar).subscribe(res=>{
+        this._familiar.create(this.familiar).subscribe(res=>{
           console.log(res);
           alert("Registro Exitoso");
-        });*/
+          this.familiar=new User();
+        });
     }else{
       console.log("no es valido");
       if(form.controls.nombre.status==='INVALID')

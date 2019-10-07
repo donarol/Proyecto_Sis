@@ -1,28 +1,46 @@
 <div class="contenedor">
     <div class="contenido">
       <button type="button" class="btn btn-secondary" routerLink="/turnos">Atras</button>
-      <form (ngSubmit)="crearTurno()">
+      <form  #formLogin="ngForm" (ngSubmit)="crearTurno(formLogin)">
         <div class="selectores">
           <p>Nombre:</p>
-          <input class="form-control form-control-sm" type="text" [(ngModel)]="turno.nombre"  [ngModelOptions]="{standalone: true}">
+          <input class="form-control form-control-sm" type="text" id="nombre" name="nombre" [(ngModel)]="turno.nombre"   required autocomplete="off">
+          <div class="alert alert-danger" role="alert" *ngIf="errors[1].isError">
+            {{errors[1].message}}
+          </div>
         </div>
         <div class="selectores">
             <p>Monto:</p>
-            <input class="form-control form-control-sm" type="text" [(ngModel)]="turno.monto" [ngModelOptions]="{standalone: true}">
+            <!--[ngModelOptions]="{standalone: true}" agregar al input si no cuenta con un id y un name-->
+            <input class="form-control form-control-sm"  type="number" id="monto" name="monto" [(ngModel)]="turno.monto"  required autocomplete="off">
+            <div class="alert alert-danger" role="alert" *ngIf="errors[2].isError">
+              {{errors[2].message}}
+            </div>
           </div>
         <div class="selectores">
           <p>Hora De Inicio:</p>
-          <input type="time" class="form-control form-control-sm" [(ngModel)]="turno.hora_inicio"  [ngModelOptions]="{standalone: true}">
+          <input type="time" class="form-control form-control-sm" id="hora_inicio" name="hora_inicio" [(ngModel)]="turno.hora_inicio" required autocomplete="off">
+          <div class="alert alert-danger" role="alert" *ngIf="errors[3].isError">
+            {{errors[3].message}}
+          </div>
         </div>
         <div class="selectores">
           <p>Hora De Finalizacion:</p>
-          <input type="time" class="form-control form-control-sm" [(ngModel)]="turno.hora_fin"  [ngModelOptions]="{standalone: true}">
+          <input type="time" class="form-control form-control-sm" id="hora_fin" name="hora_fin" [(ngModel)]="turno.hora_fin" required autocomplete="off">
+          <div class="alert alert-danger" role="alert" *ngIf="errors[4].isError">
+            {{errors[4].message}}
+          </div>
         </div>
         <div class="selectores">
           <p>Gestion:</p>
-          <select class="form-control"(change)='onChangeGestion($event)' [(ngModel)]="turno.gestion"  [ngModelOptions]="{standalone: true}">
+          <!--
+          <select class="form-control"(change)='onChangeGestion($event)' [(ngModel)]="turno.gestion"  [ngModelOptions]="{standalone: true}" required autocomplete="off">
             <option *ngFor="let ges of gestion" value="{{ges}}">{{ges}}</option>
-          </select>
+          </select>-->
+          <input type="number"  min="2019" max="2050" value="2019" class="form-control form-control-sm" id="gestion" name="gestion" [(ngModel)]="turno.gestion" required autocomplete="off">
+          <div class="alert alert-danger" role="alert" *ngIf="errors[5].isError">
+            {{errors[5].message}}
+          </div>
         </div>
 
         <button type="submit" class="btn btn-secondary">Crear Turno</button>     

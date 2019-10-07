@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '../modelos/User';
 import { LoginService } from '../servicios/login.service';
-import { ValidacionService } from '../servicios/validacion.service';
+import { Errores } from '../modelos/Errores';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-registro-administrador',
@@ -11,18 +12,18 @@ import { ValidacionService } from '../servicios/validacion.service';
 export class RegistroAdministradorComponent implements OnInit {
   private administrador:User;
   private variable:boolean;
-  private vista:string;
-  private res;
-  private error:boolean[]=[false,false,false,false,false,false,false];
+  private errors:Errores[]=[];
   constructor(
-    private _administrador:LoginService,
-    private _validacion:ValidacionService
-  ) { }
+    private _administrador:LoginService
+  ){}
 
   ngOnInit() {
     this.administrador=new User();
     this.variable=true;
     this.administrador.tipo='Administrador';
+    this.setErrors();
+    console.log("mis errroes");
+    console.log(this.errors);
   }
   onChangeVariable(){
     console.log("se cambio: "+this.variable)
@@ -32,18 +33,43 @@ export class RegistroAdministradorComponent implements OnInit {
       this.administrador.tipo='Docente';
   }
 
-  registro(){
-    console.log("---REGISTRO---");
-    console.log(this.administrador);
-    console.log("------");
-    this.error=this._validacion.validarUser(this.administrador);
-    console.log("mi error ");
-    console.log(this.error);
-     /* this._administrador.create(this.administrador).subscribe(res=>{
-        console.log(res);
-        this.res=res;
-        alert("Registro Exitoso");
-      });*/
+  registro(form:NgForm){
+    console.log(form);
+    if(form.valid){
+      console.log("---REGISTRO---");
+      console.log(this.administrador);
+      console.log("------");
+       this._administrador.create(this.administrador).subscribe(res=>{
+          console.log(res);
+          alert("Registro Exitoso");
+        });
+    }else{
+      console.log("no es valido");
+      if(form.controls.nombre.status==='INVALID')
+        this.errors[1].getError();
+      if(form.controls.apellido.status==='INVALID')
+        this.errors[2].getError();
+      if(form.controls.carnet.status==='INVALID')
+        this.errors[3].getError();
+      if(form.controls.telefono.status==='INVALID')
+        this.errors[4].getError();
+      if(form.controls.email.status==='INVALID')
+        this.errors[5].getError();
+      if(form.controls.password.status==='INVALID')
+        this.errors[6].getError();
+    }
+
+  }
+
+  setErrors(){
+    this.errors.push(new Errores('Error al Ingresar los Datos'));
+    this.errors.push(new Errores('Error al Ingresar el Nombre'));
+    this.errors.push(new Errores('Error al Ingresar el Apellido'));
+    this.errors.push(new Errores('Error al Ingresar el Carnet'));
+    this.errors.push(new Errores('Error al Ingresar los Telefono'));
+    this.errors.push(new Errores('Correo Electronico no Valido'));
+    this.errors.push(new Errores('Error al Ingresar la Contraseña'));
+    this.errors.push(new Errores('Las Contraseñas no se Iguales'));
   }
   
 

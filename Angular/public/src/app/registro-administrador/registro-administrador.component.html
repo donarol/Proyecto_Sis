@@ -1,39 +1,53 @@
 <div class="contenido">
-  <form (ngSubmit)="registro()">
+  <form #formLogin="ngForm" (ngSubmit)="registro(formLogin)">
     <div class="corto">
-      <input type="text" id="nombre" name="nombre" [ngClass]="{'error':error[0]}" [(ngModel)]="administrador.nombre" required autocomplete="off">
+      <input type="text" id="nombre" name="nombre" [(ngModel)]="administrador.nombre" required autocomplete="off">
       <label class="etiqueta" for="nombre">Nombre</label>
-     <!-- <p [ngClass]="{'visible':!error[0]}">Introduce un nombre</p>-->
+      <div class="alert alert-danger" role="alert" *ngIf="errors[1].isError">
+        {{errors[1].message}}
+      </div>
     </div>
     <div class="corto">
-      <input type="text" id="apellido" name="apellido" [ngClass]="{'error':error[1]}" [(ngModel)]="administrador.apellido" required autocomplete="off">
+      <input type="text" id="apellido" name="apellido" [(ngModel)]="administrador.apellido" required autocomplete="off">
       <label class="etiqueta" for="apellido">Apellido</label>
-     <!--  <p [ngClass]="{'visible':!error[1]}">Introduce su apellido</p>-->
+      <div class="alert alert-danger" role="alert" *ngIf="errors[2].isError">
+        {{errors[2].message}}
+      </div>
     </div>
     <div class="corto">
-      <input type="text" id="carnet" name="carnet" [ngClass]="{'error':error[2]}" [(ngModel)]="administrador.carnet" required autocomplete="off">
+      <input type="text" id="carnet" name="carnet" [(ngModel)]="administrador.carnet" required autocomplete="off">
       <label class="etiqueta" for="carnet">Carnet</label>
-     <!--  <p [ngClass]="{'visible':!error[2]}">Introduce su Carnet</p>-->
+      <div class="alert alert-danger" role="alert" *ngIf="errors[3].isError">
+        {{errors[3].message}}
+      </div>
     </div>
     <div class="corto">
-        <input type="text" id="telefono" name="telefono" [ngClass]="{'error':error[3]}" [(ngModel)]="administrador.telefono" required autocomplete="off">
+        <input type="text" id="telefono" name="telefono" [(ngModel)]="administrador.telefono" required autocomplete="off">
         <label class="etiqueta" for="telefono">Telefono</label>
-      <!--   <p [ngClass]="{'visible':!error[3]}">Introduce su telefono</p>-->
+        <div class="alert alert-danger" role="alert" *ngIf="errors[4].isError">
+          {{errors[4].message}}
+        </div>
     </div>
     <div class="largo">
-        <input type="text" id="email" name="email" [ngClass]="{'error':error[4]}" [(ngModel)]="administrador.email" required autocomplete="off">
+        <input type="text" id="email" name="email" [(ngModel)]="administrador.email" required autocomplete="off">
         <label class="etiqueta" for="email">Correo Electronico</label>
-      <!--   <p [ngClass]="{'visible':!error[4]}">Introduce un Correo Valido</p>-->
+        <div class="alert alert-danger" role="alert" *ngIf="errors[5].isError">
+          {{errors[5].message}}
+        </div>
     </div>
     <div class="corto">
-      <input type="password" id="password" name="password" [ngClass]="{'error':error[5]}" [(ngModel)]="administrador.password" required autocomplete="off">
+      <input type="password" id="password" name="password" [(ngModel)]="administrador.password" minlength="8" required autocomplete="off">
       <label class="etiqueta" for="password">Contraseña</label>
-      <!-- <p [ngClass]="{'visible':!error[5]}">Introduce una Contraseña</p>-->
+      <div class="alert alert-danger" role="alert" *ngIf="errors[6].isError">
+        {{errors[6].message}}
+      </div>
     </div>
     <div class="corto">
-      <input type="password" id="password_confirmation" name="password_confirmation" [ngClass]="{'error':error[6]}" [(ngModel)]="administrador.password_confirmation" required autocomplete="off">
+      <input type="password" id="password_confirmation" name="password_confirmation" [(ngModel)]="administrador.password_confirmation" required autocomplete="off">
       <label class="etiqueta" for="password_confirmation">Repita La Contraseña</label>
-     <!--  <p [ngClass]="{'visible':!error[6]}">Introduce una Contraseña</p>-->
+      <div class="alert alert-danger" role="alert" *ngIf="errors[7].isError">
+        {{errors[7].message}}
+      </div>
     </div>
     <div class="largo cambio">
       <p>Cargo:</p>
