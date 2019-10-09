@@ -1,6 +1,5 @@
 <?php
-use App\Modelos\Familiar;
-use App\Modelos\Persona;
+use App\User;
 use App\Mail\MailtrapExample;
 use Illuminate\Support\Facades\Mail;
 /*
@@ -63,3 +62,8 @@ Route::put('/turno/{id}','TurnoController@modificar');
 
 Route::get('/roles','RolController@lista');
 Route::get('/rol/{id}','RolController@obtener');*/
+/*
+Route::get('Cursos',function(){
+    $lista = User::find(10)->cursos;
+    return $lista;
+});*/
