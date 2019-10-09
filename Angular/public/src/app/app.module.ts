@@ -36,6 +36,12 @@ import { PantallaCargaComponent } from './pantalla-carga/pantalla-carga.componen
 import { TurnoDatosComponent } from './turno-datos/turno-datos.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { SeccionInicioComponent } from './seccion-inicio/seccion-inicio.component';
+import { CursoInicioComponent } from './curso-inicio/curso-inicio.component';
+import { CursoNuevoComponent } from './curso-nuevo/curso-nuevo.component';
+import { CursoDatosComponent } from './curso-datos/curso-datos.component';
+import { CursoBorradoComponent } from './curso-borrado/curso-borrado.component';
+
 const router: Routes=[
   {path:'',component:InicioComponent},
   {path:'',component:PrincipalComponent,children:[
@@ -88,7 +94,12 @@ const router: Routes=[
     HomeAdministradorComponent,
     HomeFamiliarComponent,
     PantallaCargaComponent,
-    TurnoDatosComponent
+    TurnoDatosComponent,
+    SeccionInicioComponent,
+    CursoInicioComponent,
+    CursoNuevoComponent,
+    CursoDatosComponent,
+    CursoBorradoComponent
   ],
   imports: [
     BrowserModule,
