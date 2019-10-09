@@ -44,7 +44,11 @@ Route::group(['prefix' => 'auth'], function () {
         Route::get('turno/{id}','TurnoController@obtener')->middleware('verified');
         Route::put('turno/{id}','TurnoController@modificar')->middleware('verified');
     });
-
+    Route::group(['middleware' => 'auth:api'],function(){
+        Route::get('secciones','SeccionController@lista')->middleware('verified');
+        Route::get('seccion/{id}','SeccionController@obtener')->middleware('verified');
+        Route::put('seccion/{id}','SeccionController@modificar')->middleware('verified');
+    });
 
 });
 

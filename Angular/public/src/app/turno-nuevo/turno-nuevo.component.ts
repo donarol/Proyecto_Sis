@@ -31,9 +31,9 @@ export class TurnoNuevoComponent implements OnInit {
       }
     });*/
   }
-  onChangeGestion(deviceValue){
+  /*onChangeGestion(deviceValue){
     console.log(deviceValue.target.value);
-  }
+  }*/
   crearTurno(form:NgForm){
     console.log(form);
     if(form.valid){      

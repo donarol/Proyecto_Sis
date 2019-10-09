@@ -7,8 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ConfiguracionesAdministradorComponent implements OnInit {
   private   componentes:any[]=[
-  {ruta:"cursos_inicio",etiqueta:"Curso"},
-  {ruta:"seccion_inicio",etiqueta:'Seccion'},
+  {ruta:"cursos",etiqueta:"Curso"},
+  {ruta:"secciones",etiqueta:'Seccion'},
   {ruta:"turnos",etiqueta:"Turno"},
   {ruta:"administrador_inicio",etiqueta:"Administrador"}];  
   constructor() { }
