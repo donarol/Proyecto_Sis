@@ -1,11 +1,4 @@
-.contenido{
-    display: flex;
-    flex-wrap: wrap;
-}
-.contenido > div,form{
-    width: 98%;
-    margin: 1%;
-}
+
 p{
     width: 100%;
     color: aliceblue;
@@ -32,5 +25,9 @@ button{
 }
 input:focus{
     border: 3px solid aliceblue;
+}
+.inferior{
+    width: 40%;
+    background: red;
 }
 

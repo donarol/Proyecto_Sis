@@ -12,29 +12,43 @@ import { Errores } from '../modelos/Errores';
 export class SeccionInicioComponent implements OnInit {
   private secciones:Seccion[];
   private errors:Errores[]=[];
+  private spinner:boolean;
   constructor(
     private _seccion:SeccionService
   ){}
 
   ngOnInit() {
-    this.cargaSecciones();
+    this.spinner=true;
+    this.getSecciones();
     this.setErrors();
   }
-  cargaSecciones(){
+  getSecciones(){
     this._seccion.getSecciones().subscribe(res=>{
       console.log("mi res");
       console.log(res);
       this.secciones=res;
+      this.spinner=false;
+    },error=>{
+      console.log("mi error");
+      console.log(error);
+      this.spinner=false;
     });
   }
-  modificarSeccion(form:NgForm,seccion:Seccion){
+  updateSeccion(form:NgForm,id){
     console.log(form);
     if(form.valid){
+      this.spinner=true;
       console.log("se modifica");
-      /*this._seccion.updateSeccion(seccion).subscribe(res=>{
+      console.log(this.secciones[id-1]);
+      this._seccion.updateSeccion(this.secciones[id-1]).subscribe(res=>{
         console.log("mi res");
         console.log(res);
-      });*/
+        this.spinner=false;
+      },error=>{
+        console.log("mi error");
+        console.log(error);
+        this.spinner=false;
+      });
     }else{
       console.log("no es valido");
       if(form.controls.nombre.status==='INVALID')

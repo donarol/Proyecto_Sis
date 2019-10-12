@@ -12,7 +12,7 @@ export class MenuAdministradorComponent implements OnInit {
     {etiqueta:'Inicio',ruta:'/homeAdministrador'},
     {etiqueta:'Mi Cuenta',ruta:'/cuentaAdministrador'},
     {etiqueta:'Mis Mensajes',ruta:'/mensajes'},
-    {etiqueta:'Configuraciones',ruta:'/turnos'},
+    {etiqueta:'Configuraciones',ruta:'/cursos'},
     {etiqueta:'Inscribir Alumno',ruta:'/inscribir_alumno'}];
     componentes_0:Array<any>=[{etiqueta:"Cerrar Sesion"}];
   constructor(

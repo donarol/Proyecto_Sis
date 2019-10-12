@@ -18,6 +18,12 @@
                 {{errorPassword.message}}
             </div>
         </div>
-        <button class="btn btn-info" type="submit">Ingresar</button>
+        <div>
+            <button class="btn btn-info" type="submit">Ingresar</button>
+        </div>
+        <div class="spinner-border text-danger" role="status" *ngIf="spinner">
+            <span class="sr-only">Loading...</span>
+        </div>
+
     </form>
 </div>

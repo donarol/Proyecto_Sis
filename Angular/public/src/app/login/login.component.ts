@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   private errorPassword:Errores;
   private error:Errores;
   private model:User;
+  private spinner:boolean;
   constructor(
     private _loginServices:LoginService,
     private _router:Router,
@@ -24,6 +25,7 @@ export class LoginComponent implements OnInit {
   login(form:NgForm){
     console.log(form);
     if(form.valid){
+      this.spinner=true;
       console.log("es valido");
       this._loginServices.login(this.model).subscribe(res=>{
         console.log("Mi res");
@@ -32,15 +34,26 @@ export class LoginComponent implements OnInit {
         this._user.getUserActual().subscribe(res=>{
           console.log("Mi res 2");
           console.log(res);
+          this.spinner=false;
           if(res.tipo==='Familiar')
             this._router.navigate(['homeFamiliar']);
           else
             this._router.navigate(['homeAdministrador']);
-        },error=>this.error.getError());
+        },error=>{
+          console.log("el erro 2");
+          console.log(error);
+          this.spinner=false;
+        });
         //sessionStorage.setItem();
       //  this._router.navigate([`/userInicio/${res.id}`]);
       //  this._router.navigate(['homeFamiliar']);
-      },error=>this.error.getError());
+      }//,error=>this.error.getError());
+        ,error=>{
+          console.log("el error 1");
+          console.log(error.message); 
+          this.spinner=false;
+        }
+      );
     }else{
       console.log("no es valido");
       if(form.controls.password.status==='INVALID')
@@ -52,6 +65,10 @@ export class LoginComponent implements OnInit {
   }
   ngOnInit() {
     this.model=new User();
+    this.errors();
+    this.spinner=false;
+  }
+  errors(){
     this.error=new Errores('Error al Ingresar los Datos');
     this.errorEmail=new Errores('Correo Electronico no Valido');
     this.errorPassword=new Errores('Error al ingresar el password');

@@ -13,6 +13,7 @@ import { NgForm } from '@angular/forms';
 export class TurnoNuevoComponent implements OnInit {
   private turno:Turno;
   private errors:Errores[]=[];
+  private spinner:boolean;
   constructor(
     private _turnoService:TurnoService,
     private _user:UserService
@@ -21,6 +22,7 @@ export class TurnoNuevoComponent implements OnInit {
   ngOnInit() {
     this.turno=new Turno();
     this.setErrors();
+    this.spinner=false;
    /* this._user.getUserActual().subscribe(res=>{
       console.log("Mi res");
       console.log(res);
@@ -36,11 +38,19 @@ export class TurnoNuevoComponent implements OnInit {
   }*/
   crearTurno(form:NgForm){
     console.log(form);
-    if(form.valid){      
+    if(form.valid){   
+      this.spinner=true;   
       this._turnoService.addTurno(this.turno).subscribe(res=>{
         console.log("res");
         console.log(res);
         console.log("Turno Creado Exitosamente");
+        this.spinner=false;
+      },error=>{
+        console.log("mi error");
+        console.log(error);
+        console.log("mi mensaje error");
+        console.log(error.message);
+        this.spinner=false;
       });
     }else{
       console.log("no es valido");

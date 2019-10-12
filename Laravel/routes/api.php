@@ -35,7 +35,7 @@ Route::group(['prefix' => 'auth'], function () {
     });
     Route::group(['middleware' => 'auth:api'],function(){
         Route::get('administradores','AdministradorController@lista')->middleware('verified');
-        Route::get('administradoresCursos','AdministradorController@cursos')->middleware('verified');
+        Route::get('administradoresCursos/{id}','AdministradorController@cursos')->middleware('verified');
     });
     Route::group(['middleware' => 'auth:api'],function(){
         Route::get('familiares','FamiliarController@lista')->middleware('verified');

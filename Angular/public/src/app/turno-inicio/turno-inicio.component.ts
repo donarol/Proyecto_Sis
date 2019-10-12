@@ -10,15 +10,31 @@ import { Turno } from '../modelos/Turno';
 export class TurnoInicioComponent implements OnInit {
   private titulos:String[]=['#','Nombre','Monto','Hora de Inicio','Hora de Finalizacion','Gestion'];
   private turnos:Turno[];
+  private spinner:boolean;
   constructor(
     private _turno:TurnoService
   ) { }
 
   ngOnInit() {
+    this.spinner=false;
+    this.cargaTurno();
+
+  }
+  cargaTurno(){
+    this.spinner=true;
     this._turno.getTurnos().subscribe(res=>{
       console.log("los turnos");
       console.log(res);
       this.turnos=res;
+      this.spinner=false;
+    },error=>{
+      console.log("error al carga turnos");
+      console.log(error);
+      this.spinner=false;
     });
+  }
+  borraTurno(turno:Turno){
+    console.log("se borrar el  turno...");
+    console.log(turno);
   }
 }

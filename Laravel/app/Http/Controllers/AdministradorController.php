@@ -12,6 +12,6 @@ class AdministradorController extends Controller
     }
     public function cursos($id){
         $administrador = new AdministradorBL;
-        return $administrador->cursos();
+        return $administrador->cursos($id);
     }
 }

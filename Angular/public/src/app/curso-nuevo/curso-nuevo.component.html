@@ -1,0 +1,57 @@
+<div class="contenedor">
+  <div class="contenido">
+    <button type="button" class="btn btn-secondary" routerLink="/cursos">Atras</button>
+    <form #formLogin="ngForm" (ngSubmit)="crearTurno(formLogin)">
+      <div class="selectores">
+        <p>Nombre:</p>
+        <input class="form-control form-control-sm" type="text" id="nombre" name="nombre" required autocomplete="off">
+        <div class="alert alert-danger" role="alert" *ngIf="errors[1].isError">
+          {{errors[1].message}}
+        </div>
+      </div>
+      <div class="selectores">
+        <p>Docente:</p>
+        <div class="input-group mb-2">
+          <input class="form-control" type="text" id="docente" name="docente" required autocomplete="off" aria-describedby="basic-addon1" readonly>
+          <div class="input-group-prepend">
+            <button class="input-group-text" id="basic-addon1">...</button>
+          </div>
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="errors[2].isError">
+          {{errors[2].message}}
+        </div>
+      </div>
+      <div class="selectores">
+        <p>Seccion:</p>
+        <div class="input-group mb-2">
+          <input type="text" class="form-control" type="text" id="seccion" name="seccion" required autocomplete="off" aria-describedby="basic-addon2" readonly>
+          <div class="input-group-prepend">
+            <button class="input-group-text" id="basic-addon2">...</button>
+          </div>
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="errors[3].isError">
+          {{errors[3].message}}
+        </div>
+      </div>
+      <div class="selectores">
+        <p>Turno:</p>
+        <div class="input-group mb-2">
+          <input type="text" class="form-control" type="text" id="turno" name="turno" required autocomplete="off" aria-describedby="basic-addon3" readonly>
+          <div class="input-group-prepend">
+            <button class="input-group-text" id="basic-addon3">...</button>
+          </div>
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="errors[4].isError">
+          {{errors[4].message}}
+        </div>
+      </div>
+      <div class="selectores">
+        <p>Gestion:</p>
+        <input class="form-control form-control-sm" type="text" id="gestion" name="gestion" required autocomplete="off">
+        <div class="alert alert-danger" role="alert" *ngIf="errors[5].isError">
+          {{errors[5].message}}
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

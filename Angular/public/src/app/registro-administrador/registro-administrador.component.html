@@ -43,7 +43,7 @@
       </div>
     </div>
     <div class="corto">
-      <input type="password" id="password_confirmation" name="password_confirmation" [(ngModel)]="administrador.password_confirmation" required autocomplete="off">
+      <input type="password" id="password_confirmation" name="password_confirmation" [(ngModel)]="administrador.password_confirmation" (keypress)='onchangePassword($event)' required autocomplete="off">
       <label class="etiqueta" for="password_confirmation">Repita La Contraseña</label>
       <div class="alert alert-danger" role="alert" *ngIf="errors[7].isError">
         {{errors[7].message}}

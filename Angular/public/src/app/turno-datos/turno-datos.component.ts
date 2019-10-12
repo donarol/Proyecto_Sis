@@ -13,6 +13,7 @@ import { NgForm } from '@angular/forms';
 export class TurnoDatosComponent implements OnInit {
   private turno:Turno;
   private errors:Errores[]=[];
+  private spinner:boolean;
   constructor(
     private rutaActiva:ActivatedRoute,
     private _turno:TurnoService
@@ -20,6 +21,7 @@ export class TurnoDatosComponent implements OnInit {
 
   ngOnInit() {
     this.turno=new Turno();
+    this.spinner=true;
     this.setErrors();
     this.getTurno();
   }
@@ -30,15 +32,26 @@ export class TurnoDatosComponent implements OnInit {
       this.turno=res;
       console.log("mi modelo");
       console.log(this.turno);
+      this.spinner=false;
+    },error=>{
+      console.log("mi error");
+      console.log(error);
+      this.spinner=false;
     });
   }
   updateTurno(form:NgForm){
     console.log(form);
     if(form.valid){
-      this._turno.updateTurno(this.turno.turno_id).subscribe(res=>{
+      this.spinner=true;
+      this._turno.updateTurno(this.turno).subscribe(res=>{
         console.log("mi res");
         console.log(res);
-      })
+        this.spinner=false;
+      },error=>{
+        console.log("mi error");
+        console.log(error);
+        this.spinner=false;
+      });
     }else{
       console.log("no es valido");
       if(form.controls.nombre.status==='INVALID')

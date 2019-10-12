@@ -5,7 +5,7 @@
     </div>
     <div [attr.id]="'id_c_'+seccion.seccion_id" class="collapse" [attr.aria-labelledby]="'id_card_'+seccion.seccion_id" data-parent="#accordionExample">
       <div class="card-body">
-        <form #formLogin="ngForm" (ngSubmit)="modificarSeccion(formLogin,seccion)">
+        <form #formLogin="ngForm" (ngSubmit)="updateSeccion(formLogin,seccion.seccion_id)">
           <div class="selectores">
             <p>Nombre:</p>
             <input class="form-control form-control-sm" type="text" id="nombre" name="nombre" [(ngModel)]="seccion.nombre" required autocomplete="off">
@@ -24,5 +24,8 @@
         </form>
       </div>
     </div>
+    <div class="spinner-border text-danger" role="status" *ngIf="spinner">
+        <span class="sr-only">Loading...</span>
+      </div>
   </div>
 </div>

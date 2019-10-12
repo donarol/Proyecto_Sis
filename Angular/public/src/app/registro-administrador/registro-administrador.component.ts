@@ -35,7 +35,7 @@ export class RegistroAdministradorComponent implements OnInit {
 
   registro(form:NgForm){
     console.log(form);
-    if(form.valid){
+    if(form.valid && this.equals()){
       console.log("---REGISTRO---");
       console.log(this.administrador);
       console.log("------");
@@ -57,10 +57,27 @@ export class RegistroAdministradorComponent implements OnInit {
         this.errors[5].getError();
       if(form.controls.password.status==='INVALID')
         this.errors[6].getError();
+      if(!this.equals())
+        this.errors[7].getError();
     }
 
   }
+  equals():boolean{
+    if(this.administrador.password===this.administrador.password_confirmation)
+      return true;
+    return false;
+  }
 
+  /*onchangePassword(deviceValue){
+    console.log(deviceValue.target.value);
+    
+  }*/
+  /*onchangePassword(event) { 
+    var key = event.which || event.keyCode; 
+    console.log(key);
+    console.log(event);
+   } */
+   
   setErrors(){
     this.errors.push(new Errores('Error al Ingresar los Datos'));
     this.errors.push(new Errores('Error al Ingresar el Nombre'));
