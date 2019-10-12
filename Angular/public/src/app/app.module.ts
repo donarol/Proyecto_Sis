@@ -36,6 +36,13 @@ import { PantallaCargaComponent } from './pantalla-carga/pantalla-carga.componen
 import { TurnoDatosComponent } from './turno-datos/turno-datos.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SeccionInicioComponent } from './seccion-inicio/seccion-inicio.component';
+import { CursoInicioComponent } from './curso-inicio/curso-inicio.component';
+import { CursoNuevoComponent } from './curso-nuevo/curso-nuevo.component';
+import { CursoDatosComponent } from './curso-datos/curso-datos.component';
+import { CursoBorrarComponent } from './curso-borrar/curso-borrar.component';
+import { SeleccionDocenteComponent } from './seleccion-docente/seleccion-docente.component';
+import { SeleccionSeccionComponent } from './seleccion-seccion/seleccion-seccion.component';
+import { SeleccionTurnoComponent } from './seleccion-turno/seleccion-turno.component';
 
 const router: Routes=[
   {path:'',component:InicioComponent},
@@ -50,12 +57,16 @@ const router: Routes=[
       {path:'homeAdministrador',component:HomeAdministradorComponent},
       {path:'cuentaAdministrador',component:CuentaAdministradorComponent},
       {path:'',component:ConfiguracionesAdministradorComponent,children:[
-        //{path:'cursos',component:CursoInicioComponent},
+        {path:'cursos',component:CursoInicioComponent},
+        {path:'cursoNuevo',component:CursoNuevoComponent},
+        {path:'cursoModificar',component:CursoDatosComponent},
+        {path:'cursoBorrar',component:CursoBorrarComponent},
         {path:'secciones',component:SeccionInicioComponent},
         {path:'turnos',component:TurnoInicioComponent},
         {path:'turnoNuevo',component:TurnoNuevoComponent},
         {path:'turno/:id',component:TurnoDatosComponent},
-        {path:'administrador_inicio',component:AdministradorInicioComponent}
+        {path:'administrador_inicio',component:AdministradorInicioComponent},
+        {path:'cuentaAdministrador/:id',component:CuentaAdministradorComponent}
       ]}
     ]}
     /*{path:'',component:MenuComponent,children:[
@@ -92,7 +103,14 @@ const router: Routes=[
     HomeFamiliarComponent,
     PantallaCargaComponent,
     TurnoDatosComponent,
-    SeccionInicioComponent
+    SeccionInicioComponent,
+    CursoInicioComponent,
+    CursoNuevoComponent,
+    CursoDatosComponent,
+    CursoBorrarComponent,
+    SeleccionDocenteComponent,
+    SeleccionSeccionComponent,
+    SeleccionTurnoComponent
   ],
   imports: [
     BrowserModule,

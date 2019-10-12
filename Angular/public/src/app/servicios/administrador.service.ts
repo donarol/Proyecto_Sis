@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Observable, throwError, from } from 'rxjs';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { HttpHeaders } from '@angular/common/http';
-import {Administrador} from '../modelos/Administrador';
 import { User } from '../modelos/User';
 
 @Injectable({
@@ -11,8 +10,8 @@ import { User } from '../modelos/User';
 export class AdministradorService {
 
   constructor(private http: HttpClient) {}
-  getAdministradores():Observable<Administrador[]>{
-    return this.http.get<Administrador[]>('http://homestead.test/api/auth/administradores',this.getoken());
+  getAdministradores():Observable<User[]>{
+    return this.http.get<User[]>('http://homestead.test/api/auth/administradores',this.getoken());
   }
   //VER LO QUE DEVUELVE
   getCursosAdministrador(administrador:User){
