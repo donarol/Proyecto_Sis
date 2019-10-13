@@ -4,6 +4,7 @@ import { NgForm } from '@angular/forms';
 import { CursoService } from '../servicios/curso.service';
 import { User } from '../modelos/User';
 import { UserService } from '../servicios/user.service';
+import { SeccionService } from '../servicios/seccion.service';
 
 @Component({
   selector: 'app-curso-nuevo',
@@ -19,7 +20,8 @@ export class CursoNuevoComponent implements OnInit {
   private administrador:User;
   constructor(
     private _curso:CursoService,
-    private _administrador:UserService
+    private _administrador:UserService,
+    private _seccion:SeccionService
   ) {}
 
   ngOnInit() {
@@ -46,7 +48,6 @@ export class CursoNuevoComponent implements OnInit {
     console.log(id);
     this.spinnerDocente=true;
     this._administrador.getUser(id).subscribe(res=>{
-      
       console.log("mi res");
       console.log(res);
       this.administrador=res;
@@ -56,6 +57,8 @@ export class CursoNuevoComponent implements OnInit {
       console.log(error);
       this.spinnerDocente=false;
     });
-
+  }
+  SelecSeccion(id:string){
+    
   }
 }

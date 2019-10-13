@@ -8,7 +8,17 @@
       </button>
     </div>
     <div class="modal-body">
-      ...
+      
+      <div class="radio-tile-group" *ngFor="let seccion of secciones">
+        <div class="input-container">
+          <input id="walk" class="radio-button" type="radio" name="radio" />
+          <div class="radio-tile">
+            <div class="icon walk-icon">
+            </div>
+            <label for="walk" class="radio-tile-label">{{seccion.nombre}}</label>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
