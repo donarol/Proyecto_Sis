@@ -1,0 +1,62 @@
+<div class="modal-dialog modal-xl" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalScrollableTitle">Lista de Docentes</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+        <div class="row">
+          <div class="col-4">
+            <select (change)='selectDocente($event)' size="8"  class=" form-control list-group" id="list-tab" role="tablist">
+                <option *ngFor="let administrador of administradores" 
+                class="list-group-item list-group-item-action" 
+                [attr.id]="'list-home-list'+administrador.id" 
+                data-toggle="list" 
+                [attr.href]="'#list'+administrador.id" 
+                href="#list-home" 
+                role="tab" 
+                aria-controls="home"
+                [attr.value]="administrador.id"
+                >
+                  {{administrador.nombre}}
+                </option>
+            </select>
+          </div>
+          <div class="col-8">
+            <div class="tab-content" id="nav-tabContent">
+              <div 
+              *ngFor="let administrador_0 of administradores" 
+              class="tab-pane fade show" 
+              [attr.id]="'list'+administrador_0.id" 
+              role="tabpanel" 
+              [attr.aria-labelledby]="'list-home-list'+administrador_0.id">
+                <div class="card mb-3">
+                  <div class="row no-gutters">
+                    <div class="col-md-4">
+                        <img [src]="'/assets/img/' + imagenName">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">{{administrador_0.nombre}} {{administrador_0.apellido}}</h5>
+                        <p class="card-text">Numero de Cursos asignados</p>
+                        <p class="card-text"><small class="text-muted">3 Cursos</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+      <button type="button" (click)="enviarDocente()" data-dismiss="modal" class="btn btn-primary">Seleccionar Docente</button>
+    </div>
+
+  </div>
+
+</div>
