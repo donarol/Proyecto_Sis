@@ -29,13 +29,10 @@ export class CursoNuevoComponent implements OnInit {
     this.spinnerSeccion=false;
     this.spinnerTurno=false;
     this.administrador=new User;
-    this._curso.addCurso();
+   // this._curso.addCurso();
   }
 
-    }else{
-      console.log("no es valido");
-    }
-  }
+
   setErrors():void{
     this.errors.push(new Errores('Error al crear el Curso'));
     this.errors.push(new Errores('Error al ingresar el nombre'));

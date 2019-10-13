@@ -12,6 +12,9 @@ export class UserService {
   getUserActual():Observable<User>{
     return this.http.get<User>('http://homestead.test/api/auth/user',this.token());
   }
+  getUser(id):Observable<User>{
+    return this.http.get<User>(`http://homestead.test/api/auth/user${id}`,this.token());
+  }
   
   token(){
      return {
