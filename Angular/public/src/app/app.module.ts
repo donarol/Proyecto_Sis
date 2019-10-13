@@ -108,7 +108,10 @@ const router: Routes=[
     CursoInicioComponent,
     CursoNuevoComponent,
     CursoDatosComponent,
-    CursoBorrarComponent
+    CursoBorrarComponent,
+    SeleccionDocenteComponent,
+    SeleccionSeccionComponent,
+    SeleccionTurnoComponent
   ],
   imports: [
     BrowserModule,

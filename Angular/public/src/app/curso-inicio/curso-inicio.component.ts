@@ -7,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CursoInicioComponent implements OnInit {
   private componentes:Array<any>=[
-  {router:"cursos_nuevo",etiqueta:"Nuevo Curso"},
-  {router:"cursos_configurar",etiqueta:"Configurar Curso"},
-  {router:"",etiqueta:"Borrar Curso"}];
+  {router:"cursoNuevo",etiqueta:"Nuevo Curso"},
+  {router:"cursoModificar",etiqueta:"Configurar Curso"},
+  {router:"cursoBorrar",etiqueta:"Borrar Curso"}];
   constructor() { }
 
   ngOnInit() {
