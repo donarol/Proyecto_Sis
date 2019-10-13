@@ -42,18 +42,23 @@
             {{errors[5].message}}
           </div>
         </div>
-
-        <button type="submit" class="btn btn-secondary">Crear Turno</button>     
+        <div class="spinner-border text-danger" role="status" *ngIf="spinner">
+          <span class="sr-only">Loading...</span>
+        </div> 
+        <div>
+          <button type="submit" class="btn btn-secondary">Crear Turno</button>
+        </div> 
+   
       </form>
     </div>
-    <nav class="nave">
+    <!--  <nav class="nave">
       <label for="exampleFormControlSelect2">Lista de Turnos</label>
       <select size="8" class="form-control">
         <option data-toggle="modal" data-target="#modal-turnos" class="list-group-item list-group-item-action" *ngFor="let turno of turnos" (click)=ver(turno)>{{turno.nombre}}</option>
       </select>
     </nav>
   </div>
-  <!-- 
+ 
   <div class="modal fade" id="modal-turnos" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <app-turno-datos [turno]="turno"></app-turno-datos>
   </div>

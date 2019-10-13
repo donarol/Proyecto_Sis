@@ -21,8 +21,8 @@ export class TurnoService {
   getTurno(id:string):Observable<Turno>{
     return this.http.get<Turno>(`http://homestead.test/api/auth/turno/${id}`,this.getoken());
   }
-  updateTurno(id:string):Observable<Turno>{
-    return this.http.put<Turno>(`http://homestead.test/api/auth/turno${id}`,this.getoken());
+  updateTurno(turno:Turno):Observable<Turno>{
+    return this.http.put<Turno>(`http://homestead.test/api/auth/turno/${turno.turno_id}`,turno,this.getoken());
   }
   getoken(){
 

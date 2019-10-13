@@ -28,13 +28,16 @@ Route::group(['prefix' => 'auth'], function () {
         
     });
     Route::group(['middleware' => 'auth:api'],function(){
-        Route::get('administrador/{id}','AdministradorController@obtener')->middleware('verified');
-        Route::put('administrador/{id}','AdministradorController@modificar')->middleware('verified');
-        Route::get('administradores','AdministradorController@lista')->middleware('verified');
+        Route::get('user/{id}','UserController@obtener')->middleware('verified');
+        Route::put('user/{id}','UserController@modificar')->middleware('verified');
+        //---
+        //Route::get('familiares','FamiliarController@lista')->middleware('verified');
     });
     Route::group(['middleware' => 'auth:api'],function(){
-        Route::get('familiar/{id}','FamiliarController@obtener')->middleware('verified');
-        Route::put('familiar/{id}','FamiliarController@modificar')->middleware('verified');
+        Route::get('administradores','AdministradorController@lista')->middleware('verified');
+        Route::get('administradoresCursos/{id}','AdministradorController@cursos')->middleware('verified');
+    });
+    Route::group(['middleware' => 'auth:api'],function(){
         Route::get('familiares','FamiliarController@lista')->middleware('verified');
     });
     Route::group(['middleware' => 'auth:api'],function(){
@@ -44,7 +47,11 @@ Route::group(['prefix' => 'auth'], function () {
         Route::get('turno/{id}','TurnoController@obtener')->middleware('verified');
         Route::put('turno/{id}','TurnoController@modificar')->middleware('verified');
     });
-
+    Route::group(['middleware' => 'auth:api'],function(){
+        Route::get('secciones','SeccionController@lista')->middleware('verified');
+        Route::get('seccion/{id}','SeccionController@obtener')->middleware('verified');
+        Route::put('seccion/{id}','SeccionController@modificar')->middleware('verified');
+    });
 
 });
 

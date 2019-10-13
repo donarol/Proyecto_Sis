@@ -6,11 +6,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./configuraciones-administrador.component.css']
 })
 export class ConfiguracionesAdministradorComponent implements OnInit {
-  private   componentes:any[]=[
-  {ruta:"cursos_inicio",etiqueta:"Curso"},
-  {ruta:"seccion_inicio",etiqueta:'Seccion'},
-  {ruta:"turnos",etiqueta:"Turno"},
-  {ruta:"administrador_inicio",etiqueta:"Administrador"}];  
+  private componentes:any[]=[
+  {ruta:"cursos",etiqueta:"Cursos"},
+  {ruta:"secciones",etiqueta:'Secciones'},
+  {ruta:"turnos",etiqueta:"Turnos"},
+  {ruta:"administrador_inicio",etiqueta:"Administradores"}];  
   constructor() { }
 
   ngOnInit() {

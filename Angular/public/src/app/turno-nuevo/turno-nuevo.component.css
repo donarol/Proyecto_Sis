@@ -13,10 +13,11 @@
 	height: 100%;
 	padding: 1%;
 }
+/*
 .contenido div{
 	width: 100%;
 	padding: 1%;
-}
+}*/
 .contenido > div > p{
 	margin-right: 2%;
 } 
