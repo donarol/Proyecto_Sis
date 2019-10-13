@@ -2,7 +2,7 @@
 <div class="modal-dialog" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabel">Lista Secciones</h5>
+      <h5 class="modal-title" id="exampleModalLabelSeccion">Lista Secciones</h5>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -11,18 +11,24 @@
       
       <div class="radio-tile-group" *ngFor="let seccion of secciones">
         <div class="input-container">
-          <input id="walk" class="radio-button" type="radio" name="radio" />
+          <input 
+          (change)='selectSeccion($event)' 
+          [attr.id]="'input_'+seccion.seccion_id" 
+          class="radio-button" 
+          type="radio" 
+          name="radio" 
+          [attr.value]="seccion.seccion_id"/>
           <div class="radio-tile">
             <div class="icon walk-icon">
             </div>
-            <label for="walk" class="radio-tile-label">{{seccion.nombre}}</label>
+            <label [attr.for]="'input_'+seccion.seccion_id" class="radio-tile-label">{{seccion.nombre}}</label>
           </div>
         </div>
       </div>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-      <button type="button" class="btn btn-primary">Save changes</button>
+      <button type="button" (click)="enviarSeccion()" class="btn btn-primary" data-dismiss="modal">Seleccionar Seccion</button>
     </div>
   </div>
 </div>

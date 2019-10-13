@@ -9,16 +9,15 @@ import { TurnoService } from '../servicios/turno.service';
 })
 export class SeleccionTurnoComponent implements OnInit {
   private turnos:Turno[];
-  private model:string;private imagenName:string;
+  private model:string;
   private aux:string;
   @Output() selecTurno = new EventEmitter<string>();
   constructor(
     private _turno:TurnoService
   ) { }
 
-  ngOnInit() {
+  ngOnInit(){
     this.getTurnos();
-    this.imagenName='admin.png';
   }
   selectTurno(deviceValue){
     console.log("se cambio");

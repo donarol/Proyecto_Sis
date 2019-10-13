@@ -14,8 +14,8 @@ class TurnoBL{
         $turno->hora_inicio=$datos['hora_inicio'];
         $turno->hora_fin=$datos['hora_fin'];
 
-        $turDao = new TurnoDAO;
-        return $turDao->crear($turno);    
+        $turnoDao = new TurnoDAO;
+        return $turnoDao->crear($turno);    
     }
     public function lista(){
         $turnoDao = new TurnoDAO;
@@ -33,8 +33,8 @@ class TurnoBL{
         $turno->hora_inicio=$datos['hora_inicio'];
         $turno->hora_fin=$datos['hora_fin'];
 
-        $turDao = new TurnoDAO;
-        return $turDao->modificar($turno);    
+        $turnoDao = new TurnoDAO;
+        return $turnoDao->modificar($turno);    
     }
 
 }

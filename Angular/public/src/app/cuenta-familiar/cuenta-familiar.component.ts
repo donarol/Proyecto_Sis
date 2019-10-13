@@ -3,6 +3,7 @@ import { FamiliarService } from '../servicios/familiar.service';
 import { Familiar } from '../modelos/Familiar';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 
+//REVISAR CLASE
 @Component({
   selector: 'app-cuenta-familiar',
   templateUrl: './cuenta-familiar.component.html',

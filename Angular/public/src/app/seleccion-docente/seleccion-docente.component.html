@@ -1,7 +1,7 @@
 <div class="modal-dialog modal-xl" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalScrollableTitle">Lista de Docentes</h5>
+      <h5 class="modal-title" id="exampleModalLabelDocente">Lista de Docentes</h5>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -13,12 +13,12 @@
             <select (change)='selectDocente($event)' size="8"  class=" form-control list-group" id="list-tab" role="tablist">
                 <option *ngFor="let administrador of administradores" 
                 class="list-group-item list-group-item-action" 
-                [attr.id]="'list-home-list'+administrador.id" 
+                [attr.id]="'list-home-list-docente'+administrador.id" 
                 data-toggle="list" 
-                [attr.href]="'#list'+administrador.id" 
-                href="#list-home" 
+                [attr.href]="'#list-docente'+administrador.id" 
+                href="#list-home-docente" 
                 role="tab" 
-                aria-controls="home"
+                aria-controls="home-docente"
                 [attr.value]="administrador.id"
                 >
                   {{administrador.nombre}}
@@ -30,9 +30,9 @@
               <div 
               *ngFor="let administrador_0 of administradores" 
               class="tab-pane fade show" 
-              [attr.id]="'list'+administrador_0.id" 
+              [attr.id]="'list-docente'+administrador_0.id" 
               role="tabpanel" 
-              [attr.aria-labelledby]="'list-home-list'+administrador_0.id">
+              [attr.aria-labelledby]="'list-home-list-docente'+administrador_0.id">
                 <div class="card mb-3">
                   <div class="row no-gutters">
                     <div class="col-md-4">

@@ -52,6 +52,13 @@ Route::group(['prefix' => 'auth'], function () {
         Route::get('seccion/{id}','SeccionController@obtener')->middleware('verified');
         Route::put('seccion/{id}','SeccionController@modificar')->middleware('verified');
     });
+    Route::group(['middleware' => 'auth:api'],function(){
+        Route::post('registroCurso','CursoController@crear')->middleware('verified');
+        Route::get('registroCurso','CursoController@crearMal')->middleware('verified');
+        Route::get('cursos','CursoController@lista')->middleware('verified');
+        Route::get('curso/{id}','CursoController@obtener')->middleware('verified');
+        Route::put('curso/{id}','CursoController@modificar')->middleware('verified');
+    });
 
 });
 
