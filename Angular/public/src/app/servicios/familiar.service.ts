@@ -19,10 +19,10 @@ export class FamiliarService {
   addFamiliar(familiar:Familiar):Observable<Familiar>{
     return this.http.post<Familiar>('http://homestead.test/registroFamiliar',familiar,httpOptions);
   }
-  getFamiliar(id):Observable<Familiar>{
+  getFamiliar(id:String):Observable<Familiar>{
     return this.http.get<Familiar>(`http://homestead.test/familiar/${id}`,httpOptions);
   }
-  updateFamiliar(id,familiar:Familiar):Observable<Familiar>{
+  updateFamiliar(id:String,familiar:Familiar):Observable<Familiar>{
     return this.http.put<Familiar>(`http://homestead.test/familiar/${id}`,familiar,httpOptions);
   }
 }

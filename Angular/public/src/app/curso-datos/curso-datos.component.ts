@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Curso } from '../modelos/Curso';
+import { CursoService } from '../servicios/curso.service';
 
 @Component({
   selector: 'app-curso-datos',
@@ -6,10 +8,23 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./curso-datos.component.css']
 })
 export class CursoDatosComponent implements OnInit {
-
-  constructor() { }
+  private cursos:Curso[];
+  constructor(
+    private _curso:CursoService
+  ){}
 
   ngOnInit() {
+    this.getCursos();
+  }
+  getCursos():void{
+    this._curso.getCursos().subscribe(res=>{
+      console.log("mi res");
+      console.log(res);
+      this.cursos=res;
+    },error=>{
+      console.log("mi error");
+      console.log(error);
+    });
   }
 
 }

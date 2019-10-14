@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { AdministradorService } from '../servicios/administrador.service';
 import { User } from '../modelos/User';
 
@@ -8,6 +8,7 @@ import { User } from '../modelos/User';
   styleUrls: ['./seleccion-docente.component.css']
 })
 export class SeleccionDocenteComponent implements OnInit {
+  @Input('idSeguro') private idSeguro;
   private administradores:User[];
   private imagenName:string;
   private model:string;

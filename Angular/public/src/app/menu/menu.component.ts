@@ -38,7 +38,7 @@ export class MenuComponent implements OnInit {
   }
 
   ngOnInit() {
-    this._familiar.getFamiliar(5).subscribe(res=>{
+    this._familiar.getFamiliar("5").subscribe(res=>{
       console.log("res");
       console.log(res);
     })

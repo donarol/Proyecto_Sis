@@ -1,7 +1,7 @@
 <div class="modal-dialog modal-xl" role="document">
   <div class="modal-content">
     <div class="modal-header">
-      <h5 class="modal-title" id="exampleModalLabelTurno">Lista de Turnos</h5>
+      <h5 class="modal-title" [attr.id]="'exampleModalLabelTurno'+idSeguro">Lista de Turnos</h5>
       <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
@@ -15,7 +15,7 @@
                 class="list-group-item list-group-item-action" 
                 [attr.id]="'list-home-list-turno'+turno.turno_id" 
                 data-toggle="list" 
-                [attr.href]="'#list-turno'+turno.turno_id" 
+                [attr.href]="'#list-turno'+turno.turno_id+idSeguro" 
                 href="#list-home-turno" 
                 role="tab" 
                 aria-controls="home-turno"
@@ -30,7 +30,7 @@
               <div 
               *ngFor="let turno_0 of turnos" 
               class="tab-pane fade show" 
-              [attr.id]="'list-turno'+turno_0.turno_id" 
+              [attr.id]="'list-turno'+turno_0.turno_id+idSeguro" 
               role="tabpanel" 
               [attr.aria-labelledby]="'list-home-list-turno'+turno_0.turno_id">
                 <div class="card mb-3">

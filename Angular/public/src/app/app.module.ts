@@ -43,6 +43,7 @@ import { CursoBorrarComponent } from './curso-borrar/curso-borrar.component';
 import { SeleccionDocenteComponent } from './seleccion-docente/seleccion-docente.component';
 import { SeleccionSeccionComponent } from './seleccion-seccion/seleccion-seccion.component';
 import { SeleccionTurnoComponent } from './seleccion-turno/seleccion-turno.component';
+import { CursoDatosIIComponent } from './curso-datos-ii/curso-datos-ii.component';
 
 
 const router: Routes=[
@@ -111,7 +112,8 @@ const router: Routes=[
     CursoBorrarComponent,
     SeleccionDocenteComponent,
     SeleccionSeccionComponent,
-    SeleccionTurnoComponent
+    SeleccionTurnoComponent,
+    CursoDatosIIComponent
   ],
   imports: [
     BrowserModule,

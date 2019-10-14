@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter, Input } from '@angular/core';
 import { Turno } from '../modelos/Turno';
 import { TurnoService } from '../servicios/turno.service';
 
@@ -8,6 +8,7 @@ import { TurnoService } from '../servicios/turno.service';
   styleUrls: ['./seleccion-turno.component.css']
 })
 export class SeleccionTurnoComponent implements OnInit {
+  @Input('idSeguro') private idSeguro;
   private turnos:Turno[];
   private model:string;
   private aux:string;

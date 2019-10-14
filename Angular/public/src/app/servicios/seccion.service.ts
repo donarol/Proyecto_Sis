@@ -14,7 +14,7 @@ export class SeccionService {
   getSecciones():Observable<Seccion[]>{
     return this.http.get<Seccion[]>('http://homestead.test/api/auth/secciones',this.getoken());
   }
-  getSeccion(id:string):Observable<Seccion>{
+  getSeccion(id:String):Observable<Seccion>{
     return this.http.get<Seccion>(`http://homestead.test/api/auth/seccion/${id}`,this.getoken());
   }
   updateSeccion(seccion:Seccion):Observable<Seccion>{
