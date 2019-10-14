@@ -44,6 +44,7 @@ import { SeleccionDocenteComponent } from './seleccion-docente/seleccion-docente
 import { SeleccionSeccionComponent } from './seleccion-seccion/seleccion-seccion.component';
 import { SeleccionTurnoComponent } from './seleccion-turno/seleccion-turno.component';
 import { CursoDatosIIComponent } from './curso-datos-ii/curso-datos-ii.component';
+import { AlumnoNuevoComponent } from './alumno-nuevo/alumno-nuevo.component';
 
 
 const router: Routes=[
@@ -69,7 +70,8 @@ const router: Routes=[
         {path:'turno/:id',component:TurnoDatosComponent},
         {path:'administrador_inicio',component:AdministradorInicioComponent},
         {path:'cuentaAdministrador/:id',component:CuentaAdministradorComponent}
-      ]}
+      ]},
+      {path:'inscribirAlumno',component:AlumnoNuevoComponent}
     ]}
     /*{path:'',component:MenuComponent,children:[
       {path:'listaAlumnos',component:ListaAlumnosComponent}
@@ -113,7 +115,8 @@ const router: Routes=[
     SeleccionDocenteComponent,
     SeleccionSeccionComponent,
     SeleccionTurnoComponent,
-    CursoDatosIIComponent
+    CursoDatosIIComponent,
+    AlumnoNuevoComponent
   ],
   imports: [
     BrowserModule,

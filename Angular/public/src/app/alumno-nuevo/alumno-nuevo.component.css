@@ -1,0 +1,55 @@
+.inicio{
+    margin: 1%;
+}
+.superior{
+    margin: 1%;
+    display: flex;
+    flex-wrap: wrap;
+    border: 1px solid;
+}
+.datos{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-bottom: 1%;
+    background: white;
+}
+.inferior{
+    margin: 1%;
+    width: 98%;
+    border: 1px solid;
+    background: white;
+}
+
+.datos p{
+    margin:0;
+}  
+.largo{
+    width: 97%;
+    margin-left: 1%;
+}
+.corto{
+    width: 48%;
+    margin-left: 1%;
+}
+.inferior > div > button{
+    margin: 1%;
+}
+
+.table{
+    width: 98%;
+    margin: 1%;
+}
+
+.etiqueta{
+    width: 40%;
+}
+.selectores{
+    display: flex;
+    flex-wrap: wrap;
+    	
+}
+.input-group-prepend{
+    width: 10%;
+}
