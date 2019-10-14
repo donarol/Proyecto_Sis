@@ -1,7 +1,7 @@
 export class Seccion {
-    seccion_id:string;
-    nombre:string;
-    descripcion:string;
+    seccion_id:String;
+    nombre:String;
+    descripcion:String;
     constructor(){
         this.seccion_id='';
         this.nombre='';

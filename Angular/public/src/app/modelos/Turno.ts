@@ -1,10 +1,10 @@
 export class Turno {
-    turno_id:string;
-    nombre:string;
+    turno_id:String;
+    nombre:String;
     monto:number;
-    hora_inicio:string;
-    hora_fin:string;
-    gestion:string;
+    hora_inicio:String;
+    hora_fin:String;
+    gestion:String;
     constructor() {
         this.turno_id='';
         this.nombre='';

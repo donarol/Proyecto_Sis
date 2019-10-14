@@ -3,27 +3,27 @@
     <div class="datos">
       <div class="largo">
         <p>Nombre:</p>
-        <input class="form-control form-control-sm" type="text">
+        <input class="form-control form-control-sm" type="text" [(ngModel)]="alumno.nombre">
       </div>
       <div class="largo">
         <p>Apellido:</p>
-        <input class="form-control form-control-sm" type="text">
+        <input class="form-control form-control-sm" type="text" [(ngModel)]="alumno.apellido">
       </div>
       <div class="corto">
         <p>Fecha de Nacimiento:</p>
-        <input class="form-control form-control-sm" type="date">
+        <input class="form-control form-control-sm" type="date" [(ngModel)]="alumno.fecha_nacimiento">
       </div>
       <div class="corto">
         <p>Lugar de Nacimiento:</p>
-        <input class="form-control form-control-sm" type="text">
+        <input class="form-control form-control-sm" type="text" [(ngModel)]="alumno.lugar_nacimiento">
       </div>
       <div class="corto">
         <p>Tipo Sanguineo:</p>
-        <input class="form-control form-control-sm" type="text">
+        <input class="form-control form-control-sm" type="text" [(ngModel)]="alumno.tipo_sanguineo">
       </div>
       <div class="corto">
         <p>Telefono:</p>
-        <input class="form-control form-control-sm" type="text">
+        <input class="form-control form-control-sm" type="text"[(ngModel)]="alumno.telefono">
       </div>
 
       <div class="corto selectores">
@@ -46,7 +46,7 @@
       
       <div class="largo">
         <p>Domicilio:</p>
-        <input class="form-control form-control-sm" type="text">
+        <input class="form-control form-control-sm" type="text" [(ngModel)]="alumno.domicilio">
       </div>
 
       <div class="corto selectores">

@@ -1,6 +1,6 @@
 export class Errores {
     private isError:boolean;
-    private message:string;
+    private message:String;
     private time:number;
     constructor(message){
         this.isError=false;

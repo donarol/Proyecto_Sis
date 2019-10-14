@@ -1,14 +1,14 @@
 export class User {
-    id:string;
-    nombre:string;
-    apellido:string;
-    carnet:string;
-    email:string;
-    telefono:string;
-    password:string;
-    tipo:string;
-    email_verified_at:string;
-    password_confirmation:string;
+    id:String;
+    nombre:String;
+    apellido:String;
+    carnet:String;
+    email:String;
+    telefono:String;
+    password:String;
+    tipo:String;
+    email_verified_at:String;
+    password_confirmation:String;
     constructor() {
         this.id='';
         this.nombre='';
