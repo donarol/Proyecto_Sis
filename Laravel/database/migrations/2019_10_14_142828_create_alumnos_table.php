@@ -22,6 +22,9 @@ class CreateAlumnosTable extends Migration
             $table->string('tipo_sanguineo');
             $table->string('telefono');
             $table->string('domicilio');
+            $table->boolean('certificado_vacuna')->default(0);
+            $table->boolean('rude')->default(0);
+            $table->boolean('certificado_nacimiento')->default(0);
             $table->timestamps();
             $table->softDeletes();
         });

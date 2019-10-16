@@ -1,56 +1,102 @@
 <div class="inicio">
   <div class="superior">
-    <div class="datos">
-      <div class="largo">
-        <p>Nombre:</p>
-        <input class="form-control form-control-sm" id="nombre" name="nombre" type="text" [(ngModel)]="alumno.nombre">
-      </div>
-      <div class="largo">
-        <p>Apellido:</p>
-        <input class="form-control form-control-sm" id="apellido" name="apellido" type="text" [(ngModel)]="alumno.apellido">
-      </div>
-      <div class="corto">
-        <p>Fecha de Nacimiento:</p>
-        <input class="form-control form-control-sm" id="fecha_nacimiento" name="fecha_nacimiento" type="date" [(ngModel)]="alumno.fecha_nacimiento">
-      </div>
-      <div class="corto">
-        <p>Lugar de Nacimiento:</p>
-        <input class="form-control form-control-sm" id="lugar_nacimiento" name="lugar_nacimiento" type="text" [(ngModel)]="alumno.lugar_nacimiento">
-      </div>
-      <div class="corto">
-        <p>Tipo Sanguineo:</p>
-        <input class="form-control form-control-sm" id="tipo_sanguineo" name="tipo_sanguineo" type="text" [(ngModel)]="alumno.tipo_sanguineo">
-      </div>
-      <div class="corto">
-        <p>Telefono:</p>
-        <input class="form-control form-control-sm" id="telefono" name="telefono" type="text"[(ngModel)]="alumno.telefono">
-      </div>
-
-      <div class="corto selectores">
-        <p>Alergias:</p>
-
-        <div class="input-group mb-2">
-          <div class="input-group-prepend" *ngIf="spinnerTurno" >
-            <div class="spinner-border text-danger" role="status">
-              <span class="sr-only">Loading...</span>
-            </div>
-          </div>
-          <select class="form-control">
-            <option *ngFor="let alergia of alergias">{{alergia.nombre}}</option>
-          </select>
-          <div class="input-group-prepend">
-            <button type="button" class="input-group-text" data-toggle="modal" data-target="#targetTurno" id="basic-addon3">...</button>
+    <form #formLogin="ngForm" (ngSubmit)="inscribirAlumno(formLogin)">
+      <div class="datos">
+        <div class="largo">
+          <p>Nombre:</p>
+          <input class="form-control form-control-sm" id="nombre" name="nombre" type="text" [(ngModel)]="alumno.nombre" autocomplete="off" required>
+          <div class="alert alert-danger" role="alert" *ngIf="errors[1].isError">
+            {{errors[1].message}}
           </div>
         </div>
-      </div>
-      
-      <div class="largo">
-        <p>Domicilio:</p>
-        <input class="form-control form-control-sm" id="domicilio" name="domicilio" type="text" [(ngModel)]="alumno.domicilio">
-      </div>
+        <div class="largo">
+          <p>Apellido:</p>
+          <input class="form-control form-control-sm" id="apellido" name="apellido" type="text" [(ngModel)]="alumno.apellido" autocomplete="off" required>
+          <div class="alert alert-danger" role="alert" *ngIf="errors[2].isError">
+            {{errors[2].message}}
+          </div>
+        </div>
+        <div class="corto">
+          <p>Fecha de Nacimiento:</p>
+          <input class="form-control form-control-sm" id="fecha_nacimiento" name="fecha_nacimiento" type="date" [(ngModel)]="alumno.fecha_nacimiento" autocomplete="off" required>
+          <div class="alert alert-danger" role="alert" *ngIf="errors[3].isError">
+            {{errors[3].message}}
+          </div>
+        </div>
+        <div class="corto">
+          <p>Lugar de Nacimiento:</p>
+          <input class="form-control form-control-sm" id="lugar_nacimiento" name="lugar_nacimiento" type="text" [(ngModel)]="alumno.lugar_nacimiento" autocomplete="off" required>
+          <div class="alert alert-danger" role="alert" *ngIf="errors[4].isError">
+            {{errors[4].message}}
+          </div>
+        </div>
+        <div class="corto">
+          <p>Tipo Sanguineo:</p>
+          <input class="form-control form-control-sm" id="tipo_sanguineo" name="tipo_sanguineo" type="text" [(ngModel)]="alumno.tipo_sanguineo" autocomplete="off" required>
+          <div class="alert alert-danger" role="alert" *ngIf="errors[5].isError">
+            {{errors[5].message}}
+          </div>
+        </div>
+        <div class="corto">
+          <p>Telefono:</p>
+          <input class="form-control form-control-sm" id="telefono" name="telefono" type="text"[(ngModel)]="alumno.telefono" autocomplete="off" required>
+          <div class="alert alert-danger" role="alert" *ngIf="errors[6].isError">
+            {{errors[6].message}}
+          </div>
+        </div>
+        <!--
+        <div class="corto selectores">
+          <p>Alergias:</p>
 
-      <div class="corto selectores">
-          <p>Curso:</p>
+          <div class="input-group mb-2">
+            <div class="input-group-prepend" *ngIf="spinnerTurno" >
+              <div class="spinner-border text-danger" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+            <select class="form-control">
+              <option *ngFor="let alergia of alergias">{{alergia.nombre}}</option>
+            </select>
+            <div class="input-group-prepend">
+              <button type="button" class="input-group-text" data-toggle="modal" data-target="#targetTurno" id="basic-addon3">...</button>
+            </div>
+          </div>
+        </div>-->
+        
+        <div class="largo">
+          <p>Domicilio:</p>
+          <input class="form-control form-control-sm" id="domicilio" name="domicilio" type="text" [(ngModel)]="alumno.domicilio" autocomplete="off" required>
+          <div class="alert alert-danger" role="alert" *ngIf="errors[7].isError">
+            {{errors[7].message}}
+          </div>
+        </div>
+
+        <div class="corto selectores">
+            <p>Curso:</p>
+            <div class="input-group mb-2">
+              <input 
+              type="text" 
+              class="form-control" 
+              type="text" 
+              id="curso" 
+              name="curso" 
+              required autocomplete="off" 
+              aria-describedby="basic-addon3" 
+              readonly
+              [(ngModel)]="curso.nombre">
+              <div class="input-group-prepend">
+                <button type="button" class="input-group-text" data-toggle="modal" data-target="#targetCurso" id="basic-addon3">...</button>
+              </div>
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="errors[8].isError">
+              {{errors[8].message}}
+            </div>
+
+        </div>
+        <div class="selectores corto">
+
+          <p>Turno:</p>
+          
           <div class="input-group mb-2">
             <div class="input-group-prepend" *ngIf="spinnerTurno" >
               <div class="spinner-border text-danger" role="status">
@@ -58,31 +104,49 @@
               </div>
             </div>
             <input 
+            class="form-control form-control-sm" 
             type="text" 
-            class="form-control" 
-            type="text" 
-            id="curso" 
-            name="curso" 
+            id="turno" 
+            name="turno" 
             required autocomplete="off" 
-            aria-describedby="basic-addon3" 
-            readonly>
-            <div class="input-group-prepend">
-              <button type="button" class="input-group-text" data-toggle="modal" data-target="#targetTurno" id="basic-addon3">...</button>
-            </div>
+            readonly 
+            [(ngModel)]="turno.nombre">
           </div>
-
+          <div class="alert alert-danger" role="alert" *ngIf="errors[9].isError">
+            {{errors[9].message}}
+          </div>
+        </div>
+        <div class="largo">
+          <label class="etiqueta">Certificado de Vacunas:</label>
+          <label class="switch">
+            <input type="checkbox" id="certificado_vacuna" name="certificado_vacuna" [(ngModel)]="alumno.certificado_vacuna">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="largo">
+          <label class="etiqueta">R U D E:</label>
+          <label class="switch">
+            <input type="checkbox" id="rude" name="rude" [(ngModel)]="alumno.rude">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div class="largo">
+          <label class="etiqueta">Certificado de Nacimiento:</label>
+          <label class="switch">
+            <input type="checkbox" id="certificado_nacimiento" name="certificado_nacimiento" [(ngModel)]="alumno.certificado_nacimiento">
+            <span class="slider round"></span>
+          </label>
+        </div>
+        <div>
+          <button id="btn_inscribir" type="submit" class="btn btn-secondary">Inscribir Alumno</button>
+        </div>
+        <div class="largo text-right">
+          <p><span>Fecha de Inscripcion: </span>{{jstoday}}</p>
+        </div>
       </div>
-      <div class="corto">
-        <p>Turno:</p>
-        <input class="form-control form-control-sm" type="text"placeholder="Aqui el turno" readonly >
-      </div>
-
-      <div class="largo text-right">
-        <p><span>Fecha de Inscripcion: </span>{{jstoday}}</p>
-      </div>
-    </div>
-  </div>
-
+    </form>
+  </div>     
+<!--
   <div class="inferior">
       <div class="input-group justify-content-between ">
         <button data-toggle="modal" data-target="#modal-pariente" type="button" class="btn btn-secondary">Agregar Pariente</button>
@@ -104,22 +168,21 @@
                 </tr>
           </tbody>
       </table>
-      <div >
-        <button id="btn_inscribir"type="button " class="btn btn-secondary" (click)="inscribir()">Inscribir Alumno</button>
-      </div>
+
 
         
     </div>
-
+  -->
 </div>
 
-<!-- Modal -->
-<div class="modal fade" id="targetDocente" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelDocente" aria-hidden="true">
-  <app-seleccion-docente (selecDocente)="SelecDocente($event)"></app-seleccion-docente>
+<div class="modal fade" id="targetCurso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelCurso" aria-hidden="true">
+  <app-seleccion-curso (selecCurso)="SelecCurso($event)"></app-seleccion-curso>
 </div>
+<!-- Modal 
+
 <div class="modal fade" id="targetSeccion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelSeccion" aria-hidden="true">
   <app-seleccion-seccion (selecSeccion)="SelecSeccion($event)"></app-seleccion-seccion>
 </div>
 <div class="modal fade" id="targetTurno" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelTurno" aria-hidden="true">
   <app-seleccion-turno (selecTurno)="SelecTurno($event)"></app-seleccion-turno>
-</div>
+</div>-->

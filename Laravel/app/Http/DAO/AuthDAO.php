@@ -13,7 +13,7 @@ class AuthDAO{
    
     }
     public function login($user){
-        $client = DB::table('oauth_clients')->where('id',rand(1,5))->first(); 
+        $client = DB::table('oauth_clients')->where('id',rand(1,2))->first(); 
         $clientSecret = $client->secret;
         $tokenResult = $user->createToken($clientSecret);
         $token = $tokenResult->token;

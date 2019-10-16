@@ -46,6 +46,8 @@ import { SeleccionTurnoComponent } from './seleccion-turno/seleccion-turno.compo
 import { CursoDatosIIComponent } from './curso-datos-ii/curso-datos-ii.component';
 import { AlumnoNuevoComponent } from './alumno-nuevo/alumno-nuevo.component';
 import { AlergiaInicioComponent } from './alergia-inicio/alergia-inicio.component';
+import { AlumnoCursoComponent } from './alumno-curso/alumno-curso.component';
+import { SeleccionCursoComponent } from './seleccion-curso/seleccion-curso.component';
 
 
 const router: Routes=[
@@ -118,7 +120,9 @@ const router: Routes=[
     SeleccionTurnoComponent,
     CursoDatosIIComponent,
     AlumnoNuevoComponent,
-    AlergiaInicioComponent
+    AlergiaInicioComponent,
+    AlumnoCursoComponent,
+    SeleccionCursoComponent
   ],
   imports: [
     BrowserModule,

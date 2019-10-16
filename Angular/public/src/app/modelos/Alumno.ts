@@ -6,6 +6,9 @@ export class Alumno{
     tipo_sanguineo:String;
     telefono:String;
     domicilio:String;
+    certificado_vacuna:Boolean;
+    rude:Boolean;
+    certificado_nacimiento:Boolean;
     constructor(){
         this.nombre='';
         this.apellido='';
@@ -14,5 +17,8 @@ export class Alumno{
         this.tipo_sanguineo='';
         this.telefono='';
         this.domicilio='';
+        this.certificado_vacuna=false;
+        this.rude=false;
+        this.certificado_nacimiento=false;
     }
 }

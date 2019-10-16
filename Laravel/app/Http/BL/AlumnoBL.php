@@ -13,6 +13,9 @@ class AlumnoBL{
         $alumno->tipo_sanguineo=$datos['tipo_sanguineo'];
         $alumno->telefono=$datos['telefono'];
         $alumno->domicilio=$datos['domicilio'];
+        $alumno->certificado_vacuna=$datos['certificado_vacuna'];
+        $alumno->rude=$datos['rude'];
+        $alumno->certificado_nacimiento=$datos['certificado_nacimiento'];
 
         $alumnoDao = new AlumnoDAO;
         return $alumnoDao->crear($alumno);

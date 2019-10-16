@@ -1,0 +1,60 @@
+<div class="modal-dialog modal-xl" role="document">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h5 class="modal-title" [attr.id]="'exampleModalLabeCurso'+idSeguro">Lista de Cursos</h5>
+      <button type="button" class="close" [attr.data-dismiss]="'modal'" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
+    <div class="modal-body">
+        <div class="row">
+          <div class="col-4">
+            <select (change)='selectCurso($event)' size="8"  class=" form-control list-group" id="list-tab" role="tablist">
+                <option *ngFor="let curso of cursos" 
+                class="list-group-item list-group-item-action" 
+                [attr.id]="'list-home-list-curso'+curso.curso_id" 
+                [attr.data-toggle]="'list'" 
+                [attr.href]="'#list-curso'+curso.curso_id+idSeguro" 
+                href="#list-home-curso" 
+                role="tab" 
+                aria-controls="home-curso"
+                [attr.value]="curso.curso_id"
+                >
+                  {{curso.nombre}}
+                </option>
+            </select>
+          </div>
+          <div class="col-8">
+            <div class="tab-content" id="nav-tabContent">
+              <div 
+              *ngFor="let curso_0 of cursos" 
+              class="tab-pane fade show" 
+              [attr.id]="'list-curso'+curso_0.curso_id+idSeguro" 
+              role="tabpanel" 
+              [attr.aria-labelledby]="'list-home-list-curso'+curso_0.curso_id">
+                <div class="card mb-3">
+                  <div class="row no-gutters">
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">{{curso_0.nombre}}</h5>
+                        <p class="card-text">Numero de Cursos asignados</p>
+                        <p class="card-text"><small class="text-muted">3 Cursos</small></p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" [attr.data-dismiss]="'modal'">Cancelar</button>
+      <button type="button" (click)="enviarCurso()" [attr.data-dismiss]="'modal'" class="btn btn-primary">Seleccionar Docente</button>
+    </div>
+
+  </div>
+
+</div>
+  
