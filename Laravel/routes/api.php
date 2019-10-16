@@ -65,6 +65,10 @@ Route::group(['prefix' => 'auth'], function () {
     Route::group(['middleware' => 'auth:api'],function(){
         Route::post('registroAlumno','AlumnoController@crear')->middleware('verified');
     });
+    
+    Route::group(['middleware' => 'auth:api'],function(){
+        Route::post('registroAlumnoCurso','AlumnoCursoController@crear')->middleware('verified');
+    });
 
 });
 

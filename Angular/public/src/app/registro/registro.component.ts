@@ -20,20 +20,23 @@ export class RegistroComponent implements OnInit {
     this.familiar=new User();
     this.familiar.tipo="Familiar";
     this.setErrors();
-    console.log("mis errroes");
-    console.log(this.errors);
   }
   registro(form:NgForm){
     console.log(form);
-    if(form.valid){
+    if(form.valid && this.equals()){
       console.log("---REGISTRO---");
       console.log(this.familiar);
       console.log("------");
-        this._familiar.create(this.familiar).subscribe(res=>{
-          console.log(res);
-          alert("Registro Exitoso");
-          this.familiar=new User();
-        });
+      this._familiar.create(this.familiar).subscribe(res=>{
+        console.log("mi res");
+        console.log(res);
+        alert("Registro Exitoso");
+        this.familiar=new User();
+      },error=>{
+        console.log("mi error");
+        console.log(error);
+        alert("error en el registro");
+      });
     }else{
       console.log("no es valido");
       if(form.controls.nombre.status==='INVALID')
@@ -50,6 +53,11 @@ export class RegistroComponent implements OnInit {
         this.errors[6].getError();
     }
 
+  }
+  equals():boolean{
+    if(this.familiar.password===this.familiar.password_confirmation)
+      return true;
+    return false;
   }
   setErrors():void{
     this.errors.push(new Errores('Error al Ingresar los Datos'));

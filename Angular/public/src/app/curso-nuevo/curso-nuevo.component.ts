@@ -47,6 +47,7 @@ export class CursoNuevoComponent implements OnInit {
         console.log("mi error");
         console.log(error);
         this.spinner=false;
+        alert("error al crear el curso");
       })
     }else{
       console.log("no es valido");
@@ -80,6 +81,7 @@ export class CursoNuevoComponent implements OnInit {
     console.log(turno);
     this.turno=turno;
     this.curso.turno_id=this.turno.turno_id;
+    this.curso.gestion=this.turno.gestion;
   }
   setErrors():void{
     this.errors.push(new Errores('Error al crear el Curso'));

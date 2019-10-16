@@ -51,6 +51,7 @@ export class TurnoNuevoComponent implements OnInit {
         console.log("mi mensaje error");
         console.log(error.message);
         this.spinner=false;
+        alert("error al crear el turno");
       });
     }else{
       console.log("no es valido");

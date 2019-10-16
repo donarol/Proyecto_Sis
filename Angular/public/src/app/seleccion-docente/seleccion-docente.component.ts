@@ -61,6 +61,7 @@ export class SeleccionDocenteComponent implements OnInit {
     },error=>{
       console.log("mi error");
       console.log(error);
+      alert("error al cargar el docente");
     });
   }
 

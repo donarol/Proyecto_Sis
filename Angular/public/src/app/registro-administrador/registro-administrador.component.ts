@@ -39,10 +39,15 @@ export class RegistroAdministradorComponent implements OnInit {
       console.log("---REGISTRO---");
       console.log(this.administrador);
       console.log("------");
-       this._administrador.create(this.administrador).subscribe(res=>{
-          console.log(res);
-          alert("Registro Exitoso");
-        });
+      this._administrador.create(this.administrador).subscribe(res=>{
+        console.log(res);
+        alert("Registro Exitoso");
+        this.administrador=new User;
+      },error=>{
+        console.log("mi error");
+        console.log(error);
+        alert("error en el registro");
+      });
     }else{
       console.log("no es valido");
       if(form.controls.nombre.status==='INVALID')

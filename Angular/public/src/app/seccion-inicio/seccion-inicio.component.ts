@@ -32,6 +32,7 @@ export class SeccionInicioComponent implements OnInit {
       console.log("mi error");
       console.log(error);
       this.spinner=false;
+      alert("error al cargar las secciones");
     });
   }
   updateSeccion(form:NgForm,id){
@@ -48,6 +49,7 @@ export class SeccionInicioComponent implements OnInit {
         console.log("mi error");
         console.log(error);
         this.spinner=false;
+        alert("error al actualizar la seccion");
       });
     }else{
       console.log("no es valido");

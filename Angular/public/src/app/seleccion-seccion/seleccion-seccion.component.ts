@@ -29,6 +29,7 @@ export class SeleccionSeccionComponent implements OnInit {
     },error=>{
       console.log("mi error");
       console.log(error);
+      alert("error al cargas las secciones");
     });
   }
   getSeccion(id:String):Seccion{

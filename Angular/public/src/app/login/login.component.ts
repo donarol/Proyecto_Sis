@@ -43,6 +43,7 @@ export class LoginComponent implements OnInit {
           console.log("el erro 2");
           console.log(error);
           this.spinner=false;
+          alert("error al logearse");
         });
         //sessionStorage.setItem();
       //  this._router.navigate([`/userInicio/${res.id}`]);

@@ -1,4 +1,5 @@
 export class Alumno{
+    alumno_id:String;
     nombre:String;
     apellido:String;
     fecha_nacimiento:String;
@@ -10,6 +11,7 @@ export class Alumno{
     rude:Boolean;
     certificado_nacimiento:Boolean;
     constructor(){
+        this.alumno_id='';
         this.nombre='';
         this.apellido='';
         this.fecha_nacimiento='';

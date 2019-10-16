@@ -7,6 +7,8 @@ import { Curso } from '../modelos/Curso';
 import { Turno } from '../modelos/Turno';
 import { TurnoService } from '../servicios/turno.service';
 import { NgForm } from '@angular/forms';
+import { AlumnoCursoService } from '../servicios/alumno-curso.service';
+import { Alumno_Curso } from '../modelos/Alumno_Curso';
 
 @Component({
   selector: 'app-alumno-nuevo',
@@ -22,16 +24,19 @@ export class AlumnoNuevoComponent implements OnInit {
   private turno:Turno;
   private spinnerTurno:Boolean;
   private spinner:Boolean;
+  private alumnoCurso:Alumno_Curso;
   jstoday = '';
   constructor(
     private _alumno:AlumnoService,
-    private _turno:TurnoService
+    private _turno:TurnoService,
+    private _alumnoCurso:AlumnoCursoService
   ) {}
 
   ngOnInit() {
     this.alumno=new Alumno;
     this.curso=new Curso;
     this.turno=new Turno;
+    this.alumnoCurso=new Alumno_Curso;
     this.spinnerTurno=false;
     this.spinner=false;
     this.today= new Date;
@@ -41,6 +46,23 @@ export class AlumnoNuevoComponent implements OnInit {
   }
 
   inscribirAlumno(form:NgForm){
+  /*  this.alumnoCurso.alumno_id="1";
+    this.alumnoCurso.curso_id="1";
+    this.alumnoCurso.estado=true;
+    this._alumnoCurso.addAlumnoCurso(this.alumnoCurso).subscribe(res=>{
+      console.log("mi res");
+      console.log(res);
+    },error=>{
+      console.log("mi error");
+      console.log(error);
+    });*/
+    /*this._alumnoCurso.addAlumnoCurso(this.alumnoCurso).subscribe(res=>{
+      console.log("mi res");
+      console.log(res);
+    },error=>{
+      console.log("mi error");
+      console.log(error);
+    });*/
   
     console.log(form);
     if(form.valid){
@@ -49,11 +71,23 @@ export class AlumnoNuevoComponent implements OnInit {
       this._alumno.addAlumno(this.alumno).subscribe(res=>{
         console.log("mi res");
         console.log(res);
-        this.spinner=false;
+        this.alumnoCurso.alumno_id=res.alumno_id;
+        this.alumnoCurso.estado=true;
+        this._alumnoCurso.addAlumnoCurso(this.alumnoCurso).subscribe(res=>{
+          console.log("mi res");
+          console.log(res);
+          this.spinner=false;
+        },error=>{
+          console.log("mi error");
+          console.log(error);
+          this.spinner=false;
+          alert("alumno inscrito correctamente");
+        });
       },error=>{
         console.log("mi error");
         console.log(error);
         this.spinner=false;
+        alert("error al incribir al alumno");
       });
     }else{
       console.log("no es valido");
@@ -83,6 +117,7 @@ export class AlumnoNuevoComponent implements OnInit {
     console.log(curso);
     this.curso=curso;
     this.cargaTurno(this.curso.turno_id);
+    this.alumnoCurso.curso_id=this.curso.curso_id;
   }
   cargaTurno(id:String){
     this.spinnerTurno=true;
@@ -95,6 +130,7 @@ export class AlumnoNuevoComponent implements OnInit {
       console.log("mi error");
       console.log(error);
       this.spinnerTurno=false;
+      alert("error al cargar el turno");
     });
   }
   setErrors():void{

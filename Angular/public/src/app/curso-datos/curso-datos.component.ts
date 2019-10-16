@@ -24,6 +24,7 @@ export class CursoDatosComponent implements OnInit {
     },error=>{
       console.log("mi error");
       console.log(error);
+      alert("error al cargar los cursos");
     });
   }
 

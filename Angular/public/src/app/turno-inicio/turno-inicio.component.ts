@@ -31,6 +31,7 @@ export class TurnoInicioComponent implements OnInit {
       console.log("error al carga turnos");
       console.log(error);
       this.spinner=false;
+      alert("error al cargar los turnos");
     });
   }
   borraTurno(turno:Turno){

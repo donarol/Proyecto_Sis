@@ -52,6 +52,7 @@ private aux:String;
       console.log("mi error");
       console.log(error);
       this.spinnerDocente=false;
+      alert("error al cargar los docentes");
     });
   }
   cargaSeccion():void{
@@ -65,6 +66,7 @@ private aux:String;
       console.log("mi error");
       console.log(error);
       this.spinnerSeccion=false;
+      alert("error al cargar los cursos");
     });
   }
   cargaTurno():void{
@@ -78,6 +80,7 @@ private aux:String;
       console.log("mi error");
       console.log(error);
       this.spinnerTurno=false;
+      alert("error al cargar los turnos");
     });
   }
   modificarCurso(form:NgForm){
@@ -129,6 +132,7 @@ private aux:String;
     console.log(turno);
     this.turno=turno;
     this.curso.turno_id=this.turno.turno_id;
+    this.curso.gestion=this.turno.gestion;
   }
   setErrors():void{
     this.errors.push(new Errores('Error al crear el Curso'));

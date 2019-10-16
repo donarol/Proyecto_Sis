@@ -79,7 +79,7 @@
       </div>
       <div class="selectores">
         <p>Gestion:</p>
-        <input class="form-control form-control-sm" type="text" id="gestion" name="gestion" required autocomplete="off" [(ngModel)]="curso.gestion">
+        <input class="form-control form-control-sm" type="text" id="gestion" name="gestion" required autocomplete="off" readonly [(ngModel)]="curso.gestion">
         <div class="alert alert-danger" role="alert" *ngIf="errors[5].isError">
           {{errors[5].message}}
         </div>

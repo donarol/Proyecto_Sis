@@ -67,8 +67,17 @@ Route::get('Cursos',function(){
     $lista = User::find(10)->cursos;
     return $lista;
 });*/
-Route::get('MisDocentes/{id}',function($id){
+/*Route::get('MisDocentes/{id}',function($id){
     $lista = App\Modelos\Curso::find($id);
 
     echo $lista->user;
 });
+*/
+/*
+Route::get("/alumno/{id}/cursos",function($id){
+    $alumno=App\Modelos\Alumno::find($id)->cursos;
+    foreach($alumno as $c){
+        echo $c;
+    }
+});
+*/

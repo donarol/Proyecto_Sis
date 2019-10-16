@@ -37,6 +37,7 @@ export class TurnoDatosComponent implements OnInit {
       console.log("mi error");
       console.log(error);
       this.spinner=false;
+      alert("error al cargar el turno");
     });
   }
   updateTurno(form:NgForm){
@@ -51,6 +52,7 @@ export class TurnoDatosComponent implements OnInit {
         console.log("mi error");
         console.log(error);
         this.spinner=false;
+        alert("error al actualizar el turno");
       });
     }else{
       console.log("no es valido");

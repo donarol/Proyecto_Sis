@@ -140,6 +140,11 @@
         <div>
           <button id="btn_inscribir" type="submit" class="btn btn-secondary">Inscribir Alumno</button>
         </div>
+        <div class="input-group-prepend" *ngIf="spinner" >
+          <div class="spinner-border text-danger" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
         <div class="largo text-right">
           <p><span>Fecha de Inscripcion: </span>{{jstoday}}</p>
         </div>

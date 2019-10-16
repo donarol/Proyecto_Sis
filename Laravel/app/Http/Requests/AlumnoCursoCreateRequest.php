@@ -4,9 +4,9 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AlumnoCreateRequest extends FormRequest
+class AlumnoCursoCreateRequest extends FormRequest
 {
-    protected $redirectAction = 'AlumnoController@crearMal';
+    protected $redirectAction = 'AlumnoCursoController@crearMal';
     /**
      * Determine if the user is authorized to make this request.
      *
@@ -25,13 +25,9 @@ class AlumnoCreateRequest extends FormRequest
     public function rules()
     {
         return [
-            'nombre'=>'required|string',
-            'apellido'=>'required|string',
-            'fecha_nacimiento'=>'required|string',
-            'lugar_nacimiento'=>'required|string',
-            'tipo_sanguineo'=>'required|string',
-            'telefono'=>'required|string',
-            'domicilio'=>'required|string' 
+            'alumno_id'=>'require',
+            'curso_id'=>'require',
+            'estado'=>'require'
         ];
     }
 }
