@@ -3,9 +3,6 @@ import { Errores } from '../modelos/Errores';
 import { NgForm } from '@angular/forms';
 import { CursoService } from '../servicios/curso.service';
 import { User } from '../modelos/User';
-import { UserService } from '../servicios/user.service';
-import { SeccionService } from '../servicios/seccion.service';
-import { TurnoService } from '../servicios/turno.service';
 import { Turno } from '../modelos/Turno';
 import { Seccion } from '../modelos/Seccion';
 import { Curso } from '../modelos/Curso';
@@ -18,26 +15,17 @@ import { Curso } from '../modelos/Curso';
 export class CursoNuevoComponent implements OnInit {
   private errors:Errores[]=[];
   private spinner:boolean;
-  private spinnerDocente:boolean;
-  private spinnerSeccion:boolean;
-  private spinnerTurno:boolean;
   private administrador:User;
   private turno:Turno;
   private seccion:Seccion;
   private curso:Curso;
   constructor(
-    private _curso:CursoService,
-    private _administrador:UserService,
-    private _seccion:SeccionService,
-    private _turno:TurnoService,
+    private _curso:CursoService
   ) {}
 
   ngOnInit() {
     this.setErrors();
     this.spinner=false;
-    this.spinnerDocente=false;
-    this.spinnerSeccion=false;
-    this.spinnerTurno=false;
     this.administrador=new User;
     this.turno=new Turno;
     this.seccion=new Seccion;
@@ -54,6 +42,7 @@ export class CursoNuevoComponent implements OnInit {
         console.log("mi res");
         console.log(res);
         this.spinner=false;
+        this.curso = new Curso;
       },error=>{
         console.log("mi error");
         console.log(error);
@@ -74,53 +63,23 @@ export class CursoNuevoComponent implements OnInit {
     }
 
   }
-  SelecDocente(id:string){
+  SelecDocente(user:User){
     console.log("me llego docente: ");
-    console.log(id);
-    this.spinnerDocente=true;
-    this._administrador.getUser(id).subscribe(res=>{
-      console.log("mi res");
-      console.log(res);
-      this.administrador=res;
-      this.curso.user_id=this.administrador.id;
-      this.spinnerDocente=false;
-    },error=>{
-      console.log("mi error");
-      console.log(error);
-      this.spinnerDocente=false;
-    });
+    console.log(user);
+    this.administrador=user;
+    this.curso.user_id=this.administrador.id;
   }
-  SelecSeccion(id:string){
+  SelecSeccion(seccion:Seccion){
     console.log("me llego Seccion: ");
-    console.log(id);
-    this.spinnerSeccion=true;
-    this._seccion.getSeccion(id).subscribe(res=>{
-      console.log("mi res");
-      console.log(res);
-      this.seccion=res;
-      this.curso.seccion_id=this.seccion.seccion_id;
-      this.spinnerSeccion=false;
-    },error=>{
-      console.log("mi error");
-      console.log(error);
-      this.spinnerSeccion=false;
-    });
+    console.log(seccion);
+    this.seccion=seccion;
+    this.curso.seccion_id=this.seccion.seccion_id;
   }
-  SelecTurno(id:string){
+  SelecTurno(turno:Turno){
     console.log("me llego Turno: ");
-    console.log(id);
-    this.spinnerTurno=true;
-    this._turno.getTurno(id).subscribe(res=>{
-      console.log("mi res");
-      console.log(res);
-      this.turno=res;
-      this.curso.turno_id=this.turno.turno_id;
-      this.spinnerTurno=false;
-    },error=>{
-      console.log("mi error");
-      console.log(error);
-      this.spinnerTurno=false;
-    });
+    console.log(turno);
+    this.turno=turno;
+    this.curso.turno_id=this.turno.turno_id;
   }
   setErrors():void{
     this.errors.push(new Errores('Error al crear el Curso'));

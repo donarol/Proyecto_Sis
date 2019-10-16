@@ -17,13 +17,6 @@ export class ValidacionService {
     console.log("validar user");
     console.log(user);
     var error:boolean[]=[false,false,false,false,false,false,false];
-    error[0]=this.validarCampo(user.nombre);
-    error[1]=this.validarCampo(user.apellido);
-    error[2]=this.validarCampo(user.carnet);
-    error[3]=this.validarCampo(user.telefono);
-    error[4]=this.validarCampo(user.email);
-    error[5]=this.validarCampo(user.password,7);
-    error[6]=this.validarCampo(user.password_confirmation,7);
     return error;
   }
   

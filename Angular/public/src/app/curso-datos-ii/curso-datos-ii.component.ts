@@ -5,9 +5,6 @@ import { User } from '../modelos/User';
 import { Turno } from '../modelos/Turno';
 import { Seccion } from '../modelos/Seccion';
 import { CursoService } from '../servicios/curso.service';
-import { UserService } from '../servicios/user.service';
-import { SeccionService } from '../servicios/seccion.service';
-import { TurnoService } from '../servicios/turno.service';
 import { NgForm } from '@angular/forms';
 
 @Component({
@@ -27,14 +24,10 @@ private turno:Turno;
 private seccion:Seccion;
 private aux:String;
   constructor(
-    private _curso:CursoService,
-    private _administrador:UserService,
-    private _seccion:SeccionService,
-    private _turno:TurnoService,
+    private _curso:CursoService
   ) {}
 
   ngOnInit() {
-    this.setErrors();
     this.spinner=false;
     this.spinnerDocente=false;
     this.spinnerSeccion=false;
@@ -42,10 +35,50 @@ private aux:String;
     this.administrador=new User;
     this.turno=new Turno;
     this.seccion=new Seccion;
-    this.SelecDocente(this.curso.user_id);
-    this.SelecSeccion(this.curso.seccion_id);
-    this.SelecTurno(this.curso.turno_id);
+    this.setErrors();
+    this.cargaDocente();
+    this.cargaSeccion();
+    this.cargaTurno();
     this.aux=this.curso.nombre.toString();
+  }
+  cargaDocente():void{
+    this.spinnerDocente=true;
+    this._curso.getDocente(this.curso.curso_id).subscribe(res=>{
+      console.log("mi res");
+      console.log(res);
+      this.administrador=res;
+      this.spinnerDocente=false;
+    },error=>{
+      console.log("mi error");
+      console.log(error);
+      this.spinnerDocente=false;
+    });
+  }
+  cargaSeccion():void{
+    this.spinnerSeccion=true;
+    this._curso.getSeccion(this.curso.curso_id).subscribe(res=>{
+      console.log("mi res");
+      console.log(res);
+      this.seccion=res;
+      this.spinnerSeccion=false;
+    },error=>{
+      console.log("mi error");
+      console.log(error);
+      this.spinnerSeccion=false;
+    });
+  }
+  cargaTurno():void{
+    this.spinnerTurno=true;
+    this._curso.getTurno(this.curso.curso_id).subscribe(res=>{
+      console.log("mi res");
+      console.log(res);
+      this.turno=res;
+      this.spinnerTurno=false;
+    },error=>{
+      console.log("mi error");
+      console.log(error);
+      this.spinnerTurno=false;
+    });
   }
   modificarCurso(form:NgForm){
     console.log(form);
@@ -79,53 +112,23 @@ private aux:String;
     }
 
   }
-  SelecDocente(id:String){
+  SelecDocente(user:User){
     console.log("me llego docente: ");
-    console.log(id);
-    this.spinnerDocente=true;
-    this._administrador.getUser(id).subscribe(res=>{
-      console.log("mi res");
-      console.log(res);
-      this.administrador=res;
-      this.curso.user_id=this.administrador.id;
-      this.spinnerDocente=false;
-    },error=>{
-      console.log("mi error");
-      console.log(error);
-      this.spinnerDocente=false;
-    });
+    console.log(user);
+    this.administrador=user;
+    this.curso.user_id=this.administrador.id;
   }
-  SelecSeccion(id:String){
+  SelecSeccion(seccion:Seccion){
     console.log("me llego Seccion: ");
-    console.log(id);
-    this.spinnerSeccion=true;
-    this._seccion.getSeccion(id).subscribe(res=>{
-      console.log("mi res");
-      console.log(res);
-      this.seccion=res;
-      this.curso.seccion_id=this.seccion.seccion_id;
-      this.spinnerSeccion=false;
-    },error=>{
-      console.log("mi error");
-      console.log(error);
-      this.spinnerSeccion=false;
-    });
+    console.log(seccion);
+    this.seccion=seccion;
+    this.curso.seccion_id=this.seccion.seccion_id;
   }
-  SelecTurno(id:String){
+  SelecTurno(turno:Turno){
     console.log("me llego Turno: ");
-    console.log(id);
-    this.spinnerTurno=true;
-    this._turno.getTurno(id).subscribe(res=>{
-      console.log("mi res");
-      console.log(res);
-      this.turno=res;
-      this.curso.turno_id=this.turno.turno_id;
-      this.spinnerTurno=false;
-    },error=>{
-      console.log("mi error");
-      console.log(error);
-      this.spinnerTurno=false;
-    });
+    console.log(turno);
+    this.turno=turno;
+    this.curso.turno_id=this.turno.turno_id;
   }
   setErrors():void{
     this.errors.push(new Errores('Error al crear el Curso'));

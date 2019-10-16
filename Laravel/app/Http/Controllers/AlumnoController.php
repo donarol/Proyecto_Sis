@@ -13,6 +13,6 @@ class AlumnoController extends Controller
         return $alumno->crear($datos);
     }
     public function crearMal(){
-        echo 'errro al crear cuenta alumno';
+        echo 'error al crear cuenta alumno';
     }
 }

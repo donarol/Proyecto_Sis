@@ -10,9 +10,9 @@ import { TurnoService } from '../servicios/turno.service';
 export class SeleccionTurnoComponent implements OnInit {
   @Input('idSeguro') private idSeguro;
   private turnos:Turno[];
-  private model:string;
+  private model:Turno;
   private aux:string;
-  @Output() selecTurno = new EventEmitter<string>();
+  @Output() selecTurno = new EventEmitter<Turno>();
   constructor(
     private _turno:TurnoService
   ) { }
@@ -26,8 +26,15 @@ export class SeleccionTurnoComponent implements OnInit {
     console.log(this.aux);
   }
   enviarTurno(){
-    this.model=this.aux;
-    this.selecTurno.emit(this.model);
+  /*  this.model=this.aux;
+    this.selecTurno.emit(this.model);*/
+    if(this.getTurno(this.aux)!=null){
+      console.log("se enviara");
+      this.model=this.getTurno(this.aux);
+      this.selecTurno.emit(this.model);
+    }else{
+      console.log("es nulo no se enviara nada");
+    }
   }
   getTurnos():void{
     this._turno.getTurnos().subscribe(res=>{
@@ -38,6 +45,17 @@ export class SeleccionTurnoComponent implements OnInit {
       console.log("mi error");
       console.log(error);
     });
+  }
+  getTurno(id:String){
+    console.log("se recibe: "+id);
+    for (let index = 0; index < this.turnos.length; index++) {
+      console.log("se ve "+this.turnos[index].turno_id);
+      if(this.turnos[index].turno_id==id){
+        console.log("se encontro "+this.turnos[index].turno_id);
+        return this.turnos[index];
+      }
+    }
+    return null;
   }
 
 }

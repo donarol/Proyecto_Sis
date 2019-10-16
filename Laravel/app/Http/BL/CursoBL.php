@@ -24,6 +24,19 @@ class CursoBL{
         $cursoDao = new CursoDAO;
         return $cursoDao->obtener($id);    
     }
+    public function miDocente($id){
+        $cursoDao = new CursoDAO;
+        return $cursoDao->miDocente($id);
+    }
+    public function miSeccion($id){
+        $cursoDao = new CursoDAO;
+        return $cursoDao->miSeccion($id);
+    }
+    public function miTurno($id){
+        $cursoDao = new CursoDAO;
+        return $cursoDao->miTurno($id);
+    }
+
     public function modificar($id,$datos){    
         $curso=Curso::find($id);
         $curso->nombre=$datos['nombre'];

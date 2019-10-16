@@ -7,6 +7,10 @@ use App\Http\BL\CursoBL;
 use App\Http\Requests\CursoCreateRequest;
 class CursoController extends Controller
 {
+/*
+    function __construct(Type $var = null) {
+        $this->var = $var;
+    }*/
     public function crear(CursoCreateRequest $request){
         $datos = $request->json()->all();
         $curso = new CursoBL;
@@ -28,4 +32,17 @@ class CursoController extends Controller
         $curso = new CursoBL;
         return $curso->obtener($id);
     }
+    public function miDocente($id){
+        $curso = new CursoBL;
+        return $curso->miDocente($id);
+    }
+    public function miSeccion($id){
+        $curso = new CursoBL;
+        return $curso->miSeccion($id);
+    }
+    public function miTurno($id){
+        $curso = new CursoBL;
+        return $curso->miTurno($id);
+    }
+
 }

@@ -10,18 +10,18 @@ import { Seccion } from '../modelos/Seccion';
 export class SeleccionSeccionComponent implements OnInit {
   @Input('idSeguro') private idSeguro;
   private secciones:Seccion[];
-  private model:string;
+  private model:Seccion;
   private aux:string;
-  @Output() selecSeccion = new EventEmitter<string>();
+  @Output() selecSeccion = new EventEmitter<Seccion>();
   constructor(
     private _seccion:SeccionService
   ) { }
 
   ngOnInit() {
-    this.getSeccion();
-    this.model='';
+    this.getSecciones();
+    this.model=new Seccion;
   }
-  getSeccion():void{
+  getSecciones():void{
     this._seccion.getSecciones().subscribe(res=>{
       console.log("mi res");
       console.log(res);
@@ -31,6 +31,17 @@ export class SeleccionSeccionComponent implements OnInit {
       console.log(error);
     });
   }
+  getSeccion(id:String):Seccion{
+    console.log("se recibe: "+id);
+    for (let index = 0; index < this.secciones.length; index++) {
+      console.log("se ve: "+this.secciones[index].seccion_id);
+      if(this.secciones[index].seccion_id==id){
+        console.log("se encontro "+this.secciones[index].seccion_id);
+        return this.secciones[index];
+      }
+    }
+    return null;
+  }
   
   selectSeccion(deviceValue){
     console.log("se cambio");
@@ -38,7 +49,14 @@ export class SeleccionSeccionComponent implements OnInit {
     console.log(this.aux);
   }
   enviarSeccion(){
-    this.model=this.aux;
-    this.selecSeccion.emit(this.model);
+   /* this.model=this.aux;
+    this.selecSeccion.emit(this.model);*/
+    if(this.getSeccion(this.aux)!=null){
+      console.log("se enviara");
+      this.model=this.getSeccion(this.aux);
+      this.selecSeccion.emit(this.model);
+    }else{  
+      console.log("es nulo no se enviara nada");
+    }
   }
 }
