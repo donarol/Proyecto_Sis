@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { Turno } from '../modelos/Turno';
 import { TurnoService } from '../servicios/turno.service';
 import { UserService } from '../servicios/user.service';
+import { Router } from '@angular/router';
 import { Errores } from '../modelos/Errores';
 import { NgForm } from '@angular/forms';
-
 @Component({
   selector: 'app-turno-nuevo',
   templateUrl: './turno-nuevo.component.html',
@@ -16,22 +16,24 @@ export class TurnoNuevoComponent implements OnInit {
   private spinner:boolean;
   constructor(
     private _turnoService:TurnoService,
-    private _user:UserService
+    private _user:UserService,
+    private _router:Router
   ) { }
 
   ngOnInit() {
     this.turno=new Turno();
     this.setErrors();
-    this.spinner=false;
-   /* this._user.getUserActual().subscribe(res=>{
+    this.spinner=false;  
+    this._user.getUserActual().subscribe(res=>{
       console.log("Mi res");
       console.log(res);
       if(res.tipo==='Administrador'){
-        alert('Usted es Administrador');
+        console.log("usted es administrador");
       }else{
         alert('Usted no es Administrador');
+        this._router.navigate(['']);
       }
-    });*/
+    });
   }
   /*onChangeGestion(deviceValue){
     console.log(deviceValue.target.value);

@@ -34,6 +34,7 @@ export class CursoService {
   updateCurso(curso:Curso):Observable<Curso>{
     return this.http.put<Curso>(`http://homestead.test/api/auth/curso/${curso.curso_id}`,curso,this.getoken());
   }
+
   getoken(){
 
     var httpOptions = {

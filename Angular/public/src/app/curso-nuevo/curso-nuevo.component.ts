@@ -6,7 +6,8 @@ import { User } from '../modelos/User';
 import { Turno } from '../modelos/Turno';
 import { Seccion } from '../modelos/Seccion';
 import { Curso } from '../modelos/Curso';
-
+import { UserService } from '../servicios/user.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-curso-nuevo',
   templateUrl: './curso-nuevo.component.html',
@@ -20,7 +21,9 @@ export class CursoNuevoComponent implements OnInit {
   private seccion:Seccion;
   private curso:Curso;
   constructor(
-    private _curso:CursoService
+    private _curso:CursoService,
+    private _user:UserService,
+    private _router:Router
   ) {}
 
   ngOnInit() {
@@ -29,11 +32,21 @@ export class CursoNuevoComponent implements OnInit {
     this.administrador=new User;
     this.turno=new Turno;
     this.seccion=new Seccion;
-    this.curso=new Curso;
+    this.curso=new Curso;   
+    this._user.getUserActual().subscribe(res=>{
+      console.log("Mi res");
+      console.log(res);
+      if(res.tipo==='Administrador'){
+        console.log("es administrador");
+      }else{
+        alert('Usted no es Administrador');
+        this._router.navigate(['']);
+      }
+    });
   }
   crearCurso(form:NgForm){
     console.log(form);
-    if(form.valid){
+    if(form.valid && Number(this.curso.gestion)>=2019){
       console.log("es valido");
       console.log("mi curso");
       console.log(this.curso);
@@ -60,6 +73,8 @@ export class CursoNuevoComponent implements OnInit {
       if(form.controls.turno.status==='INVALID')
         this.errors[4].getError();
       if(form.controls.gestion.status==='INVALID')
+        this.errors[5].getError();
+      if(Number(this.curso.gestion)<2019)
         this.errors[5].getError();
     }
 

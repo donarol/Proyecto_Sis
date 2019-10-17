@@ -4,7 +4,8 @@ import { Turno } from '../modelos/Turno';
 import { TurnoService } from '../servicios/turno.service';
 import { Errores } from '../modelos/Errores';
 import { NgForm } from '@angular/forms';
-
+import { UserService } from '../servicios/user.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-turno-datos',
   templateUrl: './turno-datos.component.html',
@@ -16,14 +17,26 @@ export class TurnoDatosComponent implements OnInit {
   private spinner:boolean;
   constructor(
     private rutaActiva:ActivatedRoute,
-    private _turno:TurnoService
+    private _turno:TurnoService,
+    private _user:UserService,
+    private _router:Router
   ) {}
 
   ngOnInit() {
     this.turno=new Turno();
     this.spinner=true;
     this.setErrors();
-    this.getTurno();
+    this.getTurno();   
+    this._user.getUserActual().subscribe(res=>{
+      console.log("Mi res");
+      console.log(res);
+      if(res.tipo==='Administrador'){
+        console.log("usted es administrador");
+      }else{
+        alert('Usted no es Administrador');
+        this._router.navigate(['']);
+      }
+    });
   }
   getTurno(){
     this._turno.getTurno(this.rutaActiva.snapshot.params.id).subscribe(res=>{
