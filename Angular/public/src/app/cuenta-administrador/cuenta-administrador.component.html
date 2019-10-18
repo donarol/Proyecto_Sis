@@ -1,11 +1,11 @@
 <div class="datos-user">
   <div class="imagen">
-    <figure >
+    <figure>
       <div>
-        <img src="...">
+        <img [src]="'/assets/img/' + imagenName">
       </div>
       <figcaption >
-        <div class="custom-file">
+        <div class="custom-file" *ngIf="isUpdate">
           <input type="file" class="custom-file-input" id="customFile">
           <label class="custom-file-label" for="customFile">Choose file</label>
         </div>
@@ -14,34 +14,56 @@
   </div>
 
   <div class="datos">
-    <form (ngSubmit)="actualizar()">
-      <div class="contenido-datos">
-        <p>Nombre:</p>
-        <input type="text" class="form-control form-control-sm" name="nombre" [(ngModel)]="model.nombre">
-      </div>    
-      <div class="contenido-datos">
-        <p>Apellido:</p>
-        <input type="text" class="form-control form-control-sm" name="apellido" [(ngModel)]="model.apellido">
+
+      <div *ngIf="!isUpdate">
+        <button type="button" class="btn btn-info" routerLink="/administrador_inicio">Atras</button>
+       </div>
+    <div class="contenido-datos">
+      <p>Nombre:</p>
+      <input type="text" class="form-control form-control-sm" id="nombre" name="nombre" [(ngModel)]="model.nombre" required autocomplete="off">
+      <div class="alert alert-danger" role="alert" *ngIf="errors[1].isError">
+        {{errors[1].message}}
       </div>
-      <div class="contenido-datos">
-        <p>Carnet:</p>
-        <input type="text" class="form-control form-control-sm" name="carnet" [(ngModel)]="model.carnet">
+    </div>    
+    <div class="contenido-datos">
+      <p>Apellido:</p>
+      <input type="text" class="form-control form-control-sm" id="apellido" name="apellido" [(ngModel)]="model.apellido" required autocomplete="off">
+      <div class="alert alert-danger" role="alert" *ngIf="errors[2].isError">
+        {{errors[2].message}}
       </div>
-      <div class="contenido-datos">
-        <p>Telefono:</p>
-        <input type="text" class="form-control form-control-sm" name="telefono" [(ngModel)]="model.telefono">
+    </div>
+    <div class="contenido-datos">
+      <p>Carnet:</p>
+      <input type="text" class="form-control form-control-sm" id="carnet" name="carnet" [(ngModel)]="model.carnet" required autocomplete="off">
+      <div class="alert alert-danger" role="alert" *ngIf="errors[3].isError">
+        {{errors[3].message}}
       </div>
-      <div class="contenido-datos">
-        <p>Correo:</p>
-        <input type="text" class="form-control form-control-sm" name="correo" [(ngModel)]="model.correo">  
+    </div>
+    <div class="contenido-datos">
+      <p>Telefono:</p>
+      <input type="text" class="form-control form-control-sm" id="telefono" name="telefono" [(ngModel)]="model.telefono" required autocomplete="off">
+      <div class="alert alert-danger" role="alert" *ngIf="errors[4].isError">
+        {{errors[4].message}}
       </div>
-      <div class="contenido-datos">
-        <p>Cargo:</p>
-        <input type="text" class="form-control form-control-sm" name="cargo" [(ngModel)]="model.cargo">  
+    </div>
+    <div class="contenido-datos">
+      <p>Correo:</p>
+      <input type="email" class="form-control form-control-sm" id="email" name="email" [(ngModel)]="model.email" required autocomplete="off">  
+      <div class="alert alert-danger" role="alert" *ngIf="errors[5].isError">
+        {{errors[5].message}}
       </div>
-      <div>
-        <button type="submit" class="btn btn-primary">Guardar</button>
-      </div>
-    </form>
+    </div>
+    <!--
+    <div class="contenido-datos">
+      <p>Cargo:</p>
+      <input type="text" class="form-control form-control-sm" [(ngModel)]="model.cargo">  
+    </div>-->
+
+    <div *ngIf="isUpdate">
+      <button class="btn btn-info"  (click)="guardar()">Guardar</button>
+    </div>
+    <div class="spinner-border text-danger" role="status" *ngIf="spinner">
+        <span class="sr-only">Loading...</span>
+    </div>
   </div>
 </div>

@@ -1,14 +1,29 @@
 <div class="contenido">
     
-    <form (ngSubmit)="login()">
+    <form #formLogin="ngForm" (ngSubmit)="login(formLogin)">
         <div>
+            <div class="alert alert-danger" role="alert" *ngIf="error.isError">
+                {{error.message}}
+            </div>
             <p>Correo Electronico:</p>
-            <input type="email" name="correo" [(ngModel)]="model.correo">
+            <input type="email" name="email" [(ngModel)]="model.email" [email]="true" required autocomplete="off">
+            <div class="alert alert-danger" role="alert" *ngIf="errorEmail.isError">
+                {{errorEmail.message}}
+            </div>
         </div>
         <div>
             <p>Contraseña</p>
-            <input type="password" name="password" [(ngModel)]="model.contrasena">
+            <input type="password" name="password" [(ngModel)]="model.password" minlength="8" required autocomplete="off">
+            <div class="alert alert-danger" role="alert" *ngIf="errorPassword.isError">
+                {{errorPassword.message}}
+            </div>
         </div>
-        <button class="btn btn-info" type="submit">Ingresar</button>
+        <div>
+            <button class="btn btn-info" type="submit">Ingresar</button>
+        </div>
+        <div class="spinner-border text-danger" role="status" *ngIf="spinner">
+            <span class="sr-only">Loading...</span>
+        </div>
+
     </form>
 </div>

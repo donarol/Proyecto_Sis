@@ -1,32 +1,50 @@
 <div class="contenido">
-  <form (ngSubmit)="registro()">
+  <form  #formLogin="ngForm" (ngSubmit)="registro(formLogin)">
     <div class="corto">
-      <p>Nombre:</p>
-      <input type="text" name="nombre" [(ngModel)]="familiar.nombre">
+      <input type="text" id="nombre" name="nombre" [(ngModel)]="familiar.nombre" required autocomplete="off">
+      <label class="etiqueta" for="nombre">Nombre</label>
+      <div class="alert alert-danger" role="alert" *ngIf="errors[1].isError">
+          {{errors[1].message}}
+      </div>
     </div>
     <div class="corto">
-      <p>Apellido:</p>
-      <input type="text" name="apellido" [(ngModel)]="familiar.apellido">
+      <input type="text" id="apellido" name="apellido" [(ngModel)]="familiar.apellido" required autocomplete="off">
+      <label class="etiqueta" for="apellido">Apellido</label>
+      <div class="alert alert-danger" role="alert" *ngIf="errors[2].isError">
+          {{errors[2].message}}
+      </div>
     </div>
     <div class="corto">
-      <p>Carnet:</p>
-      <input type="text" name="carnet" [(ngModel)]="familiar.carnet">
+      <input type="text" id="carnet" name="carnet" [(ngModel)]="familiar.carnet" required autocomplete="off">
+      <label class="etiqueta" for="carnet">Carnet</label>
+      <div class="alert alert-danger" role="alert" *ngIf="errors[3].isError">
+        {{errors[3].message}}
+      </div>
     </div>
     <div class="corto">
-      <p>Telefono:</p>
-      <input type="text" name="telefono" [(ngModel)]="familiar.telefono">
+      <input type="text" id="telefono" name="telefono" [(ngModel)]="familiar.telefono" required autocomplete="off">
+      <label class="etiqueta" for="telefono">Telefono</label>
+      <div class="alert alert-danger" role="alert" *ngIf="errors[4].isError">
+        {{errors[4].message}}
+      </div>
     </div>
     <div class="largo">
-      <p>Correo Electronico:</p>
-      <input type="email" name="correo" [(ngModel)]="familiar.correo">
+      <input type="text" id="email" name="email" [(ngModel)]="familiar.email" [email]="true" required autocomplete="off">
+      <label class="etiqueta" for="email">Correo Electronico</label>
+      <div class="alert alert-danger" role="alert" *ngIf="errors[5].isError">
+        {{errors[5].message}}
+      </div>
     </div>
     <div class="corto">
-      <p>Contraseña:</p>
-      <input type="password" name="contrasena" [(ngModel)]="familiar.contrasena">
+      <input type="password" id="password" name="password" [(ngModel)]="familiar.password" minlength="8" required autocomplete="off">
+      <label class="etiqueta" for="password">Contraseña</label>
+      <div class="alert alert-danger" role="alert" *ngIf="errors[6].isError">
+        {{errors[6].message}}
+      </div>
     </div>
     <div class="corto">
-      <p>Repita la Contraseña</p>
-      <input type="password" name="contrasena2" [(ngModel)]="contrasena2">
+      <input type="password" id="password_confirmation" name="password_confirmation" [(ngModel)]="familiar.password_confirmation" required autocomplete="off">
+      <label class="etiqueta" for="password_confirmation">Repita La Contraseña</label>
     </div>
     <button class="btn btn-info" type="submit">Enviar</button>
   </form>

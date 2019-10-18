@@ -13,20 +13,19 @@
 	height: 100%;
 	padding: 1%;
 }
+/*
 .contenido div{
 	width: 100%;
 	padding: 1%;
-}
+}*/
 .contenido > div > p{
 	margin-right: 2%;
 } 
-select,input{
-	width: 100%;
-}
 button{
 	margin:2% 0 1% 1%;
 }
 .nave select{
+    width: 100%;
 	height: 93%;
 }
 .nave option{
@@ -59,7 +58,6 @@ input,select{
     -moz-transition: 0.3s;
 }
 p{
-    
     color: aliceblue;
 }
 input:focus{

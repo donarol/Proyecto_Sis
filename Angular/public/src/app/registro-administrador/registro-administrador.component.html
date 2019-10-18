@@ -1,36 +1,61 @@
 <div class="contenido">
-  <form (ngSubmit)="registro()">
+  <form #formLogin="ngForm" (ngSubmit)="registro(formLogin)">
     <div class="corto">
-      <p>Nombre:</p>
-      <input type="text" name="nombre" [(ngModel)]="administrador.nombre">
+      <input type="text" id="nombre" name="nombre" [(ngModel)]="administrador.nombre" required autocomplete="off">
+      <label class="etiqueta" for="nombre">Nombre</label>
+      <div class="alert alert-danger" role="alert" *ngIf="errors[1].isError">
+        {{errors[1].message}}
+      </div>
     </div>
     <div class="corto">
-      <p>Apellido:</p>
-      <input type="text" name="apellido" [(ngModel)]="administrador.apellido">
+      <input type="text" id="apellido" name="apellido" [(ngModel)]="administrador.apellido" required autocomplete="off">
+      <label class="etiqueta" for="apellido">Apellido</label>
+      <div class="alert alert-danger" role="alert" *ngIf="errors[2].isError">
+        {{errors[2].message}}
+      </div>
     </div>
     <div class="corto">
-      <p>Carnet:</p>
-      <input type="text" name="carnet" [(ngModel)]="administrador.carnet">
+      <input type="text" id="carnet" name="carnet" [(ngModel)]="administrador.carnet" required autocomplete="off">
+      <label class="etiqueta" for="carnet">Carnet</label>
+      <div class="alert alert-danger" role="alert" *ngIf="errors[3].isError">
+        {{errors[3].message}}
+      </div>
     </div>
     <div class="corto">
-      <p>Telefono:</p>
-      <input type="text" name="telefono" [(ngModel)]="administrador.telefono">
+        <input type="text" id="telefono" name="telefono" [(ngModel)]="administrador.telefono" required autocomplete="off">
+        <label class="etiqueta" for="telefono">Telefono</label>
+        <div class="alert alert-danger" role="alert" *ngIf="errors[4].isError">
+          {{errors[4].message}}
+        </div>
     </div>
     <div class="largo">
-      <p>Correo Electronico:</p>
-      <input type="email" name="correo" [(ngModel)]="administrador.correo">
+        <input type="text" id="email" name="email" [(ngModel)]="administrador.email" required autocomplete="off">
+        <label class="etiqueta" for="email">Correo Electronico</label>
+        <div class="alert alert-danger" role="alert" *ngIf="errors[5].isError">
+          {{errors[5].message}}
+        </div>
     </div>
-    <div class="largo">
+    <div class="corto">
+      <input type="password" id="password" name="password" [(ngModel)]="administrador.password" minlength="8" required autocomplete="off">
+      <label class="etiqueta" for="password">Contraseña</label>
+      <div class="alert alert-danger" role="alert" *ngIf="errors[6].isError">
+        {{errors[6].message}}
+      </div>
+    </div>
+    <div class="corto">
+      <input type="password" id="password_confirmation" name="password_confirmation" [(ngModel)]="administrador.password_confirmation" (keypress)='onchangePassword($event)' required autocomplete="off">
+      <label class="etiqueta" for="password_confirmation">Repita La Contraseña</label>
+      <div class="alert alert-danger" role="alert" *ngIf="errors[7].isError">
+        {{errors[7].message}}
+      </div>
+    </div>
+    <div class="largo cambio">
       <p>Cargo:</p>
-      <input type="text" name="cargo" [(ngModel)]="administrador.cargo">
-    </div>
-    <div class="corto">
-      <p>Contraseña:</p>
-      <input type="password" name="contrasena" [(ngModel)]="administrador.contrasena">
-    </div>
-    <div class="corto">
-      <p>Repita la Contraseña</p>
-      <input type="password">
+        <label class="switch">
+          <input type="checkbox" class="check" id="variable" name="variable" (change)='onChangeVariable()' [(ngModel)]="variable">
+          <span class="slider round"></span>
+        </label>
+        <span>{{administrador.tipo}}</span>
     </div>
     <button class="btn btn-info" type="submit">Enviar</button>
   </form>

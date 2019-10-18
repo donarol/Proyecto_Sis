@@ -1,0 +1,44 @@
+<div class="contenedor">     
+
+  <div class="row">
+      <div class="superior">
+        <button type="button" class="btn btn-primary"  routerLink="/cursos">Atras</button>
+      </div>
+    <div class="col-4">
+      <select size="8"   class=" form-control list-group" id="list-tab" role="tablist">
+        <option *ngFor="let curso of cursos" 
+        class="list-group-item list-group-item-action" 
+        [attr.id]="'list-home-list-curso'+curso.curso_id" 
+        data-toggle="list" 
+        [attr.href]="'#list-curso'+curso.curso_id" 
+        href="#list-home-curso" 
+        role="tab" 
+        aria-controls="home-curso"
+        [attr.value]="curso.curso_id"
+        >
+          {{curso.nombre}}
+        </option>
+      </select>
+    </div>
+    <div class="col-8">
+      <div class="tab-content" id="nav-tabContent">
+        <div 
+        *ngFor="let curso_0 of cursos" 
+        class="tab-pane fade show" 
+        [attr.id]="'list-curso'+curso_0.curso_id" 
+        role="tabpanel" 
+        [attr.aria-labelledby]="'list-home-list-curso'+curso_0.curso_id">
+          <div class="card mb-3">
+            <div class="row no-gutters">
+              <div class="col-md-12">
+                <div class="card-body">
+                    <app-curso-datos-ii [CursoEnvio]="curso_0"></app-curso-datos-ii>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

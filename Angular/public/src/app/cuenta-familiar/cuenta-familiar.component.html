@@ -2,7 +2,7 @@
   <div class="imagen">
     <figure >
       <div>
-        <img src="...">
+        <img [src]="'/assets/img/' + imagenName">
       </div>
       <figcaption >
         <div class="custom-file">
@@ -16,26 +16,26 @@
   <div class="datos">
     <div class="contenido-datos">
       <p>Nombre:</p>
-      <input type="text" class="form-control form-control-sm">
+      <input type="text" class="form-control form-control-sm" [(ngModel)]="model.nombre">
     </div>    
     <div class="contenido-datos">
       <p>Apellido:</p>
-      <input type="text" class="form-control form-control-sm">
+      <input type="text" class="form-control form-control-sm" [(ngModel)]="model.apellido">
     </div>
     <div class="contenido-datos">
       <p>Carnet:</p>
-      <input type="text" class="form-control form-control-sm">
+      <input type="text" class="form-control form-control-sm" [(ngModel)]="model.carnet">
     </div>
     <div class="contenido-datos">
       <p>Telefono:</p>
-      <input type="text" class="form-control form-control-sm" >
+      <input type="text" class="form-control form-control-sm" [(ngModel)]="model.telefono">
     </div>
     <div class="contenido-datos">
       <p>Correo:</p>
-      <input type="text" class="form-control form-control-sm" >  
+      <input type="text" class="form-control form-control-sm" [(ngModel)]="model.correo">  
     </div>
     <div>
-      <button class="btn btn-primary">Guardar</button>
+      <button class="btn btn-primary" (click)="guardar()">Guardar</button>
     </div>
   </div>
 </div>

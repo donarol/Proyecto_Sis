@@ -23,7 +23,7 @@ class TurnoController extends Controller
         $turno = new TurnoBL;
         return $turno->obtener($id);
     }
-    public function modificar($id,Request $request){
+    public function modificar($id,CreateTurnoRequest $request){
         $datos = $request->json()->all();
         $turno = new TurnoBL;
         return $turno->modificar($id,$datos);

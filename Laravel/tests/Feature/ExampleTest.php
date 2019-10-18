@@ -4,7 +4,6 @@ namespace Tests\Feature;
 
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\RefreshDatabase;
-
 class ExampleTest extends TestCase
 {
     /**
@@ -14,8 +13,12 @@ class ExampleTest extends TestCase
      */
     public function testBasicTest()
     {
-        $response = $this->get('/');
-
+        //prueba de pruebas
+        $response = $this->withHeaders([
+            'X-Header' => 'Value',
+            'Authorization' => TestCase::$bearer
+        ])->json('GET', '/api/auth/user'
+        );
         $response->assertStatus(200);
     }
 }

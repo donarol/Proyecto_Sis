@@ -10,10 +10,10 @@ class Alumno extends Model
     //
     protected $table = "alumnos";
     protected $primaryKey = "alumno_id"; 
-    protected $fillable = ['fecha_nacimiento','sanguineo','domicilio','celular','foto','certificado_vacuna','certificado_nacimiento','fecha','fecha_nacimiento','croquis'];
+    protected $fillable = ['nombre','apellido','fecha_nacimiento','lugar_nacimiento','tipo_sanguineo','telefono','domicilio'];
     protected $hidden = ['created_at' ,'updated_at', 'deleted_at'];
 
-    public function persona(){
-        return $this->hasOne('App\Modelos\Persona','persona_id','persona_id');
+    public function cursos(){
+        return $this->belongsToMany('App\Modelos\Curso');
     }
 }

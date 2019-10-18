@@ -5,8 +5,9 @@ import { FormsModule }   from '@angular/forms';
 
 //Servicios
 import {LoginService} from './servicios/login.service';
+import {UserService} from './servicios/user.service';
 import { HttpClientModule } from '@angular/common/http';
-
+ 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -28,23 +29,53 @@ import { CuentaAdministradorComponent } from './cuenta-administrador/cuenta-admi
 import { ConfiguracionesAdministradorComponent } from './configuraciones-administrador/configuraciones-administrador.component';
 import { TurnoInicioComponent } from './turno-inicio/turno-inicio.component';
 import { TurnoNuevoComponent } from './turno-nuevo/turno-nuevo.component';
-import { ListaAdministradorComponent } from './lista-administrador/lista-administrador.component';
+
+import { AdministradorInicioComponent } from './administrador-inicio/administrador-inicio.component';
+import { HomeAdministradorComponent } from './home-administrador/home-administrador.component';
+import { HomeFamiliarComponent } from './home-familiar/home-familiar.component';
+import { PantallaCargaComponent } from './pantalla-carga/pantalla-carga.component';
+import { TurnoDatosComponent } from './turno-datos/turno-datos.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { SeccionInicioComponent } from './seccion-inicio/seccion-inicio.component';
+import { CursoInicioComponent } from './curso-inicio/curso-inicio.component';
+import { CursoNuevoComponent } from './curso-nuevo/curso-nuevo.component';
+import { CursoDatosComponent } from './curso-datos/curso-datos.component';
+import { CursoBorrarComponent } from './curso-borrar/curso-borrar.component';
+import { SeleccionDocenteComponent } from './seleccion-docente/seleccion-docente.component';
+import { SeleccionSeccionComponent } from './seleccion-seccion/seleccion-seccion.component';
+import { SeleccionTurnoComponent } from './seleccion-turno/seleccion-turno.component';
+import { CursoDatosIIComponent } from './curso-datos-ii/curso-datos-ii.component';
+import { AlumnoNuevoComponent } from './alumno-nuevo/alumno-nuevo.component';
+import { AlergiaInicioComponent } from './alergia-inicio/alergia-inicio.component';
+import { AlumnoCursoComponent } from './alumno-curso/alumno-curso.component';
+import { SeleccionCursoComponent } from './seleccion-curso/seleccion-curso.component';
+
 
 const router: Routes=[
   {path:'',component:InicioComponent},
   {path:'',component:PrincipalComponent,children:[
    /* {path:'user/:id',component:InicioFamiliarComponent},*/
     {path:'',component:InicioFamiliarComponent,children:[
-      {path:'userInicio/:id',component:MenuComponent},
-      {path:'userCuenta/:id',component:CuentaFamiliarComponent}
+      {path:'homeFamiliar',component:HomeFamiliarComponent},
+      {path:'cuentaFamiliar',component:CuentaFamiliarComponent}
     ]}
      ,
     {path:'',component:InicioAdministradorComponent,children:[
-      {path:'adminCuenta/:id',component:CuentaAdministradorComponent},
+      {path:'homeAdministrador',component:HomeAdministradorComponent},
+      {path:'cuentaAdministrador',component:CuentaAdministradorComponent},
       {path:'',component:ConfiguracionesAdministradorComponent,children:[
+        {path:'cursos',component:CursoInicioComponent},
+        {path:'cursoNuevo',component:CursoNuevoComponent},
+        {path:'cursoModificar',component:CursoDatosComponent},
+        {path:'cursoBorrar',component:CursoBorrarComponent},
+        {path:'secciones',component:SeccionInicioComponent},
         {path:'turnos',component:TurnoInicioComponent},
-        {path:'turnoNuevo',component:TurnoNuevoComponent}
-      ]}
+        {path:'turnoNuevo',component:TurnoNuevoComponent},
+        {path:'turno/:id',component:TurnoDatosComponent},
+        {path:'administrador_inicio',component:AdministradorInicioComponent},
+        {path:'cuentaAdministrador/:id',component:CuentaAdministradorComponent}
+      ]},
+      {path:'inscribirAlumno',component:AlumnoNuevoComponent}
     ]}
     /*{path:'',component:MenuComponent,children:[
       {path:'listaAlumnos',component:ListaAlumnosComponent}
@@ -75,17 +106,37 @@ const router: Routes=[
     ConfiguracionesAdministradorComponent,
     TurnoInicioComponent,
     TurnoNuevoComponent,
-    ListaAdministradorComponent
+    AdministradorInicioComponent,
+    HomeAdministradorComponent,
+    HomeFamiliarComponent,
+    PantallaCargaComponent,
+    TurnoDatosComponent,
+    SeccionInicioComponent,
+    CursoInicioComponent,
+    CursoNuevoComponent,
+    CursoDatosComponent,
+    CursoBorrarComponent,
+    SeleccionDocenteComponent,
+    SeleccionSeccionComponent,
+    SeleccionTurnoComponent,
+    CursoDatosIIComponent,
+    AlumnoNuevoComponent,
+    AlergiaInicioComponent,
+    AlumnoCursoComponent,
+    SeleccionCursoComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     RouterModule.forRoot(router),
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule
+    
   ],
   providers: [
-    LoginService
+    LoginService,
+    UserService
   ],
   bootstrap: [AppComponent]
 })

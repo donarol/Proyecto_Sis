@@ -1,0 +1,47 @@
+
+<div class="contenido">
+  <button  type="button" class="btn btn-secondary" routerLink="/turnos">Atras</button>
+  <form #formLogin="ngForm"(ngSubmit)="updateTurno(formLogin)" >
+    <div>
+      <p>Nombre:</p>
+      <input class="form-control form-control-sm" id="nombre" name="nombre" type="text" [(ngModel)]="turno.nombre" required autocomplete="off" >
+      <div class="alert alert-danger" role="alert" *ngIf="errors[1].isError">
+        {{errors[1].message}}
+      </div>
+    </div>
+    <div>
+      <p>Monto:</p>
+      <input class="form-control form-control-sm" type="text" id="monto" name="monto" [(ngModel)]="turno.monto" required autocomplete="off">  
+      <div class="alert alert-danger" role="alert" *ngIf="errors[2].isError">
+        {{errors[2].message}}
+      </div>
+    </div>
+    <div>
+      <p>Hora Inicio:</p>
+      <input class="form-control form-control-sm" type="time" id="hora_inicio" name="hora_inicio" [(ngModel)]="turno.hora_inicio" required autocomplete="off">
+      <div class="alert alert-danger" role="alert" *ngIf="errors[3].isError">
+        {{errors[3].message}}
+      </div>
+    </div>
+    <div>
+      <p>Hora Fin:</p>
+      <input class="form-control form-control-sm" type="time" id="hora_fin" name="hora_fin" [(ngModel)]="turno.hora_fin" required autocomplete="off">
+      <div class="alert alert-danger" role="alert" *ngIf="errors[4].isError">
+        {{errors[4].message}}
+      </div>
+    </div>
+    <div>
+      <p>Gestion:</p>
+      <input class="form-control form-control-sm" type="text" id="gestion" name="gestion" [(ngModel)]="turno.gestion" required autocomplete="off">
+      <div class="alert alert-danger" role="alert" *ngIf="errors[5].isError">
+        {{errors[5].message}}
+      </div>
+    </div>
+    <div>
+      <button class="btn btn-secondary">Guardar Cambios</button>
+    </div>
+    <div class="spinner-border text-danger" role="status" *ngIf="spinner" >
+      <span class="sr-only">Loading...</span>
+    </div>
+  </form>
+</div>

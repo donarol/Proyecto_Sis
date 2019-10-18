@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { Router } from '@angular/router';
+import { LoginService } from '../servicios/login.service';
 @Component({
   selector: 'app-menu-administrador',
   templateUrl: './menu-administrador.component.html',
@@ -7,15 +9,24 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuAdministradorComponent implements OnInit {
   private componentesMenu:Array<any>=[
-    {etiqueta:'Inicio',ruta:'/admin/1'},
-    {etiqueta:'Mi Cuenta',ruta:'/adminCuenta/1'},
-    {etiqueta:'Mis Mensajes',ruta:'/mensajes'/*falta el id del user*/ },
-    {etiqueta:'Configuraciones',ruta:'/turnos'},
-    {etiqueta:'Inscribir Alumno',ruta:'/inscribir_alumno'}];
+    {etiqueta:'Inicio',ruta:'/homeAdministrador'},
+    {etiqueta:'Mi Cuenta',ruta:'/cuentaAdministrador'},
+    {etiqueta:'Mis Mensajes',ruta:'/mensajes'},
+    {etiqueta:'Configuraciones',ruta:'/cursos'},
+    {etiqueta:'Inscribir Alumno',ruta:'/inscribirAlumno'}];
     componentes_0:Array<any>=[{etiqueta:"Cerrar Sesion"}];
-  constructor() { }
+  constructor(
+    private _router:Router,
+    private _login:LoginService
+  ) { }
 
   ngOnInit() {
+  }
+  cerrar(){
+    this._login.logout().subscribe(res=>{
+      localStorage.removeItem('accto');
+      this._router.navigate([``]);
+    });
   }
 
 }
