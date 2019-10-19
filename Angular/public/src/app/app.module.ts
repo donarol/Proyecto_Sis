@@ -63,6 +63,7 @@ const router: Routes=[
     {path:'',component:InicioAdministradorComponent,children:[
       {path:'homeAdministrador',component:HomeAdministradorComponent},
       {path:'cuentaAdministrador',component:CuentaAdministradorComponent},
+      {path:'menu',component:MenuComponent},
       {path:'',component:ConfiguracionesAdministradorComponent,children:[
         {path:'cursos',component:CursoInicioComponent},
         {path:'cursoNuevo',component:CursoNuevoComponent},

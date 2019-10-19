@@ -1,31 +1,16 @@
 <div class="contenido">
-    <div class="izq">
-        <select size="10" class="form-control contenedor" >
-            <option class="list-group-item list-group-item-action" *ngFor="let lista of listas" (click)="cursos(lista)" >{{lista.nombre}}</option>
-        </select>
-    </div>
-    <div class="der">
-        <div class="superior">
-            <a *ngFor="let componente of componentes;index as i" (click)="muestra(i)">{{componente}}</a>
+        <div class="d-flex bd-highlight mb-2 superior">
+            <span  class="carousel-control-prev-icon mr-auto p-2 bd-highlight"></span>
+            <span class="carousel-control-next-icon bd-highlight" ></span>
+            
         </div>
-        <div class="inferior" *ngIf='valor_menu!=-1'>
-            <div>
-                <div *ngIf='valor_menu===0; then valor_0'></div> 
-                <ng-template #valor_0>
-                    <app-lista-alumnos [curso_id]='curso_id'></app-lista-alumnos>
-                </ng-template>  
-                <div *ngIf='valor_menu===1; then valor_1'></div> 
-                <ng-template #valor_1>
-                    <app-lista-docentes [curso_id]='curso_id'></app-lista-docentes>
-                </ng-template> 
-                <div *ngIf='valor_menu===2; then valor_2'></div> 
-                <ng-template #valor_2>
-                    <app-lista-camaras [curso_id]='curso_id'></app-lista-camaras>
-                </ng-template> 
+    <div class="inferior">
+        <div class="card bg-light mb-3" *ngFor="let dia of dias" >
+            <div class="card-header">{{dia}} - {{jstoday}}</div>
+            <div class="card-body">
+                <h5 class="card-title">Light card title</h5>
+                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
             </div>
-        </div> 
-          
+        </div>
     </div>
-
-
 </div>
