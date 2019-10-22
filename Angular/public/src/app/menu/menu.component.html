@@ -1,4 +1,4 @@
-<div class="contenido">
+<!--<div class="contenido">
         <div class="d-flex bd-highlight mb-2 superior">
             <span  class="carousel-control-prev-icon mr-auto p-2 bd-highlight"></span>
             <span class="carousel-control-next-icon bd-highlight" ></span>
@@ -13,4 +13,13 @@
             </div>
         </div>
     </div>
+</div>
+-->
+<div class="contenido">
+    <full-calendar (click)="handleDateClick($event)" 
+    defaultView="dayGridMonth"
+    [plugins]="calendarPlugins"
+    [weekends]="false"
+    [events]="calendarEvents"
+    class="calendar"></full-calendar>
 </div>

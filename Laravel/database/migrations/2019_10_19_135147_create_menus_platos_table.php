@@ -14,6 +14,7 @@ class CreateMenusPlatosTable extends Migration
     public function up()
     {
         Schema::create('menus_platos', function (Blueprint $table) {
+            //TABLA NO USADA
             $table->bigIncrements('id');
             
             $table->bigInteger('plato_id')->unsigned();

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule,Routes} from '@angular/router';
 import { FormsModule }   from '@angular/forms';
 
+import { FullCalendarModule} from '@fullcalendar/angular';
 //Servicios
 import {LoginService} from './servicios/login.service';
 import {UserService} from './servicios/user.service';
@@ -49,6 +50,7 @@ import { AlumnoNuevoComponent } from './alumno-nuevo/alumno-nuevo.component';
 import { AlergiaInicioComponent } from './alergia-inicio/alergia-inicio.component';
 import { AlumnoCursoComponent } from './alumno-curso/alumno-curso.component';
 import { SeleccionCursoComponent } from './seleccion-curso/seleccion-curso.component';
+import { MenuEventosComponent } from './menu-eventos/menu-eventos.component';
 
 
 const router: Routes=[
@@ -124,7 +126,8 @@ const router: Routes=[
     AlumnoNuevoComponent,
     AlergiaInicioComponent,
     AlumnoCursoComponent,
-    SeleccionCursoComponent
+    SeleccionCursoComponent,
+    MenuEventosComponent
   ],
   imports: [
     BrowserModule,
@@ -132,8 +135,8 @@ const router: Routes=[
     RouterModule.forRoot(router),
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule
-    
+    BrowserAnimationsModule,
+    FullCalendarModule
   ],
   providers: [
     LoginService,

@@ -79,6 +79,18 @@ Route::group(['prefix' => 'auth'], function () {
         Route::get('ingrediente/{id}','IngredienteController@obtener')->middleware('verified');
         Route::put('ingrediente/{id}','IngredienteController@modificar')->middleware('verified');
     });
+    Route::group(['middleware' => 'auth:api'],function(){
+        Route::post('registroPlato','PlatoController@crear')->middleware('verified');
+        Route::get('registroPlato','PlatoController@crearMal')->middleware('verified');
+        Route::get('platos','PlatoController@lista')->middleware('verified');
+        Route::get('plato/{id}','PlatoController@obtener')->middleware('verified');
+        Route::put('plato/{id}','PlatoController@modificar')->middleware('verified');
+    });
+   
+    Route::group(['middleware' => 'auth:api'],function(){
+        Route::post('registroIngredientePlato','IngredientePlatoController@crear')->middleware('verified');
+        Route::get('registroIngredientePlato','IngredientePlatoController@crearMal')->middleware('verified');
+    });
 
 });
 
