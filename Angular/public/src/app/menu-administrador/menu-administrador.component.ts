@@ -8,6 +8,10 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuAdministradorComponent implements OnInit {
   //SOLO SE CAMBIO EL MENU DEL ADMINITRADOR
+  private componentes:any[]=[
+    {ruta:"menuAdministrador",etiqueta:"Menu"},
+    {ruta:"menuNuevo",etiqueta:'Nuevo Plato'},
+    {ruta:"menuModificar",etiqueta:"Modificar Plato"}];  
   constructor(
 
   ) { }

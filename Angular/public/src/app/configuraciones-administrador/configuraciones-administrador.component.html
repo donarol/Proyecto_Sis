@@ -1,11 +1,11 @@
 <div class="contenedor">
-  <nav class="nave">
+  <nav  class="col-md-4">
     <ul>
       <a *ngFor="let componente of componentes index as i"  routerLink="/{{componente.ruta}}">{{componente.etiqueta}}</a>
     </ul>
   </nav>
   
-  <div class="contenido">
+  <div  class="col-md-8 contenido">
     <router-outlet></router-outlet>
   </div>
 </div>

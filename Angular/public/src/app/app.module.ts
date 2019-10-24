@@ -52,6 +52,8 @@ import { AlumnoCursoComponent } from './alumno-curso/alumno-curso.component';
 import { SeleccionCursoComponent } from './seleccion-curso/seleccion-curso.component';
 import { MenuEventosComponent } from './menu-eventos/menu-eventos.component';
 import { MenuOpcionesAdministradorComponent } from './menu-opciones-administrador/menu-opciones-administrador.component';
+import { MenuNuevoComponent } from './menu-nuevo/menu-nuevo.component';
+import { MenuModificarComponent } from './menu-modificar/menu-modificar.component';
 
 
 const router: Routes=[
@@ -67,7 +69,11 @@ const router: Routes=[
     {path:'',component:InicioAdministradorComponent,children:[
       {path:'homeAdministrador',component:HomeAdministradorComponent},
       {path:'cuentaAdministrador',component:CuentaAdministradorComponent},
-      {path:'menuAdministrador',component:MenuAdministradorComponent},
+      {path:'',component:MenuAdministradorComponent,children:[
+        {path:'menuAdministrador',component:MenuComponent},
+        {path:'menuNuevo',component:MenuNuevoComponent},
+        {path:'menuModificar',component:MenuModificarComponent}
+      ]},
       {path:'',component:ConfiguracionesAdministradorComponent,children:[
         {path:'cursos',component:CursoInicioComponent},
         {path:'cursoNuevo',component:CursoNuevoComponent},
@@ -130,7 +136,9 @@ const router: Routes=[
     AlumnoCursoComponent,
     SeleccionCursoComponent,
     MenuEventosComponent,
-    MenuOpcionesAdministradorComponent
+    MenuOpcionesAdministradorComponent,
+    MenuNuevoComponent,
+    MenuModificarComponent
   ],
   imports: [
     BrowserModule,

@@ -1,17 +1,13 @@
 .contenedor{
     display: flex;
     flex-wrap: wrap;
+    /*background: white;*/
 }
 .nave{
-    width: 30%;
-	margin: 1% 1% 0 1%;
     border: 2px solid;
 
 }
 .contenido{
-	width: 67%;
-	margin: 1% 0 0 0;
-	height: 100%;
 	border: 2px solid;
 }
 ul{

@@ -13,7 +13,8 @@ export class MenuFamiliarComponent implements OnInit {
     {etiqueta:'Inicio',ruta:'/homeFamiliar'},
     {etiqueta:'Mi Cuenta',ruta:'/CuentaFamiliar'},
     {etiqueta:'Mis Mensajes',ruta:'/mensajes'/*falta el id del user*/ },
-    {etiqueta:'Mis Pagos',ruta:'/pagos'}];
+    {etiqueta:'Mis Pagos',ruta:'/pagos'},
+    {etiqueta:'Menu',ruta:'/menuFamilair'}];
     componentes_0:Array<any>=[{logo:"url",etiqueta:"Cerrar Sesion"}];
   constructor(
     private _router:Router,
