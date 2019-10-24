@@ -51,6 +51,7 @@ import { AlergiaInicioComponent } from './alergia-inicio/alergia-inicio.componen
 import { AlumnoCursoComponent } from './alumno-curso/alumno-curso.component';
 import { SeleccionCursoComponent } from './seleccion-curso/seleccion-curso.component';
 import { MenuEventosComponent } from './menu-eventos/menu-eventos.component';
+import { MenuOpcionesAdministradorComponent } from './menu-opciones-administrador/menu-opciones-administrador.component';
 
 
 const router: Routes=[
@@ -59,13 +60,14 @@ const router: Routes=[
    /* {path:'user/:id',component:InicioFamiliarComponent},*/
     {path:'',component:InicioFamiliarComponent,children:[
       {path:'homeFamiliar',component:HomeFamiliarComponent},
-      {path:'cuentaFamiliar',component:CuentaFamiliarComponent}
+      {path:'cuentaFamiliar',component:CuentaFamiliarComponent},
+      {path:'menuFamiliar',component:MenuComponent}
     ]}
      ,
     {path:'',component:InicioAdministradorComponent,children:[
       {path:'homeAdministrador',component:HomeAdministradorComponent},
       {path:'cuentaAdministrador',component:CuentaAdministradorComponent},
-      {path:'menu',component:MenuComponent},
+      {path:'menuAdministrador',component:MenuAdministradorComponent},
       {path:'',component:ConfiguracionesAdministradorComponent,children:[
         {path:'cursos',component:CursoInicioComponent},
         {path:'cursoNuevo',component:CursoNuevoComponent},
@@ -127,7 +129,8 @@ const router: Routes=[
     AlergiaInicioComponent,
     AlumnoCursoComponent,
     SeleccionCursoComponent,
-    MenuEventosComponent
+    MenuEventosComponent,
+    MenuOpcionesAdministradorComponent
   ],
   imports: [
     BrowserModule,

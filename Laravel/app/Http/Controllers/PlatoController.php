@@ -29,4 +29,12 @@ class PlatoController extends Controller
         $plato = new PlatoBL;
         return $plato->modificar($id,$datos);
     }
+    public function obtenerFecha($fecha){
+        $plato = new PlatoBL;
+        return $plato->obtenerFecha($fecha);
+    }
+    public function ingredientes($id){
+        $plato = new PlatoBL;
+        return $plato->ingredientes($id);
+    }
 }

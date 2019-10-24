@@ -81,3 +81,13 @@ Route::get("/alumno/{id}/cursos",function($id){
     }
 });
 */
+/*
+Route::get('platoFecha/{fecha}','PlatoController@obtenerFecha');
+Route::get('plato/{id}/ingredientesp',function($id){
+    return App\Modelos\Plato::find($id)->ingredientes;
+});       
+
+Route::get("/alumno/{id}/cursos",function($id){
+    $alumno=App\Modelos\Alumno::find($id)->cursos;
+    return $alumno;
+});*/

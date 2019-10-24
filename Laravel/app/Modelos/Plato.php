@@ -13,6 +13,8 @@ class Plato extends Model
     protected $fillable = ['nombre','foto'];
     protected $hidden = ['created_at' ,'updated_at', 'deleted_at'];
 
-
+    public function ingredientes(){
+        return $this->belongsToMany('App\Modelos\Ingrediente','ingredientes_platos','plato_id','ingrediente_id');
+    }
 
 }

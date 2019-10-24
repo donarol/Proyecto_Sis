@@ -1,33 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Router } from '@angular/router';
-import { LoginService } from '../servicios/login.service';
+
 @Component({
   selector: 'app-menu-administrador',
   templateUrl: './menu-administrador.component.html',
   styleUrls: ['./menu-administrador.component.css']
 })
 export class MenuAdministradorComponent implements OnInit {
-  private componentesMenu:Array<any>=[
-    {etiqueta:'Inicio',ruta:'/homeAdministrador'},
-    {etiqueta:'Mi Cuenta',ruta:'/cuentaAdministrador'},
-    {etiqueta:'Mis Mensajes',ruta:'/mensajes'},
-    {etiqueta:'Configuraciones',ruta:'/cursos'},
-    {etiqueta:'Inscribir Alumno',ruta:'/inscribirAlumno'},
-    {etiqueta:'Menu',ruta:'/menu'}];
-    componentes_0:Array<any>=[{etiqueta:"Cerrar Sesion"}];
+  //SOLO SE CAMBIO EL MENU DEL ADMINITRADOR
   constructor(
-    private _router:Router,
-    private _login:LoginService
+
   ) { }
 
   ngOnInit() {
   }
-  cerrar(){
-    this._login.logout().subscribe(res=>{
-      localStorage.removeItem('accto');
-      this._router.navigate([``]);
-    });
-  }
+
 
 }

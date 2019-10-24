@@ -85,6 +85,8 @@ Route::group(['prefix' => 'auth'], function () {
         Route::get('platos','PlatoController@lista')->middleware('verified');
         Route::get('plato/{id}','PlatoController@obtener')->middleware('verified');
         Route::put('plato/{id}','PlatoController@modificar')->middleware('verified');
+        Route::get('platoFecha/{fecha}','PlatoController@obtenerFecha')->middleware('verified');
+        Route::get('plato/{id}/ingredientes','PlatoController@ingredientes')->middleware('verified');
     });
    
     Route::group(['middleware' => 'auth:api'],function(){

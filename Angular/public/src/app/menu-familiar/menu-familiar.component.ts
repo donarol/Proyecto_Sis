@@ -8,6 +8,7 @@ import { LoginService } from '../servicios/login.service';
   styleUrls: ['./menu-familiar.component.css']
 })
 export class MenuFamiliarComponent implements OnInit {
+  //SOLO SE CAMBIO EL MENU DEL ADMINITRADOR
   private componentesMenu:Array<any>=[
     {etiqueta:'Inicio',ruta:'/homeFamiliar'},
     {etiqueta:'Mi Cuenta',ruta:'/CuentaFamiliar'},

@@ -11,7 +11,7 @@ class Curso extends Model
     protected $table = "cursos";
     protected $primaryKey = "curso_id"; 
     protected $fillable = ['nombre','gestion'];
-    protected $hidden = ['created_at' ,'updated_at', 'deleted_at'];
+    protected $hidden = ['created_at' ,'updated_at', 'deleted_at','pivot'];
 
     //REVISAR
     public function user(){

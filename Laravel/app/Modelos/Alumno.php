@@ -14,6 +14,6 @@ class Alumno extends Model
     protected $hidden = ['created_at' ,'updated_at', 'deleted_at'];
 
     public function cursos(){
-        return $this->belongsToMany('App\Modelos\Curso');
+        return $this->belongsToMany('App\Modelos\Curso','alumnos_cursos','alumno_id','curso_id');
     }
 }

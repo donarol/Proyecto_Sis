@@ -32,5 +32,13 @@ class PlatoBL{
         $platoDao = new PlatoDAO;
         return $platoDao->modificar($plato);    
     }
+    public function obtenerFecha($fecha){
+        $platoDao = new PlatoDAO;
+        return $platoDao->obtenerFecha($fecha);    
+    }
+    public function ingredientes($id){
+        $platoDao = new PlatoDAO;
+        return $platoDao->ingredientes($id);
+    }
 
 }
