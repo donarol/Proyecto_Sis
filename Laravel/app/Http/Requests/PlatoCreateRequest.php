@@ -27,7 +27,7 @@ class PlatoCreateRequest extends FormRequest
         return [
             'nombre'=>'required',
             'preparacion'=>'required',
-            'tipo_id'=>'required'
+            'fecha'=>'required'
         ];
     }
 }

@@ -10,8 +10,7 @@ class PlatoBL{
         $plato = new Plato;
         $plato->nombre=$datos['nombre'];
         $plato->preparacion=$datos['preparacion'];
-        $plato->tipo_id=$datos['tipo_id'];
-        
+        $plato->fecha=$datos['fecha'];
         $platoDao = new PlatoDAO;
         return $platoDao->crear($plato);    
     }
@@ -27,7 +26,7 @@ class PlatoBL{
         $plato=Plato::find($id);
         $plato->nombre=$datos['nombre'];
         $plato->preparacion=$datos['preparacion'];
-        $plato->tipo_id=$datos['tipo_id'];
+        $plato->fecha=$datos['fecha'];
 
         $platoDao = new PlatoDAO;
         return $platoDao->modificar($plato);    

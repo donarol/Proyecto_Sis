@@ -10,7 +10,7 @@ class Plato extends Model
     //
     protected $table = "platos";
     protected $primaryKey = "plato_id"; 
-    protected $fillable = ['nombre','foto'];
+    protected $fillable = ['nombre','preparacion','fecha'];
     protected $hidden = ['created_at' ,'updated_at', 'deleted_at'];
 
     public function ingredientes(){

@@ -21,7 +21,7 @@ class PlatoDAO{
     }
     public function obtenerFecha($fecha){
         //return Plato::whereDay('created_at', '=', 22)->get();
-        return Plato::whereDate('created_at', '=', Carbon::parse($fecha)->format('Y-m-d'))->get();
+        return Plato::whereDate('fecha', '=', Carbon::parse($fecha)->format('Y-m-d'))->get();
     }
     public function ingredientes($id){
         return Plato::find($id)->ingredientes;

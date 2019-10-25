@@ -69,10 +69,6 @@ Route::group(['prefix' => 'auth'], function () {
         Route::post('registroAlumnoCurso','AlumnoCursoController@crear')->middleware('verified');
     });
     Route::group(['middleware' => 'auth:api'],function(){
-        Route::get('tiposPlatos','TipoPlatoController@lista')->middleware('verified');
-        Route::get('tipoPlato/{id}','TipoPlatoController@obtener')->middleware('verified');
-    });
-    Route::group(['middleware' => 'auth:api'],function(){
         Route::post('registroIngrediente','IngredienteController@crear')->middleware('verified');
         Route::get('registroIngrediente','IngredienteController@crearMal')->middleware('verified');
         Route::get('ingredientes','IngredienteController@lista')->middleware('verified');

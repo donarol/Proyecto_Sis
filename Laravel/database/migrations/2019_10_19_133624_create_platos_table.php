@@ -17,8 +17,7 @@ class CreatePlatosTable extends Migration
             $table->bigIncrements('plato_id');
             $table->string('nombre');
             $table->string('preparacion');
-            $table->bigInteger('tipo_id')->unsigned();
-            $table->foreign('tipo_id')->references("tipo_id")->on("tipos_platos");
+            $table->date('fecha');
             $table->timestamps();
             $table->softDeletes();
         });
