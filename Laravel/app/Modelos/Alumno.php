@@ -16,4 +16,7 @@ class Alumno extends Model
     public function cursos(){
         return $this->belongsToMany('App\Modelos\Curso','alumnos_cursos','alumno_id','curso_id');
     }
+    public function familiares(){
+        return $this->belongsToMany('App\\User','alumnos_users','alumno_id','user_id');
+    }
 }
