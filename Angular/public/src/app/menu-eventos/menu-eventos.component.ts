@@ -11,13 +11,11 @@ import { Ingrediente } from '../modelos/Ingrediente';
 export class MenuEventosComponent implements OnInit {
   private platos:Plato[]=[];
   private ingredientes:Ingrediente[]=[];
-  //@Input('fecha') private fechaEvento:String;
-  private fechaEvento:String;
   private spinner:Boolean;
   private spinnerIngrediente:Boolean;
   private vacio:Boolean;
   private cambio:Boolean;
-  @Input('fecha') set _fechaEvento(valor:String){
+  @Input('fecha') set _fechaEvento_(valor:String){
 
     if(valor===undefined){
       console.log("es nulo")
@@ -30,7 +28,6 @@ export class MenuEventosComponent implements OnInit {
     }
 
   };
-  get _fechaEvento(){return this.fechaEvento;}
   constructor(
     private _plato:PlatoService
   ) {}

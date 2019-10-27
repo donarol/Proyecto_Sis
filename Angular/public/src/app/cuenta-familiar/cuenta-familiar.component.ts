@@ -20,7 +20,7 @@ export class CuentaFamiliarComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.model=new Familiar;
+    /*this.model=new Familiar;
     this.href = this.router.url;
     console.log(this.router.url);
     this.id=this.split();
@@ -33,9 +33,9 @@ export class CuentaFamiliarComponent implements OnInit {
       console.log("model");
       console.log(this.model);
       this.imagenName='tutor.png';
-    });
+    });*/
   }
-  guardar(){
+  /*guardar(){
     console.log("guardar");
     this._familiarService.updateFamiliar(this.id,this.model).subscribe(res=>{
       console.log("res");
@@ -46,5 +46,5 @@ export class CuentaFamiliarComponent implements OnInit {
   split(){
     let s:string[]=this.href.split('/');
     return s[2];
-  }
+  }*/
 }

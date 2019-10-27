@@ -9,6 +9,12 @@ import { TurnoService } from '../servicios/turno.service';
 import { NgForm } from '@angular/forms';
 import { AlumnoCursoService } from '../servicios/alumno-curso.service';
 import { Alumno_Curso } from '../modelos/Alumno_Curso';
+import { User } from '../modelos/User';
+import { Familiar } from '../modelos/Familiar';
+import { AlumnoUserService } from '../servicios/alumno-user.service';
+import { Alumno_User } from '../modelos/Alumno_User';
+import { UserService } from '../servicios/user.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-alumno-nuevo',
@@ -16,33 +22,52 @@ import { Alumno_Curso } from '../modelos/Alumno_Curso';
   styleUrls: ['./alumno-nuevo.component.css']
 })
 export class AlumnoNuevoComponent implements OnInit {
-  private alergias:String[]=[];
+  private alergias:String[];
   private alumno:Alumno;
-  private errors:Errores[]=[];
-  private today:Date;
+  private errors:Errores[];
   private curso:Curso;
   private turno:Turno;
   private spinnerTurno:Boolean;
   private spinner:Boolean;
-  private alumnoCurso:Alumno_Curso;
-  jstoday = '';
+  private familiares:Familiar[];
+  private isMuestra:Boolean;
   constructor(
     private _alumno:AlumnoService,
     private _turno:TurnoService,
-    private _alumnoCurso:AlumnoCursoService
+    private _alumnoCurso:AlumnoCursoService,
+    private _alumnoUser:AlumnoUserService,
+    private _user:UserService,
+    private _router:Router
   ) {}
 
   ngOnInit() {
-    this.alumno=new Alumno;
-    this.curso=new Curso;
-    this.turno=new Turno;
-    this.alumnoCurso=new Alumno_Curso;
-    this.spinnerTurno=false;
-    this.spinner=false;
-    this.today= new Date;
-    this.setErrors();
-    this.jstoday = formatDate(this.today, 'dd-MM-yyyy', 'en-US', '+0530');
-
+    this.isAdministrador();
+//https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog
+  }
+  isAdministrador(){
+    this._user.getUserActual().subscribe(res=>{
+      console.log("mi res");
+      console.log(res);
+      if(res.tipo==='Administrador' || res.tipo==='Docente'){
+        console.log("es administrador");
+        this.alumno=new Alumno;
+        this.curso=new Curso;
+        this.turno=new Turno;
+        this.spinnerTurno=false;
+        this.spinner=false;
+        this.isMuestra=false;
+        this.errors=[];
+        this.alergias=[];
+        this.familiares=[];
+        this.setErrors();
+        this.isMuestra=true;
+      }else{
+        console.log("no es administrador");
+        alert("Usted no es administrador");
+        this.isMuestra=false;
+        this._router.navigate(['']);
+      }
+    });
   }
 
   inscribirAlumno(form:NgForm){
@@ -71,18 +96,9 @@ export class AlumnoNuevoComponent implements OnInit {
       this._alumno.addAlumno(this.alumno).subscribe(res=>{
         console.log("mi res");
         console.log(res);
-        this.alumnoCurso.alumno_id=res.alumno_id;
-        this.alumnoCurso.estado=true;
-        this._alumnoCurso.addAlumnoCurso(this.alumnoCurso).subscribe(res=>{
-          console.log("mi res");
-          console.log(res);
-          this.spinner=false;
-        },error=>{
-          console.log("mi error");
-          console.log(error);
-          this.spinner=false;
-          alert("alumno inscrito correctamente");
-        });
+        this.addAlumnoCurso(res);
+        this.addAlumnoUser(res);
+        this.spinner=false;
       },error=>{
         console.log("mi error");
         console.log(error);
@@ -112,12 +128,46 @@ export class AlumnoNuevoComponent implements OnInit {
     }
    /* */
   }
+  addAlumnoCurso(alumno:Alumno):void{
+    var aux=new Alumno_Curso;
+    aux.alumno_id=alumno.alumno_id;
+    aux.curso_id=this.curso.curso_id;
+    aux.estado=true;
+    this.spinner=true;
+    this._alumnoCurso.addAlumnoCurso(aux).subscribe(res=>{
+      console.log("mi res");
+      console.log(res);
+      this.spinner=false;
+    },error=>{
+      console.log("mi error");
+      console.log(error);
+      this.spinner=false;
+      alert("alumno inscrito correctamente");
+    });
+  }
+  addAlumnoUser(alumno:Alumno):void{
+    this.familiares.forEach(element => {
+      this.spinner=true;
+      var aux_2=new Alumno_User;
+      aux_2.alumno_id=alumno.alumno_id;
+      aux_2.user_id=element.id;
+      aux_2.parentesco=element.parentesco;
+      this._alumnoUser.addAlumnoUser(aux_2).subscribe(res=>{
+        console.log("mi res");
+        console.log(res);
+      });
+    },error=>{
+      console.log("mi error");
+      console.log(error);
+      this.spinner=false;
+    });
+    this.spinner=false;
+  }
   SelecCurso(curso:Curso){
     console.log("me llego curso: ");
     console.log(curso);
     this.curso=curso;
     this.cargaTurno(this.curso.turno_id);
-    this.alumnoCurso.curso_id=this.curso.curso_id;
   }
   cargaTurno(id:String){
     this.spinnerTurno=true;
@@ -133,6 +183,26 @@ export class AlumnoNuevoComponent implements OnInit {
       alert("error al cargar el turno");
     });
   }
+  SelectFamilar(familiar){
+    console.log("me llego ");
+    console.log(familiar);
+    if(this.isFamiliar(familiar))
+      alert("ya agrego a esta persona");
+    else
+      this.familiares.push(familiar);
+
+  }
+  isFamiliar(familiar):Boolean{
+    for (let index = 0; index < this.familiares.length; index++) {
+      if(this.familiares[index].id==familiar.id)
+        return true;
+    }
+    return false;
+  }
+  removeFamiliar(index){
+    console.log(this.familiares.splice(index,1));
+  }
+
   setErrors():void{
     this.errors.push(new Errores('Error al inscribir al alumno'));
     this.errors.push(new Errores('Error al ingresar el nombre'));

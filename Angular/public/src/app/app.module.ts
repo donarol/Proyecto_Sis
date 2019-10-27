@@ -54,6 +54,9 @@ import { MenuEventosComponent } from './menu-eventos/menu-eventos.component';
 import { MenuOpcionesAdministradorComponent } from './menu-opciones-administrador/menu-opciones-administrador.component';
 import { MenuNuevoComponent } from './menu-nuevo/menu-nuevo.component';
 import { MenuModificarComponent } from './menu-modificar/menu-modificar.component';
+import { SeleccionFamiliarComponent } from './seleccion-familiar/seleccion-familiar.component';
+import { SeleccionFamiliarIiComponent } from './seleccion-familiar-ii/seleccion-familiar-ii.component';
+import { SeleccionCursoIiComponent } from './seleccion-curso-ii/seleccion-curso-ii.component';
 
 
 const router: Routes=[
@@ -138,7 +141,10 @@ const router: Routes=[
     MenuEventosComponent,
     MenuOpcionesAdministradorComponent,
     MenuNuevoComponent,
-    MenuModificarComponent
+    MenuModificarComponent,
+    SeleccionFamiliarComponent,
+    SeleccionFamiliarIiComponent,
+    SeleccionCursoIiComponent
   ],
   imports: [
     BrowserModule,

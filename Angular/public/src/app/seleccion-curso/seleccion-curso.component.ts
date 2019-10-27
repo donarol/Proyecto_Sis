@@ -12,52 +12,66 @@ export class SeleccionCursoComponent implements OnInit {
   private cursos:Curso[];
   private model:Curso;
   private aux:string;
+  private spinnerCurso:Boolean;
+  private cursoDatos:Curso;
   @Output() selecCurso = new EventEmitter<Curso>();
   constructor(
     private _curso:CursoService
   ) {}
 
   ngOnInit() {
-    this.getCursos();
     this.model= new Curso;
+    this.spinnerCurso=false;
+    this.cursoDatos=new Curso;
+    this.getCursos();
   }
   selectCurso(deviceValue){
     console.log("se cambio");
     this.aux=deviceValue.target.value;
     console.log(this.aux);
+    if(this.getCurso(this.aux)===undefined){
+      console.log("es undefined");
+    }else{
+      console.log("se enviara");
+      this.model=this.getCurso(this.aux);
+      console.log(this.model);
+    }
   }
+
   enviarCurso(){
-    if(this.getCurso(this.aux)!=null){
+    if(this.getCurso(this.aux)===undefined || this.getCurso(this.aux)==null){
+      console.log("el valor es nulo no se enviara nada");
+    }else{
       console.log("se enviara ");
       this.model = this.getCurso(this.aux);
       this.selecCurso.emit(this.model);
-    }else{
-      console.log("el valor es nulo no se enviara nada");
     }
+   /* if(this.getCurso(this.aux)!=null){
+    }else{
+    }*/
   }
   getCurso(id:String){
-    console.log("se recibe: "+id);
     for (let index = 0; index < this.cursos.length; index++) {
-      console.log("se ve "+this.cursos[index].curso_id);
-      if(this.cursos[index].curso_id==id){
-        console.log("entro en "+this.cursos[index].curso_id);
-        return this.cursos[index];
-      }
-      
+      if(this.cursos[index].curso_id==id)
+        return this.cursos[index]; 
     }
-    return null;   
-  }
+    return undefined;   
+  }  
+
 
   getCursos():void{
+    this.spinnerCurso=true;
     this._curso.getCursos().subscribe(res=>{
       console.log("mi res");
       console.log(res);
       this.cursos=res;
+      this.spinnerCurso=false;
     },error=>{
       console.log("mi error");
       console.log(error);
-      alert("error al cargar los cursos");
+      this.spinnerCurso=false;
     });
   }
+  
 
 }

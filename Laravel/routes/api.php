@@ -89,7 +89,9 @@ Route::group(['prefix' => 'auth'], function () {
         Route::post('registroIngredientePlato','IngredientePlatoController@crear')->middleware('verified');
         Route::get('registroIngredientePlato','IngredientePlatoController@crearMal')->middleware('verified');
     });
-
+    Route::group(['middleware' => 'auth:api'],function(){
+        Route::post('registroAlumnoUser','AlumnoUserController@crear')->middleware('verified');
+    });
 });
 
 

@@ -91,7 +91,7 @@ Route::get("/alumno/{id}/cursos",function($id){
     $alumno=App\Modelos\Alumno::find($id)->cursos;
     return $alumno;
 });*/
-Route::get("/alumno/{id}/familiares",function($id){
+/*Route::get("/alumno/{id}/familiares",function($id){
     $alumno=App\Modelos\Alumno::find($id)->familiares;
     return $alumno;
-});
+});*/

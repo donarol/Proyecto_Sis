@@ -1,4 +1,6 @@
-<div class="inicio">
+<app-pantalla-carga *ngIf="!isMuestra"></app-pantalla-carga>
+
+<div class="inicio" *ngIf="isMuestra">
   <div class="superior">
     <form #formLogin="ngForm" (ngSubmit)="inscribirAlumno(formLogin)">
       <div class="datos">
@@ -145,49 +147,45 @@
             <span class="sr-only">Loading...</span>
           </div>
         </div>
-        <div class="largo text-right">
-          <p><span>Fecha de Inscripcion: </span>{{jstoday}}</p>
-        </div>
       </div>
     </form>
   </div>     
-<!--
+
   <div class="inferior">
       <div class="input-group justify-content-between ">
-        <button data-toggle="modal" data-target="#modal-pariente" type="button" class="btn btn-secondary">Agregar Pariente</button>
-
+        <button data-toggle="modal" data-target="#targetFamiliar" type="button" class="btn btn-secondary">Agregar Pariente</button>
       </div>
       <table class="table" id="tabla">
           <thead class="thead-dark">
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Actividad</th>
-              <th scope="col">fecha</th>
+              <th scope="col">Nombre</th>
+              <th scope="col">Carnet</th>
+              <th scope="col">Parentesco</th>
+              <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
-              <tr>
-                  <th scope="col">1</th>
-                  <th scope="col">aa</th>
-                  <th scope="col">as</th>
-                </tr>
+              <tr *ngFor="let familiar of familiares;index as i">
+                <th scope="col">{{i+1}}</th>
+                <th scope="col">{{familiar.nombre}}</th>
+                <th scope="col">{{familiar.carnet}}</th>
+                <th scope="col">{{familiar.parentesco}}</th>
+                <th><button type="button" (click)="removeFamiliar(i)" class="btn btn-danger">Quitar</button></th>
+              </tr>
           </tbody>
       </table>
 
 
         
     </div>
-  -->
+
 </div>
 
 <div class="modal fade" id="targetCurso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelCurso" aria-hidden="true">
   <app-seleccion-curso (selecCurso)="SelecCurso($event)"></app-seleccion-curso>
 </div>
-<!-- Modal 
 
-<div class="modal fade" id="targetSeccion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelSeccion" aria-hidden="true">
-  <app-seleccion-seccion (selecSeccion)="SelecSeccion($event)"></app-seleccion-seccion>
+<div class="modal fade" id="targetFamiliar" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelFamiliar" aria-hidden="true">
+  <app-seleccion-familiar (_familiar_)="SelectFamilar($event)"></app-seleccion-familiar>
 </div>
-<div class="modal fade" id="targetTurno" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelTurno" aria-hidden="true">
-  <app-seleccion-turno (selecTurno)="SelecTurno($event)"></app-seleccion-turno>
-</div>-->
