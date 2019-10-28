@@ -16,7 +16,7 @@ export class UserService {
     return this.http.get<User>(`http://homestead.test/api/auth/user/${id}`,this.token());
   }
   updateUser(user:User):Observable<User>{
-    return this.http.put<User>(``,user,this.token());
+    return this.http.put<User>(`http://homestead.test/api/auth/user/${user.id}`,user,this.token());
   }
   
   token(){

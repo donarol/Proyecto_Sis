@@ -1,4 +1,5 @@
-<div class="contenedor">
+<app-pantalla-carga *ngIf="!isMuestra"></app-pantalla-carga>
+<div class="contenedor" *ngIf="isMuestra">
   <nav  class="col-md-4">
     <ul>
       <a *ngFor="let componente of componentes index as i"  routerLink="/{{componente.ruta}}">{{componente.etiqueta}}</a>

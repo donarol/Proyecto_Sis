@@ -1,49 +1,103 @@
-.datos-user{
-    display: flex;
-    flex-wrap: wrap;
+.emp-profile{
+    padding: 3%;
+    margin-top: 3%;
+    margin-bottom: 3%;
+    border-radius: 0.5rem;
+    background: #fff;
 }
-.imagen{
-    width: 50%;
+.profile-img{
+    text-align: center;
 }
-.datos{
-    width: 50%;
+.profile-img img{
+    width: 70%;
+    height: 100%;
 }
-.custom-file{
-    margin: 1%;
-    width: 60%;
-}.contenido-datos{
-    display: flex;
-    flex-wrap: wrap;
-    margin: 1%;
+.profile-img .file {
+    position: relative;
+    overflow: hidden;
+    margin-top: -20%;
+    width: 70%;
+    border: none;
+    border-radius: 0;
+    font-size: 15px;
+    background: #212529b8;
 }
-.contenido-datos p,.contenido-datos a{
-    width: 30%;
+.profile-img .file input {
+    position: absolute;
+    opacity: 0;
+    right: 0;
+    top: 0;
+}
+.profile-head h5{
+    color: #333;
+}
+.profile-head h6{
+    color: #0062cc;
+}
+.profile-edit-btn{
+    border: none;
+    border-radius: 1.5rem;
+    width: 70%;
+    padding: 2%;
+    font-weight: 600;
+    color: #6c757d;
+    cursor: pointer;
+}
+.btn{
+    border: none;
+    border-radius: 1.5rem; 
+    cursor: pointer;  
+}
+.form-control{
+    margin-bottom: 1%;
+}
+.proile-rating{
+    font-size: 12px;
+    color: #818182;
+    margin-top: 5%;
+}
+.proile-rating span{
+    color: #495057;
+    font-size: 15px;
+    font-weight: 600;
+}
+.profile-head .nav-tabs{
+    margin-bottom:5%;
+}
+.profile-head .nav-tabs .nav-link{
+    font-weight:600;
+    border: none;
+}
+.profile-head .nav-tabs .nav-link.active{
+    border: none;
+    border-bottom:2px solid #0062cc;
+}
+.profile-work{
+    padding: 14%;
+    margin-top: -15%;
+}
+.profile-work p{
+    font-size: 12px;
+    color: #818182;
+    font-weight: 600;
+    margin-top: 10%;
+}
+.profile-work a{
     text-decoration: none;
+    color: #495057;
+    font-weight: 600;
+    font-size: 14px;
 }
-img{
-    display: block;
-    margin: auto;
-    max-height: 240px;
-    max-width: 550px;
+.profile-work ul{
+    list-style: none;
 }
-input{
-    width: 59%;
-    color: aliceblue;
-    border: none;
-    background: #0B496C;
-    border-bottom: 3px solid #fff;
-    font-family: 'Nunito', sans-serif;
-    border-radius: 5px;
-    padding-top: 15px;
-    outline: none;
-    transition: 0.3s;
-    -webkit-transition: 0.3s;
-    -moz-transition: 0.3s;
+.profile-tab label{
+    font-weight: 600;
 }
-p{
-    
-    color: aliceblue;
+.profile-tab p,.profile-tab input{
+    font-weight: 600;
+    color: #0062cc;
 }
-input:focus{
-    border: none;
+.atras{
+    margin-bottom: 2%;
 }

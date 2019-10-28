@@ -7,9 +7,9 @@ class UserDAO{
     public function obtener($id){
         return User::find($id);
     }
-    public function modificar($id,User $user){
+    public function modificar(User $user){
         $user->save();
         return response()->json([
-            'message' => 'Successfully update user!'], 201);
+            'message' => 'Successfully update user!'], 200);
     }
 }

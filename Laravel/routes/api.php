@@ -30,6 +30,7 @@ Route::group(['prefix' => 'auth'], function () {
     Route::group(['middleware' => 'auth:api'],function(){
         Route::get('user/{id}','UserController@obtener')->middleware('verified');
         Route::put('user/{id}','UserController@modificar')->middleware('verified');
+      
         //---
         //Route::get('familiares','FamiliarController@lista')->middleware('verified');
     });

@@ -13,11 +13,12 @@ import { UserService } from '../servicios/user.service';
 })
 export class CuentaAdministradorComponent implements OnInit {
   private model:User;
+  private aux:User;
   private imagenName:string;
   private href: string = "";
-  private isUpdate:boolean;
   private spinner:boolean;
   private errors:Errores[]=[];
+  private show:Boolean;
   constructor(
     private _user:UserService,
     private rutaActiva:ActivatedRoute
@@ -25,8 +26,9 @@ export class CuentaAdministradorComponent implements OnInit {
 
   ngOnInit() {
     this.model=new User;
-    this.isUpdate=false;
+    this.aux=new User;
     this.spinner=true;
+    this.show=true;
     this.setErrors();
     this.verifica();
     this.cargaUser();
@@ -36,9 +38,11 @@ export class CuentaAdministradorComponent implements OnInit {
     if(form.valid){
       this.spinner=true;
       console.log("es valido");
-      this._user.updateUser(this.model).subscribe(res=>{
+      this._user.updateUser(this.aux).subscribe(res=>{
         console.log("Mi Res");
         console.log(res);
+        this.model=res;
+        this.aux=this.setAux(this.model);
         this.spinner=false;
       },error=>{
         console.log("mi error");
@@ -53,17 +57,19 @@ export class CuentaAdministradorComponent implements OnInit {
         this.errors[2].getError();
       if(form.controls.carnet.status==='INVALID')
         this.errors[3].getError();
-      if(form.controls.telefono.status==='INVALID')
-        this.errors[4].getError();
       if(form.controls.email.status==='INVALID')
+        this.errors[4].getError();
+      if(form.controls.telefono.status==='INVALID')
         this.errors[5].getError();
     }
   }
   cargaUser():void{
+    
     this._user.getUser(this.model.id).subscribe(res=>{
       console.log("Mi res");
       console.log(res);
       this.model=res;
+      this.aux=this.setAux(this.model);
       this.imagenName='admin.png';
       this.spinner=false;
     },error=>{
@@ -76,18 +82,27 @@ export class CuentaAdministradorComponent implements OnInit {
     if(this.rutaActiva.snapshot.params.id!=null){
       console.log("no es nulo");
       this.model.id=this.rutaActiva.snapshot.params.id;
-      this.isUpdate=false;
     }else{
       console.log("es nulo");
-      this.isUpdate=true;
     }
+  }
+  setAux(model:User):User{
+    var aux=new User;
+    aux.id=model.id;
+    aux.nombre=model.nombre;
+    aux.apellido=model.apellido;
+    aux.carnet=model.carnet;
+    aux.email=model.email;
+    aux.telefono=model.telefono;
+    aux.tipo=model.tipo;
+    return aux;
   }
   setErrors():void{
     this.errors.push(new Errores('Error al guardar los Datos'));
     this.errors.push(new Errores('Error al ingresar el Nombre'));
     this.errors.push(new Errores('Error al ingresar el Apellido'));
     this.errors.push(new Errores('Error al ingresar el Carnet'));
+    this.errors.push(new Errores('Error al ingresar el correo'));
     this.errors.push(new Errores('Error al ingresar el Telefono'));
-    this.errors.push(new Errores('Correo Electronico no Valido'));
   }
 }
