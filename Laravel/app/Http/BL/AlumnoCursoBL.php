@@ -13,4 +13,8 @@ class AlumnoCursoBL{
         $alumnoCursoDao = new AlumnoCursoDAO;
         return $alumnoCursoDao->crear($alumnoCurso);
     }
+    public function obtener($id){
+        $alumnoCurso = new AlumnoCursoDAO;
+        return $alumnoCurso->obtener($id);    
+    }
 }

@@ -27,24 +27,12 @@ export class TurnoDatosComponent implements OnInit {
     this.spinner=true;
     this.setErrors();
     this.getTurno();   
-    this._user.getUserActual().subscribe(res=>{
-      console.log("Mi res");
-      console.log(res);
-      if(res.tipo==='Administrador'){
-        console.log("usted es administrador");
-      }else{
-        alert('Usted no es Administrador');
-        this._router.navigate(['']);
-      }
-    });
   }
   getTurno(){
     this._turno.getTurno(this.rutaActiva.snapshot.params.id).subscribe(res=>{
-      console.log("mi res");
+      console.log("mi res t");
       console.log(res);
       this.turno=res;
-      console.log("mi modelo");
-      console.log(this.turno);
       this.spinner=false;
     },error=>{
       console.log("mi error");

@@ -6,7 +6,7 @@ use Tests\TestCase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 
-class turnoTest extends TestCase
+class ingredienteTest extends TestCase
 {
     /**
      * A basic feature test example.
@@ -18,30 +18,22 @@ class turnoTest extends TestCase
         $response = $this->withHeaders([
             'X-Header' => 'Value',
             'Authorization' => TestCase::$bearer
-        ])->json('POST', '/api/auth/registroTurno', 
-        ['nombre' => 'turno nuevo 30',
-        'monto'=>'500',
-        'gestion' => '2020',
-        'hora_inicio'=>'03:00:00',
-        'hora_fin' => '10:00:00'
+        ])->json('POST', '/api/auth/registroIngrediente', 
+        ['nombre' => 'ingrediente 101'
         ]);
         $response
         ->assertStatus(200)
         ->assertJson([
-            'nombre' => 'turno nuevo 30',
-            'monto'=>'500',
-            'gestion' => '2020',
-            'hora_inicio'=>'03:00:00',
-            'hora_fin' => '10:00:00'
+            'nombre' => 'ingrediente 101'
         ]             
         );
     }*/
-    public function testTurnosExample()
+    public function testIngredientesExample()
     {
         $response = $this->withHeaders([
             'X-Header' => 'Value',
             'Authorization' => TestCase::$bearer
-        ])->json('GET', '/api/auth/turnos'
+        ])->json('GET', '/api/auth/ingredientes'
         );
         $response->assertStatus(200);
        /* $response
@@ -51,43 +43,34 @@ class turnoTest extends TestCase
         ]             
         );*/
     }
-    public function testTurnoExample()
+    public function testIngredienteExample()
     {
         $response = $this->withHeaders([
             'X-Header' => 'Value',
             'Authorization' => TestCase::$bearer
-        ])->json('GET', '/api/auth/turno/1'
+        ])->json('GET', '/api/auth/ingrediente/1'
         );
-        $response
-            ->assertStatus(200)
-            ->assertJson([
-                'nombre' => 'turno 1 nuevo',
-                'monto'=>'250',
-                'gestion' => '2020',
-                'hora_inicio'=>'07:00:00',
-                'hora_fin' => '10:00:00'
-            ]);
+         $response
+        ->assertStatus(200)
+        ->assertJson([
+            'ingrediente_id'=> '1',
+            'nombre' => 'ingrediente 1'
+        ]             
+        );
     }
     public function testUpdateExample(){
         $response = $this->withHeaders([
             'X-Header' => 'Value',
             'Authorization' => TestCase::$bearer
-        ])->json('PUT', '/api/auth/turno/1', 
-        ['nombre' => 'turno 1 nuevo',
-        'monto'=>'250',
-        'gestion' => '2020',
-        'hora_inicio'=>'07:00:00',
-        'hora_fin' => '10:00:00'
+        ])->json('PUT', '/api/auth/ingrediente/1', 
+        ['nombre' => 'ingrediente 1'
         ]);
         $response
         ->assertStatus(200)
         ->assertJson([
-            'nombre' => 'turno 1 nuevo',
-            'monto'=>'250',
-            'gestion' => '2020',
-            'hora_inicio'=>'07:00:00',
-            'hora_fin' => '10:00:00'
+            'nombre' => 'ingrediente 1'
         ]             
         );
     }
+
 }

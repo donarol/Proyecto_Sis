@@ -17,7 +17,7 @@ class administradorTest extends TestCase
         $response = $this->withHeaders([
             'X-Header' => 'Value',
             'Authorization' => TestCase::$bearer
-        ])->json('GET', '/api/auth/administradores'
+        ])->json('GET','/api/auth/administradores'
         );
         $response->assertStatus(200);
     }
@@ -26,9 +26,10 @@ class administradorTest extends TestCase
         $response = $this->withHeaders([
             'X-Header' => 'Value',
             'Authorization' => TestCase::$bearer
-        ])->json('GET', '/api/auth/administradoresCursos/1'
+        ])->json('GET', '/api/auth/administrador/1/cursos'
         );
         $response->assertStatus(200);
+        
     }
 
 }

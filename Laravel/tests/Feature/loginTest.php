@@ -10,21 +10,33 @@ class loginTest extends TestCase
      *
      * @return void
      */
-  /*  public function testCreateExample(){
+   /* public function testCreateExample(){
         $response = $this->withHeaders([
             'X-Header' => 'Value'
         ])->json('POST', '/api/auth/signup', 
-        ['nombre' => 'nombre a',
-        'apellido'=>'apellido a',
-        'carnet' => 'carnet a',
-        'email'=>'admin41@example.com',
-        'telefono' => 'telefono a',
+        ['nombre' => 'nombre x',
+        'apellido'=>'apellido x',
+        'carnet' => 'carnet x',
+        'email'=>'adminx1@example.com',
+        'telefono' => 'telefono x',
         'password'=>'contra12345',
         'password_confirmation' => 'contra12345',
         'tipo'=>'Administrador'
         ]);
-        $response->assertStatus(201);
+        $response
+        ->assertStatus(200)
+        ->assertJson([
+            'nombre' => 'nombre x',
+            'apellido'=>'apellido x',
+            'carnet' => 'carnet x',
+            'email'=>'adminx1@example.com',
+            'telefono' => 'telefono x',
+            'tipo'=>'Administrador'
+        ]             
+        );
+        //$response->assertStatus(201);
     }*/
+    /*
     public function testLoginTest(){
         $response = $this->withHeaders([
             'X-Header' => 'Value'
@@ -33,9 +45,9 @@ class loginTest extends TestCase
         $response
         ->assertStatus(200)           
         ->assertJson([
-            'token_type' => 'Bearer'
+            'message' => 'Token exitoso'
         ]);
-    }
+    }*/
     
     public function testUserTest(){
         $response = $this->withHeaders([

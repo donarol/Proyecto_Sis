@@ -8,9 +8,9 @@ class AuthDAO{
     public function crear(User $user){
        
         $user->save();
-        return response()->json([
-            'message' => 'Successfully created user!'], 201);
-   
+       /* return response()->json([
+            'message' => 'Successfully created user!'], 201);*/
+        return response()->json($user,200);
     }
     public function login($user){
         $client = DB::table('oauth_clients')->where('id',rand(1,2))->first(); 
@@ -24,6 +24,7 @@ class AuthDAO{
             'expires_at'   => Carbon::parse(
                 $tokenResult->token->expires_at)
                     ->toDateTimeString(),
+            'message'      => 'Token exitoso'
         ]);
     }
 }

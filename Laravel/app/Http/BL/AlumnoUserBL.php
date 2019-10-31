@@ -13,4 +13,8 @@ class AlumnoUserBL{
         $alumnoUserDao = new AlumnoUserDAO;
         return $alumnoUserDao->crear($alumnoUser);
     }
+    public function obtener($id){
+        $alumnoUser = new AlumnoUserDAO;
+        return $alumnoUser->obtener($id);    
+    }
 }

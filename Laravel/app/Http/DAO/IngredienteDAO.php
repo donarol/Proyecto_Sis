@@ -6,7 +6,7 @@ use App\Modelos\Ingrediente;
 class IngredienteDAO{
     public function crear(Ingrediente $ingrediente){
         $ingrediente->save();
-        return $ingrediente;
+        return response()->json($ingrediente,200);
     }
     public function lista(){
         return Ingrediente::all();

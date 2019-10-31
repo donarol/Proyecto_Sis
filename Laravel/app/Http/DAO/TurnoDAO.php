@@ -6,16 +6,20 @@ use App\Modelos\Turno;
 class TurnoDAO{
     public function crear(Turno $turno){
         $turno->save();
-        return $turno;
+        return response()->json($turno,200);
     }
     public function lista(){
         return Turno::all();
+       /*return response()->json([
+            'turnos' => Turno::all(),
+            'message' => 'cargado exitosamente'
+        ]);*/
     }
     public function obtener($id){
-        return Turno::find($id);
+        return response()->json(Turno::find($id),200);
     }
     public function modificar(Turno $turno){
         $turno->save();
-        return $turno;
+        return response()->json($turno,200);
     }
 }

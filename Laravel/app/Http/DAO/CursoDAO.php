@@ -6,25 +6,26 @@ use App\Modelos\Curso;
 class CursoDAO{
     public function crear(Curso $curso){
         $curso->save();
-        return $curso;
+        return response()->json($curso,200);
     }
     public function lista(){
         return Curso::all();
     }
     public function obtener($id){
-        return Curso::find($id);
+        return response()->json(Curso::find($id),200);
     }
     public function modificar(Curso $curso){
         $curso->save();
-        return $curso;
+        return response()->json($curso,200);
     }
     public function miDocente($id){
-        return Curso::find($id)->user;
+        return response()->json(Curso::find($id)->user,200);
+        
     }
     public function miSeccion($id){
-        return Curso::find($id)->seccion;
+        return response()->json(Curso::find($id)->seccion,200);
     }
     public function miTurno($id){
-        return Curso::find($id)->turno;
+        return response()->json(Curso::find($id)->turno,200);
     }
 }

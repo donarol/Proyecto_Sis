@@ -15,4 +15,8 @@ class AlumnoUserController extends Controller
     public function crearMal(){
         echo 'error al inscribir al alumno User';
     }
+    public function obtener($id){
+        $alumnoUser = new alumnoUserBL;
+        return $alumnoUser->obtener($id);
+    }
 }

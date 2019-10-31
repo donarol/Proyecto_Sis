@@ -7,7 +7,7 @@ use Carbon\Carbon;
 class PlatoDAO{
     public function crear(Plato $plato){
         $plato->save();
-        return $plato;
+        return response()->json($plato,200);
     }
     public function lista(){
         return Plato::all();

@@ -22,6 +22,22 @@ class seccionTest extends TestCase
         );
         $response->assertStatus(200);
     }
+    public function testUpdateExample(){
+        $response = $this->withHeaders([
+            'X-Header' => 'Value',
+            'Authorization' => TestCase::$bearer
+        ])->json('PUT', '/api/auth/seccion/1', 
+        ['nombre' => 'Parbulario 2p',
+        'descripcion'=>'niños 4 años'
+        ]);
+        $response
+        ->assertStatus(200)
+        ->assertJson([
+            'nombre' => 'Parbulario 2p',
+            'descripcion' => 'niños 4 años'
+        ]             
+        );
+    }
     public function testSeccionExample()
     {
         $response = $this->withHeaders([
@@ -29,16 +45,14 @@ class seccionTest extends TestCase
             'Authorization' => TestCase::$bearer
         ])->json('GET', '/api/auth/seccion/1'
         );
-        $response->assertStatus(200);
+        $response
+        ->assertStatus(200)
+        ->assertJson([
+            'nombre' => 'Parbulario 2p',
+            'descripcion' => 'niños 4 años'
+        ]             
+        );
+        //$response->assertStatus(200);
     }
-    public function testUpdateExample(){
-        $response = $this->withHeaders([
-            'X-Header' => 'Value',
-            'Authorization' => TestCase::$bearer
-        ])->json('PUT', '/api/auth/seccion/1', 
-        ['nombre' => 'Parbulario',
-        'descripcion'=>'niños 45 años'
-        ]);
-        $response->assertStatus(200);
-    }
+
 }

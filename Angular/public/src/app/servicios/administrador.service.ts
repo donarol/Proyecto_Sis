@@ -15,7 +15,7 @@ export class AdministradorService {
   }
   //VER LO QUE DEVUELVE
   getCursosAdministrador(administrador:User){
-    return this.http.get(`http://homestead.test/api/auth/administradoresCursos/${administrador.id}`,this.getoken());
+    return this.http.get(`http://homestead.test/api/auth/administrador/${administrador.id}/cursos`,this.getoken());
   }
   private getoken(){
     var httpOptions = {

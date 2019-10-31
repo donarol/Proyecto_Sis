@@ -8,10 +8,10 @@ class SeccionDAO{
         return Seccion::all();
     }
     public function obtener($id){
-        return Seccion::find($id);
+        return response()->json(Seccion::find($id),200);
     }
     public function modificar(Seccion $seccion){
         $seccion->save();
-        return $seccion;
+        return response()->json($seccion,200);
     }
 }
