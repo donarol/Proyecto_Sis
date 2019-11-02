@@ -24,6 +24,14 @@ class CursoBL{
         $cursoDao = new CursoDAO;
         return $cursoDao->obtener($id);    
     }
+    public function obtenerLista($datos){
+        $curso = new Curso;
+        $curso->seccion_id=$datos['seccion_id'];
+
+        $curso->turno_id=$datos['turno_id'];
+        $cursoDao = new CursoDAO;
+        return $cursoDao->obtenerLista($curso);
+    }
     public function miDocente($id){
         $cursoDao = new CursoDAO;
         return $cursoDao->miDocente($id);

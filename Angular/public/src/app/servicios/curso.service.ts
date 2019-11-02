@@ -22,6 +22,9 @@ export class CursoService {
   getCurso(id:String):Observable<Curso>{
     return this.http.get<Curso>(`http://homestead.test/api/auth/curso/${id}`,this.getoken());
   }
+  getCursoLista(curso:Curso):Observable<Curso[]>{
+    return this.http.post<Curso[]>('http://homestead.test/api/auth/cursoLista',curso,this.getoken());
+  }
   getDocente(id:String):Observable<User>{
     return this.http.get<User>(`http://homestead.test/api/auth/cursoDocente/${id}`,this.getoken());
   }

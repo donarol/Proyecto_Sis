@@ -95,3 +95,21 @@ Route::get("/alumno/{id}/cursos",function($id){
     $alumno=App\Modelos\Alumno::find($id)->familiares;
     return $alumno;
 });*/
+/*
+Route::get("/cursosLista",function(){
+    $curso = App\Modelos\Curso::
+    join('secciones', function ($join) {
+        $join->on('cursos.seccion_id', '=', 'secciones.seccion_id')
+             ->where('secciones.seccion_id', '=', 1);
+    })
+    ->join('turnos', function ($join) {
+        $join->on('cursos.turno_id', '=', 'turnos.turno_id')
+             ->where([
+                 ['turnos.turno_id', '=',10],
+                 ['turnos.gestion','=',2020]
+             ]);
+    })
+    ->select('cursos.*')
+    ->get();
+    return $curso;    
+});*/

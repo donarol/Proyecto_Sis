@@ -1,4 +1,61 @@
-<p>
-  home-administrador works!
-</p>
-<!--<app-pantalla-carga></app-pantalla-carga>-->
+<div class="container-fluid">
+  <div class="superior">
+    <nav class="navbar navbar-light bg-light">
+        <div class="col-10 row">
+          <div class="col-6 input-group">
+            <div class="input-group-prepend" *ngIf="spinnerTurno" >
+              <div class="spinner-border text-danger" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+            <select [(ngModel)]="model.turno_id" class="browser-default custom-select">
+              <option value=''>Lista Turnos</option>
+              <option
+              *ngFor="let turno of turnos"
+              [attr.value]="turno.turno_id">
+               {{turno.nombre}} - {{turno.gestion}}
+              </option>
+            </select>
+          </div>
+          <div class="col-6 input-group">
+            <div class="input-group-prepend" *ngIf="spinnerSeccion" >
+              <div class="spinner-border text-danger" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+            <select [(ngModel)]="model.seccion_id" class="browser-default custom-select">
+              <option value=''>Lista Secciones</option>
+              <option
+              *ngFor="let seccion of secciones"
+              [attr.value]="seccion.seccion_id">
+                {{seccion.nombre}}
+              </option>
+            </select>
+          </div>
+    
+        </div>
+            <button class="btn btn-outline-success my-2 my-sm-0" (click)="getCursos()" type="button">Buscar</button>
+          
+          
+        
+      </nav>
+  </div>
+  <div class="inferior">
+    <div class="row">
+        <div class="col-4">
+          <div class="list-group" id="list-tab" role="tablist">
+            <a *ngFor="let curso of cursos" class="list-group-item list-group-item-action" 
+            [attr.id]="'list-home-list'+curso.curso_id" 
+            data-toggle="list" 
+            [attr.href]="'#list'+curso.curso_id" 
+            role="tab" 
+            [attr.aria-controls]="'home'+curso.curso_id">Home</a>
+            <!--<a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
+            <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
+            <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
+          -->
+          </div>
+        </div> <!-- card-group-item.// -->
+    </div> <!-- card.// -->
+  </div>
+</div>
