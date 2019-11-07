@@ -113,3 +113,8 @@ Route::get("/cursosLista",function(){
     ->get();
     return $curso;    
 });*/
+/*
+Route::get("/curso/{id}/alumnos",function($id){
+    $alumno=App\Modelos\Curso::find($id)->alumnos;
+    return $alumno;
+});*/

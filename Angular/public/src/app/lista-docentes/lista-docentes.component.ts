@@ -1,4 +1,5 @@
 import { Component, OnInit,Input } from '@angular/core';
+import { Curso } from '../modelos/Curso';
 
 @Component({
   selector: 'app-lista-docentes',
@@ -6,13 +7,10 @@ import { Component, OnInit,Input } from '@angular/core';
   styleUrls: ['./lista-docentes.component.css']
 })
 export class ListaDocentesComponent implements OnInit {
-  private pruebas:string[];
-  @Input() curso_id:string;
+  @Input('CursoEnvio') private curso:Curso;
   constructor(){
   }
 
   ngOnInit() {
-   this.pruebas=['1','2','3'];
-   console.log("Cargar los docentes del curso con id: "+this.curso_id);
   }
 }

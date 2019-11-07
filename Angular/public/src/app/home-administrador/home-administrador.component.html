@@ -1,61 +1,148 @@
 <div class="container-fluid">
   <div class="superior">
     <nav class="navbar navbar-light bg-light">
-        <div class="col-10 row">
-          <div class="col-6 input-group">
-            <div class="input-group-prepend" *ngIf="spinnerTurno" >
-              <div class="spinner-border text-danger" role="status">
-                <span class="sr-only">Loading...</span>
-              </div>
+      <div class="col-10 row">
+        <div class="col-6 input-group">
+          <div class="input-group-prepend" *ngIf="spinnerTurno" >
+            <div class="spinner-border text-danger" role="status">
+              <span class="sr-only">Loading...</span>
             </div>
-            <select [(ngModel)]="model.turno_id" class="browser-default custom-select">
-              <option value=''>Lista Turnos</option>
-              <option
-              *ngFor="let turno of turnos"
-              [attr.value]="turno.turno_id">
-               {{turno.nombre}} - {{turno.gestion}}
-              </option>
-            </select>
           </div>
-          <div class="col-6 input-group">
-            <div class="input-group-prepend" *ngIf="spinnerSeccion" >
-              <div class="spinner-border text-danger" role="status">
-                <span class="sr-only">Loading...</span>
-              </div>
-            </div>
-            <select [(ngModel)]="model.seccion_id" class="browser-default custom-select">
-              <option value=''>Lista Secciones</option>
-              <option
-              *ngFor="let seccion of secciones"
-              [attr.value]="seccion.seccion_id">
-                {{seccion.nombre}}
-              </option>
-            </select>
-          </div>
-    
+          <select [(ngModel)]="model.turno_id" class="browser-default custom-select">
+            <option value=''>Lista Turnos</option>
+            <option
+            *ngFor="let turno of turnos"
+            [attr.value]="turno.turno_id">
+              {{turno.nombre}} - {{turno.gestion}}
+            </option>
+          </select>
         </div>
-            <button class="btn btn-outline-success my-2 my-sm-0" (click)="getCursos()" type="button">Buscar</button>
-          
-          
-        
-      </nav>
-  </div>
-  <div class="inferior">
-    <div class="row">
-        <div class="col-4">
-          <div class="list-group" id="list-tab" role="tablist">
-            <a *ngFor="let curso of cursos" class="list-group-item list-group-item-action" 
-            [attr.id]="'list-home-list'+curso.curso_id" 
-            data-toggle="list" 
-            [attr.href]="'#list'+curso.curso_id" 
-            role="tab" 
-            [attr.aria-controls]="'home'+curso.curso_id">Home</a>
-            <!--<a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
-            <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
-            <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
-          -->
+        <div class="col-6 input-group">
+          <div class="input-group-prepend" *ngIf="spinnerSeccion" >
+            <div class="spinner-border text-danger" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
           </div>
-        </div> <!-- card-group-item.// -->
-    </div> <!-- card.// -->
+          <select [(ngModel)]="model.seccion_id" class="browser-default custom-select">
+            <option value=''>Lista Secciones</option>
+            <option
+            *ngFor="let seccion of secciones"
+            [attr.value]="seccion.seccion_id">
+              {{seccion.nombre}}
+            </option>
+          </select>
+        </div>
+      </div>
+      <button class="btn btn-outline-success my-2 my-sm-0" (click)="getCursos()" type="button">Buscar</button>
+    </nav>
+  </div>
+
+  <div class="inferior container-fluid">
+    <div class="row">
+      <div class="input-group-prepend" *ngIf="spinnerCurso" >
+        <div class="spinner-border text-danger" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="errors[0].isError">
+        {{errors[0].message}}
+      </div>
+      <div class="alert alert-danger" role="alert" *ngIf="errors[1].isError">
+        {{errors[1].message}}
+      </div>
+      <div class="col-4" *ngIf="cursos.length > 0">
+        <select  (change)="changeSelect()" size="9" class=" form-control list-group" id="list-tab" role="tablist">
+          <option *ngFor="let curso of cursos" 
+          class="list-group-item list-group-item-action" 
+          [attr.id]="'list-home-list-curso'+curso.curso_id" 
+          data-toggle="list" 
+          [attr.href]="'#list-curso'+curso.curso_id" 
+          href="#list-home-curso" 
+          role="tab" 
+          aria-controls="home-curso"
+          [attr.value]="curso.curso_id"
+          >
+            {{curso.nombre}}
+          </option>
+        </select>
+      </div> 
+      <div class="col-8" *ngIf="cursos.length > 0">
+        <div class="tab-content" id="nav-tabContent">
+          <div 
+          *ngFor="let curso_0 of cursos" 
+          class="tab-pane fade show" 
+          [attr.id]="'list-curso'+curso_0.curso_id" 
+          role="tabpanel" 
+          [attr.aria-labelledby]="'list-home-list-curso'+curso_0.curso_id">
+            <div class="card mb-3">
+              <div class="row no-gutters">
+                <div class="col-md-12">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col-12">
+                        <ul class="nav nav-tabs" id="myTab" role="tablist">
+                          <li class="nav-item">
+                            <a 
+                            class="nav-link active" 
+                            id="alumno-tab{{curso_0.curso_id}}" 
+                            data-toggle="tab" 
+                            href="#alumno{{curso_0.curso_id}}" 
+                            role="tab" 
+                            aria-controls="alumno" 
+                            aria-selected="true">
+                              Alumnos
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a 
+                            class="nav-link" 
+                            id="camara-tab{{curso_0.curso_id}}" 
+                            data-toggle="tab" 
+                            href="#camara{{curso_0.curso_id}}" 
+                            role="tab" 
+                            aria-controls="camara" 
+                            aria-selected="false">
+                              Camaras
+                            </a>
+                          </li>
+                          <li class="nav-item">
+                            <a 
+                            class="nav-link" 
+                            id="docente-tab{{curso_0.curso_id}}" 
+                            data-toggle="tab" 
+                            href="#docente{{curso_0.curso_id}}" 
+                            role="tab" 
+                            aria-controls="docente" 
+                            aria-selected="false">
+                              Docente
+                            </a>
+                          </li>
+                        </ul>
+
+                        <div class="col-md-12">
+                            <div class="tab-content profile-tab" id="myTabContent">
+                              <div class="tab-pane fade show active" id="alumno{{curso_0.curso_id}}" role="tabpanel" aria-labelledby="alumno-tab">
+                                <!--<app-lista-alumnos [CursoEnvio]="curso_0"></app-lista-alumnos>-->
+                                <app-lista-alumnos [CursoEnvio]="curso_0" (selectAlumno)="SelectAlumno($event)" *ngIf="alumno.alumno_id == ''"></app-lista-alumnos>
+                                <app-alumno-datos *ngIf="alumno.alumno_id != ''"></app-alumno-datos>
+                              </div>
+                              <div class="tab-pane fade" id="camara{{curso_0.curso_id}}" role="tabpanel" aria-labelledby="camara-tab">
+                                <app-lista-camaras [CursoEnvio]="curso_0"></app-lista-camaras>
+                              </div>
+                              <div class="tab-pane fade" id="docente{{curso_0.curso_id}}" role="tabpanel" aria-labelledby="docente-tab">
+                                <app-lista-docentes [CursoEnvio]="curso_0"></app-lista-docentes>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div> 
+        </div>
+      </div>
+    </div>
   </div>
 </div>

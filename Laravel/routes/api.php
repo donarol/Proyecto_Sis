@@ -59,6 +59,7 @@ Route::group(['prefix' => 'auth'], function () {
         Route::get('cursos','CursoController@lista')->middleware('verified');
         Route::get('curso/{id}','CursoController@obtener')->middleware('verified');
         Route::post('cursoLista','CursoController@obtenerLista')->middleware('verified');
+        Route::get('curso/{id}/alumnos','CursoController@alumnos')->middleware('verified');
         Route::put('curso/{id}','CursoController@modificar')->middleware('verified');
         Route::get('cursoDocente/{id}','CursoController@miDocente')->middleware('verified');
         Route::get('cursoSeccion/{id}','CursoController@miSeccion')->middleware('verified');

@@ -5,6 +5,8 @@ import { TurnoService } from '../servicios/turno.service';
 import { SeccionService } from '../servicios/seccion.service';
 import { Curso } from '../modelos/Curso';
 import { CursoService } from '../servicios/curso.service';
+import { Errores } from '../modelos/Errores';
+import { Alumno } from '../modelos/Alumno';
 
 @Component({
   selector: 'app-home-administrador',
@@ -12,12 +14,15 @@ import { CursoService } from '../servicios/curso.service';
   styleUrls: ['./home-administrador.component.css']
 })
 export class HomeAdministradorComponent implements OnInit {
+  private errors:Errores[];
   private turnos:Turno[];
   private secciones:Seccion[];
   private cursos:Curso[];
   private spinnerTurno:Boolean;
   private spinnerSeccion:Boolean;
+  private spinnerCurso:Boolean;
   private model:Curso;
+  private alumno:Alumno;
   constructor(
     private _turno:TurnoService,
     private _seccion:SeccionService,
@@ -27,10 +32,14 @@ export class HomeAdministradorComponent implements OnInit {
   ngOnInit() {
     this.spinnerTurno=false;
     this.spinnerSeccion=false;
+    this.spinnerCurso=false;
     this.turnos=[];
     this.secciones=[];
     this.cursos=[];
+    this.errors=[];
     this.model=new Curso;
+    this.alumno=new Alumno;
+    this.setErrors();
     this.getTurnos();
     this.getSecciones();
   }
@@ -63,18 +72,38 @@ export class HomeAdministradorComponent implements OnInit {
   }
   getCursos(){
     if (this.model.seccion_id!='' || this.model.turno_id!=''){
+      this.spinnerCurso=true;
+      this.cursos=[];
       console.log("mi model");
       console.log(this.model);
       this._curso.getCursoLista(this.model).subscribe(res=>{
         console.log("mi res");
         console.log(res);
         this.cursos=res;
+        this.spinnerCurso=false;
+        if(this.cursos.length==0)
+          this.errors[1].getError();  
       },error=>{
         console.log("mi error");
         console.log(error);
+        this.errors[0].getError();
       });
     }else
-      alert('Error en la Busqueda');
+      this.errors[0].getError();
+  }
+  SelectAlumno(alumno:Alumno){
+    console.log("me llego");
+    console.log(alumno);
+    this.alumno=alumno;
+  }
+  changeSelect(){
+    console.log("cambio");
+    this.alumno=new Alumno;
+  }
+  
+  setErrors():void{
+    this.errors.push(new Errores("Error al cargar"));
+    this.errors.push(new Errores("No se encontro cursos"));
   }
 
 }

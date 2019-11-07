@@ -57,6 +57,7 @@ import { MenuModificarComponent } from './menu-modificar/menu-modificar.componen
 import { SeleccionFamiliarComponent } from './seleccion-familiar/seleccion-familiar.component';
 import { SeleccionFamiliarIiComponent } from './seleccion-familiar-ii/seleccion-familiar-ii.component';
 import { SeleccionCursoIiComponent } from './seleccion-curso-ii/seleccion-curso-ii.component';
+import { AlumnoDatosComponent } from './alumno-datos/alumno-datos.component';
 
 
 const router: Routes=[
@@ -144,7 +145,8 @@ const router: Routes=[
     MenuModificarComponent,
     SeleccionFamiliarComponent,
     SeleccionFamiliarIiComponent,
-    SeleccionCursoIiComponent
+    SeleccionCursoIiComponent,
+    AlumnoDatosComponent
   ],
   imports: [
     BrowserModule,

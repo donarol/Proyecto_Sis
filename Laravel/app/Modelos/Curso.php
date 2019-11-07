@@ -23,5 +23,7 @@ class Curso extends Model
     public function turno(){
         return $this->belongsTo('App\Modelos\Turno','turno_id','turno_id');
     }
-
+    public function alumnos(){
+        return $this->belongsToMany('App\Modelos\Alumno','alumnos_cursos','curso_id','alumno_id');
+    }
 }

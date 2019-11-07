@@ -37,6 +37,10 @@ class CursoController extends Controller
         $curso = new CursoBL;
         return $curso->obtenerLista($datos);
     }
+    public function alumnos($id){
+        $curso = new CursoBL;
+        return $curso->alumnos($id);
+    }
     public function miDocente($id){
         $curso = new CursoBL;
         return $curso->miDocente($id);

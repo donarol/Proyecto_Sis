@@ -10,10 +10,14 @@ class CursoDAO{
         return response()->json($curso,200);
     }
     public function lista(){
-        return Curso::all();
+        return response()->json(Curso::all(),200);
     }
     public function obtener($id){
         return response()->json(Curso::find($id),200);
+    }
+    public function modificar(Curso $curso){
+        $curso->save();
+        return response()->json($curso,200);
     }
     public function obtenerLista(Curso $curso){
         global $seccion;
@@ -35,10 +39,10 @@ class CursoDAO{
         ->get();
         return response()->json($curso,200); 
     }
-    public function modificar(Curso $curso){
-        $curso->save();
-        return response()->json($curso,200);
+    public function alumnos($id){
+        return response()->json(Curso::find($id)->alumnos,200);
     }
+
     public function miDocente($id){
         return response()->json(Curso::find($id)->user,200);
         

@@ -1,8 +1,18 @@
-.superior{
-    background: red;
-    width: 100%;
-}
 .inferior{
-    background: yellow;
-    width: 100%;
+    background: white;
+
+}
+.inferior > .row{
+    margin-top: 1%;
+}
+ .nav-tabs{
+    margin-bottom:5%;
+}
+.nav-link{
+    font-weight:600;
+    border: none;
+}
+ .nav-link.active{
+    border: none;
+    border-bottom:2px solid #0062cc;
 }
