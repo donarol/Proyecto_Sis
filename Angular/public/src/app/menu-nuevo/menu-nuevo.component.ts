@@ -16,6 +16,8 @@ import { Ingrediente_Plato } from '../modelos/Ingrediente_Plato';
 export class MenuNuevoComponent implements OnInit {
   private errors:Errores[];
   private ingredientes:Ingrediente[];
+  private modelIngredientes:Ingrediente[];
+  private isIngredientes:Boolean;
   private spinnerIngredientes:Boolean;
   private spinnerIngrediente:Boolean;
   private spinnerPlato:Boolean;
@@ -33,6 +35,7 @@ export class MenuNuevoComponent implements OnInit {
     this.spinnerIngredientes=false;
     this.spinnerIngrediente=false;
     this.spinnerPlato=false;
+    this.isIngredientes=false;
     this.nuevoIngrediente=new Ingrediente;
     this.plato=new Plato;
     this.setErrors();
@@ -44,6 +47,7 @@ export class MenuNuevoComponent implements OnInit {
       console.log("mi res");
       console.log(res);
       this.ingredientes=res;
+      this.modelIngredientes=res;
       this.spinnerIngredientes=false;
     },error=>{
       console.log("mi error");

@@ -58,6 +58,8 @@ import { SeleccionFamiliarComponent } from './seleccion-familiar/seleccion-famil
 import { SeleccionFamiliarIiComponent } from './seleccion-familiar-ii/seleccion-familiar-ii.component';
 import { SeleccionCursoIiComponent } from './seleccion-curso-ii/seleccion-curso-ii.component';
 import { AlumnoDatosComponent } from './alumno-datos/alumno-datos.component';
+import { ListaInicioComponent } from './lista-inicio/lista-inicio.component';
+import { Component } from '@fullcalendar/core';
 
 
 const router: Routes=[
@@ -72,6 +74,9 @@ const router: Routes=[
      ,
     {path:'',component:InicioAdministradorComponent,children:[
       {path:'homeAdministrador',component:HomeAdministradorComponent},
+      {path:'',component:HomeAdministradorComponent,children:[
+        {path:'ListaAlumnos',component:ListaInicioComponent},
+      ]},
       {path:'cuentaAdministrador',component:CuentaAdministradorComponent},
       {path:'',component:MenuAdministradorComponent,children:[
         {path:'menuAdministrador',component:MenuComponent},
@@ -146,7 +151,8 @@ const router: Routes=[
     SeleccionFamiliarComponent,
     SeleccionFamiliarIiComponent,
     SeleccionCursoIiComponent,
-    AlumnoDatosComponent
+    AlumnoDatosComponent,
+    ListaInicioComponent
   ],
   imports: [
     BrowserModule,

@@ -1,6 +1,6 @@
 <div class="contenedor">
 
-  <div class="col-4 lista">
+  <div class="col-5 lista">
       <div class="input-group-prepend" *ngIf="spinnerIngredientes" >
         <div class="spinner-border text-danger" role="status">
           <span class="sr-only">Loading...</span>
@@ -34,25 +34,25 @@
         </form>
 
         <ul class="list-group">
-            <div *ngFor="let ingrediente of ingredientes" class="custom-control zero custom-checkbox list-group-item d-flex bd-highlight mb-3">
-
-                <div class="p-2 bd-highlight "><button class="btn btn-danger" type="button">.</button></div>
-                <div class="p-2 bd-highlight "><button class="btn btn-success" type="button">.</button>  </div>
-                <div class="ml-auto p-2 bd-highlight ">              
+            <div *ngFor="let ingrediente of ingredientes;index as i" class="custom-control zero custom-checkbox list-group-item d-flex bd-highlight mb-3 row">
+                <div class="col-4 row">
+                  <div class="p-2 bd-highlight" (click)="isIngredientes=!isIngredientes"><button class="btn btn-success" type="button">M</button></div>
+                </div>
+                <div class="ml-auto p-2 bd-highlight col-8">              
                   <input 
                   type="checkbox"
                   class="custom-control-input btn btn-primary" 
                   [attr.id]="'check'+ingrediente.ingrediente_id"
                   [attr.name]="'check'+ingrediente.ingrediente_id"
                   [(ngModel)]="ingrediente.estado">
-                  <label class="custom-control-label" [attr.for]="'check'+ingrediente.ingrediente_id">{{ingrediente.nombre}}</label>  
+                  <label  class="custom-control-label" [attr.for]="'check'+ingrediente.ingrediente_id">{{ingrediente.nombre}}</label>
                 </div>
           </div>      
         </ul>
       </div>
   </div>
   
-      <div class="col-8">
+      <div class="col-7">
         <form #formLogin="ngForm" (ngSubmit)="addPlato(formLogin)">
           <div class="datos">
             <p>Nombre del Plato:</p>

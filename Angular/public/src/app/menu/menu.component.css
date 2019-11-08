@@ -3,18 +3,6 @@
     background: white;
     padding: 1%;
 }
-/*span{
-    cursor: pointer;
-}
-.inferior{
-    display: flex;
-    flex-wrap: wrap;;
-}
-.card{
-    max-width: 14rem;
-    margin: 1%;
-}*/
-
 .calendar{
     cursor: pointer;
 }

@@ -7,6 +7,7 @@ import { Curso } from '../modelos/Curso';
 import { CursoService } from '../servicios/curso.service';
 import { Errores } from '../modelos/Errores';
 import { Alumno } from '../modelos/Alumno';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-administrador',
@@ -26,7 +27,8 @@ export class HomeAdministradorComponent implements OnInit {
   constructor(
     private _turno:TurnoService,
     private _seccion:SeccionService,
-    private _curso:CursoService
+    private _curso:CursoService,
+    private _route:Router
   ) {}
 
   ngOnInit() {
@@ -91,14 +93,14 @@ export class HomeAdministradorComponent implements OnInit {
     }else
       this.errors[0].getError();
   }
-  SelectAlumno(alumno:Alumno){
+  /*SelectAlumno(alumno:Alumno){
     console.log("me llego");
     console.log(alumno);
     this.alumno=alumno;
-  }
+  }*/
   changeSelect(){
     console.log("cambio");
-    this.alumno=new Alumno;
+    this._route.navigate['ListaAlumnos'];
   }
   
   setErrors():void{

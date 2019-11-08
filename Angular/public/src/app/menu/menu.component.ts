@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { formatDate } from '@angular/common';
-
-//import * as $ from 'jquery';
 import dayGridPlugin from '@fullcalendar/daygrid';
+import { PlatoService } from '../servicios/plato.service';
 declare var jQuery:any;
 declare var $:any;
 @Component({
@@ -12,11 +10,38 @@ declare var $:any;
 })
 export class MenuComponent implements OnInit {
   
-  calendarPlugins = [dayGridPlugin];
+  private calendarPlugins = [dayGridPlugin];
   private fechaEvento:String;
-  calendarEvents = [];
+  private calendarEvents = [];
+  constructor(
+    private _plato:PlatoService
+  ){
 
+  }
   ngOnInit() {
+    this.getPlatos();
+  }
+  getPlatos():void{
+    this._plato.getPlatos().subscribe(res=>{
+      console.log("mi res");
+      console.log(res);
+      
+     /* res.forEach(element => {
+        this.calendarEvents.push({
+          id:element.plato_id,
+          title:element.nombre,
+          start:element.fecha
+        });
+      });*/
+      this.calendarEvents.push({
+        id: 'a',
+        title: 'my event',
+        start: '2019-11-07'
+      });
+    },error=>{
+      console.log("mi error");
+      console.log(error);
+    });
   }
   handleDateClick(arg) { 
     try {
@@ -32,7 +57,7 @@ export class MenuComponent implements OnInit {
       }
     } catch (error) {
       console.log("error error!!");
-      console.log(error);
+      //console.log(error);
     }
 
 
