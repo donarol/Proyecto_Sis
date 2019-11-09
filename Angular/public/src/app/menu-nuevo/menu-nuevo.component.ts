@@ -16,13 +16,12 @@ import { Ingrediente_Plato } from '../modelos/Ingrediente_Plato';
 export class MenuNuevoComponent implements OnInit {
   private errors:Errores[];
   private ingredientes:Ingrediente[];
-  private modelIngredientes:Ingrediente[];
-  private isIngredientes:Boolean;
+  private model:Ingrediente;
   private spinnerIngredientes:Boolean;
   private spinnerIngrediente:Boolean;
   private spinnerPlato:Boolean;
+  private spinnerIngredienteModificar:Boolean;
   private nuevoIngrediente:Ingrediente;
-  private errorIngrediente:Errores;
   private plato:Plato;
   constructor(
     private _ingrediente:IngredienteService,
@@ -35,8 +34,9 @@ export class MenuNuevoComponent implements OnInit {
     this.spinnerIngredientes=false;
     this.spinnerIngrediente=false;
     this.spinnerPlato=false;
-    this.isIngredientes=false;
+    this.spinnerIngredienteModificar=false;
     this.nuevoIngrediente=new Ingrediente;
+    this.model=new Ingrediente;
     this.plato=new Plato;
     this.setErrors();
     this.getIngredientes();
@@ -47,11 +47,11 @@ export class MenuNuevoComponent implements OnInit {
       console.log("mi res");
       console.log(res);
       this.ingredientes=res;
-      this.modelIngredientes=res;
       this.spinnerIngredientes=false;
     },error=>{
       console.log("mi error");
       console.log(error);
+      this.errors[10].getError();
       this.spinnerIngredientes=false;
     });
   }
@@ -66,14 +66,16 @@ export class MenuNuevoComponent implements OnInit {
         this.ingredientes.push(res);
         this.nuevoIngrediente = new Ingrediente;
         this.spinnerIngrediente=false;
+        this.errors[6].getError();
       },error=>{
         console.log("mi error");
         console.log(error);
         this.spinnerIngrediente=false;
+        this.errors[5].getError();
       });
     }else{
       console.log("no es valido");
-      this.errorIngrediente.getError();
+      this.errors[5].getError();
     }
   }
   addPlato(form:NgForm):void{
@@ -93,6 +95,7 @@ export class MenuNuevoComponent implements OnInit {
             this._ingredientePlato.addIngredientePlato(aux).subscribe(res=>{
               console.log("mi res");
               console.log(res);
+              this.spinnerPlato=false;
             },error=>{
               console.log("mi error");
               console.log(error);
@@ -100,6 +103,7 @@ export class MenuNuevoComponent implements OnInit {
             });
           }
         });
+        this.errors[7].getError();
         //this.spinnerPlato=false;
       },error=>{
         console.log("mi error");
@@ -119,6 +123,28 @@ export class MenuNuevoComponent implements OnInit {
         this.errors[4].getError();
     }
   }
+  modificarIngrediente(ingrediente:Ingrediente,index):void{
+    this.model=new Ingrediente;
+    this.model.ingrediente_id=index;
+    this.model.nombre=ingrediente.nombre;
+    this.model.estado=ingrediente.estado;
+  }
+  updateIngrediente(){
+    this.spinnerIngredienteModificar=true;
+    var n:number=Number(this.model.ingrediente_id);
+    this.ingredientes[n].nombre=this.model.nombre;
+    this._ingrediente.updateIngrediente(this.ingredientes[n]).subscribe(res=>{
+      console.log("mi res");
+      console.log(res);
+      this.spinnerIngredienteModificar=false;
+      this.errors[8].getError();
+    },error=>{
+      console.log("mi error");
+      console.log(error);
+      this.spinnerIngredienteModificar=false;
+      this.errors[9].getError();
+    });
+  }
 
   isIngrediente():Boolean{
     for (let index = 0; index < this.ingredientes.length; index++) {
@@ -130,12 +156,20 @@ export class MenuNuevoComponent implements OnInit {
 
 
   setErrors():void{
-    this.errorIngrediente=new Errores('Error al ingresar el ingrediente');
-    this.errors.push(new Errores('Error al crear el plato'));
+    this.errors.push(new Errores('Error al crear el Plato'));
     this.errors.push(new Errores('Error al ingresar el nombre'));
     this.errors.push(new Errores('Error al ingresar la fecha'));
     this.errors.push(new Errores('Error al ingresar la preparaccion'));
     this.errors.push(new Errores('Se requiere al menos un ingrediente'));
+    this.errors.push(new Errores('Error al crear el Ingrediente'));//5
+
+    this.errors.push(new Errores('El Ingrediente fue creado exitosamente'));
+    this.errors.push(new Errores('El Plato fue ingresado exitosamente'));//7
+    
+    this.errors.push(new Errores('El Ingrediente fue modificado Exitosamente'));
+    this.errors.push(new Errores('Error al modificar el ingrediente'));//9
+
+    this.errors.push(new Errores('Error al carga los ingredientes'));//10
   }
 
 }

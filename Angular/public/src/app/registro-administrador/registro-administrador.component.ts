@@ -12,7 +12,8 @@ import { NgForm } from '@angular/forms';
 export class RegistroAdministradorComponent implements OnInit {
   private administrador:User;
   private variable:boolean;
-  private errors:Errores[]=[];
+  private spinner:Boolean;
+  private errors:Errores[];
   constructor(
     private _administrador:LoginService
   ){}
@@ -20,10 +21,10 @@ export class RegistroAdministradorComponent implements OnInit {
   ngOnInit() {
     this.administrador=new User();
     this.variable=true;
+    this.spinner=false;
+    this.errors=[];
     this.administrador.tipo='Administrador';
     this.setErrors();
-    console.log("mis errroes");
-    console.log(this.errors);
   }
   onChangeVariable(){
     console.log("se cambio: "+this.variable)
@@ -36,9 +37,6 @@ export class RegistroAdministradorComponent implements OnInit {
   registro(form:NgForm){
     console.log(form);
     if(form.valid && this.equals()){
-      console.log("---REGISTRO---");
-      console.log(this.administrador);
-      console.log("------");
       this._administrador.create(this.administrador).subscribe(res=>{
         console.log(res);
         alert("Registro Exitoso");
@@ -91,7 +89,10 @@ export class RegistroAdministradorComponent implements OnInit {
     this.errors.push(new Errores('Error al Ingresar los Telefono'));
     this.errors.push(new Errores('Correo Electronico no Valido'));
     this.errors.push(new Errores('Error al Ingresar la Contraseña'));
-    this.errors.push(new Errores('Las Contraseñas no se Iguales'));
+    this.errors.push(new Errores('Las Contraseñas no se Iguales'));//7
+
+    this.errors.push(new Errores('Registro Exitoso'));//8
+
   }
   
 

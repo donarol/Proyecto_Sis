@@ -60,6 +60,7 @@ import { SeleccionCursoIiComponent } from './seleccion-curso-ii/seleccion-curso-
 import { AlumnoDatosComponent } from './alumno-datos/alumno-datos.component';
 import { ListaInicioComponent } from './lista-inicio/lista-inicio.component';
 import { Component } from '@fullcalendar/core';
+import { MenuModificarIiComponent } from './menu-modificar-ii/menu-modificar-ii.component';
 
 
 const router: Routes=[
@@ -152,7 +153,8 @@ const router: Routes=[
     SeleccionFamiliarIiComponent,
     SeleccionCursoIiComponent,
     AlumnoDatosComponent,
-    ListaInicioComponent
+    ListaInicioComponent,
+    MenuModificarIiComponent
   ],
   imports: [
     BrowserModule,

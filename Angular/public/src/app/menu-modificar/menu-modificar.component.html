@@ -1,3 +1,40 @@
-<p>
-  menu-modificar works!
-</p>
+<div class="container-fluid" style="background: white;">
+  <div class="row">
+    <div class="col-4">
+      <select size="8"   class=" form-control list-group" id="list-tab" role="tablist">
+        <option *ngFor="let plato of platos" 
+        class="list-group-item list-group-item-action" 
+        [attr.id]="'list-home-list-plato'+plato.plato_id" 
+        data-toggle="list" 
+        [attr.href]="'#list-plato'+plato.plato_id" 
+        href="#list-home-plato" 
+        role="tab" 
+        aria-controls="home-plato"
+        [attr.value]="plato.plato_id"
+        >
+          {{plato.nombre}}
+        </option>
+      </select>
+    </div>
+    <div class="col-8" >
+      <div class="tab-content" id="nav-tabContent">
+        <div 
+        *ngFor="let plato_0 of platos" 
+        class="tab-pane fade show" 
+        [attr.id]="'list-plato'+plato_0.plato_id" 
+        role="tabpanel" 
+        [attr.aria-labelledby]="'list-home-list-plato'+plato_0.plato_id">
+          <div class="card mb-3">
+            <div class="row no-gutters">
+              <div class="col-md-12">
+                <div class="card-body">
+                    <app-menu-modificar-ii [PlatoEnvio]="plato_0"></app-menu-modificar-ii>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

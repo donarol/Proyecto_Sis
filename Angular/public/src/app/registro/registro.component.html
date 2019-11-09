@@ -1,4 +1,16 @@
 <div class="contenido">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-12">
+          <div class="alert alert-danger col-12" role="alert" *ngIf="errors[0].isError">
+            {{errors[0].message}}
+          </div>
+          <div class="alert alert-success col-12" role="alert" *ngIf="errors[8].isError">
+              {{errors[8].message}}
+            </div>  
+      </div>
+    </div>
+  </div>
   <form  #formLogin="ngForm" (ngSubmit)="registro(formLogin)">
     <div class="corto">
       <input type="text" id="nombre" name="nombre" [(ngModel)]="familiar.nombre" required autocomplete="off">
@@ -45,8 +57,16 @@
     <div class="corto">
       <input type="password" id="password_confirmation" name="password_confirmation" [(ngModel)]="familiar.password_confirmation" required autocomplete="off">
       <label class="etiqueta" for="password_confirmation">Repita La Contraseña</label>
+      <div class="alert alert-danger" role="alert" *ngIf="errors[7].isError">
+          {{errors[7].message}}
+        </div>
     </div>
     <button class="btn btn-info" type="submit">Enviar</button>
+    <div class="input-group-prepend" *ngIf="spinner" >
+      <div class="spinner-border text-danger" role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
   </form>
 </div>
   

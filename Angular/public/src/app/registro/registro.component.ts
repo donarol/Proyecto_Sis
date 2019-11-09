@@ -11,31 +11,34 @@ import { Errores } from '../modelos/Errores';
 })
 export class RegistroComponent implements OnInit {
   private familiar:User;
-  private errors:Errores[]=[];
+  private spinner:Boolean;
+  private errors:Errores[];
   constructor(
     private _familiar:LoginService
   ){}
 
   ngOnInit() {
     this.familiar=new User();
+    this.errors=[];
+    this.spinner=false;
     this.familiar.tipo="Familiar";
     this.setErrors();
   }
   registro(form:NgForm){
     console.log(form);
     if(form.valid && this.equals()){
-      console.log("---REGISTRO---");
-      console.log(this.familiar);
-      console.log("------");
+      this.spinner=true;
       this._familiar.create(this.familiar).subscribe(res=>{
         console.log("mi res");
         console.log(res);
-        alert("Registro Exitoso");
         this.familiar=new User();
+        this.spinner=false;
+        this.errors[8].getError();
       },error=>{
         console.log("mi error");
         console.log(error);
-        alert("error en el registro");
+        this.errors[0].getError();
+        this.spinner=false;
       });
     }else{
       console.log("no es valido");
@@ -51,6 +54,8 @@ export class RegistroComponent implements OnInit {
         this.errors[5].getError();
       if(form.controls.password.status==='INVALID')
         this.errors[6].getError();
+      if(!this.equals())
+        this.errors[7].getError();
     }
 
   }
@@ -67,6 +72,8 @@ export class RegistroComponent implements OnInit {
     this.errors.push(new Errores('Error al Ingresar los Telefono'));
     this.errors.push(new Errores('Correo Electronico no Valido'));
     this.errors.push(new Errores('Error al Ingresar la Contraseña'));
-    this.errors.push(new Errores('Las Contraseñas no se Identicas'));
+    this.errors.push(new Errores('Las Contraseñas no se Identicas'));//7
+
+    this.errors.push(new Errores('Registro Exitoso'));//8
   }
 }
