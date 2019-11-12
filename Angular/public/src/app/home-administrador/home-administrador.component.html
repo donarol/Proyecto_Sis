@@ -44,107 +44,21 @@
           <span class="sr-only">Loading...</span>
         </div>
       </div>
-      <div class="alert alert-danger" role="alert" *ngIf="errors[0].isError">
-        {{errors[0].message}}
-      </div>
-      <div class="alert alert-danger" role="alert" *ngIf="errors[1].isError">
-        {{errors[1].message}}
-      </div>
-      <div class="col-4" *ngIf="cursos.length > 0">
-        <select  (change)="changeSelect()" size="9" class=" form-control list-group" id="list-tab" role="tablist">
-          <option *ngFor="let curso of cursos" 
-          class="list-group-item list-group-item-action" 
-          [attr.id]="'list-home-list-curso'+curso.curso_id" 
-          data-toggle="list" 
-          [attr.href]="'#list-curso'+curso.curso_id" 
-          href="#list-home-curso" 
-          role="tab" 
-          aria-controls="home-curso"
-          [attr.value]="curso.curso_id"
-          >
-            {{curso.nombre}}
-          </option>
-        </select>
-      </div> 
-      <div class="col-8" *ngIf="cursos.length > 0">
+    </div>
+    <div class="row">
+      <nav  class="col-md-4">
+        <ul>
+        <a 
+        *ngFor="let curso of cursos index as i"  
+        routerLink="/homeAdministrador/Curso/{{curso.curso_id}}">
+          {{curso.nombre}}
+        </a>
+        </ul>
+      </nav>
+      <div  class="col-md-8">
         <router-outlet></router-outlet>
-        <!--
-        <div class="tab-content" id="nav-tabContent">
-          <div 
-          *ngFor="let curso_0 of cursos" 
-          class="tab-pane fade show" 
-          [attr.id]="'list-curso'+curso_0.curso_id" 
-          role="tabpanel" 
-          [attr.aria-labelledby]="'list-home-list-curso'+curso_0.curso_id">
-            <div class="card mb-3">
-              <div class="row no-gutters">
-                <div class="col-md-12">
-                  <div class="card-body">
-                    <div class="row">
-                      <div class="col-12">
-                        <ul class="nav nav-tabs" id="myTab" role="tablist">
-                          <li class="nav-item">
-                            <a 
-                            class="nav-link active" 
-                            id="alumno-tab{{curso_0.curso_id}}" 
-                            data-toggle="tab" 
-                            href="#alumno{{curso_0.curso_id}}" 
-                            role="tab" 
-                            aria-controls="alumno" 
-                            aria-selected="true">
-                              Alumnos
-                            </a>
-                          </li>
-                          <li class="nav-item">
-                            <a 
-                            class="nav-link" 
-                            id="camara-tab{{curso_0.curso_id}}" 
-                            data-toggle="tab" 
-                            href="#camara{{curso_0.curso_id}}" 
-                            role="tab" 
-                            aria-controls="camara" 
-                            aria-selected="false">
-                              Camaras
-                            </a>
-                          </li>
-                          <li class="nav-item">
-                            <a 
-                            class="nav-link" 
-                            id="docente-tab{{curso_0.curso_id}}" 
-                            data-toggle="tab" 
-                            href="#docente{{curso_0.curso_id}}" 
-                            role="tab" 
-                            aria-controls="docente" 
-                            aria-selected="false">
-                              Docente
-                            </a>
-                          </li>
-                        </ul>
-
-                        <div class="col-md-12">
-                            <div class="tab-content profile-tab" id="myTabContent">
-                              <div class="tab-pane fade show active" id="alumno{{curso_0.curso_id}}" role="tabpanel" aria-labelledby="alumno-tab">
-                                
-                                <app-lista-alumnos [CursoEnvio]="curso_0" (selectAlumno)="SelectAlumno($event)" *ngIf="alumno.alumno_id == ''"></app-lista-alumnos>
-                                <app-alumno-datos *ngIf="alumno.alumno_id != ''"></app-alumno-datos>
-                              </div>
-                              <div class="tab-pane fade" id="camara{{curso_0.curso_id}}" role="tabpanel" aria-labelledby="camara-tab">
-                                <app-lista-camaras [CursoEnvio]="curso_0"></app-lista-camaras>
-                              </div>
-                              <div class="tab-pane fade" id="docente{{curso_0.curso_id}}" role="tabpanel" aria-labelledby="docente-tab">
-                                <app-lista-docentes [CursoEnvio]="curso_0"></app-lista-docentes>
-                              </div>
-                            </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> 
-        </div>-->
       </div>
     </div>
+    
   </div>
 </div>

@@ -1,3 +1,30 @@
-<p>
-  lista-inicio works!
-</p>
+<div class="row" *ngIf="rutaActiva.snapshot.params.id!==undefined">
+  <div class="col-md-6">
+    <div class="profile-head">
+      <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" id="alumno-tab" data-toggle="tab" href="#alumno" role="tab" aria-controls="alumno" aria-selected="true">Alumnos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="camara-tab" data-toggle="tab" href="#camara" role="tab" aria-controls="camara" aria-selected="false">Camaras</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" id="docente-tab" data-toggle="tab" href="#docente" role="tab" aria-controls="docente" aria-selected="false">Docente</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="tab-content profile-tab" id="myTabContent">
+      <div class="tab-pane fade show active" id="alumno" role="tabpanel" aria-labelledby="alumno-tab">
+        <app-lista-alumnos [CursoEnvio]="curso"></app-lista-alumnos>
+      </div>
+      <div class="tab-pane fade" id="camara" role="tabpanel" aria-labelledby="camara-tab">
+        <app-lista-camaras [CursoEnvio]="curso"></app-lista-camaras>
+      </div>
+      <div class="tab-pane fade" id="docente" role="tabpanel" aria-labelledby="docente-tab">
+          <app-lista-docentes [CursoEnvio]="curso"></app-lista-docentes>
+      </div>
+    </div>
+  </div>
+</div>

@@ -20,9 +20,9 @@ export class MenuModificarComponent implements OnInit {
     this.spinnerPlato=false;
     this.platos=[];
     this.errors=[];
-    this.getPlato();
+    this.getPlatos();
   }
-  getPlato():void{
+  getPlatos():void{
     this.spinnerPlato=true;
     this._plato.getPlatos().subscribe(res=>{
       console.log("mi res");

@@ -13,39 +13,43 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-7">
+    <div class="col-6">
       <form #formLogin="ngForm" (ngSubmit)="updatePlato(formLogin)">
-        <div class="datos">
+        <div class="row">
           <p>Nombre del Plato:</p>
           <input 
           type="text" 
           id="nombrePlato" 
           name="nombrePlato" 
           [(ngModel)]="plato.nombre" 
-          required>
+          required
+          class="col-12">
           <div class="alert alert-danger" role="alert" *ngIf="errors[1].isError">
             {{errors[1].message}}
           </div>
         </div>
-        <div class="datos">
+        <div class="row">
           <p>Fecha:</p>
           <input type="date" 
           id="fechaPlato"
           name="fechaPlato"
           [(ngModel)]="plato.fecha"
-          required>
+          required
+          class="col-12">
           <div class="alert alert-danger" role="alert" *ngIf="errors[2].isError">
             {{errors[2].message}}
           </div>
         </div>
-        <div class="datos">
+        <div class="row">
           <p>Preparacion:</p>
           <textarea 
           class="form-control" 
           id="preparacionPlato" 
           name="preparacionPlato" 
           [(ngModel)]="plato.preparacion"
-          required></textarea>
+          required
+          class="col-12">
+          </textarea>
           <div class="alert alert-danger" role="alert" *ngIf="errors[3].isError">
             {{errors[3].message}}
           </div>
@@ -53,7 +57,7 @@
         <div class="alert alert-danger" role="alert" *ngIf="errors[4].isError">
             {{errors[4].message}}
           </div>
-        <div class="col-12 d-flex flex-row-reverse bd-highlight">
+        <div class="col-12">
           <button type="submit" class="btn btn-primary p-2 bd-highlight">Guardar</button>
         </div>
         <div class="input-group-prepend" *ngIf="spinnerPlato" >
@@ -71,50 +75,18 @@
         </div>
       </div>
       <div *ngIf="!spinnerIngredientes">
-        <form #formLogin="ngForm" (ngSubmit)="addIngrediente(formLogin)">
-            <div class="input-group">
-              <div class="input-group-prepend" *ngIf="spinnerIngrediente" >
-                <div class="spinner-border text-danger" role="status">
-                  <span class="sr-only">Loading...</span>
-                </div>
-              </div>
-              <input 
-              type="text" 
-              class="form-control" 
-              placeholder="Nuevo Ingrediente" 
-              aria-label="Recipient's username" 
-              aria-describedby="button-addon2"
-              id="nuevoIngrediente"
-              name="nuevoIngrediente"
-              required 
-              [(ngModel)]="nuevoIngrediente.nombre">
-              <div class="input-group-append">
-                <button class="btn btn-secondary" type="submit" id="button-addon2">Agregar</button>
-              </div>
-              <div class="alert alert-danger" role="alert" *ngIf="errors[5].isError">
-                  {{errors[5].message}}
-              </div>
-            </div>
-        </form>
-
         <ul class="list-group">
-            <div *ngFor="let ingrediente of ingredientes;index as i" class="custom-control zero custom-checkbox list-group-item d-flex bd-highlight mb-3 row">
-                <div class="col-2 row">
-                  <div class="p-2 bd-highlight">
-                    <button type="button" (click)="modificarIngrediente(ingrediente,i)" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                      M
-                    </button>
-                  </div>
-                </div>
-                <div class="ml-auto p-2 bd-highlight col-8">              
-                  <input 
-                  type="checkbox"
-                  class="custom-control-input btn btn-primary" 
-                  [attr.id]="'check'+ingrediente.ingrediente_id"
-                  [attr.name]="'check'+ingrediente.ingrediente_id"
-                  [(ngModel)]="ingrediente.estado">
-                  <label  class="custom-control-label" [attr.for]="'check'+ingrediente.ingrediente_id">{{ingrediente.nombre}}</label>
-                </div>
+          <div *ngFor="let ingrediente of ingredientes;index as i" class="custom-control zero custom-checkbox list-group-item d-flex bd-highlight mb-3 row">
+            <div class="ml-auto p-2 bd-highlight col-12">              
+              <input 
+              type="checkbox"
+              class="custom-control-input btn btn-primary" 
+              [attr.id]="'check'+ingrediente.ingrediente_id"
+              [attr.name]="'check'+ingrediente.ingrediente_id"
+              [(ngModel)]="ingrediente.estado"
+              >
+              <label (click)="ingrediente.estado=!ingrediente.estado"class="custom-control-label puntero" [attr.for]="'check'+ingrediente.ingrediente_id">{{ingrediente.nombre}}</label>
+            </div>
           </div>      
         </ul>
       </div>

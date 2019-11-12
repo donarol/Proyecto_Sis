@@ -12,11 +12,24 @@ import { IngredientePlatoService } from '../servicios/ingrediente-plato.service'
   styleUrls: ['./menu-modificar-ii.component.css']
 })
 export class MenuModificarIiComponent implements OnInit {
-  @Input('PlatoEnvio') private plato:Plato;
+
+  @Input('PlatoEnvio') set _plato_(valor:Plato){
+    if(valor===undefined || valor ==null){
+      console.log("es nulo");
+    }else{
+      console.log("me llego");
+      console.log(valor);
+      this.plato=valor;
+      
+    this.getIngredientesPlato();
+    }
+  }
   private spinnerPlato:Boolean;
   private spinnerIngredientes:Boolean;
   private ingredientes:Ingrediente[];
-  private errors:Errores[];
+  private errors:Errores[];  
+  private plato:Plato;
+  private nuevoIngrediente:Ingrediente;
   constructor(
     private _plato:PlatoService,
     private _ingrediente:IngredienteService
@@ -27,9 +40,9 @@ export class MenuModificarIiComponent implements OnInit {
     this.spinnerIngredientes=false;
     this.ingredientes=[];
     this.errors=[];
+    this.nuevoIngrediente=new Ingrediente;
     this.setErrors();
     //this.getPlato();
-    this.getIngredientesPlato();
   }
 /*
   getPlato():void{

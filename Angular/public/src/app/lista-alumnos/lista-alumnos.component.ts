@@ -9,10 +9,21 @@ import { Errores } from '../modelos/Errores';
   styleUrls: ['./lista-alumnos.component.css']
 })
 export class ListaAlumnosComponent implements OnInit {
-  @Input('CursoEnvio') private curso:Curso;
+  private curso:Curso;
   private alumnos:Alumno[];
   private errors:Errores[];
-  
+  @Input('CursoEnvio') set _familiar_(valor:Curso){
+    
+    this.curso=new Curso;
+    if(valor===undefined || valor == null){
+      console.log("es nulo");
+    }else{
+      console.log("me llego");
+      console.log(valor);
+      this.curso=valor;
+    }
+
+  };
   @Output() selectAlumno = new EventEmitter<Alumno>();
   constructor(
     private _curso:CursoService
@@ -24,7 +35,8 @@ export class ListaAlumnosComponent implements OnInit {
     this.alumnos=[];
     this.errors=[];
     this.geterrors();
-    this.getAlumnos();
+    
+    //this.getAlumnos();
   }
   getAlumnos():void{
     this._curso.getAlumnos(this.curso).subscribe(res=>{

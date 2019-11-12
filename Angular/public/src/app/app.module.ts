@@ -74,9 +74,10 @@ const router: Routes=[
     ]}
      ,
     {path:'',component:InicioAdministradorComponent,children:[
-      {path:'homeAdministrador',component:HomeAdministradorComponent},
       {path:'',component:HomeAdministradorComponent,children:[
-        {path:'ListaAlumnos',component:ListaInicioComponent},
+        {path:'homeAdministrador/Curso/:id',component:ListaInicioComponent},
+        {path:'homeAdministrador',component:ListaInicioComponent},
+        
       ]},
       {path:'cuentaAdministrador',component:CuentaAdministradorComponent},
       {path:'',component:MenuAdministradorComponent,children:[

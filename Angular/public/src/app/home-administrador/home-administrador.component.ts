@@ -44,6 +44,7 @@ export class HomeAdministradorComponent implements OnInit {
     this.setErrors();
     this.getTurnos();
     this.getSecciones();
+    this.getCursosInicial();
   }
   getTurnos():void{
     this.spinnerTurno=true;
@@ -92,6 +93,20 @@ export class HomeAdministradorComponent implements OnInit {
       });
     }else
       this.errors[0].getError();
+  }
+  getCursosInicial(){
+    this.spinnerCurso=true;
+    this._curso.getCursos().subscribe(res=>{
+      console.log("mi res");
+      console.log(res);
+      this.cursos=res;
+      this.spinnerCurso=false;
+    },error=>{
+      console.log("mi error");
+      console.log(error);
+      this.spinnerCurso=false;
+      this.errors[0].getError();
+    });
   }
   /*SelectAlumno(alumno:Alumno){
     console.log("me llego");
