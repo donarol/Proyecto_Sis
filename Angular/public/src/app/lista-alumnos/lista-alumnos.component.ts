@@ -9,20 +9,19 @@ import { Errores } from '../modelos/Errores';
   styleUrls: ['./lista-alumnos.component.css']
 })
 export class ListaAlumnosComponent implements OnInit {
-  private curso:Curso;
   private alumnos:Alumno[];
   private errors:Errores[];
+  private spinner:Boolean;
+  private imagenName:string;
   @Input('CursoEnvio') set _familiar_(valor:Curso){
-    
-    this.curso=new Curso;
-    if(valor===undefined || valor == null){
-      console.log("es nulo");
-    }else{
+    if(valor!==undefined && valor !== null){
+      this.spinner=false;
+      this.imagenName="alumno2.jpg";
       console.log("me llego");
       console.log(valor);
-      this.curso=valor;
-    }
-
+      this.getAlumnos(valor);
+    }else
+      console.log("es nulo");
   };
   @Output() selectAlumno = new EventEmitter<Alumno>();
   constructor(
@@ -38,15 +37,18 @@ export class ListaAlumnosComponent implements OnInit {
     
     //this.getAlumnos();
   }
-  getAlumnos():void{
-    this._curso.getAlumnos(this.curso).subscribe(res=>{
+  getAlumnos(curso:Curso):void{
+    this.spinner=true;
+    this._curso.getAlumnos(curso).subscribe(res=>{
       console.log("mi res");
       console.log(res);
       this.alumnos=res;
+      this.spinner=false;
     },error=>{
       console.log("mi error");
       console.log(error);
       this.errors[0].getError();
+      this.spinner=false;
     });
   }
   verAlumno(alumno:Alumno){
