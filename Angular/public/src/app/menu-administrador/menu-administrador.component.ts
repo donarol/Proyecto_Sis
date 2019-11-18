@@ -13,7 +13,7 @@ export class MenuAdministradorComponent implements OnInit {
   private componentes:any[]=[
     {ruta:"menuAdministrador",etiqueta:"Menu"},
     {ruta:"menuNuevo",etiqueta:'Nuevo Plato'},
-    {ruta:"menuModificar",etiqueta:"Modificar Plato"}];  
+  /*{ruta:"menuModificar",etiqueta:"Modificar Plato"}*/];  
     
   private isMuestra:Boolean;
   constructor(

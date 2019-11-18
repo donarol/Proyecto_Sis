@@ -5,8 +5,16 @@ use App\Modelos\Ingrediente;
 
 class IngredienteDAO{
     public function crear(Ingrediente $ingrediente){
-        $ingrediente->save();
-        return response()->json($ingrediente,200);
+        if(Ingrediente::where([
+            ['nombre', '=',$ingrediente->nombre]
+        ])->exists()){
+            $ingredienteError = new Ingrediente;
+            $ingredienteError->id='0';
+            return response()->json($ingredienteError,505);
+        }else{
+            $ingrediente->save();
+            return response()->json($ingrediente,200);
+        }
     }
     public function lista(){
         return Ingrediente::all();

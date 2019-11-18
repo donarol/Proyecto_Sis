@@ -6,8 +6,17 @@ use App\Modelos\Curso;
 class CursoDAO{
  
     public function crear(Curso $curso){
-        $curso->save();
-        return response()->json($curso,200);
+        if(Curso::where([
+            ['curso_id', '=',$curso->curso_id],
+            ['gestion','=',$curso->gestion]
+        ])->exists()){
+            $cursoError = new Curso;
+            $cursoError->id='0';
+            return response()->json($cursoError,505);
+        }else{
+            $curso->save();
+            return response()->json($curso,200);
+        }
     }
     public function lista(){
         return response()->json(Curso::all(),200);

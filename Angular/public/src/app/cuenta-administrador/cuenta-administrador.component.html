@@ -2,6 +2,17 @@
     <div class="col-md-4 atras">
       <input type="button" class="profile-edit-btn" name="btnAddMore" value="Atras"/>
     </div>
+    <div class="row">
+      <div class="alert alert-success col-md-12" role="alert" *ngIf="errors[7].isError">
+        {{errors[7].message}}
+      </div>
+      <div class="alert alert-danger col-md-12" role="alert" *ngIf="errors[6].isError">
+        {{errors[6].message}}
+      </div>
+      <div class="alert alert-danger col-md-12" role="alert" *ngIf="errors[0].isError">
+        {{errors[0].message}}
+      </div>
+    </div>
     <div class="input-group-prepend" *ngIf="spinner" >
       <div class="spinner-border text-danger" role="status">
         <span class="sr-only">Loading...</span>

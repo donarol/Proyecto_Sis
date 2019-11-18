@@ -118,3 +118,13 @@ Route::get("/curso/{id}/alumnos",function($id){
     $alumno=App\Modelos\Curso::find($id)->alumnos;
     return $alumno;
 });*/
+/*
+Route::get("verTurno",function(){
+     $turno=App\Modelos\Turno::where('nombre','turno 1')->exists();
+     if($turno==true){
+         echo "existe";
+     }else{
+         echo "no existe";
+     }
+    echo $turno;
+});*/

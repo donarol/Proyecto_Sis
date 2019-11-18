@@ -44,10 +44,12 @@ export class CuentaAdministradorComponent implements OnInit {
         this.model=res;
         this.aux=this.setAux(this.model);
         this.spinner=false;
+        this.errors[7].getError();
       },error=>{
         console.log("mi error");
         console.log(error);
         this.spinner=false;
+        this.errors[6].getError();
       });
     }else{
       console.log("no es valido");
@@ -76,6 +78,7 @@ export class CuentaAdministradorComponent implements OnInit {
       this.spinner=false;
       console.log("mi error");
       console.log(error);
+      this.errors[0].getError();
     });
   }
   verifica():void{
@@ -104,5 +107,8 @@ export class CuentaAdministradorComponent implements OnInit {
     this.errors.push(new Errores('Error al ingresar el Carnet'));
     this.errors.push(new Errores('Error al ingresar el correo'));
     this.errors.push(new Errores('Error al ingresar el Telefono'));
+    this.errors.push(new Errores('Error al actualizar los datos'))//6
+
+    this.errors.push(new Errores('Datos Modificados Exitosamente'));//7
   }
 }

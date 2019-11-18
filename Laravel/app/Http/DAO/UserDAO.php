@@ -9,7 +9,6 @@ class UserDAO{
     }
     public function modificar(User $user){
         $user->save();
-        return response()->json([
-            'message' => 'Successfully update user!'], 200);
+        return response()->json($user, 200);
     }
 }

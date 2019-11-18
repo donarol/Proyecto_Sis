@@ -26,7 +26,7 @@
               </div>
               <input 
               type="text" 
-              class="form-control" 
+              class="form-control " 
               placeholder="Nuevo Ingrediente" 
               aria-label="Recipient's username" 
               aria-describedby="button-addon2"
@@ -73,7 +73,8 @@
         <input 
         type="text" 
         id="nombrePlato" 
-        name="nombrePlato" 
+        name="nombrePlato"
+        class="form-group" 
         [(ngModel)]="plato.nombre" 
         required>
         <div class="alert alert-danger" role="alert" *ngIf="errors[1].isError">
@@ -86,6 +87,7 @@
         id="fechaPlato"
         name="fechaPlato"
         [(ngModel)]="plato.fecha"
+        class="form-group"
         required>
         <div class="alert alert-danger" role="alert" *ngIf="errors[2].isError">
           {{errors[2].message}}

@@ -6,8 +6,16 @@ use Carbon\Carbon;
 
 class PlatoDAO{
     public function crear(Plato $plato){
-        $plato->save();
-        return response()->json($plato,200);
+        if(Plato::where([
+            ['nombre', '=',$plato->nombre]
+        ])->exists()){
+            $platoError = new Plato;
+            $platoError->id='0';
+            return response()->json($platoError,505);
+        }else{
+            $plato->save();
+            return response()->json($plato,200);
+        }
     }
     public function lista(){
         return Plato::all();
