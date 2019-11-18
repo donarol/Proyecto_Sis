@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AdministradorService } from '../servicios/administrador.service';
 import { User } from '../modelos/User';
-
 @Component({
   selector: 'app-administrador-inicio',
   templateUrl: './administrador-inicio.component.html',
@@ -27,5 +26,5 @@ export class AdministradorInicioComponent implements OnInit {
       console.log(this.administradores);
     })
   }
-
+//npm run ng serve --open   
 }

@@ -8,7 +8,7 @@ import { FullCalendarModule} from '@fullcalendar/angular';
 import {LoginService} from './servicios/login.service';
 import {UserService} from './servicios/user.service';
 import { HttpClientModule } from '@angular/common/http';
- 
+  
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -62,6 +62,9 @@ import { ListaInicioComponent } from './lista-inicio/lista-inicio.component';
 import { Component } from '@fullcalendar/core';
 import { MenuModificarIiComponent } from './menu-modificar-ii/menu-modificar-ii.component';
 
+
+import { HttpClientTestingModule, HttpTestingController} from '@angular/common/http/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 const router: Routes=[
   {path:'',component:InicioComponent},
@@ -164,7 +167,10 @@ const router: Routes=[
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    FullCalendarModule
+    FullCalendarModule,
+    BrowserModule,
+    RouterTestingModule.withRoutes([]),
+    HttpClientTestingModule 
   ],
   providers: [
     LoginService,

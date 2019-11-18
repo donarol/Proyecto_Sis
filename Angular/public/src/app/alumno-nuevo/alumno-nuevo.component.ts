@@ -87,7 +87,17 @@ export class AlumnoNuevoComponent implements OnInit {
     },error=>{
       console.log("mi error");
       console.log(error);
-    });*/
+    });
+AlumnoCurso
+Alumno
+AlumnoUser
+Auth
+Curso
+Ingrediente
+IngredientePlato
+Plato
+Turno
+    */
   
     console.log(form);
     if(form.valid){
