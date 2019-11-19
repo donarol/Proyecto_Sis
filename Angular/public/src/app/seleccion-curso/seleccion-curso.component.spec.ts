@@ -1,6 +1,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { SeleccionCursoComponent } from './seleccion-curso.component';
+import { Curso } from '../modelos/Curso';
 
 describe('SeleccionCursoComponent', () => {
   let component: SeleccionCursoComponent;

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../modelos/User';
 import { NgForm } from '@angular/forms';
 import { Errores } from '../modelos/Errores';
@@ -19,19 +19,37 @@ export class CuentaAdministradorComponent implements OnInit {
   private spinner:boolean;
   private errors:Errores[]=[];
   private show:Boolean;
+  private isMuestra:Boolean;
   constructor(
     private _user:UserService,
-    private rutaActiva:ActivatedRoute
+    private rutaActiva:ActivatedRoute,
+    private _router:Router
   ) {}
 
   ngOnInit() {
-    this.model=new User;
-    this.aux=new User;
-    this.spinner=true;
-    this.show=true;
-    this.setErrors();
-    this.verifica();
-    this.cargaUser();
+    this.isAdministrador();
+  }
+  isAdministrador(){
+    this._user.getUserActual().subscribe(res=>{
+      console.log("mi res");
+      console.log(res);
+      if(res.tipo==='Administrador' || res.tipo==='Docente'){
+        console.log("es administrador");
+        this.model=new User;
+        this.aux=new User;
+        this.spinner=true;
+        this.show=true;
+        this.setErrors();
+        this.verifica();
+        this.cargaUser();
+        this.isMuestra=true;
+      }else{
+        console.log("no es administrador");
+        alert("Usted no es administrador");
+        this.isMuestra=false;
+        this._router.navigate(['']);
+      }
+    });
   }
   guardar(form:NgForm){
     console.log(form);

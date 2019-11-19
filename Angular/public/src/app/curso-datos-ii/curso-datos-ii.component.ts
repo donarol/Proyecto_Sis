@@ -13,7 +13,25 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./curso-datos-ii.component.css']
 })
 export class CursoDatosIIComponent implements OnInit {
-@Input('CursoEnvio') private curso:Curso;
+
+@Input('CursoEnvio') set _curso_(valor:Curso){
+    
+  this.curso=new Curso;
+  this.administrador=new User;
+  this.turno=new Turno;
+  this.seccion=new Seccion;
+  if(valor===undefined || valor == null){
+    console.log("es nulo");
+  }else{
+    console.log("me llego");
+    console.log();
+    this.getDocente();
+    this.getSeccion();
+    this.getTurno();
+    this.aux=valor.nombre.toString();
+  }
+
+};
 private errors:Errores[]=[];
 private spinner:boolean;
 private spinnerDocente:boolean;
@@ -22,6 +40,7 @@ private spinnerTurno:boolean;
 private administrador:User;
 private turno:Turno;
 private seccion:Seccion;
+private curso:Curso;
 private aux:String;
   constructor(
     private _curso:CursoService
@@ -32,16 +51,13 @@ private aux:String;
     this.spinnerDocente=false;
     this.spinnerSeccion=false;
     this.spinnerTurno=false;
+    this.curso=new Curso;
     this.administrador=new User;
     this.turno=new Turno;
     this.seccion=new Seccion;
     this.setErrors();
-    this.cargaDocente();
-    this.cargaSeccion();
-    this.cargaTurno();
-    this.aux=this.curso.nombre.toString();
   }
-  cargaDocente():void{
+  getDocente():void{
     this.spinnerDocente=true;
     this._curso.getDocente(this.curso.curso_id).subscribe(res=>{
       console.log("mi res");
@@ -55,7 +71,7 @@ private aux:String;
       alert("error al cargar los docentes");
     });
   }
-  cargaSeccion():void{
+  getSeccion():void{
     this.spinnerSeccion=true;
     this._curso.getSeccion(this.curso.curso_id).subscribe(res=>{
       console.log("mi res");
@@ -69,7 +85,7 @@ private aux:String;
       alert("error al cargar los cursos");
     });
   }
-  cargaTurno():void{
+  getTurno():void{
     this.spinnerTurno=true;
     this._curso.getTurno(this.curso.curso_id).subscribe(res=>{
       console.log("mi res");

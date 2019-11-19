@@ -1,8 +1,19 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed,inject } from '@angular/core/testing';
+
+import { FormsModule } from '@angular/forms';
+
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientModule } from '@angular/common/http';
+
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { CursoDatosComponent } from './curso-datos.component';
-import { HttpClientModule } from '@angular/common/http';
-import { of } from 'rxjs';
+import { CursoDatosIIComponent } from '../curso-datos-ii/curso-datos-ii.component';
+import { SeleccionDocenteComponent } from '../seleccion-docente/seleccion-docente.component';
+import { SeleccionSeccionComponent } from '../seleccion-seccion/seleccion-seccion.component';
+import { SeleccionTurnoComponent } from '../seleccion-turno/seleccion-turno.component';
+
+
 
 describe('CursoDatosComponent', () => {
   let component: CursoDatosComponent;
@@ -10,8 +21,18 @@ describe('CursoDatosComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports:[HttpClientModule],
-      declarations: [ CursoDatosComponent ]
+      imports: [
+        RouterTestingModule,
+        HttpClientTestingModule,
+        HttpClientModule,
+        FormsModule],
+      declarations: [ 
+        CursoDatosComponent,
+        CursoDatosIIComponent,
+        SeleccionDocenteComponent,
+        SeleccionSeccionComponent,
+        SeleccionTurnoComponent],
+      providers:[CursoDatosComponent]
     })
     .compileComponents();
   }));
@@ -25,13 +46,8 @@ describe('CursoDatosComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
-  /*
-  describe('When ngOnInit() is called',()=>{
-    it('all should be fine',()=>{
-      spyOn(component._curso,'getCursos').and.returnValue(of({cursos:[]}));
-      component.getCursos();
-      expect(component.error).toBeFalsy();
-    
-    });
-  });*/
+  it(`should be CursoDatosComponent_`, async(inject([HttpTestingController, CursoDatosComponent],
+    (httpClient: HttpTestingController, cursoDatosComponent: CursoDatosComponent) => {
+      expect(cursoDatosComponent).toBeTruthy();
+  })));
 });

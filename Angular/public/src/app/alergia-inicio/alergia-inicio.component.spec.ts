@@ -1,5 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { FormsModule } from '@angular/forms';
 import { AlergiaInicioComponent } from './alergia-inicio.component';
 
 describe('AlergiaInicioComponent', () => {
@@ -8,7 +8,9 @@ describe('AlergiaInicioComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AlergiaInicioComponent ]
+      imports: [ FormsModule ],
+      declarations: [ AlergiaInicioComponent ],
+      providers:[AlergiaInicioComponent]
     })
     .compileComponents();
   }));

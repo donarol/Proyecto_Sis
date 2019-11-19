@@ -10,13 +10,9 @@ import { ActivatedRoute, Params, Router } from '@angular/router';
   styleUrls: ['./cuenta-familiar.component.css']
 })
 export class CuentaFamiliarComponent implements OnInit {
-  private model:Familiar;
-  private imagenName:string;
-  private href: string = "";
-  private id:string="";
+
   constructor(
-    private _familiarService:FamiliarService,
-    private router: Router
+    //VER ESTA CLASE
   ) {}
 
   ngOnInit() {

@@ -1,4 +1,5 @@
-<div class="container emp-profile">
+<app-pantalla-carga *ngIf="!isMuestra"></app-pantalla-carga>
+<div class="container emp-profile" *ngIf="isMuestra">
     <div class="col-md-4 atras">
       <input type="button" class="profile-edit-btn" name="btnAddMore" value="Atras"/>
     </div>

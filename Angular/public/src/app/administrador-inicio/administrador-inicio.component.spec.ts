@@ -1,6 +1,10 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { async,inject,ComponentFixture,TestBed } from '@angular/core/testing';
 
 import { AdministradorInicioComponent } from './administrador-inicio.component';
+
+import { RouterTestingModule } from '@angular/router/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('AdministradorInicioComponent', () => {
   let component: AdministradorInicioComponent;
@@ -8,7 +12,9 @@ describe('AdministradorInicioComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AdministradorInicioComponent ]
+      imports: [RouterTestingModule,HttpClientTestingModule,HttpClientModule,],
+      declarations: [ AdministradorInicioComponent ],
+      providers: [AdministradorInicioComponent]
     })
     .compileComponents();
   }));
@@ -22,4 +28,8 @@ describe('AdministradorInicioComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it(`should be AdministradorInicio_`, async(inject([HttpTestingController, AdministradorInicioComponent],
+    (httpClient: HttpTestingController, administradorInicioComponent: AdministradorInicioComponent) => {
+      expect(administradorInicioComponent).toBeTruthy();
+  })));
 });
