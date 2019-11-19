@@ -12,7 +12,7 @@ import { UserService } from '../servicios/user.service';
   styleUrls: ['./cuenta-administrador.component.css']
 })
 export class CuentaAdministradorComponent implements OnInit {
-  private model:User;
+  model:User;
   private aux:User;
   private imagenName:string;
   private href: string = "";
@@ -84,7 +84,6 @@ export class CuentaAdministradorComponent implements OnInit {
     }
   }
   cargaUser():void{
-    
     this._user.getUser(this.model.id).subscribe(res=>{
       console.log("Mi res");
       console.log(res);
@@ -99,6 +98,7 @@ export class CuentaAdministradorComponent implements OnInit {
       this.errors[0].getError();
     });
   }
+
   verifica():void{
     if(this.rutaActiva.snapshot.params.id!=null){
       console.log("no es nulo");
@@ -128,5 +128,8 @@ export class CuentaAdministradorComponent implements OnInit {
     this.errors.push(new Errores('Error al actualizar los datos'))//6
 
     this.errors.push(new Errores('Datos Modificados Exitosamente'));//7
+  }
+  getModel():User{
+    return this.model;
   }
 }

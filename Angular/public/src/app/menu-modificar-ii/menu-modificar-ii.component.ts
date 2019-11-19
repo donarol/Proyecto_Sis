@@ -40,6 +40,7 @@ export class MenuModificarIiComponent implements OnInit {
     this.spinnerIngredientes=false;
     this.ingredientes=[];
     this.errors=[];
+    this.plato=new Plato;
     this.nuevoIngrediente=new Ingrediente;
     this.setErrors();
     //this.getPlato();
