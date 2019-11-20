@@ -1,0 +1,11 @@
+<div class="contenido">
+    <full-calendar (click)="handleDateClick($event)" 
+    defaultView="dayGridMonth"
+    [plugins]="calendarPlugins"
+    [events]="calendarEvents"
+    class="calendar"></full-calendar>
+</div>
+
+<div class="modal fade" id="targetMenuEvento" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelMenuEvento" aria-hidden="true">
+  <app-menu-eventos [fecha]="fechaEvento"></app-menu-eventos>
+</div>

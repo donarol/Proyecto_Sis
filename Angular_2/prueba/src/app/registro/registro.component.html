@@ -1,0 +1,72 @@
+<div class="contenido">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+            <div class="alert alert-danger col-12" role="alert" *ngIf="errors[0].isError">
+              {{errors[0].message}}
+            </div>
+            <div class="alert alert-success col-12" role="alert" *ngIf="errors[8].isError">
+                {{errors[8].message}}
+              </div>  
+        </div>
+      </div>
+    </div>
+    <form  #formLogin="ngForm" (ngSubmit)="registro(formLogin)">
+      <div class="corto">
+        <input type="text" id="nombre" name="nombre" [(ngModel)]="familiar.nombre" required autocomplete="off">
+        <label class="etiqueta" for="nombre">Nombre</label>
+        <div class="alert alert-danger" role="alert" *ngIf="errors[1].isError">
+            {{errors[1].message}}
+        </div>
+      </div>
+      <div class="corto">
+        <input type="text" id="apellido" name="apellido" [(ngModel)]="familiar.apellido" required autocomplete="off">
+        <label class="etiqueta" for="apellido">Apellido</label>
+        <div class="alert alert-danger" role="alert" *ngIf="errors[2].isError">
+            {{errors[2].message}}
+        </div>
+      </div>
+      <div class="corto">
+        <input type="text" id="carnet" name="carnet" [(ngModel)]="familiar.carnet" required autocomplete="off">
+        <label class="etiqueta" for="carnet">Carnet</label>
+        <div class="alert alert-danger" role="alert" *ngIf="errors[3].isError">
+          {{errors[3].message}}
+        </div>
+      </div>
+      <div class="corto">
+        <input type="text" id="telefono" name="telefono" [(ngModel)]="familiar.telefono" required autocomplete="off">
+        <label class="etiqueta" for="telefono">Telefono</label>
+        <div class="alert alert-danger" role="alert" *ngIf="errors[4].isError">
+          {{errors[4].message}}
+        </div>
+      </div>
+      <div class="largo">
+        <input type="text" id="email" name="email" [(ngModel)]="familiar.email" [email]="true" required autocomplete="off">
+        <label class="etiqueta" for="email">Correo Electronico</label>
+        <div class="alert alert-danger" role="alert" *ngIf="errors[5].isError">
+          {{errors[5].message}}
+        </div>
+      </div>
+      <div class="corto">
+        <input type="password" id="password" name="password" [(ngModel)]="familiar.password" minlength="8" required autocomplete="off">
+        <label class="etiqueta" for="password">Contraseña</label>
+        <div class="alert alert-danger" role="alert" *ngIf="errors[6].isError">
+          {{errors[6].message}}
+        </div>
+      </div>
+      <div class="corto">
+        <input type="password" id="password_confirmation" name="password_confirmation" [(ngModel)]="familiar.password_confirmation" required autocomplete="off">
+        <label class="etiqueta" for="password_confirmation">Repita La Contraseña</label>
+        <div class="alert alert-danger" role="alert" *ngIf="errors[7].isError">
+            {{errors[7].message}}
+          </div>
+      </div>
+      <button class="btn btn-info" type="submit">Enviar</button>
+      <div class="input-group-prepend" *ngIf="spinner" >
+        <div class="spinner-border text-danger" role="status">
+          <span class="sr-only">Loading...</span>
+        </div>
+      </div>
+    </form>
+  </div>
+    

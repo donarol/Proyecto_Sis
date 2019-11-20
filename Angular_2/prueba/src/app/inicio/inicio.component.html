@@ -1,0 +1,36 @@
+<div class="contenedor">
+    <div class="izq">
+      <div>
+        <img [src]="'/assets/img/' + imagenName">
+      </div>
+      <div class="e">
+        <label class="switch">
+          <input type="checkbox" [(ngModel)]='variable' (change)='onChangeVariable()'>
+          <span class="slider round"></span>
+        </label>
+        <p>{{vista}}</p>
+      </div>
+    </div>
+    <div class="der">
+      <div class="d-flex flex-row-reverse bd-highlight">
+        <button class="btn-der btn btn-info" [ngClass]="{'active':estado}" (click)="cambio(true)">Registro</button>
+        <button class="btn btn-info btn-izq " [ngClass]="{'active':!estado}" (click)="cambio(false)">Login</button>
+      </div>
+      <div class="contenido">
+        <div *ngIf='variable;then muestra_v else muestra_f'></div>
+        <ng-template #muestra_v>
+          <app-registro-administrador *ngIf="estado;else login"></app-registro-administrador>
+          <ng-template #login>
+            <app-login></app-login>
+          </ng-template>
+        </ng-template>
+        <ng-template #muestra_f>
+          <app-registro *ngIf="estado;else login"></app-registro>
+          <ng-template #login>
+            <app-login></app-login>
+          </ng-template>
+        </ng-template>
+      </div>
+    </div>    
+  
+</div>

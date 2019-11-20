@@ -1,0 +1,64 @@
+<div class="container-fluid">
+    <div class="superior">
+      <nav class="navbar navbar-light bg-light">
+        <div class="col-10 row">
+          <div class="col-6 input-group">
+            <div class="input-group-prepend" *ngIf="spinnerTurno" >
+              <div class="spinner-border text-danger" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+            <select [(ngModel)]="model.turno_id" class="browser-default custom-select">
+              <option value=''>Lista Turnos</option>
+              <option
+              *ngFor="let turno of turnos"
+              [attr.value]="turno.turno_id">
+                {{turno.nombre}} - {{turno.gestion}}
+              </option>
+            </select>
+          </div>
+          <div class="col-6 input-group">
+            <div class="input-group-prepend" *ngIf="spinnerSeccion" >
+              <div class="spinner-border text-danger" role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+            <select [(ngModel)]="model.seccion_id" class="browser-default custom-select">
+              <option value=''>Lista Secciones</option>
+              <option
+              *ngFor="let seccion of secciones"
+              [attr.value]="seccion.seccion_id">
+                {{seccion.nombre}}
+              </option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-outline-success my-2 my-sm-0" (click)="getCursos()" type="button">Buscar</button>
+      </nav>
+    </div>
+  
+    <div class="inferior container-fluid">
+      <div class="row">
+        <div class="input-group-prepend" *ngIf="spinnerCurso" >
+          <div class="spinner-border text-danger" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <nav  class="col-md-4">
+          <ul>
+          <a 
+          *ngFor="let curso of cursos index as i"  
+          routerLink="/homeAdministrador/Curso/{{curso.curso_id}}">
+            {{curso.nombre}}
+          </a>
+          </ul>
+        </nav>
+        <div  class="col-md-8">
+          <router-outlet></router-outlet>
+        </div>
+      </div>
+      
+    </div>
+  </div>

@@ -1,0 +1,28 @@
+<div class="container">
+    <div class="row">
+        <div class="input-group-prepend" *ngIf="spinner" >
+          <div class="spinner-border text-danger" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>  
+        <div class="alert alert-danger col-12" role="alert" *ngIf="errors[0].isError">
+          {{errors[0].message}}
+        </div>
+    </div>
+    <div class="row userMain" *ngIf="!spinner">
+      <div class="col-md-3 col-sm-4" *ngFor="let alumno of alumnos">
+        <div class="userBlock">
+          <div class="backgrounImg">
+            <img src="https://preview.ibb.co/miQjb7/photography4.jpg">
+          </div>
+          <div class="userImg">
+              <img [src]="'/assets/img/' + imagenName">
+          </div>
+          <div class="userDescription">
+            <h5>{{alumno.nombre}} {{alumno.apellido}}</h5>
+            <button class="btn" routerLink="/homeAdministrador/Alumno/{{alumno.alumno_id}}">Ver Datos</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

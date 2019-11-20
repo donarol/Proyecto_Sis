@@ -1,0 +1,53 @@
+<div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" [attr.id]="'exampleModalLabelFamiliar'+idSeguro">Lista de Familiares</h5>
+        <div class="input-group-prepend" *ngIf="spinnerFamiliar" >
+          <div class="spinner-border text-danger" role="status">
+            <span class="sr-only">Loading...</span>
+          </div>
+        </div>
+        <button type="button" class="close" [attr.data-dismiss]="'modal'" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+  
+      <div class="modal-body">
+          <div class="row">
+            <div class="col-4">
+              <select (change)='selectFamiliar($event)' size="8"  class=" form-control list-group" id="list-tab" role="tablist">
+                  <option *ngFor="let familiar of familiares" 
+                  class="list-group-item list-group-item-action" 
+                  [attr.id]="'list-home-list-familiar'+familiar.id" 
+                  [attr.data-toggle]="'list'" 
+                  [attr.href]="'#list-familiar'+familiar.id+idSeguro" 
+                  href="#list-home-familiar" 
+                  role="tab" 
+                  aria-controls="home-familiar"
+                  [attr.value]="familiar.id"
+                  >
+                    {{familiar.nombre}}
+                  </option>
+              </select>
+            </div>
+            <div class="col-8">
+              <div class="tab-content" id="nav-tabContent">
+                  <div class="card mb-3">
+                    <div class="row no-gutters">
+                        <div class="card-body">
+                          <app-seleccion-familiar-ii (_parentesco_)="selectParentesco($event)" [familiar]="model"></app-seleccion-familiar-ii>
+                        </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" [attr.data-dismiss]="'modal'">Cancelar</button>
+        <button type="button" (click)="enviarFamiliar()" [attr.data-dismiss]="'modal'" class="btn btn-primary">Agregar Familiar</button>
+      </div>
+    </div>
+  
+  </div>
+  

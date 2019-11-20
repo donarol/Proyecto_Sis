@@ -1,0 +1,30 @@
+.contenedor{
+    display: flex;
+    flex-wrap: wrap;
+    /*background: white;*/
+}
+.nave{
+    border: 2px solid;
+
+}
+.contenido{
+	border: 2px solid;
+}
+ul{
+    list-style: none;
+    margin: 0%;
+    padding: 0%;
+    display: flex;
+    flex-wrap: wrap;
+}
+a{
+    width: 100%;
+    background: #274042;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 5%;
+    cursor: pointer;
+}
+a:hover{
+    background: #1A6997;
+}

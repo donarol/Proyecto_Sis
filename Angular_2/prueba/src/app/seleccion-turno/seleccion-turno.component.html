@@ -1,0 +1,62 @@
+<div class="modal-dialog modal-xl" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" [attr.id]="'exampleModalLabelTurno'+idSeguro">Lista de Turnos</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+  
+      <div class="modal-body">
+          <div class="row">
+            <div class="col-4">
+              <select (change)='selectTurno($event)' size="8"  class=" form-control list-group" id="list-tab" role="tablist">
+                  <option *ngFor="let turno of turnos" 
+                  class="list-group-item list-group-item-action" 
+                  [attr.id]="'list-home-list-turno'+turno.turno_id" 
+                  data-toggle="list" 
+                  [attr.href]="'#list-turno'+turno.turno_id+idSeguro" 
+                  href="#list-home-turno" 
+                  role="tab" 
+                  aria-controls="home-turno"
+                  [attr.value]="turno.turno_id"
+                  >
+                    {{turno.nombre}}
+                  </option>
+              </select>
+            </div>
+            <div class="col-8">
+              <div class="tab-content" id="nav-tabContent">
+                <div 
+                *ngFor="let turno_0 of turnos" 
+                class="tab-pane fade show" 
+                [attr.id]="'list-turno'+turno_0.turno_id+idSeguro" 
+                role="tabpanel" 
+                [attr.aria-labelledby]="'list-home-list-turno'+turno_0.turno_id">
+                  <div class="card mb-3">
+                    <div class="row no-gutters">
+                      <div class="col-md-8">
+                        <div class="card-body">
+                          <h5 class="card-title">{{turno_0.nombre}}</h5>
+                          <p class="card-text">Numero de Cursos asignados:   <small class="text-muted">{{turno_0.monto}}</small></p>
+                          <p class="card-text">Hora de Incio:   <small class="text-muted">{{turno_0.hora_inicio}}</small></p>
+                          <p class="card-text">Hora de Finalizacion:   <small class="text-muted">{{turno_0.hora_fin}}</small></p>
+                          <p class="card-text">Gestion:   <small class="text-muted">{{turno_0.gestion}}</small></p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        <button type="button" (click)="enviarTurno()" data-dismiss="modal" class="btn btn-primary">Seleccionar Turno</button>
+      </div>
+  
+    </div>
+  
+  </div>
+  

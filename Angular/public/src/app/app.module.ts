@@ -166,11 +166,11 @@ const router: Routes=[
     RouterModule.forRoot(router),
     FormsModule,
     HttpClientModule,
-    BrowserAnimationsModule,
-    FullCalendarModule,
+    BrowserAnimationsModule,//
+    FullCalendarModule,//
     BrowserModule,
-    RouterTestingModule.withRoutes([]),
-    HttpClientTestingModule 
+    RouterTestingModule.withRoutes([]),//
+    HttpClientTestingModule //
   ],
   providers: [
     LoginService,

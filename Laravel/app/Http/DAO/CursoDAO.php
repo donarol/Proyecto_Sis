@@ -7,7 +7,7 @@ class CursoDAO{
  
     public function crear(Curso $curso){
         if(Curso::where([
-            ['curso_id', '=',$curso->curso_id],
+            ['nombre', '=',$curso->nombre],
             ['gestion','=',$curso->gestion]
         ])->exists()){
             $cursoError = new Curso;
