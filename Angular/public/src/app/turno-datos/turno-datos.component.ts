@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./turno-datos.component.css']
 })
 export class TurnoDatosComponent implements OnInit {
-  private turno:Turno;
+  turno:Turno;
   private errors:Errores[]=[];
   private spinner:boolean;
   constructor(
@@ -26,10 +26,10 @@ export class TurnoDatosComponent implements OnInit {
     this.turno=new Turno();
     this.spinner=true;
     this.setErrors();
-    this.getTurno();   
+    this.getTurno(this.rutaActiva.snapshot.params.id);   
   }
-  getTurno(){
-    this._turno.getTurno(this.rutaActiva.snapshot.params.id).subscribe(res=>{
+  getTurno(id){
+    this._turno.getTurno(id).subscribe(res=>{
       console.log("mi res t");
       console.log(res);
       this.turno=res;

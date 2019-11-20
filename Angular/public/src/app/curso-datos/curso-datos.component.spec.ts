@@ -13,12 +13,13 @@ import { SeleccionDocenteComponent } from '../seleccion-docente/seleccion-docent
 import { SeleccionSeccionComponent } from '../seleccion-seccion/seleccion-seccion.component';
 import { SeleccionTurnoComponent } from '../seleccion-turno/seleccion-turno.component';
 
-
+import { of } from 'rxjs';
+import { CursoService } from '../servicios/curso.service';
+import { Curso } from '../modelos/Curso';
 
 describe('CursoDatosComponent', () => {
   let component: CursoDatosComponent;
   let fixture: ComponentFixture<CursoDatosComponent>;
-
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -42,7 +43,10 @@ describe('CursoDatosComponent', () => {
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
-
+  /*beforeEach(inject([CursoService], s => {
+    CursoService = s;
+    element = fixture.nativeElement;
+  }));*/
   it('should create', () => {
     expect(component).toBeTruthy();
   });
@@ -50,4 +54,17 @@ describe('CursoDatosComponent', () => {
     (httpClient: HttpTestingController, cursoDatosComponent: CursoDatosComponent) => {
       expect(cursoDatosComponent).toBeTruthy();
   })));
+
+ /* it("should call getCursos and return list of cursos", async(() => {
+    const response: Curso[] = [];
+  
+    spyOn(component, 'getCursos').and.returnValue(of(response))
+  
+    component.getCursos();
+  
+    fixture.detectChanges(); 
+  
+    expect(component.cursos).toEqual(response);
+  }));*/
+
 });

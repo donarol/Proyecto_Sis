@@ -3,6 +3,7 @@ import { TurnoService } from '../servicios/turno.service';
 import { Turno } from '../modelos/Turno';
 import { UserService } from '../servicios/user.service';
 import { Router } from '@angular/router';
+import { Errores } from '../modelos/Errores';
 @Component({
   selector: 'app-turno-inicio',
   templateUrl: './turno-inicio.component.html',
@@ -12,6 +13,8 @@ export class TurnoInicioComponent implements OnInit {
   private titulos:String[]=['#','Nombre','Monto','Hora de Inicio','Hora de Finalizacion','Gestion'];
   private turnos:Turno[];
   private spinner:boolean;
+  errors:Errores[];
+  access:Boolean;
   constructor(
     private _turno:TurnoService,
     private _user:UserService,
@@ -20,16 +23,24 @@ export class TurnoInicioComponent implements OnInit {
 
   ngOnInit() {
     this.spinner=false;
-    this.cargaTurno();
+    this.errors=[];
+    this.access=false;
+    this.setErrors();
+    this.isAdministrador();
+  
+  }
+  isAdministrador(){
     this._user.getUserActual().subscribe(res=>{
-      console.log("Mi res");
-      console.log(res);
       if(res.tipo==='Administrador'){
-        console.log("usted es administrador")
+        this.cargaTurno();
+        this.access=true;
       }else{
         alert('Usted no es Administrador');
+        this.access=false;
         this._router.navigate(['']);
       }
+    },error=>{
+      this.errors[2].onError();
     });
   }
   cargaTurno(){
@@ -49,5 +60,11 @@ export class TurnoInicioComponent implements OnInit {
   borraTurno(turno:Turno){
     console.log("se borrar el  turno...");
     console.log(turno);
+  }
+  setErrors():void{
+    this.errors.push(new Errores('Error al carga los turnos'));
+    this.errors.push(new Errores('Error al borrar el turno'));//1
+
+    this.errors.push(new Errores('Error al verificar el Usuario'));//2
   }
 }

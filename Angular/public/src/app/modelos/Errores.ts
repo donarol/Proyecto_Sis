@@ -13,4 +13,13 @@ export class Errores {
           this.isError=false;
         },this.time);
     }
+    onError(){
+        this.isError=true;
+    }
+    offError(){
+        this.isError=false;
+    }
+    myError():Boolean{
+        return this.isError;
+    }
 }

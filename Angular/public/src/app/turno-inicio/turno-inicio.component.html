@@ -1,4 +1,11 @@
-<div class="inicio">
+<div class="container-fluid">
+  <div class="row">
+    <div class="alert alert-danger" role="alert" *ngIf="errors[2].isError">
+      {{errors[2].message}}
+    </div> 
+  </div>
+</div>
+<div class="inicio" >
   <h2>Turnos Actuales</h2>
   <div class="spinner-border text-danger" role="status" *ngIf="spinner">
       <span class="sr-only">Loading...</span>

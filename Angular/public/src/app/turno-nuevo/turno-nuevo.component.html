@@ -1,5 +1,10 @@
-<div class="contenedor">
-    <div class="contenido">
+<div class="contenedor" *ngIf="access">
+    <div class="row">
+      <div class="alert alert-danger" role="alert" *ngIf="errors[6].isError">
+        {{errors[6].message}}
+      </div>   
+    </div>
+    <div class="contenido" *ngIf="!errors[6].isError">
       <button type="button" class="btn btn-secondary" routerLink="/turnos">Atras</button>
       <form  #formLogin="ngForm" (ngSubmit)="crearTurno(formLogin)">
         <div class="selectores">

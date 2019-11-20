@@ -12,8 +12,9 @@ import { NgForm } from '@angular/forms';
 })
 export class TurnoNuevoComponent implements OnInit {
   private turno:Turno;
-  private errors:Errores[]=[];
+  errors:Errores[]=[];
   private spinner:boolean;
+  access:Boolean;
   constructor(
     private _turnoService:TurnoService,
     private _user:UserService,
@@ -23,16 +24,21 @@ export class TurnoNuevoComponent implements OnInit {
   ngOnInit() {
     this.turno=new Turno();
     this.setErrors();
-    this.spinner=false;  
+    this.spinner=false;
+    this.access=false;
+    this.isAdministrador();
+  }
+  isAdministrador(){  
     this._user.getUserActual().subscribe(res=>{
-      console.log("Mi res");
-      console.log(res);
       if(res.tipo==='Administrador'){
-        console.log("usted es administrador");
+        this.access=true;
       }else{
         alert('Usted no es Administrador');
+        this.access=false;
         this._router.navigate(['']);
       }
+    },error=>{
+      this.errors[6].onError();
     });
   }
   /*onChangeGestion(deviceValue){
@@ -75,7 +81,9 @@ export class TurnoNuevoComponent implements OnInit {
     this.errors.push(new Errores('Error al ingresar el monto'));
     this.errors.push(new Errores('Error al ingresar la hora de Inicio'));
     this.errors.push(new Errores('Error al ingresar la hora de Finalizacion'));
-    this.errors.push(new Errores('Error al ingresar la Gestion'));
+    this.errors.push(new Errores('Error al ingresar la Gestion'));//5
+
+    this.errors.push(new Errores('Error al verificar el Usuario'));//6
   }
 
 }

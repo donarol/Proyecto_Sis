@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterTestingModule } from '@angular/router/testing';
 
 import { TurnoNuevoComponent } from './turno-nuevo.component';
+import { throwError, of } from 'rxjs';
 
 describe('TurnoNuevoComponent', () => {
   let component: TurnoNuevoComponent;
@@ -34,4 +35,21 @@ describe('TurnoNuevoComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+  it('should of isAdministrador_V', () => {
+    spyOn(component['_user'],'getUserActual').and.returnValue(of({tipo:'Administrador'}));
+    component.isAdministrador();
+    expect(component.access).toBeTruthy();
+
+  });
+  it('should of isAdministrador_E', () => {
+    spyOn(component['_user'],'getUserActual').and.returnValue(throwError({error:'error'}));
+    component.isAdministrador();
+    expect(component.errors[6].myError()).toBeTruthy();
+  });
+  it('should of isAdministrador_F', () => {
+    spyOn(component['_user'],'getUserActual').and.returnValue(of({}));
+    component.isAdministrador();
+    expect(component.access).toBeFalsy();
+  });
+
 });

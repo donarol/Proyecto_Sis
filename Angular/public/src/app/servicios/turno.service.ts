@@ -25,7 +25,6 @@ export class TurnoService {
     return this.http.put<Turno>(`http://homestead.test/api/auth/turno/${turno.turno_id}`,turno,this.getoken());
   }
   getoken(){
-
     var httpOptions = {
     headers: new HttpHeaders({
       'Content-Type':  'application/json',
@@ -34,5 +33,5 @@ export class TurnoService {
     };
     return httpOptions;
   }
-
+  
 }

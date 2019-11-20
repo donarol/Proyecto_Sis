@@ -9,7 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./curso-datos.component.css']
 })
 export class CursoDatosComponent implements OnInit {
-  private cursos:Curso[];
+  cursos:Curso[];
   constructor(
     private _curso:CursoService,
     private _user:UserService,
@@ -17,13 +17,15 @@ export class CursoDatosComponent implements OnInit {
   ){}
 
   ngOnInit() {
-    this.getCursos();
-     
+    this.isAdministrador();
+  }
+  isAdministrador():void{
     this._user.getUserActual().subscribe(res=>{
       console.log("Mi res");
       console.log(res);
       if(res.tipo==='Administrador'){
         console.log("es administrador");
+        this.getCursos();
       }else{
         alert('Usted no es Administrador');
         this._router.navigate(['']);
