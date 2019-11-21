@@ -22,10 +22,10 @@ class cursoTest extends TestCase
         $response
         ->assertStatus(200)
         ->assertJson([
-            'nombre' => 'curso 1 prueba 5',
+            'nombre' => 'curso 1',
             'gestion'=>'2019',
             'user_id' => '1',
-            'seccion_id'=>'2',
+            'seccion_id'=>'1',
             'turno_id' => '2'
         ]);
 
@@ -47,9 +47,9 @@ class cursoTest extends TestCase
         $response
         ->assertStatus(200)
         ->assertJson([
-            'seccion_id' => '2',
-            'nombre'=>'Pre-Kinder',
-            'descripcion' => 'desde 5 a 6 años'
+            'seccion_id' => '1',
+            'nombre'=>'Parbulario 2p',
+            'descripcion' => 'niños 4 años'
         ]);
     }
     public function testCursoDocenteExample(){
