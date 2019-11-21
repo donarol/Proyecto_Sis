@@ -36,5 +36,9 @@ class TurnoBL{
         $turnoDao = new TurnoDAO;
         return $turnoDao->modificar($turno);    
     }
+    public function borrar($id){
+        $turnoDao = new TurnoDAO;
+        return $turnoDao->borrar($id);
+    }
 
 }

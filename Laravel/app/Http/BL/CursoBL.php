@@ -60,4 +60,8 @@ class CursoBL{
         $cursoDao = new CursoDAO;
         return $cursoDao->modificar($curso);    
     }
+    public function borrar($id){
+        $cursoDao = new CursoDAO;
+        return $cursoDao->borrar($id);
+    }
 }

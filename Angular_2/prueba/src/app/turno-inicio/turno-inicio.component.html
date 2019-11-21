@@ -1,8 +1,17 @@
 <div class="container-fluid">
-    <div class="row">
+    <div class="col-12">
+      <div class="alert alert-danger" role="alert" *ngIf="errors[0].isError">
+        {{errors[0].message}}
+      </div> 
+      <div class="alert alert-danger" role="alert" *ngIf="errors[1].isError">
+        {{errors[1].message}}
+      </div>
       <div class="alert alert-danger" role="alert" *ngIf="errors[2].isError">
         {{errors[2].message}}
-      </div> 
+      </div>
+      <div class="alert alert-success" role="alert" *ngIf="errors[3].isError">
+        {{errors[3].message}}
+      </div>
     </div>
   </div>
   <div class="inicio" >
@@ -26,7 +35,7 @@
             <th>{{turno.hora_inicio}}</th>
             <th>{{turno.hora_fin}}</th>
             <th>{{turno.gestion}}</th>
-            <th><button class="btn btn-danger" type="button" (click)="borraTurno(turno)">Borrar</button></th>
+            <th><button class="btn btn-danger" type="button" (click)="borraTurno(turno,i)">Borrar</button></th>
             <th><button class="btn btn-success" routerLink="/turno/{{turno.turno_id}}">Ver</button></th>
         </tr>
       </tbody>

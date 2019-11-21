@@ -39,5 +39,9 @@ class TurnoDAO{
             return response()->json($turno,200);
        // }
     }
+    public function borrar($id){
+        $turno = Turno::find($id);
+        return response()->json($turno->delete(),200);
+    }
     
 }

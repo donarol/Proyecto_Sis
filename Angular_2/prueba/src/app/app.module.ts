@@ -52,13 +52,16 @@ import { TurnoDatosComponent } from './turno-datos/turno-datos.component';
 import { TurnoInicioComponent } from './turno-inicio/turno-inicio.component';
 import { TurnoNuevoComponent } from './turno-nuevo/turno-nuevo.component';
 import { CursoBorrarComponent } from './curso-borrar/curso-borrar.component';
+import { CursoBorrarIiComponent } from './curso-borrar-ii/curso-borrar-ii.component';
+import { HomeFamiliarComponent } from './home-familiar/home-familiar.component';
+import { AlumnoDatosComponent } from './alumno-datos/alumno-datos.component';
 
 const router: Routes=[
   {path:'',component:InicioComponent},
   {path:'',component:PrincipalComponent,children:[
    /* {path:'user/:id',component:InicioFamiliarComponent},*/
     {path:'',component:InicioFamiliarComponent,children:[
-     // {path:'homeFamiliar',component:HomeFamiliarComponent},
+      {path:'homeFamiliar',component:HomeFamiliarComponent},
      // {path:'cuentaFamiliar',component:CuentaFamiliarComponent},
       {path:'menuFamiliar',component:MenuComponent}
     ]}
@@ -67,7 +70,7 @@ const router: Routes=[
       {path:'',component:HomeAdministradorComponent,children:[
         {path:'homeAdministrador/Curso/:id',component:ListaInicioComponent},
         {path:'homeAdministrador',component:ListaInicioComponent},
-       // {path:'homeAdministrador/Alumno/:id',component:AlumnoDatosComponent},
+        {path:'homeAdministrador/Alumno/:id',component:AlumnoDatosComponent},
       ]},
       {path:'cuentaAdministrador',component:CuentaAdministradorComponent},
       {path:'',component:MenuAdministradorComponent,children:[
@@ -140,7 +143,10 @@ const router: Routes=[
     TurnoDatosComponent,
     TurnoInicioComponent,
     TurnoNuevoComponent,
-    CursoBorrarComponent
+    CursoBorrarComponent,
+    CursoBorrarIiComponent,
+    HomeFamiliarComponent,
+    AlumnoDatosComponent
   ],
   imports: [
     BrowserModule,

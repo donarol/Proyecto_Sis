@@ -62,4 +62,8 @@ class CursoDAO{
     public function miTurno($id){
         return response()->json(Curso::find($id)->turno,200);
     }
+    public function borrar($id){
+        $curso = Curso::find($id);
+        return response()->json($curso->delete(),200);
+    }
 }

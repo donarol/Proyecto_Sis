@@ -47,6 +47,7 @@ Route::group(['prefix' => 'auth'], function () {
         Route::get('turnos','TurnoController@lista')->middleware('verified');
         Route::get('turno/{id}','TurnoController@obtener')->middleware('verified');
         Route::put('turno/{id}','TurnoController@modificar')->middleware('verified');
+        Route::delete('borrarTurno/{id}','TurnoController@borrar')->middleware('verified');
     });
     Route::group(['middleware' => 'auth:api'],function(){
         Route::get('secciones','SeccionController@lista')->middleware('verified');
@@ -64,6 +65,7 @@ Route::group(['prefix' => 'auth'], function () {
         Route::get('cursoDocente/{id}','CursoController@miDocente')->middleware('verified');
         Route::get('cursoSeccion/{id}','CursoController@miSeccion')->middleware('verified');
         Route::get('cursoTurno/{id}','CursoController@miTurno')->middleware('verified');
+        Route::delete('borrarCurso/{id}','CursoController@borrar')->middleware('verified');
     });
     Route::group(['middleware' => 'auth:api'],function(){
         Route::post('registroAlumno','AlumnoController@crear')->middleware('verified');

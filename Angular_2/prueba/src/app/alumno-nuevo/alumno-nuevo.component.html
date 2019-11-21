@@ -1,6 +1,6 @@
 <app-pantalla-carga *ngIf="!isMuestra"></app-pantalla-carga>
 <div class="inicio" *ngIf="isMuestra">
-  <div class="row">
+  <div class="col-12">
     <div class="alert alert-danger" role="alert" *ngIf="errors[0].isError">
       {{errors[0].message}}
     </div>

@@ -79,15 +79,10 @@ export class AlumnoNuevoComponent implements OnInit {
       this._alumno.addAlumno(this.alumno).subscribe(res=>{
         console.log("mi res");
         console.log(res);
-        if(res.alumno_id=='0'){
-          console.log("no se inscribra al Alumno");
-          this.errors[10].getError();
-        }else{
-          console.log("Se inscribira al Alumno");
-          this.addAlumnoCurso(res);
-          this.addAlumnoUser(res);
-          this.spinner=false;
-        }
+        this.addAlumnoCurso(res);
+        this.addAlumnoUser(res);
+        this.spinner=false;
+        this.errors[11].getError();
       },error=>{
         console.log("mi error");
         console.log(error);

@@ -1,1 +1,66 @@
-<p>curso-borrar works!</p>
+
+<div class="contenedor">
+    
+    <div class="row">
+        <div class="col-12">
+            <div class="alert alert-danger" role="alert" *ngIf="errors[0].isError">
+                {{errors[0].message}}
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="errors[1].isError">
+                {{errors[1].message}}
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="errors[2].isError">
+                {{errors[2].message}}
+            </div>
+            <div class="alert alert-success" role="alert" *ngIf="errors[3].isError">
+                {{errors[3].message}}
+            </div>
+
+        </div>
+        
+        <div class="superior col-12">
+            <button type="button" class="btn btn-primary col-3"  routerLink="/cursos">Atras</button>
+            <div class="input-group-prepend col-3" *ngIf="spinner" >
+                <div class="spinner-border text-danger" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div> 
+            </div>
+        </div>
+        <div class="col-4">}
+        <select size="8"   class=" form-control list-group" id="list-tab" role="tablist">
+            <option *ngFor="let curso of cursos" 
+            class="list-group-item list-group-item-action" 
+            [attr.id]="'list-home-list-curso'+curso.curso_id" 
+            data-toggle="list" 
+            [attr.href]="'#list-curso'+curso.curso_id" 
+            href="#list-home-curso" 
+            role="tab" 
+            aria-controls="home-curso"
+            [attr.value]="curso.curso_id"
+            >
+            {{curso.nombre}}
+            </option>
+        </select>
+        </div>
+        <div class="col-8">
+        <div class="tab-content" id="nav-tabContent">
+            <div 
+            *ngFor="let curso_0 of cursos" 
+            class="tab-pane fade show" 
+            [attr.id]="'list-curso'+curso_0.curso_id" 
+            role="tabpanel" 
+            [attr.aria-labelledby]="'list-home-list-curso'+curso_0.curso_id">
+            <div class="card mb-3">
+                <div class="row no-gutters">
+                <div class="col-md-12">
+                    <div class="card-body">
+                        <app-curso-borrar-ii [CursoEnvio]="curso_0" (selectCurso)="SelectCurso($event)"></app-curso-borrar-ii>
+                    </div>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    </div>

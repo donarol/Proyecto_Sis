@@ -53,5 +53,9 @@ class CursoController extends Controller
         $curso = new CursoBL;
         return $curso->miTurno($id);
     }
+    public function borrar($id){
+        $curso = new CursoBL;
+        return $curso->borrar($id);
+    }
 
 }

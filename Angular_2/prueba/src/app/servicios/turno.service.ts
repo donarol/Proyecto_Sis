@@ -24,6 +24,9 @@ export class TurnoService {
   updateTurno(turno:Turno):Observable<Turno>{
     return this.http.put<Turno>(`http://homestead.test/api/auth/turno/${turno.turno_id}`,turno,this.getoken());
   }
+  deleteTurno(turno:Turno){
+    return this.http.delete(`http://homestead.test/api/auth/borrarTurno/${turno.turno_id}`,this.getoken());
+  }
   getoken(){
     var httpOptions = {
     headers: new HttpHeaders({

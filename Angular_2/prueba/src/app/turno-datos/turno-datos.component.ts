@@ -38,7 +38,7 @@ export class TurnoDatosComponent implements OnInit {
       console.log("mi error");
       console.log(error);
       this.spinner=false;
-      alert("error al cargar el turno");
+      this.errors[0].getError();
     });
   }
   updateTurno(form:NgForm){
@@ -49,11 +49,12 @@ export class TurnoDatosComponent implements OnInit {
         console.log("mi res");
         console.log(res);
         this.spinner=false;
+        this.errors[6].getError();
       },error=>{
         console.log("mi error");
         console.log(error);
         this.spinner=false;
-        alert("error al actualizar el turno");
+        this.errors[0].getError();
       });
     }else{
       console.log("no es valido");
@@ -77,7 +78,9 @@ export class TurnoDatosComponent implements OnInit {
     this.errors.push(new Errores('Error al ingresar el monto'));
     this.errors.push(new Errores('Error al ingresar la hora de Inicio'));
     this.errors.push(new Errores('Error al ingresar la hora de Finalizacion'));
-    this.errors.push(new Errores('Error al ingresar la Gestion'));
+    this.errors.push(new Errores('Error al ingresar la Gestion'));// 5
+
+    this.errors.push(new Errores('Modificado Exitosamente'));//6
   }
 
 }

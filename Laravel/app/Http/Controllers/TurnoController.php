@@ -28,4 +28,8 @@ class TurnoController extends Controller
         $turno = new TurnoBL;
         return $turno->modificar($id,$datos);
     }
+    public function borrar($id){
+        $turno = new TurnoBL;
+        return $turno->borrar($id);
+    }
 }

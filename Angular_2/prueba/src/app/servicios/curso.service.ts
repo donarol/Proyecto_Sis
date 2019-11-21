@@ -41,7 +41,9 @@ export class CursoService {
   updateCurso(curso:Curso):Observable<Curso>{
     return this.http.put<Curso>(`http://homestead.test/api/auth/curso/${curso.curso_id}`,curso,this.getToken());
   }
-
+  deleteCurso(curso:Curso){
+    return this.http.delete(`http://homestead.test/api/auth/borrarCurso/${curso.curso_id}`,this.getToken());
+  }
   getToken(){
 
     var httpOptions = {

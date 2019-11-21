@@ -1,0 +1,88 @@
+<div class="contenedor">
+    <div class="contenido">
+    <form #formLogin="ngForm" (ngSubmit)="BorrarCurso()">
+        <div class="selectores">
+        <p>Nombre:</p>
+        <input 
+        class="form-control form-control-sm" 
+        type="text" 
+        id="nombre"
+        name="nombre" 
+        required autocomplete="off"
+        readonly 
+        [(ngModel)]="aux_nombre">
+        </div>
+        <div class="selectores">
+        <p>Docente:</p>
+        <div class="input-group mb-2">
+            <div class="input-group-prepend" *ngIf="spinnerDocente" >
+            <div class="spinner-border text-danger" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            </div>
+            <input 
+            class="form-control" 
+            type="text" 
+            id="docente" 
+            name="docente" 
+            required autocomplete="off" 
+            aria-describedby="basic-addon1" 
+            readonly 
+            [(ngModel)]="administrador.nombre">
+        </div>
+        </div>
+        <div class="selectores">
+        <p>Seccion:</p>
+        <div class="input-group mb-2">         
+            <div class="input-group-prepend" *ngIf="spinnerSeccion" >
+            <div class="spinner-border text-danger" role="status">
+                <span class="sr-only">Loading...</span>
+            </div>
+            </div>
+            <input 
+            type="text" 
+            class="form-control" 
+            type="text" 
+            id="seccion" 
+            name="seccion" 
+            required autocomplete="off" 
+            aria-describedby="basic-addon2" 
+            readonly 
+            [(ngModel)]="seccion.nombre">
+        </div>
+        </div>
+        <div class="selectores">
+        <p>Turno:</p>
+        <div class="input-group mb-2">
+            <div class="input-group-prepend" *ngIf="spinnerTurno" >
+                <div class="spinner-border text-danger" role="status">
+                <span class="sr-only">Loading...</span>
+                </div>
+            </div>
+            <input 
+            type="text" 
+            class="form-control" 
+            type="text" 
+            id="turno" 
+            name="turno" 
+            required autocomplete="off" 
+            aria-describedby="basic-addon3" 
+            readonly 
+            [(ngModel)]="turno.nombre">
+        </div>
+        </div>
+        <div class="selectores">
+        <p>Gestion:</p>
+        <input class="form-control form-control-sm" type="text" id="gestion" name="gestion" required readonly autocomplete="off" [(ngModel)]="curso.gestion">
+        </div>
+        <div>
+        <button type="submit" class="btn btn-danger">Borrar Curso</button>
+        </div>            
+        <div class="input-group-prepend" *ngIf="spinner" >
+        <div class="spinner-border text-danger" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+        </div>
+    </form>
+    </div>
+</div>

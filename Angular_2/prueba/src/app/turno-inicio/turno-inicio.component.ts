@@ -22,7 +22,7 @@ export class TurnoInicioComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.spinner=false;
+    this.spinner=true;
     this.errors=[];
     this.access=false;
     this.setErrors();
@@ -40,31 +40,49 @@ export class TurnoInicioComponent implements OnInit {
         this._router.navigate(['']);
       }
     },error=>{
+      console.log("mi error");
+      console.log(error);
       this.errors[2].onError();
     });
   }
   cargaTurno(){
     this.spinner=true;
     this._turno.getTurnos().subscribe(res=>{
-      console.log("los turnos");
+      console.log("mi res");
       console.log(res);
       this.turnos=res;
       this.spinner=false;
     },error=>{
-      console.log("error al carga turnos");
+      console.log("mi error");
       console.log(error);
       this.spinner=false;
-      alert("error al cargar los turnos");
+      this.errors[0].getError();
     });
   }
-  borraTurno(turno:Turno){
+  borraTurno(turno:Turno,i:number){
     console.log("se borrar el  turno...");
     console.log(turno);
+    console.log("con posicion");
+    console.log(i);
+    this.spinner=true;
+    this._turno.deleteTurno(turno).subscribe(res=>{
+      console.log("mi res");
+      console.log(res);
+      this.spinner=false;
+      this.errors[3].getError();
+      this.turnos.splice(i,1);
+    },error=>{
+      console.log("mi error");
+      console.log(error);
+      this.spinner=false;
+      this.errors[1].getError();
+    });
   }
   setErrors():void{
     this.errors.push(new Errores('Error al carga los turnos'));
     this.errors.push(new Errores('Error al borrar el turno'));//1
 
     this.errors.push(new Errores('Error al verificar el Usuario'));//2
+    this.errors.push(new Errores('Turno borrado Exitosamente'));
   }
 }

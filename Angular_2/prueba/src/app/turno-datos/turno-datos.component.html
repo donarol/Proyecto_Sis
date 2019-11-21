@@ -1,6 +1,12 @@
-<p>turno-datos works!</p>
-
 <div class="contenido">
+    <div class="col-12">
+        <div class="alert alert-danger" role="alert" *ngIf="errors[0].isError">
+          {{errors[0].message}}
+        </div>
+        <div class="alert alert-success" role="alert" *ngIf="errors[6].isError">
+          {{errors[6].message}}
+        </div>
+    </div>
     <button  type="button" class="btn btn-secondary" routerLink="/turnos">Atras</button>
     <form #formLogin="ngForm"(ngSubmit)="updateTurno(formLogin)" >
       <div>

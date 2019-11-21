@@ -1,116 +1,116 @@
 <div class="contenedor">
     <div class="contenido">
 
-      <form #formLogin="ngForm" (ngSubmit)="modificarCurso(formLogin)">
-        <div class="selectores">
-          <p>Nombre:</p>
+    <form #formLogin="ngForm" (ngSubmit)="modificarCurso(formLogin)">
+      <div class="selectores">
+        <p>Nombre:</p>
+        <input 
+        class="form-control form-control-sm" 
+        type="text" 
+        id="nombre"
+        name="nombre" 
+        required autocomplete="off" 
+        [(ngModel)]="aux">
+        <div class="alert alert-danger" role="alert" *ngIf="errors[1].isError">
+          {{errors[1].message}}
+        </div>
+      </div>
+      <div class="selectores">
+        <p>Docente:</p>
+        <div class="input-group mb-2">
+          <div class="input-group-prepend" *ngIf="spinnerDocente" >
+            <div class="spinner-border text-danger" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
           <input 
-          class="form-control form-control-sm" 
+          class="form-control" 
           type="text" 
-          id="nombre"
-          name="nombre" 
+          id="docente" 
+          name="docente" 
           required autocomplete="off" 
-          [(ngModel)]="aux">
-          <div class="alert alert-danger" role="alert" *ngIf="errors[1].isError">
-            {{errors[1].message}}
+          aria-describedby="basic-addon1" 
+          readonly 
+          [(ngModel)]="administrador.nombre">
+          <div class="input-group-prepend">
+            <button type="button" class="input-group-text" [attr.data-toggle]="'modal'" [attr.data-target]="'#targetDocente'+curso.curso_id" [attr.id]="'basic-addon1'+curso.curso_id">...</button>
           </div>
         </div>
-        <div class="selectores">
-          <p>Docente:</p>
-          <div class="input-group mb-2">
-            <div class="input-group-prepend" *ngIf="spinnerDocente" >
+        <div class="alert alert-danger" role="alert" *ngIf="errors[2].isError">
+          {{errors[2].message}}
+        </div>
+      </div>
+      <div class="selectores">
+        <p>Seccion:</p>
+        <div class="input-group mb-2">         
+          <div class="input-group-prepend" *ngIf="spinnerSeccion" >
+            <div class="spinner-border text-danger" role="status">
+              <span class="sr-only">Loading...</span>
+            </div>
+          </div>
+          <input 
+          type="text" 
+          class="form-control" 
+          type="text" 
+          id="seccion" 
+          name="seccion" 
+          required autocomplete="off" 
+          aria-describedby="basic-addon2" 
+          readonly 
+          [(ngModel)]="seccion.nombre">
+          <div class="input-group-prepend">
+            <button type="button" class="input-group-text" data-toggle="modal" [attr.data-target]="'#targetSeccion'+curso.curso_id" [attr.id]="'basic-addon2'+curso.curso_id">...</button>
+          </div>
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="errors[3].isError">
+          {{errors[3].message}}
+        </div>
+      </div>
+      <div class="selectores">
+        <p>Turno:</p>
+        <div class="input-group mb-2">
+            <div class="input-group-prepend" *ngIf="spinnerTurno" >
               <div class="spinner-border text-danger" role="status">
                 <span class="sr-only">Loading...</span>
               </div>
             </div>
-            <input 
-            class="form-control" 
-            type="text" 
-            id="docente" 
-            name="docente" 
-            required autocomplete="off" 
-            aria-describedby="basic-addon1" 
-            readonly 
-            [(ngModel)]="administrador.nombre">
-            <div class="input-group-prepend">
-              <button type="button" class="input-group-text" [attr.data-toggle]="'modal'" [attr.data-target]="'#targetDocente'+curso.curso_id" [attr.id]="'basic-addon1'+curso.curso_id">...</button>
-            </div>
-          </div>
-          <div class="alert alert-danger" role="alert" *ngIf="errors[2].isError">
-            {{errors[2].message}}
+          <input 
+          type="text" 
+          class="form-control" 
+          type="text" 
+          id="turno" 
+          name="turno" 
+          required autocomplete="off" 
+          aria-describedby="basic-addon3" 
+          readonly 
+          [(ngModel)]="turno.nombre">
+          <div class="input-group-prepend">
+            <button type="button" class="input-group-text" data-toggle="modal" [attr.data-target]="'#targetTurno'+curso.curso_id" [attr.id]="'basic-addon3'+curso.curso_id">...</button>
           </div>
         </div>
-        <div class="selectores">
-          <p>Seccion:</p>
-          <div class="input-group mb-2">         
-            <div class="input-group-prepend" *ngIf="spinnerSeccion" >
-              <div class="spinner-border text-danger" role="status">
-                <span class="sr-only">Loading...</span>
-              </div>
-            </div>
-            <input 
-            type="text" 
-            class="form-control" 
-            type="text" 
-            id="seccion" 
-            name="seccion" 
-            required autocomplete="off" 
-            aria-describedby="basic-addon2" 
-            readonly 
-            [(ngModel)]="seccion.nombre">
-            <div class="input-group-prepend">
-              <button type="button" class="input-group-text" data-toggle="modal" [attr.data-target]="'#targetSeccion'+curso.curso_id" [attr.id]="'basic-addon2'+curso.curso_id">...</button>
-            </div>
-          </div>
-          <div class="alert alert-danger" role="alert" *ngIf="errors[3].isError">
-            {{errors[3].message}}
-          </div>
+        <div class="alert alert-danger" role="alert" *ngIf="errors[4].isError">
+          {{errors[4].message}}
         </div>
-        <div class="selectores">
-          <p>Turno:</p>
-          <div class="input-group mb-2">
-              <div class="input-group-prepend" *ngIf="spinnerTurno" >
-                <div class="spinner-border text-danger" role="status">
-                  <span class="sr-only">Loading...</span>
-                </div>
-              </div>
-            <input 
-            type="text" 
-            class="form-control" 
-            type="text" 
-            id="turno" 
-            name="turno" 
-            required autocomplete="off" 
-            aria-describedby="basic-addon3" 
-            readonly 
-            [(ngModel)]="turno.nombre">
-            <div class="input-group-prepend">
-              <button type="button" class="input-group-text" data-toggle="modal" [attr.data-target]="'#targetTurno'+curso.curso_id" [attr.id]="'basic-addon3'+curso.curso_id">...</button>
-            </div>
-          </div>
-          <div class="alert alert-danger" role="alert" *ngIf="errors[4].isError">
-            {{errors[4].message}}
-          </div>
+      </div>
+      <div class="selectores">
+        <p>Gestion:</p>
+        <input class="form-control form-control-sm" type="text" id="gestion" name="gestion" required readonly autocomplete="off" [(ngModel)]="curso.gestion">
+        <div class="alert alert-danger" role="alert" *ngIf="errors[5].isError">
+          {{errors[5].message}}
         </div>
-        <div class="selectores">
-          <p>Gestion:</p>
-          <input class="form-control form-control-sm" type="text" id="gestion" name="gestion" required readonly autocomplete="off" [(ngModel)]="curso.gestion">
-          <div class="alert alert-danger" role="alert" *ngIf="errors[5].isError">
-            {{errors[5].message}}
-          </div>
+      </div>
+      <div>
+        <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+      </div>            
+      <div class="input-group-prepend" *ngIf="spinner" >
+        <div class="spinner-border text-danger" role="status">
+          <span class="sr-only">Loading...</span>
         </div>
-        <div>
-          <button type="submit" class="btn btn-primary">Guardar Cambios</button>
-        </div>            
-        <div class="input-group-prepend" *ngIf="spinner" >
-          <div class="spinner-border text-danger" role="status">
-            <span class="sr-only">Loading...</span>
-          </div>
-        </div>
-      </form>
-    </div>
+      </div>
+    </form>
   </div>
-  
+</div>
+
   
   <!-- Modal -->
   <div class="modal fade" [attr.id]="'targetDocente'+curso.curso_id" tabindex="-1" role="dialog" [attr.aria-labelledby]="'exampleModalLabelDocente'+curso.curso_id" aria-hidden="true">
