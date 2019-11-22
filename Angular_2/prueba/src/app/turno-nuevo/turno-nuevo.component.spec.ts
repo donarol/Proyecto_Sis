@@ -16,6 +16,11 @@ describe('TurnoNuevoComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
+      imports: [
+        RouterTestingModule,
+        HttpClientTestingModule,
+        HttpClientModule,
+        FormsModule],
       declarations: [ TurnoNuevoComponent ]
     })
     .compileComponents();
