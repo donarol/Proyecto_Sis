@@ -13,7 +13,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'nombre','apellido','carnet', 'email','telefono','password', 'tipo','email_verified_at',
     ];
     protected $hidden = [
-        'password', 'remember_token','created_at','updated_at',
+        'password', 'remember_token','created_at','updated_at','pivot'
     ];
     public function cursos(){
         return $this->hasMany('App\Modelos\Curso');

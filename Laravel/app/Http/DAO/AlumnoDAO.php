@@ -19,4 +19,14 @@ class AlumnoDAO{
        /* $alumno->save();
         return response()->json($alumno,200);*/
     }
+    public function obtener($id){
+        return response()->json(Alumno::find($id),200);
+    }
+    public function modificar(Alumno $alumno){
+        $alumno->save();
+        return response()->json($alumno,200);
+    }
+    public function familiares($id){
+        return response()->json(Alumno::find($id)->familiares,200);
+    }
 }

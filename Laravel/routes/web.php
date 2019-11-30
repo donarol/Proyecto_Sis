@@ -127,4 +127,15 @@ Route::get("verTurno",function(){
          echo "no existe";
      }
     echo $turno;
-});*/
+});
+Route::get("verfamiliar/{id}",function($id){
+    $turno =App\Modelos\Alumno::find($id)->familiares;
+   echo $turno;
+});
+
+*/
+
+Route::get("verfamiliar/{id}/{id_1}",function($id,$id_1){
+    
+   echo $id." ".$id_1;
+});

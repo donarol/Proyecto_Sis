@@ -1,0 +1,136 @@
+<div class="container emp-profile">
+    <form #formLogin="ngForm" (ngSubmit)="guardar(formLogin)">
+        <div class="row pb-3">
+            <div class="col-md-8">
+                <div class="input-group-prepend" *ngIf="spinner" >
+                    <div class="spinner-border text-danger" role="status">
+                        <span class="sr-only">Loading...</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4" *ngIf="show">
+                <input type="button" (click)="show =! show" class="profile-edit-btn" name="btnAddMore" value="Modificar Datos"/>
+            </div>
+            <div class="col-md-2" *ngIf="!show">
+                <input type="submit"  class="btn btn-success" name="btnAddMore1" value="Guardar"/>
+            </div>
+            <div class="col-md-2" *ngIf="!show">
+                <input type="button" (click)="show =! show" class="btn btn-danger" name="btnAddMore2" value="Cancelar"/>
+            </div>
+        </div>
+        <div class="row" *ngIf="ver">
+            <div class="col-md-12">
+                <div class="tab-content profile-tab" id="myTabContent">
+                    <div class="row">
+                        <div class="col-md-6">
+                        <label>Nombre</label>
+                        </div>
+                        <div class="col-md-6">
+                        <p *ngIf="show">{{alumno.nombre}}</p>
+                        <input *ngIf="!show" type="text" id="nombre" name="nombre" [(ngModel)]="aux.nombre" class="form-control" required>
+                        </div>
+                        <div class="alert alert-danger col-md-12" role="alert" *ngIf="errors[1].isError">
+                        {{errors[1].message}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                        <label>Apellido</label>
+                        </div>
+                        <div class="col-md-6">
+                        <p *ngIf="show">{{alumno.apellido}}</p>
+                        <input *ngIf="!show"  id="apellido" name="apellido" type="text" [(ngModel)]="aux.apellido" class="form-control" required>
+                        </div>
+                        <div class="alert alert-danger col-md-12" role="alert" *ngIf="errors[2].isError">
+                        {{errors[2].message}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                        <label>Fecha de Nacimiento</label>
+                        </div>
+                        <div class="col-md-6">
+                        <p *ngIf="show">{{alumno.fecha_nacimiento}}</p>
+                        <input *ngIf="!show"  id="fecha_nacimiento" name="fecha_nacimiento" type="text" [(ngModel)]="aux.fecha_nacimiento" class="form-control" required>
+                        </div>
+                        <div class="alert alert-danger col-md-12" role="alert" *ngIf="errors[3].isError">
+                        {{errors[3].message}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                        <label>Lugar de Nacimiento</label>
+                        </div>
+                        <div class="col-md-6">
+                        <p *ngIf="show">{{alumno.lugar_nacimiento}}</p>
+                        <input *ngIf="!show"  id="lugar_nacimiento" name="lugar_nacimiento" type="text" [(ngModel)]="aux.lugar_nacimiento" class="form-control" required>
+                        </div>
+                        <div class="alert alert-danger col-md-12" role="alert" *ngIf="errors[4].isError">
+                        {{errors[4].message}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                        <label>Tipo Sanguineo</label>
+                        </div>
+                        <div class="col-md-6">
+                        <p *ngIf="show">{{alumno.tipo_sanguineo}}</p>
+                        <input *ngIf="!show"  id="tipo_sanguineo" name="tipo_sanguineo" type="text" [(ngModel)]="aux.tipo_sanguineo" class="form-control" required>
+                        </div>
+                        <div class="alert alert-danger col-md-12" role="alert" *ngIf="errors[5].isError">
+                        {{errors[5].message}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                        <label>Telefono</label>
+                        </div>
+                        <div class="col-md-6">
+                        <p *ngIf="show">{{alumno.telefono}}</p>
+                        <input *ngIf="!show"  id="telefono" name="telefono" type="text" [(ngModel)]="aux.telefono" class="form-control" required>
+                        </div>
+                        <div class="alert alert-danger col-md-12" role="alert" *ngIf="errors[5].isError">
+                        {{errors[5].message}}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                        <label>Domicilio</label>
+                        </div>
+                        <div class="col-md-6">
+                        <p *ngIf="show">{{alumno.domicilio}}</p>
+                        <input *ngIf="!show"  id="domicilio" name="domicilio" type="text" [(ngModel)]="aux.domicilio" class="form-control" required>
+                        </div>
+                        <div class="alert alert-danger col-md-12" role="alert" *ngIf="errors[5].isError">
+                        {{errors[5].message}}
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                        <label class="col-md-6">Certificado de Vacunas:</label>
+                        <label class="switch">
+                          <input *ngIf="show" type="checkbox" id="certificado_vacuna_0" name="certificado_vacuna_0" [(ngModel)]="alumno.certificado_vacuna" readonly>
+                          <input *ngIf="!show" type="checkbox" id="certificado_vacuna_1" name="certificado_vacuna_1" [(ngModel)]="aux.certificado_vacuna">
+                          <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-6">R U D E:</label>
+                        <label class="switch">
+                          <input *ngIf="show" type="checkbox" id="rude_0" name="rude_0" [(ngModel)]="alumno.rude" readonly>
+                          <input *ngIf="!show" type="checkbox" id="rude_1" name="rude_1" [(ngModel)]="aux.rude">
+                          <span class="slider round"></span>
+                        </label>
+                    </div>
+                    <div class="row">
+                        <label class="col-md-6">Certificado de Nacimiento:</label>
+                        <label class="switch">
+                          <input *ngIf="show" type="checkbox" id="certificado_nacimiento_0" name="certificado_nacimiento_0" [(ngModel)]="alumno.certificado_nacimiento" readonly>
+                          <input *ngIf="!show" type="checkbox" id="certificado_nacimiento_1" name="certificado_nacimiento_1" [(ngModel)]="aux.certificado_nacimiento">
+                          <span class="slider round"  ></span>
+                        </label>
+                    </div>
+            </div>
+        </div>
+    </form>
+</div>

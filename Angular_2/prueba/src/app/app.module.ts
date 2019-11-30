@@ -6,6 +6,8 @@ import { FormsModule }   from '@angular/forms';
 import { FullCalendarModule} from '@fullcalendar/angular';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { TreeModule } from 'angular-tree-component';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
@@ -55,6 +57,9 @@ import { CursoBorrarComponent } from './curso-borrar/curso-borrar.component';
 import { CursoBorrarIiComponent } from './curso-borrar-ii/curso-borrar-ii.component';
 import { HomeFamiliarComponent } from './home-familiar/home-familiar.component';
 import { AlumnoDatosComponent } from './alumno-datos/alumno-datos.component';
+import { AlumnoDatosPersonalComponent } from './alumno-datos-personal/alumno-datos-personal.component';
+import { AlumnoDatosFamiliarComponent } from './alumno-datos-familiar/alumno-datos-familiar.component';
+import { MaterialModule } from './material.module';
 
 const router: Routes=[
   {path:'',component:InicioComponent},
@@ -146,7 +151,9 @@ const router: Routes=[
     CursoBorrarComponent,
     CursoBorrarIiComponent,
     HomeFamiliarComponent,
-    AlumnoDatosComponent
+    AlumnoDatosComponent,
+    AlumnoDatosPersonalComponent,
+    AlumnoDatosFamiliarComponent
   ],
   imports: [
     BrowserModule,
@@ -156,6 +163,7 @@ const router: Routes=[
     FormsModule,
     BrowserAnimationsModule,//
     FullCalendarModule,//
+    TreeModule.forRoot(), MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

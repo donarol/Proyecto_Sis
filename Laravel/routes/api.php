@@ -69,6 +69,10 @@ Route::group(['prefix' => 'auth'], function () {
     });
     Route::group(['middleware' => 'auth:api'],function(){
         Route::post('registroAlumno','AlumnoController@crear')->middleware('verified');
+       // Route::get('alumno/{id}/curso','AlumnoCursoController@obtener')->middleware('verified');
+        Route::get('alumno/{id}','AlumnoController@obtener')->middleware('verified');
+        Route::put('alumno/{id}','AlumnoController@modificar')->middleware('verified');
+        Route::get('alumno/{id}/familiares','AlumnoController@familiares')->middleware('verified');
     }); 
     Route::group(['middleware' => 'auth:api'],function(){
         Route::post('registroAlumnoCurso','AlumnoCursoController@crear')->middleware('verified');
@@ -76,7 +80,7 @@ Route::group(['prefix' => 'auth'], function () {
     });
     Route::group(['middleware' => 'auth:api'],function(){
         Route::post('registroAlumnoUser','AlumnoUserController@crear')->middleware('verified');
-        Route::get('alumno/{id}/familiares','AlumnoUserController@obtener')->middleware('verified');
+      //  Route::get('alumno/{id}/familiares','AlumnoUserController@obtener')->middleware('verified');
     });
     Route::group(['middleware' => 'auth:api'],function(){
         Route::post('registroIngrediente','IngredienteController@crear')->middleware('verified');
