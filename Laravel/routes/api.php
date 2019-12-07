@@ -61,6 +61,7 @@ Route::group(['prefix' => 'auth'], function () {
         Route::get('curso/{id}','CursoController@obtener')->middleware('verified');
         Route::post('cursoLista','CursoController@obtenerLista')->middleware('verified');
         Route::get('curso/{id}/alumnos','CursoController@alumnos')->middleware('verified');
+        Route::get('curso/{id}/camaras','CursoController@camaras')->middleware('verified');
         Route::put('curso/{id}','CursoController@modificar')->middleware('verified');
         Route::get('cursoDocente/{id}','CursoController@miDocente')->middleware('verified');
         Route::get('cursoSeccion/{id}','CursoController@miSeccion')->middleware('verified');
@@ -104,6 +105,17 @@ Route::group(['prefix' => 'auth'], function () {
         Route::get('registroIngredientePlato','IngredientePlatoController@crearMal')->middleware('verified');
     });
 
+    Route::group(['middleware' => 'auth:api'],function(){
+        Route::post('registroCamara','CamaraController@crear')->middleware('verified');
+        Route::get('registroCamara','CamaraController@crearMal')->middleware('verified');
+        Route::get('camaras','CamaraController@lista')->middleware('verified');
+        Route::get('camara/{id}','CamaraController@obtener')->middleware('verified');
+        Route::put('camara/{id}','CamaraController@modificar')->middleware('verified');
+    });
+
+    Route::group(['middleware' => 'auth:api'],function(){
+        Route::post('registroCamaraCurso','CamaraCursoController@crear')->middleware('verified');
+    });
 });
 
 

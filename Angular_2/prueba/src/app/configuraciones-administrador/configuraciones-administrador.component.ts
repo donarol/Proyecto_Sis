@@ -12,6 +12,7 @@ export class ConfiguracionesAdministradorComponent implements OnInit {
   {ruta:"cursos",etiqueta:"Cursos"},
   {ruta:"secciones",etiqueta:'Secciones'},
   {ruta:"turnos",etiqueta:"Turnos"},
+  {ruta:"camaras",etiqueta:"Camaras"},
   {ruta:"administrador_inicio",etiqueta:"Administradores"}];
   
   private isMuestra:Boolean;  

@@ -1,0 +1,64 @@
+<div class="contenedor">
+
+    <div class="contenido">
+        <div class="col-12">
+        <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="errors[3].isError">
+            {{errors[3].message}}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="alert alert-danger" role="alert" *ngIf="errors[0].isError">
+            {{errors[0].message}}
+        </div>      
+        </div>
+        <button type="button" class="btn btn-secondary" routerLink="/camaras">Atras</button>
+        <form  #formLogin="ngForm" (ngSubmit)="crearCamara(formLogin)">
+        <div class="selectores">
+            <p>Nombre:</p>
+            <input class="form-control form-control-sm entrada" type="text" id="nombre" name="nombre" [(ngModel)]="camara.nombre"   required autocomplete="off">
+            <div class="alert alert-danger" role="alert" *ngIf="errors[1].isError">
+            {{errors[1].message}}
+            </div>
+        </div>
+        <div class="selectores">
+            <p>Direccion:</p>
+            <input class="form-control form-control-sm entrada"  type="text" id="address" name="address" [(ngModel)]="camara.address"  required autocomplete="off">
+            <div class="alert alert-danger" role="alert" *ngIf="errors[2].isError">
+                {{errors[2].message}}
+            </div>
+        </div>
+        
+        <div class="selectores">
+            <p>Curso:</p>
+            <div class="input-group mb-2">         
+              <input 
+              type="text" 
+              class="form-control" 
+              type="text" 
+              id="curso" 
+              name="curso" 
+              required autocomplete="off" 
+              aria-describedby="basic-addon2" 
+              readonly 
+              [(ngModel)]="curso.nombre">
+              <div class="input-group-prepend">
+                <button type="button" class="input-group-text" data-toggle="modal" data-target="#targetCurso" id="basic-addon2">...</button>
+              </div>
+            </div>
+        </div>
+
+
+        <div class="spinner-border text-danger" role="status" *ngIf="spinner">
+            <span class="sr-only">Loading...</span>
+        </div> 
+        <div>
+            <button type="submit" class="btn btn-secondary">Crear Camara</button>
+        </div> 
+    
+        </form>
+    </div>
+
+<div class="modal fade" id="targetCurso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabelCurso" aria-hidden="true">
+    <app-seleccion-curso (selecCurso)="SelecCurso($event)"></app-seleccion-curso>
+</div>
