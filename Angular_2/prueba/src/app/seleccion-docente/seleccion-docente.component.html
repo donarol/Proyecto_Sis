@@ -10,7 +10,7 @@
       <div class="modal-body">
           <div class="row">
             <div class="col-4">
-              <select (change)='selectDocente($event)' size="8"  class=" form-control list-group" id="list-tab" role="tablist">
+              <select (change)='selectDocente($event)' size="8"  class=" form-control list-group" id="list-tab-docente" role="tablist">
                   <option *ngFor="let administrador of administradores" 
                   class="list-group-item list-group-item-action" 
                   [attr.id]="'list-home-list-docente'+administrador.id" 
@@ -54,7 +54,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" [attr.data-dismiss]="'modal'">Cancelar</button>
-        <button type="button" (click)="enviarDocente()" [attr.data-dismiss]="'modal'" class="btn btn-primary">Seleccionar Docente</button>
+        <button type="button" (click)="enviarDocente()" id="seleccionDocente" [attr.data-dismiss]="'modal'" class="btn btn-primary">Seleccionar Docente</button>
       </div>
   
     </div>
