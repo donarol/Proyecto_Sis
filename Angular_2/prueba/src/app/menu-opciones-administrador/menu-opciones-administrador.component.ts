@@ -8,12 +8,12 @@ import { LoginService } from '../servicios/login.service';
 })
 export class MenuOpcionesAdministradorComponent implements OnInit {
   private componentesMenu:Array<any>=[
-    {etiqueta:'Inicio',ruta:'/homeAdministrador'},
-    {etiqueta:'Mi Cuenta',ruta:'/cuentaAdministrador'},
-    {etiqueta:'Mis Mensajes',ruta:'/mensajes'},
-    {etiqueta:'Configuraciones',ruta:'/cursos'},
-    {etiqueta:'Inscribir Alumno',ruta:'/inscribirAlumno'},
-    {etiqueta:'Menu',ruta:'/menuAdministrador'}];
+    {etiqueta:'Inicio',ruta:'/homeAdministrador',id:'inicio'},
+    {etiqueta:'Mi Cuenta',ruta:'/cuentaAdministrador',id:'cuenta'},
+    {etiqueta:'Mis Mensajes',ruta:'/mensajes',id:'mensaje'},
+    {etiqueta:'Configuraciones',ruta:'/cursos',id:'configuracion'},
+    {etiqueta:'Inscribir Alumno',ruta:'/inscribirAlumno',id:'inscribir'},
+    {etiqueta:'Menu',ruta:'/menuAdministrador',id:'menu'}];
     componentes_0:Array<any>=[{etiqueta:"Cerrar Sesion"}];
   constructor(
     private _router:Router,

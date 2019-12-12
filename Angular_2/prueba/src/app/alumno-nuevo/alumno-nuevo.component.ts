@@ -16,6 +16,9 @@ import { Alumno_User } from '../modelos/Alumno_User';
 import { UserService } from '../servicios/user.service';
 import { Router } from '@angular/router';
 
+
+import {MaterialModule} from '../../../src/app/material.module'
+
 @Component({
   selector: 'app-alumno-nuevo',
   templateUrl: './alumno-nuevo.component.html',

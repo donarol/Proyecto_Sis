@@ -10,7 +10,7 @@
       <div class="modal-body">
           <div class="row">
             <div class="col-4">
-              <select (change)='selectTurno($event)' size="8"  class=" form-control list-group" id="list-tab" role="tablist">
+              <select (change)='selectTurno($event)' size="8"  class=" form-control list-group" id="list-tab-turno" role="tablist">
                   <option *ngFor="let turno of turnos" 
                   class="list-group-item list-group-item-action" 
                   [attr.id]="'list-home-list-turno'+turno.turno_id" 
@@ -53,7 +53,7 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        <button type="button" (click)="enviarTurno()" data-dismiss="modal" class="btn btn-primary">Seleccionar Turno</button>
+        <button type="button" id="seleccionTurno" (click)="enviarTurno()" data-dismiss="modal" class="btn btn-primary">Seleccionar Turno</button>
       </div>
   
     </div>

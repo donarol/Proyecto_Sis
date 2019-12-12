@@ -62,7 +62,7 @@ class cursoTest extends TestCase
         ->assertStatus(200)
         ->assertJson([
             'id' => '1',
-            'nombre'=>'nombre a1',
+            'nombre'=>'nombre docente x',
             'apellido' => 'apellido a1',
             'carnet' => 'carnet a1',
             'email'=>'correo@example.com',

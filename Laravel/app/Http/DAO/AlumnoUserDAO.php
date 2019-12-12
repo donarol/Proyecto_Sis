@@ -18,6 +18,7 @@ class AlumnoUserDAO{
             return response()->json($alumnoUser,200);
         }
     }
+    //MAL
     public function obtener($id){
         return response()->json(Alumno::find($id)->familiares,200);
     }

@@ -10,7 +10,7 @@ class Mensaje extends Model
     //
     protected $table = "mensajes";
     protected $primaryKey = "mensaje_id"; 
-    protected $fillable = ['mensaje','fecha'];
-    protected $hidden = ['created_at' ,'updated_at', 'deleted_at'];
+    protected $fillable = ['user_id','mensaje'];
+    protected $hidden = ['created_at' ,'updated_at'];
 
 }

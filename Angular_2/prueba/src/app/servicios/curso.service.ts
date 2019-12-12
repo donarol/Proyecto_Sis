@@ -7,6 +7,7 @@ import { User } from '../modelos/User';
 import { Seccion } from '../modelos/Seccion';
 import { Turno } from '../modelos/Turno';
 import { Alumno } from '../modelos/Alumno';
+import { Camara } from '../modelos/Camara';
 
 @Injectable({
   providedIn: 'root'
@@ -28,6 +29,9 @@ export class CursoService {
   }
   getAlumnos(curso:Curso):Observable<Alumno[]>{
     return this.http.get<Alumno[]>(`http://homestead.test/api/auth/curso/${curso.curso_id}/alumnos`,this.getToken());
+  }
+  getCamaras(curso:Curso):Observable<Camara[]>{
+    return this.http.get<Camara[]>(`http://homestead.test/api/auth/curso/${curso.curso_id}/camaras`,this.getToken());
   }
   getDocente(id:String):Observable<User>{
     return this.http.get<User>(`http://homestead.test/api/auth/cursoDocente/${id}`,this.getToken());

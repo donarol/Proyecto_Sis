@@ -25,5 +25,7 @@ class Curso extends Model
     }
     public function alumnos(){
         return $this->belongsToMany('App\Modelos\Alumno','alumnos_cursos','curso_id','alumno_id');
+    }public function camaras(){
+        return $this->belongsToMany('App\Modelos\Camara','camaras_cursos','curso_id','camara_id');
     }
 }

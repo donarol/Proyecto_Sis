@@ -4,14 +4,18 @@ import { RouterModule,Routes} from '@angular/router';
 import { FormsModule }   from '@angular/forms';
 
 import { FullCalendarModule} from '@fullcalendar/angular';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialModule } from './material.module';
+
+import { TreeModule } from 'angular-tree-component';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
 
 import { HttpClientModule } from '@angular/common/http';
 
+import { LoginComponent } from './login/login.component';
 import { AdministradorInicioComponent } from './administrador-inicio/administrador-inicio.component';
 import { AlumnoNuevoComponent } from './alumno-nuevo/alumno-nuevo.component';
 import { ConfiguracionesAdministradorComponent } from './configuraciones-administrador/configuraciones-administrador.component';
@@ -55,6 +59,14 @@ import { CursoBorrarComponent } from './curso-borrar/curso-borrar.component';
 import { CursoBorrarIiComponent } from './curso-borrar-ii/curso-borrar-ii.component';
 import { HomeFamiliarComponent } from './home-familiar/home-familiar.component';
 import { AlumnoDatosComponent } from './alumno-datos/alumno-datos.component';
+import { AlumnoDatosPersonalComponent } from './alumno-datos-personal/alumno-datos-personal.component';
+import { AlumnoDatosFamiliarComponent } from './alumno-datos-familiar/alumno-datos-familiar.component';
+import { CamaraDatosComponent } from './camara-datos/camara-datos.component';
+import { CamaraNuevoComponent } from './camara-nuevo/camara-nuevo.component';
+import { CamaraInicioComponent } from './camara-inicio/camara-inicio.component';
+import { CamaraModificarComponent } from './camara-modificar/camara-modificar.component';
+import { CamaraModificarIiComponent } from './camara-modificar-ii/camara-modificar-ii.component';
+
 
 const router: Routes=[
   {path:'',component:InicioComponent},
@@ -71,6 +83,7 @@ const router: Routes=[
         {path:'homeAdministrador/Curso/:id',component:ListaInicioComponent},
         {path:'homeAdministrador',component:ListaInicioComponent},
         {path:'homeAdministrador/Alumno/:id',component:AlumnoDatosComponent},
+        {path:'homeAdministrador/Camara/:id',component:CamaraDatosComponent}
       ]},
       {path:'cuentaAdministrador',component:CuentaAdministradorComponent},
       {path:'',component:MenuAdministradorComponent,children:[
@@ -87,6 +100,10 @@ const router: Routes=[
         {path:'turnos',component:TurnoInicioComponent},
         {path:'turnoNuevo',component:TurnoNuevoComponent},
         {path:'turno/:id',component:TurnoDatosComponent},
+        {path:'camaras',component:CamaraInicioComponent},
+        {path:'camaraNuevo',component:CamaraNuevoComponent},
+        {path:'camaraModificar',component:CamaraModificarComponent},
+        /*{path:'camaraModificar/:id',component:CamaraModificarIiComponent},*/
         {path:'administrador_inicio',component:AdministradorInicioComponent},
         {path:'cuentaAdministrador/:id',component:CuentaAdministradorComponent}
       ]},
@@ -146,7 +163,13 @@ const router: Routes=[
     CursoBorrarComponent,
     CursoBorrarIiComponent,
     HomeFamiliarComponent,
-    AlumnoDatosComponent
+    AlumnoDatosComponent,
+    AlumnoDatosPersonalComponent,
+    AlumnoDatosFamiliarComponent,
+    CamaraDatosComponent,
+    CamaraNuevoComponent,
+    CamaraInicioComponent,
+    CamaraModificarComponent
   ],
   imports: [
     BrowserModule,
@@ -156,6 +179,7 @@ const router: Routes=[
     FormsModule,
     BrowserAnimationsModule,//
     FullCalendarModule,//
+    TreeModule.forRoot(), MaterialModule
   ],
   providers: [],
   bootstrap: [AppComponent]

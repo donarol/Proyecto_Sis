@@ -41,6 +41,10 @@ class CursoController extends Controller
         $curso = new CursoBL;
         return $curso->alumnos($id);
     }
+    public function camaras($id){
+        $curso = new CursoBL;
+        return $curso->camaras($id);
+    }
     public function miDocente($id){
         $curso = new CursoBL;
         return $curso->miDocente($id);
@@ -53,6 +57,7 @@ class CursoController extends Controller
         $curso = new CursoBL;
         return $curso->miTurno($id);
     }
+
     public function borrar($id){
         $curso = new CursoBL;
         return $curso->borrar($id);

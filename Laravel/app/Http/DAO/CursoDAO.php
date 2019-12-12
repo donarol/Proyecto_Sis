@@ -51,6 +51,9 @@ class CursoDAO{
     public function alumnos($id){
         return response()->json(Curso::find($id)->alumnos,200);
     }
+    public function camaras($id){
+        return response()->json(Curso::find($id)->camaras,200);
+    }
 
     public function miDocente($id){
         return response()->json(Curso::find($id)->user,200);
